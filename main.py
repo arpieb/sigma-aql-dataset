@@ -32,7 +32,7 @@ def main(sigma_path, dataset_path='dataset', glob_path='**/*.yml'):
     """
     Main converter function
     :param sigma_path: Base path to search for sigma rules
-    :param dataset_path: Output pathf or dataset
+    :param dataset_path: Base output path for dataset
     :param glob_path: Glob path pattern to match files under sigma_path
     :return: None
     """
