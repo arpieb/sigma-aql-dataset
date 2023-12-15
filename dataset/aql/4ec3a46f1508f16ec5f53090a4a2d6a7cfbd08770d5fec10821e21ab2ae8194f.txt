@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%asd123.aaaa%' OR LOWER(Command) LIKE '%password123%' OR Command LIKE '%123456789%' OR LOWER(Command) LIKE '%p@ssw0rd!%' OR LOWER(Command) LIKE '%decryptme%'

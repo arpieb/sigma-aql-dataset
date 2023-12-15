@@ -1,0 +1,32 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-09-04'
+description: Detects the deletion of the "Zone.Identifier" ADS by an uncommon process.
+  Attackers can leverage this in order to bypass security restrictions that make use
+  of the ADS such as Microsoft Office apps.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_generic:
+    Image|endswith:
+    - :\Program Files\PowerShell\7-preview\pwsh.exe
+    - :\Program Files\PowerShell\7\pwsh.exe
+    - :\Windows\explorer.exe
+    - :\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    - :\Windows\SysWOW64\explorer.exe
+    - :\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+  selection:
+    TargetFilename|endswith: :Zone.Identifier
+falsepositives:
+- Other third party applications not listed.
+id: 3109530e-ab47-4cc6-a953-cac5ebcc93ae
+level: medium
+logsource:
+  category: file_delete
+  product: windows
+references:
+- https://securityliterate.com/how-malware-abuses-the-zone-identifier-to-circumvent-detection-and-analysis/
+- Internal Research
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070.004
+title: ADS Zone.Identifier Deleted By Uncommon Application

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\certutil.exe' OR LOWER("Process Name") LIKE '%\certutil.exe' OR Filename='CertUtil.exe') AND (LOWER(Command) LIKE '%-encode%' OR LOWER(Command) LIKE '%/encode%')

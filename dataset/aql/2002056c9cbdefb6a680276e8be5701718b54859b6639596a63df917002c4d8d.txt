@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE 'c:\users\%' AND LOWER(Filename) LIKE '%\appdata\local\temp\osksupport.dll' OR ("Process Path"='C:\Windows\system32\DllHost.exe' OR "Process Name"='C:\Windows\system32\DllHost.exe') AND Filename='C:\Program Files\Windows Media Player\osk.exe'

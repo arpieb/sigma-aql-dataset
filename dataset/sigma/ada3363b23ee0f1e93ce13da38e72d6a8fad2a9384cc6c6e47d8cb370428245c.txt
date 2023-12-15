@@ -1,0 +1,30 @@
+author: Jakob Weinzettl, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-05'
+description: Detects the stopping of a Windows service
+detection:
+  condition: all of selection_* and not 1 of filter_*
+  filter_kaspersky:
+    CommandLine:
+    - sc  stop KSCWebConsoleMessageQueue
+    - sc  stop LGHUBUpdaterService
+    User|contains:
+    - AUTHORI
+    - AUTORI
+  selection_cli:
+    CommandLine|contains: ' stop '
+  selection_img:
+    Image|endswith: \sc.exe
+    OriginalFileName: sc.exe
+falsepositives:
+- There are many legitimate reasons to stop a service. This rule isn't looking for
+  any suspicious behaviour in particular. Filter legitimate activity accordingly
+id: 81bcb81b-5b1f-474b-b373-52c871aaa7b1
+level: low
+logsource:
+  category: process_creation
+  product: windows
+status: experimental
+tags:
+- attack.impact
+- attack.t1489
+title: Stop Windows Service Via Sc.EXE

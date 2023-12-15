@@ -1,0 +1,97 @@
+author: Florian Roth (Nextron Systems), David ANDRE (additional keywords)
+date: '2021-12-20'
+description: Detects a suspicious process creation as SYSTEM user (suspicious program
+  or command line parameter)
+detection:
+  condition: all of selection* and not 1 of filter_*
+  filter_config_mgr:
+    ParentImage|contains: :\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\
+  filter_java:
+    CommandLine|contains: ' -ma '
+    Image|contains:
+    - :\Program Files (x86)\Java\
+    - :\Program Files\Java\
+    Image|endswith: \bin\jp2launcher.exe
+    ParentImage|contains:
+    - :\Program Files (x86)\Java\
+    - :\Program Files\Java\
+    ParentImage|endswith: \bin\javaws.exe
+  filter_ping:
+    CommandLine: ping 127.0.0.1 -n 5
+  filter_vs:
+    Image|endswith: \PING.EXE
+    ParentCommandLine|contains: \DismFoDInstall.cmd
+  selection:
+    IntegrityLevel: System
+    User|contains:
+    - AUTHORI
+    - AUTORI
+  selection_special:
+    CommandLine|contains:
+    - ' -NoP '
+    - ' -W Hidden '
+    - ' -decode '
+    - ' /decode '
+    - ' /urlcache '
+    - ' -urlcache '
+    - ' -e* JAB'
+    - ' -e* SUVYI'
+    - ' -e* SQBFAFgA'
+    - ' -e* aWV4I'
+    - ' -e* IAB'
+    - ' -e* PAA'
+    - ' -e* aQBlAHgA'
+    - vssadmin delete shadows
+    - reg SAVE HKLM
+    - ' -ma '
+    - Microsoft\Windows\CurrentVersion\Run
+    - .downloadstring(
+    - .downloadfile(
+    - ' /ticket:'
+    - 'dpapi::'
+    - event::clear
+    - event::drop
+    - id::modify
+    - 'kerberos::'
+    - 'lsadump::'
+    - 'misc::'
+    - 'privilege::'
+    - 'rpc::'
+    - 'sekurlsa::'
+    - 'sid::'
+    - 'token::'
+    - vault::cred
+    - vault::list
+    - ' p::d '
+    - ;iex(
+    - MiniDump
+    - 'net user '
+    Image|endswith:
+    - \calc.exe
+    - \wscript.exe
+    - \cscript.exe
+    - \hh.exe
+    - \mshta.exe
+    - \forfiles.exe
+    - \ping.exe
+falsepositives:
+- Administrative activity
+- Scripts and administrative tools used in the monitored environment
+- Monitoring activity
+id: 2617e7ed-adb7-40ba-b0f3-8f9945fe6c09
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- Internal Research
+- https://tools.thehacker.recipes/mimikatz/modules
+status: test
+tags:
+- attack.credential_access
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1134
+- attack.t1003
+- attack.t1027
+title: Suspicious SYSTEM User Process Creation

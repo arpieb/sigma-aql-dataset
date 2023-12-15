@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype IN(433, 12) AND "Event ID"=1121 AND (LOWER("Process Name") LIKE '%\wmiprvse.exe' OR LOWER("Process Name") LIKE '%\psexesvc.exe')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\psexec.exe' OR LOWER("Process Name") LIKE '%\psexec.exe' OR Filename='psexec.c'

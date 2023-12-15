@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Event ID" IN('11', '12')) AND (LOWER("Process Name") LIKE '%\users\public\%' OR LOWER("Process Name") LIKE '%\perflogs\%' OR LOWER("Process Name") LIKE '%\desktop\%' OR LOWER("Process Name") LIKE '%\downloads\%' OR LOWER("Process Name") LIKE '%\appdata\local\temp\%' OR LOWER("Process Name") LIKE '%c:\windows\temp\%')

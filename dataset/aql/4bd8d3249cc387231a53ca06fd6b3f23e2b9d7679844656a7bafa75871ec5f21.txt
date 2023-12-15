@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=201 AND ("Process Name" IN('procdump.exe', 'psloglist.exe', 'psexec.exe', 'livekd.exe', 'ADExplorer.exe'))

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\mobsync.exe' OR LOWER("Process Name") LIKE '%\mobsync.exe') AND (LOWER(Filename) LIKE '%.dll' OR LOWER(Filename) LIKE '%.exe')

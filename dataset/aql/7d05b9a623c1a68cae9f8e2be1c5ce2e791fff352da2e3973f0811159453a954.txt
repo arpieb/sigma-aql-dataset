@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/dscl' OR LOWER("Process Name") LIKE '%/dscl') AND LOWER(Command) LIKE '% -append %' AND LOWER(Command) LIKE '% /groups/admin %' AND LOWER(Command) LIKE '% groupmembership %'

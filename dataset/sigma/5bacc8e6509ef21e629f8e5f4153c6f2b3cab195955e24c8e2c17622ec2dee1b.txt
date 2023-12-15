@@ -1,0 +1,33 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-04-30'
+description: Detects the creation of a "rundll32" process from the ColdSteel persistence
+  service to initiate the cleanup command by calling one of its own exports. This
+  functionality is not present in "MileStone2017" and some "MileStone2016" samples
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - UpdateDriverForPlugAndPlayDevicesW
+    - ServiceMain
+    - DiUninstallDevice
+    Image|endswith: \rundll32.exe
+    ParentCommandLine|contains:
+    - ' -k msupdate'
+    - ' -k msupdate2'
+    - ' -k alg'
+    ParentImage|endswith: \svchost.exe
+falsepositives:
+- Unlikely
+id: 88516f06-ebe0-47ad-858e-ae9fd060ddea
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/cold-steel/NCSC-MAR-Cold-Steel.pdf
+status: experimental
+tags:
+- attack.persistence
+- attack.defense_evasion
+- detection.emerging_threats
+title: COLDSTEEL RAT Cleanup Command Execution

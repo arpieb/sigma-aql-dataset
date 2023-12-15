@@ -1,0 +1,30 @@
+author: Florian Roth (Nextron Systems), Teymur Kheirkhabarov
+date: '2022-01-28'
+description: Detects the execution of "whoami.exe" by privileged accounts that are
+  often abused by threat actors
+detection:
+  condition: all of selection_*
+  selection_img:
+    Image|endswith: \whoami.exe
+    OriginalFileName: whoami.exe
+  selection_user:
+    User|contains:
+    - AUTHORI
+    - AUTORI
+    - TrustedInstaller
+falsepositives:
+- Unknown
+id: 79ce34ca-af29-4d0e-b832-fc1b377020db
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment
+- https://nsudo.m2team.org/en-us/
+status: experimental
+tags:
+- attack.privilege_escalation
+- attack.discovery
+- attack.t1033
+title: Suspicious Whoami.EXE Execution From Privileged Process

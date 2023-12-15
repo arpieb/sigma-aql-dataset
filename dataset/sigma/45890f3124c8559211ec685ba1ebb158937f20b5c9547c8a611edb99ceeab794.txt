@@ -1,0 +1,31 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-01-04'
+description: Detects the execution of format.com with a suspicious filesystem selection
+  that could indicate a defense evasion activity in which format.com is used to load
+  malicious DLL files or other programs
+detection:
+  condition: selection and not 1 of filter*
+  filter:
+    CommandLine|contains:
+    - /fs:FAT
+    - /fs:exFAT
+    - /fs:NTFS
+    - /fs:UDF
+    - /fs:ReFS
+  selection:
+    CommandLine|contains: '/fs:'
+    Image|endswith: \format.com
+falsepositives:
+- Unknown
+id: 9fb6b26e-7f9e-4517-a48b-8cac4a1b6c60
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/0gtweet/status/1477925112561209344
+- https://twitter.com/wdormann/status/1478011052130459653?s=20
+status: test
+tags:
+- attack.defense_evasion
+title: Format.com FileSystem LOLBIN

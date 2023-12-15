@@ -1,0 +1,37 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-04-27'
+description: Detects the use of KrbRelay, a Kerberos relaying tool
+detection:
+  condition: 1 of selection_*
+  selection_cli_1:
+    CommandLine|contains|all:
+    - ' -spn '
+    - ' -clsid '
+    - ' -rbcd '
+  selection_cli_2:
+    CommandLine|contains|all:
+    - shadowcred
+    - clsid
+    - spn
+  selection_cli_3:
+    CommandLine|contains|all:
+    - 'spn '
+    - 'session '
+    - 'clsid '
+  selection_img:
+    Image|endswith: \KrbRelay.exe
+    OriginalFileName: KrbRelay.exe
+falsepositives:
+- Unlikely
+id: e96253b8-6b3b-4f90-9e59-3b24b99cf9b4
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/cube0x0/KrbRelay
+status: test
+tags:
+- attack.credential_access
+- attack.t1558.003
+title: HackTool - KrbRelay Execution

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/xattr' OR LOWER("Process Name") LIKE '%/xattr') AND LOWER(Command) LIKE '%-r%' AND LOWER(Command) LIKE '%com.apple.quarantine%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE destinationip IN('69.42.98.86', '89.185.234.145') OR sourceip IN('69.42.98.86', '89.185.234.145')

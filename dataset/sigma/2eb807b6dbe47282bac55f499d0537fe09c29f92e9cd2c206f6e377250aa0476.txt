@@ -1,0 +1,39 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-24'
+description: Detects usage of the "Set-Service" powershell cmdlet to configure a new
+  SecurityDescriptor that allows a service to be hidden from other utilities such
+  as "sc.exe", "Get-Service"...etc. (Works only in powershell 7)
+detection:
+  condition: all of selection_*
+  selection_sddl_flag:
+    ScriptBlockText|contains:
+    - '-SecurityDescriptorSddl '
+    - '-sd '
+  selection_set_service:
+    ScriptBlockText|contains:
+    - ;;;IU
+    - ;;;SU
+    - ;;;BA
+    - ;;;SY
+    - ;;;WD
+    ScriptBlockText|contains|all:
+    - 'Set-Service '
+    - D;;
+falsepositives:
+- Rare intended use of hidden services
+- Rare FP could occur due to the non linearity of the ScriptBlockText log
+id: 22d80745-6f2c-46da-826b-77adaededd74
+level: high
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://twitter.com/Alh4zr3d/status/1580925761996828672
+- https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-service?view=powershell-7.2
+status: test
+tags:
+- attack.persistence
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1574.011
+title: Suspicious Service DACL Modification Via Set-Service Cmdlet - PS

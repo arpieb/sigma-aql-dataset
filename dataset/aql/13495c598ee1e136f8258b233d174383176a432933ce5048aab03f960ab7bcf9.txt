@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\mmc.exe' AND LOWER("Parent Command") LIKE '%wf.msc%' AND NOT((LOWER("Process Path") LIKE '%\werfault.exe' OR LOWER("Process Name") LIKE '%\werfault.exe'))

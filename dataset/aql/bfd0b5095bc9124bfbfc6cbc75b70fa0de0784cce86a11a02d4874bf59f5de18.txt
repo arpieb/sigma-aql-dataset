@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\hashcat.exe' OR LOWER("Process Name") LIKE '%\hashcat.exe' OR LOWER(Command) LIKE '%-a %' AND LOWER(Command) LIKE '%-m 1000 %' AND LOWER(Command) LIKE '%-r %'

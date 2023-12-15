@@ -1,0 +1,37 @@
+author: Arnim Rupp, Florian Roth
+date: '2020-01-02'
+description: Detects CVE-2019-19781 exploitation attempt against Citrix Netscaler,
+  Application Delivery Controller and Citrix Gateway Attack
+detection:
+  condition: 1 of selection_*
+  selection_cs:
+    cs-uri-query|contains: /../vpns/
+    cs-uri-query|endswith: /vpns/cfg/smb.conf
+  selection_csall:
+    cs-uri-query|contains|all:
+    - /vpns/portal/scripts/
+    - .pl
+falsepositives:
+- Unknown
+fields:
+- client_ip
+- vhost
+- url
+- response
+id: ac5a6409-8c89-44c2-8d64-668c29a2d756
+level: critical
+logsource:
+  category: webserver
+references:
+- https://support.citrix.com/article/CTX267679
+- https://support.citrix.com/article/CTX267027
+- https://isc.sans.edu/diary/25686
+- https://twitter.com/mpgn_x64/status/1216787131210829826
+- https://github.com/x1sec/CVE-2019-19781/blob/25f7ab97275b2d41800bb3414dac8ca3a78af7e5/CVE-2019-19781-DFIR.md
+status: test
+tags:
+- attack.initial_access
+- attack.t1190
+- cve.2019.19781
+- detection.emerging_threats
+title: Citrix Netscaler Attack CVE-2019-19781

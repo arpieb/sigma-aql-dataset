@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\anydesk.exe' OR LOWER("Process Name") LIKE '%\anydesk.exe') AND (LOWER(Filename) LIKE '%.dll' OR LOWER(Filename) LIKE '%.exe') AND NOT(LOWER(Filename) LIKE '%\gcapi.dll')

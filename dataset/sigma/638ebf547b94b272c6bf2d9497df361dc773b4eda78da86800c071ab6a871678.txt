@@ -1,0 +1,28 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-25'
+description: Detects common command used to enable bpf kprobes tracing
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - /myprobe/enable
+    - /myretprobe/enable
+    CommandLine|contains|all:
+    - echo 1 >
+    - /sys/kernel/debug/tracing/events/kprobes/
+falsepositives:
+- Unknown
+id: 7692f583-bd30-4008-8615-75dab3f08a99
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://embracethered.com/blog/posts/2021/offensive-bpf-bpftrace/
+- https://bpftrace.org/
+- https://www.kernel.org/doc/html/v5.0/trace/kprobetrace.html
+status: test
+tags:
+- attack.execution
+- attack.defense_evasion
+title: Enable BPF Kprobes Tracing

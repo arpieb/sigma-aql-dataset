@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%compress-archive %' OR LOWER(Message) LIKE '% -path %' OR LOWER(Message) LIKE '% -destinationpath %' OR LOWER(Message) LIKE '%$env:temp\%'

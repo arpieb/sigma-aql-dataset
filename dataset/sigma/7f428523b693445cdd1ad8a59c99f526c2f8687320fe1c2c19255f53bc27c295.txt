@@ -1,0 +1,48 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-02'
+description: Detects a suspicious call to Invoke-WebRequest cmdlet where the and output
+  is located in a suspicious location
+detection:
+  condition: all of selection_*
+  selection_commands:
+    CommandLine|contains:
+    - 'curl '
+    - Invoke-WebRequest
+    - 'iwr '
+    - 'wget '
+  selection_flags:
+    CommandLine|contains:
+    - ' -ur'
+    - ' -o'
+  selection_img:
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+    OriginalFileName:
+    - PowerShell.EXE
+    - pwsh.dll
+  selection_susp_locations:
+    CommandLine|contains:
+    - \AppData\
+    - \Desktop\
+    - \Temp\
+    - \Users\Public\
+    - '%AppData%'
+    - '%Public%'
+    - '%Temp%'
+    - '%tmp%'
+    - C:\Windows\
+falsepositives:
+- Unknown
+id: 5e3cc4d8-3e68-43db-8656-eaaeefdec9cc
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.sentinelone.com/blog/living-off-windows-defender-lockbit-ransomware-sideloads-cobalt-strike-through-microsoft-security-tool/
+status: experimental
+tags:
+- attack.command_and_control
+- attack.t1105
+title: Suspicious Invoke-WebRequest Execution

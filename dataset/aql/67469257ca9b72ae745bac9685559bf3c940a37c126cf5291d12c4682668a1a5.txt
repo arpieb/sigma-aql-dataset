@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%frombase64string%' OR LOWER(Message) LIKE '%memorystream%' OR LOWER(Message) LIKE '%h4si%'

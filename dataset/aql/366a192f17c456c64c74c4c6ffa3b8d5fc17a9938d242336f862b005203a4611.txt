@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/jamf' OR LOWER("Process Name") LIKE '%/jamf') AND (LOWER(Command) LIKE '%createaccount%' OR LOWER(Command) LIKE '%manage%' OR LOWER(Command) LIKE '%removeframework%' OR LOWER(Command) LIKE '%removemdmprofile%' OR LOWER(Command) LIKE '%resetpassword%' OR LOWER(Command) LIKE '%setcomputername%')

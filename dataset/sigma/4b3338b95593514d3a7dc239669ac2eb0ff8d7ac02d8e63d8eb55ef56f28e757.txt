@@ -1,0 +1,22 @@
+author: frack113
+date: '2022-03-17'
+description: Detects execution of PktMon, a tool that captures network packets.
+detection:
+  condition: selection
+  selection:
+    Image|endswith: \pktmon.exe
+    OriginalFileName: PktMon.exe
+falsepositives:
+- Legitimate use
+id: f956c7c1-0f60-4bc5-b7d7-b39ab3c08908
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Pktmon/
+status: test
+tags:
+- attack.credential_access
+- attack.t1040
+title: PktMon.EXE Execution

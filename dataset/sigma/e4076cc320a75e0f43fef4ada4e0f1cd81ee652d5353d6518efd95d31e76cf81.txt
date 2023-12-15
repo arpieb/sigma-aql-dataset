@@ -1,0 +1,25 @@
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: '2022-02-19'
+description: Detects activity when the settings of the Windows firewall have been
+  changed
+detection:
+  condition: selection
+  selection:
+    EventID:
+    - 2002
+    - 2083
+    - 2003
+    - 2082
+    - 2008
+id: 00bb5bd5-1379-4fcf-a965-a5b6f7478064
+level: low
+logsource:
+  product: windows
+  service: firewall-as
+references:
+- https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/dd364427(v=ws.10)
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1562.004
+title: Windows Firewall Settings Have Been Changed

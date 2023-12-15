@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%=c:/users%' OR LOWER(URL) LIKE '%=c:/program%20files%' OR LOWER(URL) LIKE '%=c:/windows%' OR LOWER(URL) LIKE '%=c%3a%5cusers%' OR LOWER(URL) LIKE '%=c%3a%5cprogram%20files%' OR LOWER(URL) LIKE '%=c%3a%5cwindows%'

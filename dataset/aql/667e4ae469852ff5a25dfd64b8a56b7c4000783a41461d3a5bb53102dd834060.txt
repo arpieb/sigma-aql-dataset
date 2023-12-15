@@ -1,0 +1,1 @@
+SELECT *, Username, Command FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\wsmprovhost.exe' OR LOWER("Process Name") LIKE '%\wsmprovhost.exe' OR LOWER("Parent Process Path") LIKE '%\wsmprovhost.exe'

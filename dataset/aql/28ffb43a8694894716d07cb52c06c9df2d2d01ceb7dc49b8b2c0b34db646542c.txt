@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\print.exe' OR LOWER("Process Name") LIKE '%\print.exe') AND LOWER(Command) LIKE 'print%' AND LOWER(Command) LIKE '%/d%' AND LOWER(Command) LIKE '%.exe%' AND NOT(LOWER(Command) LIKE '%print.exe%')

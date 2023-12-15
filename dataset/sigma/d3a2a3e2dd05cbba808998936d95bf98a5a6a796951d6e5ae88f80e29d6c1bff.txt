@@ -1,0 +1,23 @@
+author: Nasreddine Bencherchali (Nextron Systems), Swachchhanda Shrawan Poudel
+date: '2023-08-08'
+description: Detects potential abuse of the provisioning registry key for indirect
+  command execution through "Provlaunch.exe".
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: SOFTWARE\Microsoft\Provisioning\Commands\
+falsepositives:
+- Unknown
+id: 2a4b3e61-9d22-4e4a-b60f-6e8f0cde6f25
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Provlaunch/
+- https://twitter.com/0gtweet/status/1674399582162153472
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1218
+title: Potential Provisioning Registry Key Abuse For Binary Proxy Execution

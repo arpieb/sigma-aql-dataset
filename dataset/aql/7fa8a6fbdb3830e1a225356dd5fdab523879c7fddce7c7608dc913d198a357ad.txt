@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%import-module %' OR LOWER(Message) LIKE '%microsoft.activedirectory.management.dll%' OR LOWER(Message) LIKE '%ipmo microsoft.activedirectory.management.dll%'

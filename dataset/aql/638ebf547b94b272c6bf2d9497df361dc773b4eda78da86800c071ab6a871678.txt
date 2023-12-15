@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER(Command) LIKE '%echo 1 >%' AND LOWER(Command) LIKE '%/sys/kernel/debug/tracing/events/kprobes/%' AND (LOWER(Command) LIKE '%/myprobe/enable%' OR LOWER(Command) LIKE '%/myretprobe/enable%')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\w32tm.exe' OR LOWER("Process Name") LIKE '%\w32tm.exe' OR Filename='w32time.dll') AND LOWER(Command) LIKE '%/stripchart%' AND LOWER(Command) LIKE '%/computer:%' AND LOWER(Command) LIKE '%/period:%' AND LOWER(Command) LIKE '%/dataonly%' AND LOWER(Command) LIKE '%/samples:%'

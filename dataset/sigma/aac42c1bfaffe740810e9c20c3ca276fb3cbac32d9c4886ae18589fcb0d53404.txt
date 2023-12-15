@@ -1,0 +1,28 @@
+author: Alexandr Yampolskyi, SOC Prime
+date: '2023-04-26'
+description: Detects activity when a member is added to a security-enabled global
+  group
+detection:
+  condition: selection
+  selection:
+    EventID:
+    - 4728
+    - 632
+falsepositives:
+- Unknown
+id: c43c26be-2e87-46c7-8661-284588c5a53e
+level: low
+logsource:
+  product: windows
+  service: security
+references:
+- https://www.cisecurity.org/controls/cis-controls-list/
+- https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf
+- https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.04162018.pdf
+- https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4728
+- https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=632
+status: stable
+tags:
+- attack.persistence
+- attack.t1098
+title: A Member Was Added to a Security-Enabled Global Group

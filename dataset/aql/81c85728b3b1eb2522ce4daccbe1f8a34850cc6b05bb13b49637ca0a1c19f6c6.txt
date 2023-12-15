@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\3cxdesktopapp\app\update.exe' OR LOWER("Process Name") LIKE '%\3cxdesktopapp\app\update.exe') AND LOWER(Command) LIKE '%--update%' AND LOWER(Command) LIKE '%http%' AND LOWER(Command) LIKE '%/electron/update/win32/18.12%'

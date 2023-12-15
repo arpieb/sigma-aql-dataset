@@ -1,0 +1,56 @@
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: '2023-09-05'
+description: Detects potentially suspicious CommandLine of electron apps (teams, discord,
+  slack, etc.). This could be a sign of abuse to proxy execution through a signed
+  binary.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - --browser-subprocess-path
+    - --gpu-launcher
+    - --renderer-cmd-prefix
+    - --utility-cmd-prefix
+  selection_img:
+    Image|endswith:
+    - \chrome.exe
+    - \code.exe
+    - \discord.exe
+    - \GitHubDesktop.exe
+    - \keybase.exe
+    - \msedge_proxy.exe
+    - \msedge.exe
+    - \msedgewebview2.exe
+    - \msteams.exe
+    - \slack.exe
+    - \Teams.exe
+    OriginalFileName:
+    - chrome.exe
+    - code.exe
+    - discord.exe
+    - GitHubDesktop.exe
+    - keybase.exe
+    - msedge_proxy.exe
+    - msedge.exe
+    - msedgewebview2.exe
+    - msteams.exe
+    - slack.exe
+    - Teams.exe
+falsepositives:
+- Legitimate usage for debugging purposes
+id: 378a05d8-963c-46c9-bcce-13c7657eac99
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://positive.security/blog/ms-officecmd-rce
+- https://lolbas-project.github.io/lolbas/Binaries/Teams/
+- https://lolbas-project.github.io/lolbas/Binaries/Msedge/
+- https://lolbas-project.github.io/lolbas/Binaries/msedgewebview2/
+- https://medium.com/@MalFuzzer/one-electron-to-rule-them-all-dc2e9b263daf
+- https://chromium.googlesource.com/chromium/chromium/+/master/content/public/common/content_switches.cc
+status: experimental
+tags:
+- attack.execution
+title: Potentially Suspicious Electron Application CommandLine

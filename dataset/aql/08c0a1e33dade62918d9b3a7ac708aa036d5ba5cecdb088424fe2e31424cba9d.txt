@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%_dwn=%' OR LOWER(URL) LIKE '%&fn=%' OR LOWER(URL) LIKE '%.html_%' OR LOWER(URL) LIKE '%&dwn=%' OR LOWER(URL) LIKE '%_fn=%' OR LOWER(URL) LIKE '%.html_%'

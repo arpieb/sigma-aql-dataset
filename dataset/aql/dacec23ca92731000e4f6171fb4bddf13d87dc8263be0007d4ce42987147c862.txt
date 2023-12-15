@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\notepad.exe' OR LOWER("Process Name") LIKE '%\notepad.exe') AND (LOWER(CONCAT('file directory', '/', filename)) LIKE '%\samlib.dll' OR LOWER(CONCAT('file directory', '/', filename)) LIKE '%\winscard.dll')

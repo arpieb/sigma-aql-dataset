@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\gup.exe' OR LOWER("Process Name") LIKE '%\gup.exe' OR Filename='gup.exe') AND LOWER(Command) LIKE '% -unzipto %' AND LOWER(Command) LIKE '%http%' AND NOT(LOWER("Parent Process Path") LIKE '%\notepad++.exe')

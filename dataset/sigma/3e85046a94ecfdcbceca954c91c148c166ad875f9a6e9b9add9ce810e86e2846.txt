@@ -1,0 +1,36 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-02'
+description: Detects execution of python using the "-c" flag. This is could be used
+  as a way to launch a reverse shell or execute live python code.
+detection:
+  condition: all of selection_* and not 1 of filter_*
+  filter_python:
+    ParentCommandLine|contains: -E -s -m ensurepip -U --default-pip
+    ParentImage|endswith: \python.exe
+    ParentImage|startswith: C:\Program Files\Python
+  filter_vscode:
+    ParentImage|endswith: \AppData\Local\Programs\Microsoft VS Code\Code.exe
+  selection_cli:
+    CommandLine|contains: ' -c'
+  selection_img:
+    Image|endswith:
+    - python.exe
+    - python3.exe
+    - python2.exe
+    OriginalFileName: python.exe
+falsepositives:
+- Python libraries that use a flag starting with "-c". Filter according to your environment
+id: 899133d5-4d7c-4a7f-94ee-27355c879d90
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://docs.python.org/3/using/cmdline.html#cmdoption-c
+- https://www.revshells.com/
+- https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+status: experimental
+tags:
+- attack.execution
+- attack.t1059
+title: Python Inline Command Execution

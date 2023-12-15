@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Process Path" FROM events WHERE devicetype=12 AND Filename='ftp.exe' AND NOT((LOWER("Process Path") LIKE '%\ftp.exe' OR LOWER("Process Name") LIKE '%\ftp.exe'))

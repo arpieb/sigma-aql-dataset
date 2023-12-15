@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename='megasync.exe' AND NOT((LOWER("Process Path") LIKE '%\megasync.exe' OR LOWER("Process Name") LIKE '%\megasync.exe'))

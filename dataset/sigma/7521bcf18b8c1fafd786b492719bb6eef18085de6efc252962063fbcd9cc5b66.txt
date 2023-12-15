@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems), Samir Bousseaden (idea)
+date: '2019-06-17'
+description: Detects a suspicious child process of userinit
+detection:
+  condition: selection and not 1 of filter*
+  filter1:
+    CommandLine|contains: \netlogon\
+  filter2:
+    Image|endswith: \explorer.exe
+    OriginalFileName: explorer.exe
+  selection:
+    ParentImage|endswith: \userinit.exe
+falsepositives:
+- Administrative scripts
+fields:
+- CommandLine
+- ParentCommandLine
+id: b655a06a-31c0-477a-95c2-3726b83d649d
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/SBousseaden/status/1139811587760562176
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1055
+title: Suspicious Userinit Child Process

@@ -1,0 +1,27 @@
+author: Alexandr Yampolskyi, SOC Prime
+date: '2023-04-26'
+description: Detects activity when a security-enabled global group is deleted
+detection:
+  condition: selection
+  selection:
+    EventID:
+    - 4730
+    - 634
+falsepositives:
+- Unknown
+id: b237c54b-0f15-4612-a819-44b735e0de27
+level: low
+logsource:
+  product: windows
+  service: security
+references:
+- https://www.cisecurity.org/controls/cis-controls-list/
+- https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf
+- https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.04162018.pdf
+- https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4730
+- https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=634
+status: stable
+tags:
+- attack.persistence
+- attack.t1098
+title: A Security-Enabled Global Group Was Deleted

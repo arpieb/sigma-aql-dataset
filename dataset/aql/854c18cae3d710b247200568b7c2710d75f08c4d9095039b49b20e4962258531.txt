@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Source Process Path") LIKE '%\winword.exe' AND LOWER("Call Trace") LIKE '%:\windows\microsoft.net\framework64\v2.%' AND LOWER("Call Trace") LIKE '%unknown%'

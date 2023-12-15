@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%get-process lsas%' OR LOWER(Command) LIKE '%ps lsas%' OR LOWER(Command) LIKE '%gps lsas%'

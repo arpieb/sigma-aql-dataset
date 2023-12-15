@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%$env:appdata%' OR LOWER(Message) LIKE '%function mainpayload%' OR LOWER(Message) LIKE '%::writeallbytes%' OR LOWER(Message) LIKE '%wscript.exe%'

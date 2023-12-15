@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%lang=/../../%' OR LOWER(URL) LIKE '%/dev/cmdb/sslvpn_websession%'

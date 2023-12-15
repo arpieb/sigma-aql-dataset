@@ -1,0 +1,33 @@
+author: Sohan G (D4rkCiph3r)
+date: '2023-01-31'
+description: Detects possible malicious execution of JXA in-memory via OSAScript
+detection:
+  condition: all of selection_*
+  selection_js:
+    CommandLine|contains: .js
+    CommandLine|contains|all:
+    - ' -l '
+    - JavaScript
+  selection_main:
+    CommandLine|contains|all:
+    - osascript
+    - ' -e '
+    - eval
+    - NSData.dataWithContentsOfURL
+falsepositives:
+- Unknown
+fields:
+- CommandLine
+id: f1408a58-0e94-4165-b80a-da9f96cf6fc3
+level: high
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://redcanary.com/blog/applescript/
+status: test
+tags:
+- attack.t1059.002
+- attack.t1059.007
+- attack.execution
+title: JXA In-memory Execution Via OSAScript

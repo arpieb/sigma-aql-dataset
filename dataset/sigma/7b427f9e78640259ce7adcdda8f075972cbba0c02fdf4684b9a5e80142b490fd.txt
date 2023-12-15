@@ -1,0 +1,36 @@
+author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
+date: '2022-10-25'
+description: Detects DLL sideloading of "dbgcore.dll"
+detection:
+  condition: selection and not 1 of filter_main_* and not 1 of filter_optional_*
+  filter_main_generic:
+    ImageLoaded|startswith:
+    - C:\Program Files (x86)\
+    - C:\Program Files\
+    - C:\Windows\SoftwareDistribution\
+    - C:\Windows\System32\
+    - C:\Windows\SystemTemp\
+    - C:\Windows\SysWOW64\
+    - C:\Windows\WinSxS\
+  filter_optional_steam:
+    ImageLoaded|endswith: \Steam\bin\cef\cef.win7x64\dbgcore.dll
+  selection:
+    ImageLoaded|endswith: \dbgcore.dll
+falsepositives:
+- Legitimate applications loading their own versions of the DLL mentioned in this
+  rule
+id: 9ca2bf31-0570-44d8-a543-534c47c33ed7
+level: medium
+logsource:
+  category: image_load
+  product: windows
+references:
+- https://hijacklibs.net/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.persistence
+- attack.privilege_escalation
+- attack.t1574.001
+- attack.t1574.002
+title: Potential DLL Sideloading Of DBGCORE.DLL

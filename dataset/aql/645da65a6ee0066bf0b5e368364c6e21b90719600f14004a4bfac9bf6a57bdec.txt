@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%/include/makecvs.php%' OR LOWER(URL) LIKE '%_event=%') AND (LOWER(URL) LIKE '%curl%' OR LOWER(URL) LIKE '%wget%' OR LOWER(URL) LIKE '%.py%' OR LOWER(URL) LIKE '%.sh%' OR LOWER(URL) LIKE '%chmod%' OR LOWER(URL) LIKE '%_get%')

@@ -1,0 +1,1 @@
+SELECT *, "Process Path", "Process Name", "Parent Process Path" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\rundll32.exe' OR LOWER("Process Name") LIKE '%\rundll32.exe' OR Filename='RUNDLL32.EXE') AND LOWER("Parent Process Path") LIKE '%\cmd.exe' AND LOWER(Command) LIKE '%user32.dll,%' AND LOWER(Command) LIKE '%lockworkstation%'

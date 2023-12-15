@@ -1,0 +1,29 @@
+author: Antonlovesdnb
+date: '2020-02-19'
+description: Detects DSParse DLL being loaded by an Office Product
+detection:
+  condition: selection
+  selection:
+    ImageLoaded|contains: \dsparse.dll
+    Image|endswith:
+    - \excel.exe
+    - \mspub.exe
+    - \onenote.exe
+    - \onenoteim.exe
+    - \outlook.exe
+    - \powerpnt.exe
+    - \winword.exe
+falsepositives:
+- Unknown
+id: a2a3b925-7bb0-433b-b508-db9003263cc4
+level: medium
+logsource:
+  category: image_load
+  product: windows
+references:
+- https://medium.com/threatpunter/detecting-adversary-tradecraft-with-image-load-event-logging-and-eql-8de93338c16
+status: test
+tags:
+- attack.execution
+- attack.t1204.002
+title: Active Directory Parsing DLL Loaded Via Office Application

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4661 AND "Access Mask"='0x2d' AND ("Object Type" IN('SAM_USER', 'SAM_GROUP')) AND LOWER("Object Name") LIKE 's-1-5-21-%' AND (LOWER("Object Name") LIKE '%-500' OR LOWER("Object Name") LIKE '%-512')

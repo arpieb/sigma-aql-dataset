@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/curl' OR LOWER("Process Name") LIKE '%/curl') AND (LOWER(Command) LIKE '% -a %' OR LOWER(Command) LIKE '% --user-agent %')

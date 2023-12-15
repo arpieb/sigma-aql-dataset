@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename='AdvancedRun.exe' OR LOWER(Command) LIKE '% /exefilename %' AND LOWER(Command) LIKE '% /run%' OR LOWER(Command) LIKE '% /windowstate 0%' AND LOWER(Command) LIKE '% /runas %' AND LOWER(Command) LIKE '% /commandline %'

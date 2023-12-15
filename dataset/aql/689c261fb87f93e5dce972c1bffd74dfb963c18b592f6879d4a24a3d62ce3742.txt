@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%/api/index.php/v1/%' OR LOWER(URL) LIKE '%public=true%')

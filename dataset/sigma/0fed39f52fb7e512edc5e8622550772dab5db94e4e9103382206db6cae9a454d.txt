@@ -1,0 +1,25 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-06-16'
+description: Detects execution of specific named binaries which were used by UNC4841
+  to deploy their SEASPY backdoor
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - /BarracudaMailService
+    - /resize2fstab
+    - /resize_reisertab
+falsepositives:
+- Unlikely
+id: f6a711f3-d032-4f9e-890b-bbe776236c84
+level: critical
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://www.mandiant.com/resources/blog/barracuda-esg-exploited-globally
+status: experimental
+tags:
+- attack.execution
+- detection.emerging_threats
+title: UNC4841 - Potential SEASPY Execution

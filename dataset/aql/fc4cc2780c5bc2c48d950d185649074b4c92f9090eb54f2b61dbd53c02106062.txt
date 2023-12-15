@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\netsh.exe' OR LOWER("Process Name") LIKE '%\netsh.exe' OR Filename='netsh.exe') AND LOWER(Command) LIKE '%firewall%' AND LOWER(Command) LIKE '%delete %' AND NOT((LOWER("Parent Process Path") LIKE '%\dropbox.exe' AND LOWER(Command) LIKE '%name=dropbox%'))

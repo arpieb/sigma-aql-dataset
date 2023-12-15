@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\changepk.exe' OR LOWER("Process Name") LIKE '%\changepk.exe') AND LOWER("Parent Process Path") LIKE '%\slui.exe' AND ("Integrity Level" IN('High', 'System'))

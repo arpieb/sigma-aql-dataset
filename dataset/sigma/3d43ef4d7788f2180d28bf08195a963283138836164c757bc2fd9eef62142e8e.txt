@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems)
+date: '2017-04-07'
+description: Detects potential process and execution activity related to APT10 Cloud
+  Hopper operation
+detection:
+  condition: 1 of selection_*
+  selection_cscript:
+    CommandLine|contains: '.vbs /shell '
+    Image|endswith: \cscript.exe
+  selection_csvde:
+    CommandLine|contains|all:
+    - csvde -f C:\windows\web\
+    - .log
+falsepositives:
+- Unlikely
+id: 966e4016-627f-44f7-8341-f394905c361f
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://web.archive.org/web/20180725233601/https://www.pwc.co.uk/cyber-security/pdf/cloud-hopper-annex-b-final.pdf
+status: test
+tags:
+- attack.execution
+- attack.g0045
+- attack.t1059.005
+- detection.emerging_threats
+title: Potential APT10 Cloud Hopper Activity

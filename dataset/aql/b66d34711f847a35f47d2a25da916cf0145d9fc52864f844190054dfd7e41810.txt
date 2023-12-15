@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER(Command) LIKE '%http_proxy=%' OR LOWER(Command) LIKE '%https_proxy=%'

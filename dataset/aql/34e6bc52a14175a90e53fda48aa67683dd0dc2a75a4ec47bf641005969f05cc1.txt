@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%update application - certificates and secrets management%'

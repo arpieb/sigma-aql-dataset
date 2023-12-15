@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename IN('Cmd.Exe', 'powershell_ise.EXE', 'powershell.exe')) AND (LOWER("Process Path") LIKE '%\wermgr.exe' OR LOWER("Process Name") LIKE '%\wermgr.exe')

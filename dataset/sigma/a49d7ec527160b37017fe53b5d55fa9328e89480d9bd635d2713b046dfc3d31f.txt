@@ -1,0 +1,23 @@
+author: frack113
+date: '2022-10-01'
+description: Detects the rare use of the command line tool shutdown to logoff a user
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: /l
+    Image|endswith: \shutdown.exe
+falsepositives:
+- Unknown
+id: ec290c06-9b6b-4338-8b6b-095c0f284f10
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/9e5b12c4912c07562aec7500447b11fa3e17e254/atomics/T1529/T1529.md
+- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/shutdown
+status: test
+tags:
+- attack.impact
+- attack.t1529
+title: Suspicious Execution of Shutdown to Log Out

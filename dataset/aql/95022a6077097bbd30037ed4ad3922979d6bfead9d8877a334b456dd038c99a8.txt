@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dsquery.exe' OR LOWER("Process Name") LIKE '%\dsquery.exe' OR Filename='dsquery.exe') AND LOWER(Command) LIKE '%trusteddomain%'

@@ -1,0 +1,27 @@
+author: '@41thexplorer'
+date: '2018-11-20'
+description: Detects indicators of APT 29 (Cozy Bear) phishing-campaign as reported
+  by mandiant
+detection:
+  condition: selection
+  selection:
+    TargetFilename|contains:
+    - ds7002.lnk
+    - ds7002.pdf
+    - ds7002.zip
+falsepositives:
+- Unlikely
+id: 3a3f81ca-652c-482b-adeb-b1c804727f74
+level: critical
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://twitter.com/DrunkBinary/status/1063075530180886529
+- https://www.mandiant.com/resources/blog/not-so-cozy-an-uncomfortable-examination-of-a-suspected-apt29-phishing-campaign
+status: stable
+tags:
+- attack.execution
+- attack.t1218.011
+- detection.emerging_threats
+title: APT29 2018 Phishing Campaign File Indicators

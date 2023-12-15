@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/wget' OR LOWER("Process Name") LIKE '%/wget') AND LOWER(Command) LIKE '%https://temp.sh/%' AND (LOWER(Command) LIKE '%.rar' OR LOWER(Command) LIKE '%.zip')

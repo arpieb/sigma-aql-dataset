@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE 'c:\windows\system32\config\systemprofile\appdata\local\crashdumps\%' AND LOWER(Filename) LIKE '%lsass.exe.%' AND LOWER(Filename) LIKE '%.dmp'

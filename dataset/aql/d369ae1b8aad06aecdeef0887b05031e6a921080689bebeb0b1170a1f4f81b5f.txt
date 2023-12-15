@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('MD5=', 'MD5 Hash ', 'SHA1=', 'SHA1 Hash ', 'SHA256=', 'SHA256 Hash ', 'IMPHASH=', 'IMP HASH')) LIKE '%09d278f9de118ef09163c6140255c690%' OR LOWER(Command) LIKE '%dumpert.dll%'

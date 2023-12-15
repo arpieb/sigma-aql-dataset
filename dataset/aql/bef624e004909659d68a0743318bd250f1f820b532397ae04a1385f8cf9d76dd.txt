@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%admin registered security info%' AND Status='Admin registered temporary access pass method for user'

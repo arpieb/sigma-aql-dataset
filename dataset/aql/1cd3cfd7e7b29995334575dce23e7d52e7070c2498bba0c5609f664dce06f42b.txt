@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%start-process%' OR LOWER(Message) LIKE '%-filepath "$env:comspec" %' OR LOWER(Message) LIKE '%-argumentlist %' OR LOWER(Message) LIKE '%>%'

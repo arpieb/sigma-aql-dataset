@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/../vpns/%' OR LOWER(URL) LIKE '%/vpns/cfg/smb.conf%' OR LOWER(URL) LIKE '%/vpns/portal/scripts/%' OR LOWER(URL) LIKE '%.pl%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cscript.exe' OR LOWER("Process Path") LIKE '%\wscript.exe' OR LOWER("Process Name") LIKE '%\cscript.exe' OR LOWER("Process Name") LIKE '%\wscript.exe' OR Filename IN('cscript.exe', 'wscript.exe')) AND LOWER(Command) LIKE '%gathernetworkinfo.vbs%'

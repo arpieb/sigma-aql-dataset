@@ -1,0 +1,52 @@
+author: '@d4ns4n_ (Wuerth-Phoenix)'
+date: '2023-05-30'
+description: Detects changes of sensitive and critical files. Monitors files that
+  you don't expect to change without planning on Linux system.
+detection:
+  condition: 1 of selection_img_* and selection_paths
+  selection_img_1:
+    CommandLine|contains: '>'
+    Image|endswith:
+    - /cat
+    - /echo
+    - /grep
+    - /head
+    - /more
+    - /tail
+  selection_img_2:
+    Image|endswith:
+    - /emacs
+    - /nano
+    - /sed
+    - /vi
+    - /vim
+  selection_paths:
+    CommandLine|contains:
+    - /bin/login
+    - /bin/passwd
+    - /boot/
+    - /etc/*.conf
+    - /etc/cron.
+    - /etc/crontab
+    - /etc/hosts
+    - /etc/init.d
+    - /etc/sudoers
+    - /opt/bin/
+    - /sbin
+    - /usr/bin/
+    - /usr/local/bin/
+falsepositives:
+- Some false positives are to be expected on user or administrator machines. Apply
+  additional filters as needed.
+id: 86157017-c2b1-4d4a-8c33-93b8e67e4af4
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://docs.microsoft.com/en-us/azure/defender-for-cloud/file-integrity-monitoring-overview#which-files-should-i-monitor
+status: experimental
+tags:
+- attack.impact
+- attack.t1565.001
+title: Potential Suspicious Change To Sensitive/Critical Files

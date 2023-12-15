@@ -1,0 +1,75 @@
+author: Florian Roth (Nextron Systems)
+date: '2017-03-13'
+description: Detects a PowerShell process that initiates network connections. Check
+  for suspicious target ports and target systems.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_local_ipv4:
+    DestinationIp|startswith:
+    - '10.'
+    - 192.168.
+    - 172.16.
+    - 172.17.
+    - 172.18.
+    - 172.19.
+    - 172.20.
+    - 172.21.
+    - 172.22.
+    - 172.23.
+    - 172.24.
+    - 172.25.
+    - 172.26.
+    - 172.27.
+    - 172.28.
+    - 172.29.
+    - 172.30.
+    - 172.31.
+    - 127.0.0.1
+    User|contains:
+    - AUTHORI
+    - AUTORI
+  filter_main_local_ipv6:
+    DestinationIp|startswith:
+    - ::1
+    - 0:0:0:0:0:0:0:1
+    - 'fe80:'
+    - fc
+    - fd
+  filter_main_msrange:
+    DestinationIp|startswith:
+    - 20.184.
+    - 20.185.
+    - 20.186.
+    - 20.187.
+    - 20.188.
+    - 20.189.
+    - 20.190.
+    - 20.191.
+    - 23.79.
+    - 51.10.
+    - 51.103.
+    - 51.104.
+    - 51.105.
+    - 52.239.
+  selection:
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+    Initiated: 'true'
+falsepositives:
+- Administrative scripts
+- Microsoft IP range
+- Additional filters are required. Adjust to your environment (e.g. extend filters
+  with company's ip range')
+id: 1f21ec3f-810d-4b0e-8045-322202e22b4b
+level: low
+logsource:
+  category: network_connection
+  product: windows
+references:
+- https://www.youtube.com/watch?v=DLtJTxMWZ2o
+status: experimental
+tags:
+- attack.execution
+- attack.t1059.001
+title: PowerShell Initiated Network Connection

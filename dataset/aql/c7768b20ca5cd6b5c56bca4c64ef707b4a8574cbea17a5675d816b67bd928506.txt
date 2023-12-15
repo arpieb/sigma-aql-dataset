@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%advapi32.dll%' OR LOWER(Message) LIKE '%kernel32.dll%' OR LOWER(Message) LIKE '%kernelbase.dll%' OR LOWER(Message) LIKE '%ntdll.dll%' OR LOWER(Message) LIKE '%secur32.dll%' OR LOWER(Message) LIKE '%user32.dll%'

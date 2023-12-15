@@ -1,0 +1,30 @@
+author: frack113
+date: '2022-01-07'
+description: Detects PowerShell scripts leveraging the "Invoke-WebRequest" cmdlet
+  to send data via either "PUT" or "POST" method.
+detection:
+  condition: all of selection_*
+  selection_cmdlet:
+    ScriptBlockText|contains:
+    - Invoke-WebRequest
+    - 'iwr '
+  selection_flag:
+    ScriptBlockText|contains:
+    - -Method Put
+    - -Method Post
+falsepositives:
+- Unknown
+id: d2e3f2f6-7e09-4bf2-bc5d-90186809e7fb
+level: low
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1020/T1020.md
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
+- https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.2
+status: experimental
+tags:
+- attack.exfiltration
+- attack.t1020
+title: PowerShell Script With File Upload Capabilities

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% -nop -sta -noni -w hidden -enc %' OR LOWER(Command) LIKE '% -nop -sta -w 1 -enc %' OR LOWER(Command) LIKE '% -nop -noni -w hidden -enc %' OR LOWER(Command) LIKE '% -nop -sta -w 1 -enc%' OR LOWER(Command) LIKE '% -enc  sqb%' OR LOWER(Command) LIKE '% -nop -exec bypass -encodedcommand %'

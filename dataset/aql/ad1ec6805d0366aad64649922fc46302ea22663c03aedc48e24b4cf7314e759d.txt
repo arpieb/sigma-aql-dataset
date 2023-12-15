@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%\sysaidserver\tomcat\webapps%' OR LOWER(Message) LIKE '%starting user.exe%' OR LOWER(Message) LIKE '%\usersfiles\user.exe%' OR LOWER(Message) LIKE '%remove-item -force "$wapps%' OR LOWER(Message) LIKE '%(sophos).%'

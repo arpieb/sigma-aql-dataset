@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%add-apppackage %' OR LOWER(Message) LIKE '%add-appxpackage %') AND LOWER(Message) LIKE '% -allowunsigned%'

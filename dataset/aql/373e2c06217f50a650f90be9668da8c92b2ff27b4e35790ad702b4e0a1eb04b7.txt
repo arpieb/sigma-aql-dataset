@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND LOWER(Filename) LIKE '%/library/startupitems/%' OR LOWER(Filename) LIKE '%.plist'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%ipconfig /all%' OR LOWER(Command) LIKE '%netsh interface show interface%' OR LOWER(Command) LIKE '%arp -a%' OR LOWER(Command) LIKE '%nbtstat -n%' OR LOWER(Command) LIKE '%net config%' OR LOWER(Command) LIKE '%route print%'

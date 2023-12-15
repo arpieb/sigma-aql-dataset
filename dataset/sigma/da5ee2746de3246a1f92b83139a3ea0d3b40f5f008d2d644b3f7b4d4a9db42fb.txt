@@ -1,0 +1,34 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-04'
+description: Detects potentially suspicious SQL queries using SQLCmd targeting the
+  Veeam backup databases in order to steal information.
+detection:
+  condition: all of selection_*
+  selection_db:
+    CommandLine|contains:
+    - BackupRepositories
+    - Backups
+    - Credentials
+    - HostCreds
+    - SmbFileShares
+    - Ssh_creds
+    - VSphereInfo
+  selection_sql:
+    CommandLine|contains|all:
+    - VeeamBackup
+    - 'From '
+    Image|endswith: \sqlcmd.exe
+falsepositives:
+- Unknown
+id: 696bfb54-227e-4602-ac5b-30d9d2053312
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://labs.withsecure.com/publications/fin7-target-veeam-servers
+status: experimental
+tags:
+- attack.collection
+- attack.t1005
+title: Veeam Backup Database Suspicious Query

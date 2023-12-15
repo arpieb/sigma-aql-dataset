@@ -1,0 +1,36 @@
+author: frack113
+date: '2021-12-28'
+description: Adversaries may abuse the Windows Task Scheduler to perform task scheduling
+  for initial or recurring execution of malicious code
+detection:
+  condition: 1 of selection_*
+  selection_cimmethod:
+    ScriptBlockText|contains|all:
+    - Invoke-CimMethod
+    - -ClassName
+    - PS_ScheduledTask
+    - -NameSpace
+    - Root\Microsoft\Windows\TaskScheduler
+  selection_cmdlet:
+    ScriptBlockText|contains:
+    - New-ScheduledTaskAction
+    - New-ScheduledTaskTrigger
+    - New-ScheduledTaskPrincipal
+    - New-ScheduledTaskSettingsSet
+    - New-ScheduledTask
+    - Register-ScheduledTask
+falsepositives:
+- Unknown
+id: 363eccc0-279a-4ccf-a3ab-24c2e63b11fb
+level: medium
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1053.005/T1053.005.md#atomic-test-4---powershell-cmdlet-scheduled-task
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1053.005/T1053.005.md#atomic-test-6---wmi-invoke-cimmethod-scheduled-task
+status: test
+tags:
+- attack.persistence
+- attack.t1053.005
+title: Powershell Create Scheduled Task

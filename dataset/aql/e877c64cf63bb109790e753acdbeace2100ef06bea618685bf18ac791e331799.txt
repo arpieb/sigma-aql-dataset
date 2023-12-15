@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename='Microsoft.NodejsTools.PressAnyKey.exe' AND NOT((LOWER("Process Path") LIKE '%\microsoft.nodejstools.pressanykey.exe' OR LOWER("Process Name") LIKE '%\microsoft.nodejstools.pressanykey.exe'))

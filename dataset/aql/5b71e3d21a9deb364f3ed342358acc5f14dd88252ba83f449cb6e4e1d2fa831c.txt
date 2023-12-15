@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\appdata\local\microsoft\cache134.dat' OR LOWER(Filename) LIKE '%\appdata\local\microsoft\explorersync.db'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER("User Agent") LIKE '%wfuzz/%' OR LOWER("User Agent") LIKE '%wpscan v%' OR LOWER("User Agent") LIKE '%recon-ng/v%' OR LOWER("User Agent") LIKE '%gis - appsec team - project vision%'

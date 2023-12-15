@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%/human2.aspx%' OR LOWER(URL) LIKE '%/_human2.aspx%')

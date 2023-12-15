@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\microsoft.workflow.compiler.exe' OR LOWER("Process Name") LIKE '%\microsoft.workflow.compiler.exe' OR Filename='Microsoft.Workflow.Compiler.exe'

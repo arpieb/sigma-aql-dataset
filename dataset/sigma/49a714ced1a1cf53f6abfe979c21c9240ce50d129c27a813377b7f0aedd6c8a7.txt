@@ -1,0 +1,26 @@
+author: "\xD6mer G\xFCnal"
+date: '2020-06-16'
+description: Detects suspicious change of file privileges with chown and chmod commands
+detection:
+  condition: all of selection_*
+  selection_perm:
+    CommandLine|contains:
+    - ' chmod u+s'
+    - ' chmod g+s'
+  selection_root:
+    CommandLine|contains: chown root
+falsepositives:
+- Legitimate administration activities
+id: c21c4eaa-ba2e-419a-92b2-8371703cbe21
+level: low
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1548.001/T1548.001.md
+- https://attack.mitre.org/techniques/T1548/001/
+status: test
+tags:
+- attack.persistence
+- attack.t1548.001
+title: Setuid and Setgid

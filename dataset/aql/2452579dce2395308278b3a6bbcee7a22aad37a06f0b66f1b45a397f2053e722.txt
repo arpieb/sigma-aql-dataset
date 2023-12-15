@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%copy %' AND LOWER(Command) LIKE '%/y %' AND LOWER(Command) LIKE '%c:\windows\system32\cmd.exe c:\windows\system32\sethc.exe%'

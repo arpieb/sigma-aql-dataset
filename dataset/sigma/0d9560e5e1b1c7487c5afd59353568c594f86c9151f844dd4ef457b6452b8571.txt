@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-06-02'
+description: Detects the creation of the default output filename used by the wmiexec
+  tool
+detection:
+  condition: selection
+  selection:
+    TargetFilename|re: D:\__1\d{9}\.\d{1,7}$
+    TargetFilename|re|all:
+    - \Windows\__1\d{9}\.\d{1,7}$
+    - C:\__1\d{9}\.\d{1,7}$
+falsepositives:
+- Unlikely
+id: 8d5aca11-22b3-4f22-b7ba-90e60533e1fb
+level: critical
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.crowdstrike.com/blog/how-to-detect-and-prevent-impackets-wmiexec/
+- https://github.com/fortra/impacket/blob/f4b848fa27654ca95bc0f4c73dbba8b9c2c9f30a/examples/wmiexec.py
+status: experimental
+tags:
+- attack.lateral_movement
+- attack.t1047
+title: Wmiexec Default Output File

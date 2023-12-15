@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Name") LIKE '%hklm\software\microsoft\htmlhelp\data%' OR LOWER("Target Process Name") LIKE '%hklm\software\microsoft\htmlhelp\data%' OR LOWER("Object Name") LIKE '%hklm\software\microsoft\htmlhelp\data%'

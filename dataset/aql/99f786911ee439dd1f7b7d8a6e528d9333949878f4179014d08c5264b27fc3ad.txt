@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename='whoami.exe' OR LOWER("Process Path") LIKE '%\whoami.exe' OR LOWER("Process Name") LIKE '%\whoami.exe') AND (LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%' OR LOWER(Username) LIKE '%trustedinstaller%')

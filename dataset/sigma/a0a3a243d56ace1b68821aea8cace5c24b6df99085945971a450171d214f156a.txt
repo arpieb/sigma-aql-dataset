@@ -1,0 +1,34 @@
+author: pH-T (Nextron Systems)
+date: '2022-07-26'
+description: Detects suspicious process command line that uses base64 encoded input
+  for execution with a shell
+detection:
+  condition: all of selection_*
+  selection_base64:
+    CommandLine|contains: 'base64 '
+  selection_exec:
+    CommandLine|contains:
+    - '| bash '
+    - '| sh '
+    - '|bash '
+    - '|sh '
+    CommandLine|endswith:
+    - ' |sh'
+    - '| bash'
+    - '| sh'
+    - '|bash'
+falsepositives:
+- Legitimate administration activities
+id: ba592c6d-6888-43c3-b8c6-689b8fe47337
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://github.com/arget13/DDexec
+- https://www.mandiant.com/resources/blog/barracuda-esg-exploited-globally
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1140
+title: Linux Base64 Encoded Pipe to Shell

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\xwizard.exe' OR LOWER("Process Name") LIKE '%\xwizard.exe') AND NOT((LOWER("Process Path") LIKE 'c:\windows\system32\%' OR LOWER("Process Name") LIKE 'c:\windows\system32\%'))

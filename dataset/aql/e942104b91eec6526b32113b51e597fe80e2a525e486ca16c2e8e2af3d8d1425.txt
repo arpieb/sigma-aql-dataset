@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER(Command) LIKE '% -name .htpasswd%' OR LOWER(Command) LIKE '% -perm -4000 %'

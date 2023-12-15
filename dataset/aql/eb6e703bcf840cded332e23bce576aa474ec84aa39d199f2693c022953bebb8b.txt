@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%\shellids\microsoft.powershell\executionpolicy%' OR LOWER(Command) LIKE '%\policies\microsoft\windows\powershell\executionpolicy%') AND (LOWER(Command) LIKE '%bypass%' OR LOWER(Command) LIKE '%remotesigned%' OR LOWER(Command) LIKE '%unrestricted%')

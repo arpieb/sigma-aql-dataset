@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\ieexec.exe' OR LOWER("Process Name") LIKE '%\ieexec.exe' OR Filename='IEExec.exe') AND (LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%https://%')

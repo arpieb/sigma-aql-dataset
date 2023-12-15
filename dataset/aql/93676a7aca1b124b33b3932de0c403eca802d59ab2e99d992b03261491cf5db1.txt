@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%cmd.exe /q /c % 1> \\%\%\% 2>&1%' OR LOWER(Command) LIKE '%cmd.exe /c % > \\%\%\% 2>&1%' OR LOWER(Command) LIKE '%cmd.exe /c % > %\temp\% 2>&1%' OR LOWER(Command) LIKE '%powershell.exe -exec bypass -noni -nop -w 1 -c "%' OR LOWER(Command) LIKE '%powershell.exe -noni -nop -w 1 -enc %'

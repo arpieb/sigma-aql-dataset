@@ -1,0 +1,32 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-22'
+description: Detects usage of the "Add-WindowsCapability" cmdlet to add Windows capabilities.
+  Notable capabilities could be "OpenSSH" and others.
+detection:
+  condition: all of selection_*
+  selection_capa:
+    CommandLine|contains: OpenSSH.
+  selection_cmdlet:
+    CommandLine|contains: Add-WindowsCapability
+  selection_img:
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+    OriginalFileName:
+    - PowerShell.EXE
+    - pwsh.dll
+falsepositives:
+- Legitimate usage of the capabilities by administrators or users. Add additional
+  filters accordingly.
+id: b36d01a3-ddaf-4804-be18-18a6247adfcd
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell
+- https://www.virustotal.com/gui/file/af1c82237b6e5a3a7cdbad82cc498d298c67845d92971bada450023d1335e267/content
+status: experimental
+tags:
+- attack.execution
+title: Add Windows Capability Via PowerShell Cmdlet

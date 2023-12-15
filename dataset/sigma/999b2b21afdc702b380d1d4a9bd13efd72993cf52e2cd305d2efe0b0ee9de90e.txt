@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems)
+date: '2020-07-30'
+description: Detects specific process characteristics of Chinese TAIDOOR RAT malware
+  load
+detection:
+  condition: selection1 or ( selection2a and selection2b )
+  selection1:
+    CommandLine|contains:
+    - dll,MyStart
+    - dll MyStart
+  selection2a:
+    CommandLine|endswith: ' MyStart'
+  selection2b:
+    CommandLine|contains: rundll32.exe
+falsepositives:
+- Unknown
+id: d1aa3382-abab-446f-96ea-4de52908210b
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://us-cert.cisa.gov/ncas/analysis-reports/ar20-216a
+status: test
+tags:
+- attack.execution
+- attack.t1055.001
+- detection.emerging_threats
+title: TAIDOOR RAT DLL Load

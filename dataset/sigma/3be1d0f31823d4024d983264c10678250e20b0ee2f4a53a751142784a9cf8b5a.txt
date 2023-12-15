@@ -1,0 +1,36 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-09'
+description: Detects scheduled task creations or modification on a suspicious schedule
+  type
+detection:
+  condition: all of selection_* and not 1 of filter_*
+  filter_privs:
+    CommandLine|contains:
+    - NT AUT
+    - ' SYSTEM'
+    - HIGHEST
+  selection_img:
+    Image|endswith: \schtasks.exe
+    OriginalFileName: schtasks.exe
+  selection_time:
+    CommandLine|contains:
+    - ' ONLOGON '
+    - ' ONSTART '
+    - ' ONCE '
+    - ' ONIDLE '
+falsepositives:
+- Legitimate processes that run at logon. Filter according to your environment
+id: 24c8392b-aa3c-46b7-a545-43f71657fe98
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change
+- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-create
+- http://blog.talosintelligence.com/2022/09/lazarus-three-rats.html
+status: test
+tags:
+- attack.execution
+- attack.t1053.005
+title: Suspicious Schtasks Schedule Types

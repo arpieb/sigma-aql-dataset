@@ -1,0 +1,24 @@
+author: Arun Chauhan
+date: '2023-02-03'
+description: Detects nltest commands that can be used for information discovery
+detection:
+  condition: selection
+  selection:
+    Image|endswith: \nltest.exe
+    OriginalFileName: nltestrk.exe
+falsepositives:
+- Legitimate administration activity
+id: 903076ff-f442-475a-b667-4f246bcc203b
+level: low
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://jpcertcc.github.io/ToolAnalysisResultSheet/details/nltest.htm
+status: test
+tags:
+- attack.discovery
+- attack.t1016
+- attack.t1018
+- attack.t1482
+title: Nltest.EXE Execution

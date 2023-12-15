@@ -1,0 +1,50 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-12'
+description: Detects Windows executables that writes files with suspicious extensions
+detection:
+  condition: 1 of selection_*
+  selection_generic:
+    Image|endswith:
+    - \smss.exe
+    - \RuntimeBroker.exe
+    - \sihost.exe
+    - \lsass.exe
+    - \csrss.exe
+    - \winlogon.exe
+    - \wininit.exe
+    TargetFilename|endswith:
+    - .bat
+    - .vbe
+    - .txt
+    - .vbs
+    - .exe
+    - .ps1
+    - .hta
+    - .iso
+    - .dll
+  selection_special:
+    Image|endswith:
+    - \rundll32.exe
+    - \svchost.exe
+    - \dllhost.exe
+    TargetFilename|endswith:
+    - .bat
+    - .vbe
+    - .vbs
+    - .ps1
+    - .hta
+    - .iso
+falsepositives:
+- Unknown
+id: b8fd0e93-ff58-4cbd-8f48-1c114e342e62
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- Internal Research
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1036
+title: Windows Binaries Write Suspicious Extensions

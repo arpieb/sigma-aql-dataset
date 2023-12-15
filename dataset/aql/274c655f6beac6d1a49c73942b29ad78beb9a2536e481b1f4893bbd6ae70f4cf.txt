@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\winword.exe' OR LOWER("Process Name") LIKE '%\winword.exe' OR Filename='WinWord.exe') AND LOWER(Command) LIKE '%/l %' AND LOWER(Command) LIKE '%.dll%'

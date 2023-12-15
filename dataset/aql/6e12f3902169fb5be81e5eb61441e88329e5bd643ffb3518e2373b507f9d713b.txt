@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%new-object%' AND LOWER(Command) LIKE '%text.encoding]::ascii%' AND (LOWER(Command) LIKE '%system.io.compression.deflatestream%' OR LOWER(Command) LIKE '%system.io.streamreader%' OR LOWER(Command) LIKE '%readtoend(%')

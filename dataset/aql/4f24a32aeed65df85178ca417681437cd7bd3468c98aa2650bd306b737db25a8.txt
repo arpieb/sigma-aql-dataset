@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%[system.environment]::username%' OR LOWER(Message) LIKE '%$env:username%' OR LOWER(Message) LIKE '%[system.security.principal.windowsidentity]::getcurrent()%'

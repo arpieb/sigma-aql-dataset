@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%copy-item %' OR LOWER(Message) LIKE '%-destination %') AND (LOWER(Message) LIKE '%\windows\system32%' OR LOWER(Message) LIKE '%\windows\syswow64%')

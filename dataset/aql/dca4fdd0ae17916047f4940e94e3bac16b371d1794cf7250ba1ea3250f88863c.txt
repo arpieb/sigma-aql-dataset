@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\mstsc.exe' OR LOWER("Process Name") LIKE '%\mstsc.exe' OR Filename='mstsc.exe') AND LOWER(Command) LIKE '% /v:%' AND NOT(("Parent Process Path"='C:\Windows\System32\lxss\wslhost.exe' AND LOWER(Command) LIKE '%c:\programdata\microsoft\wsl\wslg.rdp%'))

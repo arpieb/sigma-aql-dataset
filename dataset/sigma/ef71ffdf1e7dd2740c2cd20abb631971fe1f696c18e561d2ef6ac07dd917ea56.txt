@@ -1,0 +1,29 @@
+author: Nasreddine Bencherchali
+date: '2023-02-13'
+description: Detect filter driver unloading activity via fltmc.exe
+detection:
+  condition: all of selection_* and not 1 of filter_*
+  filter_avira:
+    CommandLine|endswith: unload rtp_filesystem_filter
+  selection_cli:
+    CommandLine|contains: unload
+  selection_img:
+    Image|endswith: \fltMC.exe
+    OriginalFileName: fltMC.exe
+falsepositives:
+- Unknown
+id: 4931188c-178e-4ee7-a348-39e8a7a56821
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.darkoperator.com/blog/2018/10/5/operating-offensively-against-sysmon
+- https://www.cybereason.com/blog/threat-analysis-report-lockbit-2.0-all-paths-lead-to-ransom
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1070
+- attack.t1562
+- attack.t1562.002
+title: Filter Driver Unloaded Via Fltmc.EXE

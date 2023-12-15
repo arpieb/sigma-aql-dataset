@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%xcopy /s /e /c /q /h \\%' AND LOWER(Command) LIKE '%\sysvol\%' OR LOWER(Command) LIKE '%adexplorer -snapshot "" c:\users\%' AND LOWER(Command) LIKE '%\downloads\%' AND LOWER(Command) LIKE '%.snp%'

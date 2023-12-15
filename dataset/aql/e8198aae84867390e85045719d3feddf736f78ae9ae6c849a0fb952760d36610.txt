@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cdb.exe' OR LOWER("Process Name") LIKE '%\cdb.exe' OR Filename='CDB.Exe') AND (LOWER(Command) LIKE '% -c %' OR LOWER(Command) LIKE '% -cf %')

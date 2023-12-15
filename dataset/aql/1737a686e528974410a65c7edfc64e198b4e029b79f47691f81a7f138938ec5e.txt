@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%transport=dt_socket,address=%' AND (LOWER(Command) LIKE '%jre1.%' OR LOWER(Command) LIKE '%jdk1.%') AND NOT((LOWER(Command) LIKE '%address=127.0.0.1%' OR LOWER(Command) LIKE '%address=localhost%'))

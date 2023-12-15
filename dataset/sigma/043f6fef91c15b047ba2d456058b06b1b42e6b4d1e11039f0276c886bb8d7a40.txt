@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-07-03'
+description: Detects the "IDiagnosticProfileUAC" UAC bypass technique
+detection:
+  condition: selection
+  selection:
+    IntegrityLevel:
+    - High
+    - System
+    ParentCommandLine|contains: ' /Processid:{12C21EA7-2EB8-4B55-9249-AC243DA8C666}'
+    ParentImage|endswith: \DllHost.exe
+falsepositives:
+- Unknown
+id: 4cbef972-f347-4170-b62a-8253f6168e6d
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/Wh04m1001/IDiagnosticProfileUAC
+status: test
+tags:
+- attack.execution
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1548.002
+title: UAC Bypass Using IDiagnostic Profile

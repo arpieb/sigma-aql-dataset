@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%remove owner from service principal%' OR LOWER(Message) LIKE '%remove owner from application%'

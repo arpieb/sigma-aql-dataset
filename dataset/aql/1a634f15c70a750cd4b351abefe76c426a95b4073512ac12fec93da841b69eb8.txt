@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\explorer.exe' OR LOWER("Process Name") LIKE '%\explorer.exe') AND LOWER("Parent Process Path") LIKE '%\cmd.exe' AND LOWER(Command) LIKE '%explorer.exe%'

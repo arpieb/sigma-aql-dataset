@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\sc.exe' OR LOWER("Process Name") LIKE '%\sc.exe' OR Filename='sc.exe') AND LOWER(Command) LIKE '%sdset%' AND LOWER(Command) LIKE '%a;%' AND (LOWER(Command) LIKE '%;iu%' OR LOWER(Command) LIKE '%;su%' OR LOWER(Command) LIKE '%;ba%' OR LOWER(Command) LIKE '%;sy%' OR LOWER(Command) LIKE '%;wd%')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\eqnedt32.exe' OR LOWER("Process Name") LIKE '%\eqnedt32.exe'

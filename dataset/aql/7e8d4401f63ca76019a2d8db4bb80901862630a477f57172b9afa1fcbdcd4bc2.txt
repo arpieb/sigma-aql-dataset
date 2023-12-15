@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%/cross.php_op=%' OR LOWER(URL) LIKE '%&dt=%' OR LOWER(URL) LIKE '%&uid=%')

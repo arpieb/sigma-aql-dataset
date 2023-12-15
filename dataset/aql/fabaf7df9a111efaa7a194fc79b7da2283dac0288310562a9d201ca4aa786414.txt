@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\devtoolslauncher.exe' OR LOWER("Process Name") LIKE '%\devtoolslauncher.exe') AND LOWER(Command) LIKE '%launchfordeploy%'

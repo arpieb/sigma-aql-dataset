@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%reg%' AND LOWER(Command) LIKE '% add %' AND LOWER(Command) LIKE '%\services\vss\diag%' AND LOWER(Command) LIKE '%/d disabled%'

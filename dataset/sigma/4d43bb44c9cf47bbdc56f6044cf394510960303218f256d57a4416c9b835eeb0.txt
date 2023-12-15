@@ -1,0 +1,43 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-03-21'
+description: Detects suspicious parent processes that should not have any children
+  or should only have a single possible child program
+detection:
+  condition: selection or ( selection_special and not 1 of filter_* )
+  filter_null:
+    Image: null
+  filter_special:
+    Image|endswith:
+    - \WerFault.exe
+    - \wermgr.exe
+    - \conhost.exe
+    - \mmc.exe
+    - \win32calc.exe
+    - \notepad.exe
+  selection:
+    ParentImage|endswith:
+    - \minesweeper.exe
+    - \winver.exe
+    - \bitsadmin.exe
+  selection_special:
+    ParentImage|endswith:
+    - \csrss.exe
+    - \certutil.exe
+    - \eventvwr.exe
+    - \calc.exe
+    - \notepad.exe
+falsepositives:
+- Unknown
+id: cbec226f-63d9-4eca-9f52-dfb6652f24df
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/x86matthew/status/1505476263464607744?s=12
+- https://svch0st.medium.com/stats-from-hunting-cobalt-strike-beacons-c17e56255f9b
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1036
+title: Suspicious Process Parents

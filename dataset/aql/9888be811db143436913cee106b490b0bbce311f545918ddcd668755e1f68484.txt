@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype IN(433, 12) AND "Event ID" IN('1006', '1116', '1015', '1117')

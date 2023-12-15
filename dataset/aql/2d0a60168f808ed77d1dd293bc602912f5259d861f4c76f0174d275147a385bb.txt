@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Status='Success' AND (LOWER("User Agent") LIKE '%bav2ropc%' OR LOWER("User Agent") LIKE '%cbainprod%' OR LOWER("User Agent") LIKE '%cbaintar%')

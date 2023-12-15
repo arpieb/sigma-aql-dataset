@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\appdata\local\temp\ba9ea7344a4a5f591d6e5dc32a13494b\%'

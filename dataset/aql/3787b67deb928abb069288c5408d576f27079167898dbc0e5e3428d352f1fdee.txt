@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%:\program files\sysaidserver\tomcat\webapps\usersfiles\user.exe' OR LOWER(Filename) LIKE '%:\program files\sysaidserver\tomcat\webapps\usersfiles.war' OR LOWER(Filename) LIKE '%:\program files\sysaidserver\tomcat\webapps\leave' OR LOWER(Filename) LIKE '%:\program files\sysaidserver\tomcat\webapps\user.%'

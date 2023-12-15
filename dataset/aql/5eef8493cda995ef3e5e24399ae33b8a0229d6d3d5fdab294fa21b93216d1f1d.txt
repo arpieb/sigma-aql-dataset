@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\createminidump.exe' OR LOWER("Process Name") LIKE '%\createminidump.exe' OR "IMP Hash"='4a07f944a83e8a7c2525efa35dd30e2f' OR LOWER(CONCAT('MD5=', 'MD5 Hash ', 'SHA1=', 'SHA1 Hash ', 'SHA256=', 'SHA256 Hash ', 'IMPHASH=', 'IMP HASH')) LIKE '%imphash=4a07f944a83e8a7c2525efa35dd30e2f%'

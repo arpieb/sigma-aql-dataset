@@ -1,0 +1,34 @@
+author: _pete_0, TheDFIRReport
+date: '2022-02-21'
+description: Detects use of chcp to look up the system locale value as part of host
+  discovery
+detection:
+  condition: selection
+  selection:
+    CommandLine|endswith:
+    - chcp
+    - 'chcp '
+    - 'chcp  '
+    Image|endswith: \chcp.com
+    ParentCommandLine|contains:
+    - ' /c '
+    - ' /r '
+    - ' /k '
+    ParentImage|endswith: \cmd.exe
+falsepositives:
+- During Anaconda update the 'conda.exe' process will eventually execution the 'chcp'
+  command.
+- Discord was seen using chcp to look up code pages
+id: 7090adee-82e2-4269-bd59-80691e7c6338
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2022/04/04/stolen-images-campaign-ends-in-conti-ransomware/
+- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp
+status: experimental
+tags:
+- attack.discovery
+- attack.t1614.001
+title: Console CodePage Lookup Via CHCP

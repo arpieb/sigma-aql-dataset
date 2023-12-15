@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Rule Name" LIKE '%%%4417%' OR "Rule Name" LIKE '%%%4418%') AND ("Event ID" IN('4656', '4663')) AND LOWER("Object Name") LIKE '%\microsoft\windows defender\exclusions\%'

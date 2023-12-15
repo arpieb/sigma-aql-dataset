@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%-property dword -name disablefirstruncustomize -value 2 -force%' OR LOWER(Command) LIKE '%-property string -name check_associations -value%' OR LOWER(Command) LIKE '%-property dword -name ieharden -value 0 -force%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/dseditgroup' OR LOWER("Process Name") LIKE '%/dseditgroup') AND LOWER(Command) LIKE '% -o edit %' AND LOWER(Command) LIKE '% -a %' AND LOWER(Command) LIKE '% -t user%' AND LOWER(Command) LIKE '%admin%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%cleanll%' OR LOWER(Message) LIKE '%usersfiles.war%' OR LOWER(Message) LIKE '%remove-item -path "$tomcat_dir%' OR LOWER(Message) LIKE '%sysaidserver%' OR LOWER(Message) LIKE '%sleep %' OR LOWER(Message) LIKE '%while(1)%'

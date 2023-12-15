@@ -1,0 +1,40 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-06-12'
+description: Detects potentially suspicious child processes of a ClickOnce deployment
+  application
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - \calc.exe
+    - \cmd.exe
+    - \cscript.exe
+    - \explorer.exe
+    - \mshta.exe
+    - \net.exe
+    - \net1.exe
+    - \nltest.exe
+    - \notepad.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \reg.exe
+    - \regsvr32.exe
+    - \rundll32.exe
+    - \schtasks.exe
+    - \werfault.exe
+    - \wscript.exe
+    ParentImage|contains: \AppData\Local\Apps\2.0\
+falsepositives:
+- Unknown
+id: 67bc0e75-c0a9-4cfc-8754-84a505b63c04
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://posts.specterops.io/less-smartscreen-more-caffeine-ab-using-clickonce-for-trusted-code-execution-1446ea8051c5
+status: experimental
+tags:
+- attack.execution
+- attack.defense_evasion
+title: Potentially Suspicious Child Process Of ClickOnce Application

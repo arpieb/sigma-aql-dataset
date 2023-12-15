@@ -1,0 +1,30 @@
+author: X__Junior (Nextron Systems)
+date: '2023-07-12'
+description: Detects file write event from/to a fake recycle bin folder that is often
+  used as a staging directory for malware
+detection:
+  condition: selection
+  selection:
+    Image|contains:
+    - RECYCLERS.BIN\
+    - RECYCLER.BIN\
+    - RECYCLE.BIN\
+    TargetFilename|contains:
+    - RECYCLERS.BIN\
+    - RECYCLER.BIN\
+    - RECYCLE.BIN\
+falsepositives:
+- Unknown
+id: cd8b36ac-8e4a-4c2f-a402-a29b8fbd5bca
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.mandiant.com/resources/blog/infected-usb-steal-secrets
+- https://unit42.paloaltonetworks.com/cloaked-ursa-phishing/
+status: experimental
+tags:
+- attack.persistence
+- attack.defense_evasion
+title: Suspicious File Creation Activity From Fake Recycle.Bin Folder

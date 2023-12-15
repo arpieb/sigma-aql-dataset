@@ -1,0 +1,56 @@
+author: Florian Roth (Nextron Systems), wagga
+date: '2020-12-23'
+description: Detects different process execution behaviors as described in various
+  threat reports on Lazarus group activity
+detection:
+  condition: 1 of selection_*
+  selection_generic:
+    CommandLine|contains:
+    - reg.exe save hklm\sam %temp%\~reg_sam.save
+    - 1q2w3e4r@#$@#$@#$
+    - ' -hp1q2w3e4 '
+    - '.dat data03 10000 -p '
+  selection_netstat:
+    CommandLine|contains|all:
+    - 'netstat -aon | find '
+    - ESTA
+    - ' > %temp%\~'
+  selection_network_discovery:
+    CommandLine|contains|all:
+    - .255 10 C:\ProgramData\IBM\
+    - .DAT
+  selection_persistence:
+    CommandLine|contains:
+    - C:\ProgramData\
+    - C:\RECYCLER\
+    CommandLine|contains|all:
+    - ' /c '
+    - ' -p 0x'
+  selection_rundll32:
+    CommandLine|contains:
+    - .bin,
+    - .tmp,
+    - .dat,
+    - .io,
+    - .ini,
+    - .db,
+    CommandLine|contains|all:
+    - 'rundll32 '
+    - C:\ProgramData\
+falsepositives:
+- Unlikely
+id: 24c4d154-05a4-4b99-b57d-9b977472443a
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://securelist.com/lazarus-covets-covid-19-related-intelligence/99906/
+- https://www.hvs-consulting.de/lazarus-report/
+status: test
+tags:
+- attack.g0032
+- attack.execution
+- attack.t1059
+- detection.emerging_threats
+title: Lazarus Group Activity

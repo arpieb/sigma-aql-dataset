@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype IN(516, 519, 456, 460, 501, 502, 507, 440, 347) AND QIDNAME(qid) IN('AssociateDirectory', 'DisableExternalIdPConfigurationForDirectory', 'DisassociateDirectory', 'EnableExternalIdPConfigurationForDirectory')

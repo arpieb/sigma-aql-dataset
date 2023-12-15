@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\installutil.exe' OR LOWER("Process Name") LIKE '%\installutil.exe' OR Filename='InstallUtil.exe') AND (LOWER(Command) LIKE '%ftp://%' OR LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%https://%')

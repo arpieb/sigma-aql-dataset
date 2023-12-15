@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-content %' OR LOWER(Message) LIKE '%foreach%' OR LOWER(Message) LIKE '%[system.net.dns]::gethostentry%' OR LOWER(Message) LIKE '%out-file%'

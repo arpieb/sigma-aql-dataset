@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(UTF8(payload)) LIKE '%$doit%' OR LOWER(UTF8(payload)) LIKE '%harmj0y%' OR LOWER(UTF8(payload)) LIKE '%mattifestation%' OR LOWER(UTF8(payload)) LIKE '%_rastamouse%' OR LOWER(UTF8(payload)) LIKE '%tifkin_%' OR LOWER(UTF8(payload)) LIKE '%0xdeadbeef%'

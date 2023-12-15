@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\syncappvpublishingserver.exe' OR LOWER("Process Name") LIKE '%\syncappvpublishingserver.exe' OR Filename='syncappvpublishingserver.exe') AND LOWER(Command) LIKE '%"n; %'

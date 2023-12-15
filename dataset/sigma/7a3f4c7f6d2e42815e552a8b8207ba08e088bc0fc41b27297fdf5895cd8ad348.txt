@@ -1,0 +1,23 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-02-15'
+description: Detects the deletion of the event log files which may indicate an attempt
+  to destroy forensic evidence
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: .evtx
+    TargetFilename|startswith: C:\Windows\System32\winevt\Logs\
+falsepositives:
+- Unknown
+id: 63c779ba-f638-40a0-a593-ddd45e8b1ddc
+level: medium
+logsource:
+  category: file_delete
+  product: windows
+references:
+- Internal Research
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070
+title: EventLog EVTX File Deleted

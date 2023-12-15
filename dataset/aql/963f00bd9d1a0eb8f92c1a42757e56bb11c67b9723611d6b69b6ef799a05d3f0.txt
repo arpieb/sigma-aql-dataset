@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%add app role assignment to service principal%'

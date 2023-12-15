@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename='sc.exe' OR LOWER("Process Path") LIKE '%\sc.exe' OR LOWER("Process Name") LIKE '%\sc.exe') AND LOWER(Command) LIKE '% stop %' AND NOT(((Command IN('sc  stop KSCWebConsoleMessageQueue', 'sc  stop LGHUBUpdaterService')) AND (LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%')))

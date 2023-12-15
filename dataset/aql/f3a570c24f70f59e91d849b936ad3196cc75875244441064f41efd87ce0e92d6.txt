@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% -nop -noni -w hidden -c $x=$((gp hkcu:software\microsoft\windows update).update)%' OR LOWER(Command) LIKE '% -nop -noni -c $x=$((gp hkcu:software\microsoft\windows update).update);%'

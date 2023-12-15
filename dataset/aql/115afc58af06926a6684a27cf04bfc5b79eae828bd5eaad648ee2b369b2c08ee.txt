@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4697 AND LOWER("Service Filename") LIKE '%mshta%' AND LOWER("Service Filename") LIKE '%vbscript:createobject%' AND LOWER("Service Filename") LIKE '%.run%' AND LOWER("Service Filename") LIKE '%window.close%'

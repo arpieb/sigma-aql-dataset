@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-22'
+description: Detects potential suspicious child processes of "jamf". Could be a sign
+  of potential abuse of Jamf as a C2 server as seen by Typhon MythicAgent.
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - /bash
+    - /sh
+    ParentImage|endswith: /jamf
+falsepositives:
+- Legitimate execution of custom scripts or commands by Jamf administrators. Apply
+  additional filters accordingly
+id: 2316929c-01aa-438c-970f-099145ab1ee6
+level: medium
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://github.com/MythicAgents/typhon/
+- https://www.zoocoup.org/casper/jamf_cheatsheet.pdf
+- https://docs.jamf.com/10.30.0/jamf-pro/administrator-guide/Components_Installed_on_Managed_Computers.html
+status: experimental
+tags:
+- attack.execution
+title: JAMF MDM Potential Suspicious Child Process

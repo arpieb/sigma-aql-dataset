@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4662 AND "Object Type"='SecretObject' AND "Access Mask"='0x2' AND LOWER("Object Name") LIKE '%bckupkey%'

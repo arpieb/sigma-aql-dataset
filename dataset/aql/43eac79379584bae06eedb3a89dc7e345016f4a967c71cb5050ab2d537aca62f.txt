@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%-noni -nop -exe bypass -f \\%' AND LOWER(Command) LIKE '%admin$%' OR LOWER(Command) LIKE '%-ex bypass -noprof -nolog -nonint -f%' AND LOWER(Command) LIKE '%c:\windows\temp\%'

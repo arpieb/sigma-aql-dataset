@@ -1,0 +1,24 @@
+author: frack113
+date: '2023-09-04'
+description: Detects the deletion of the "Zone.Identifier" ADS. Attackers can leverage
+  this in order to bypass security restrictions that make use of the ADS such as Microsoft
+  Office apps.
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: :Zone.Identifier
+falsepositives:
+- Likely
+id: 7eac0a16-5832-4e81-865f-0268a6d19e4b
+level: low
+logsource:
+  category: file_delete
+  product: windows
+references:
+- https://securityliterate.com/how-malware-abuses-the-zone-identifier-to-circumvent-detection-and-analysis/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070.004
+- detection.threat_hunting
+title: ADS Zone.Identifier Deleted

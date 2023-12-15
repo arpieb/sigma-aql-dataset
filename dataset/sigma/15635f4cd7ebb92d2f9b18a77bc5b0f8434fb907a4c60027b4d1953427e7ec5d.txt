@@ -1,0 +1,24 @@
+author: Nikita Nazarov, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-07'
+description: Detects default CSExec pipe creation
+detection:
+  condition: selection
+  selection:
+    PipeName|contains: \csexecsvc
+falsepositives:
+- Legitimate Administrator activity
+id: f318b911-ea88-43f4-9281-0de23ede628e
+level: medium
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- https://drive.google.com/file/d/1lKya3_mLnR3UQuCoiYruO3qgu052_iS_/view
+- https://github.com/malcomvetter/CSExec
+status: test
+tags:
+- attack.lateral_movement
+- attack.t1021.002
+- attack.execution
+- attack.t1569.002
+title: CSExec Default Named Pipe

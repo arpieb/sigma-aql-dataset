@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Process Path" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%vssadmin list shadows%' AND LOWER(Command) LIKE '%log.txt%'

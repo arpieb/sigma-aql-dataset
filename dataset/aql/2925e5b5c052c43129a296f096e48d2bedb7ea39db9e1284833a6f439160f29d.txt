@@ -1,0 +1,1 @@
+SELECT *, "Parent Process Path", Command FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\regini.exe' OR LOWER("Process Name") LIKE '%\regini.exe' OR Filename='REGINI.EXE') AND Command MATCHES ':[^ \\]'

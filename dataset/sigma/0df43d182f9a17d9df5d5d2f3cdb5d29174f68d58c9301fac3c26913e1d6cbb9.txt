@@ -1,0 +1,24 @@
+author: Janantha Marasinghe
+date: '2022-12-13'
+description: Detects an instance of an SES identity being deleted via the "DeleteIdentity"
+  event. This may be an indicator of an adversary removing the account that carried
+  out suspicious or malicious activities
+detection:
+  condition: selection
+  selection:
+    eventName: DeleteIdentity
+    eventSource: ses.amazonaws.com
+falsepositives:
+- Unknown
+id: 20f754db-d025-4a8f-9d74-e0037e999a9a
+level: medium
+logsource:
+  product: aws
+  service: cloudtrail
+references:
+- https://unit42.paloaltonetworks.com/compromised-cloud-compute-credentials/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1070
+title: SES Identity Has Been Deleted

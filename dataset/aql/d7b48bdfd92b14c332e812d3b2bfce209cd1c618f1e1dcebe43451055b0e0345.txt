@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '% /account=system %' OR LOWER(Command) LIKE '% /account=ti %') AND LOWER(Command) LIKE '%/exec=%'

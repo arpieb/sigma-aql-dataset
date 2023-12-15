@@ -1,0 +1,35 @@
+author: Florian Roth (Nextron Systems)
+date: '2019-11-18'
+description: Detects the execution of a renamed ProcDump executable often used by
+  attackers or malware
+detection:
+  condition: (selection_org or all of selection_args_*) and not filter
+  filter:
+    Image|endswith:
+    - \procdump.exe
+    - \procdump64.exe
+  selection_args_ma:
+    CommandLine|contains:
+    - ' -ma '
+    - ' /ma '
+  selection_args_other:
+    CommandLine|contains:
+    - ' -accepteula '
+    - ' /accepteula '
+  selection_org:
+    OriginalFileName: procdump
+falsepositives:
+- Procdump illegaly bundled with legitimate software
+- Administrators who rename binaries (should be investigated)
+id: 4a0b2c7e-7cb2-495d-8b63-5f268e7bfd67
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://docs.microsoft.com/en-us/sysinternals/downloads/procdump
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1036.003
+title: Renamed ProcDump Execution

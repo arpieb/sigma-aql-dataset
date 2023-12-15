@@ -1,0 +1,30 @@
+author: frack113
+date: '2021-11-26'
+description: Download or Copy file with Extrac32
+detection:
+  condition: all of selection_*
+  selection_archive:
+    CommandLine|contains: .cab
+  selection_lolbas:
+    CommandLine|contains: extrac32.exe
+    Image|endswith: \extrac32.exe
+    OriginalFileName: extrac32.exe
+  selection_options:
+    CommandLine|contains:
+    - /C
+    - /Y
+    - ' \\'
+falsepositives:
+- Unknown
+id: aa8e035d-7be4-48d3-a944-102aec04400d
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Extrac32/
+status: test
+tags:
+- attack.command_and_control
+- attack.t1105
+title: Suspicious Extrac32 Execution

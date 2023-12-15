@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%dumpcreds%' OR LOWER(Message) LIKE '%dumpcerts%' OR LOWER(Message) LIKE '%sekurlsa::logonpasswords%' OR LOWER(Message) LIKE '%crypto::certificates%' OR LOWER(Message) LIKE '%cert_system_store_local_machine%'

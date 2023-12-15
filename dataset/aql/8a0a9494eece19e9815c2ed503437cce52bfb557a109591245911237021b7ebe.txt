@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%&&set%' AND LOWER(Command) LIKE '%cmd%' AND LOWER(Command) LIKE '%/c%' AND LOWER(Command) LIKE '%-f%' AND (LOWER(Command) LIKE '%{0}%' OR LOWER(Command) LIKE '%{1}%' OR LOWER(Command) LIKE '%{2}%' OR LOWER(Command) LIKE '%{3}%' OR LOWER(Command) LIKE '%{4}%' OR LOWER(Command) LIKE '%{5}%')

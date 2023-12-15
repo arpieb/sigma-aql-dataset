@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\vmwarexferlogs.exe' OR LOWER("Process Name") LIKE '%\vmwarexferlogs.exe') AND NOT((LOWER("Process Path") LIKE 'c:\program files\vmware\%' OR LOWER("Process Name") LIKE 'c:\program files\vmware\%'))

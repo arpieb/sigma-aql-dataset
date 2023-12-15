@@ -1,0 +1,34 @@
+author: Ivan Dyachkov, oscd.community
+date: '2020-10-07'
+description: 'Detects execution of "Diskshadow.exe" in script mode using the "/s"
+  flag. Attackers often abuse "diskshadow" to execute scripts that deleted the shadow
+  copies on the systems. Investigate the content of the scripts and its location.
+
+  '
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - '/s '
+    - '-s '
+  selection_img:
+    Image|endswith: \diskshadow.exe
+    OriginalFileName: diskshadow.exe
+falsepositives:
+- Likely from legitimate backup scripts
+id: 0c2f8629-7129-4a8a-9897-7e0768f13ff2
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://bohops.com/2018/03/26/diskshadow-the-return-of-vss-evasion-persistence-and-active-directory-database-extraction/
+- https://www.ired.team/offensive-security/credential-access-and-credential-dumping/ntds.dit-enumeration
+- https://medium.com/@cyberjyot/lolbin-execution-via-diskshadow-f6ff681a27a4
+- https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskshadow
+status: test
+tags:
+- attack.execution
+- attack.t1218
+- detection.threat_hunting
+title: Diskshadow Script Mode Execution

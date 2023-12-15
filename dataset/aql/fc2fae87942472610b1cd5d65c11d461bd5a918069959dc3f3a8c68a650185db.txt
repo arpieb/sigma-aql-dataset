@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%\microsoft\windows\currentversion\internet settings\zonemap\protocoldefaults%' AND LOWER(Command) LIKE '%http%' AND LOWER(Command) LIKE '% 0%'

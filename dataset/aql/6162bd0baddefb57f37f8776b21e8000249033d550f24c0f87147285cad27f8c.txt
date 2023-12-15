@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\vsls-agent.exe' OR LOWER("Process Name") LIKE '%\vsls-agent.exe') AND LOWER(Command) LIKE '%--agentextensionpath%' AND NOT(LOWER(Command) LIKE '%microsoft.visualstudio.liveshare.agent.%')

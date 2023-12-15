@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%execute%' AND LOWER(Command) LIKE '%createobject%' AND LOWER(Command) LIKE '%regread%' AND LOWER(Command) LIKE '%window.close%' AND LOWER(Command) LIKE '%\microsoft\windows\currentversion%' AND NOT(LOWER(Command) LIKE '%\software\microsoft\windows\currentversion\run%')

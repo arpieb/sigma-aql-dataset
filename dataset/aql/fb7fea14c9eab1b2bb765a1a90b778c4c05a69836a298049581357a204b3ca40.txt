@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\regedit.exe' OR LOWER("Process Name") LIKE '%\regedit.exe') AND (LOWER("Parent Process Path") LIKE '%\trustedinstaller.exe' OR LOWER("Parent Process Path") LIKE '%\processhacker.exe')

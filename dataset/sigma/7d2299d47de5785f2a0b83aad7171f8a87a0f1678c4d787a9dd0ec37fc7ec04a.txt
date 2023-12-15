@@ -1,0 +1,34 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-29'
+description: Detects potential suspicious child processes of "3CXDesktopApp.exe".
+  Which could be related to the 3CXDesktopApp supply chain compromise
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - \cmd.exe
+    - \cscript.exe
+    - \mshta.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \regsvr32.exe
+    - \rundll32.exe
+    - \wscript.exe
+    ParentImage|endswith: \3CXDesktopApp.exe
+falsepositives:
+- Unknown
+id: 63f3605b-979f-48c2-b7cc-7f90523fed88
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.reddit.com/r/crowdstrike/comments/125r3uu/20230329_situational_awareness_crowdstrike/
+- https://www.crowdstrike.com/blog/crowdstrike-detects-and-prevents-active-intrusion-campaign-targeting-3cxdesktopapp-customers/
+status: experimental
+tags:
+- attack.command_and_control
+- attack.execution
+- attack.t1218
+- detection.emerging_threats
+title: Potential Suspicious Child Process Of 3CXDesktopApp

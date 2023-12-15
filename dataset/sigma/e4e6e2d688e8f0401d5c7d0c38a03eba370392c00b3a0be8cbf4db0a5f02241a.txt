@@ -1,0 +1,24 @@
+author: Thomas Patzke
+date: '2017-06-12'
+description: Detects default PsExec service filename which indicates PsExec service
+  installation and execution
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: \PSEXESVC.exe
+falsepositives:
+- Unknown
+id: 259e5a6a-b8d2-4c38-86e2-26c5e651361d
+level: low
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.jpcert.or.jp/english/pub/sr/ir_research.html
+- https://jpcertcc.github.io/ToolAnalysisResultSheet
+status: test
+tags:
+- attack.execution
+- attack.t1569.002
+- attack.s0029
+title: PsExec Service File Creation

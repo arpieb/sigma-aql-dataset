@@ -1,0 +1,25 @@
+author: frack113
+date: '2021-09-02'
+description: Storing files in Alternate Data Stream (ADS) similar to Astaroth malware.
+detection:
+  condition: selection_compspec
+  selection_compspec:
+    ScriptBlockText|contains|all:
+    - Start-Process
+    - '-FilePath "$env:comspec" '
+    - '-ArgumentList '
+    - '>'
+falsepositives:
+- Unknown
+id: a699b30e-d010-46c8-bbd1-ee2e26765fe9
+level: medium
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1564.004/T1564.004.md
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1564.004
+title: Powershell Store File In Alternate Data Stream

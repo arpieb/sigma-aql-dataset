@@ -1,0 +1,1 @@
+SELECT *, URL FROM events WHERE LOWER(URL) LIKE '%/help/admin-guide/reports/reportgenerate.jsp%' OR LOWER(URL) LIKE '%/restapi/logoncustomization%' OR LOWER(URL) LIKE '%/restapi/connection%'

@@ -1,0 +1,29 @@
+author: Joseliyo Sanchez, @Joseliyo_Jstnk
+date: '2023-06-02'
+description: Detects the use of grep to discover specific files created by the GobRAT
+  malware
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - apached
+    - frpc
+    - sshd.sh
+    - zone.arm
+    Image|endswith: /grep
+falsepositives:
+- Unknown
+id: e34cfa0c-0a50-4210-9cb3-5632d08eb041
+level: high
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://blogs.jpcert.or.jp/en/2023/05/gobrat.html
+- https://www.virustotal.com/gui/file/60bcd645450e4c846238cf0e7226dc40c84c96eba99f6b2cffcd0ab4a391c8b3/detection
+- https://www.virustotal.com/gui/file/3e44c807a25a56f4068b5b8186eee5002eed6f26d665a8b791c472ad154585d1/detection
+status: experimental
+tags:
+- attack.discovery
+- attack.t1082
+title: Potential GobRAT File Discovery Via Grep

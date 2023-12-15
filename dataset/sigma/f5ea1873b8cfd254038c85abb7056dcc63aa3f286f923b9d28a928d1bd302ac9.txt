@@ -1,0 +1,46 @@
+author: Teymur Kheirkhabarov, Ecco, Florian Roth
+date: '2019-10-26'
+description: Detects the use of getsystem Meterpreter/Cobalt Strike command by detecting
+  a specific service installation
+detection:
+  condition: selection_id and selection
+  selection:
+    ServiceFileName|contains|all:
+    - cmd
+    - /c
+    - echo
+    - \pipe\
+    - '%COMSPEC%'
+    - /c
+    - echo
+    - \pipe\
+    - cmd.exe
+    - /c
+    - echo
+    - \pipe\
+    - rundll32
+    - .dll,a
+    - '/p:'
+  selection_id:
+    EventID: 4697
+falsepositives:
+- Highly unlikely
+fields:
+- ComputerName
+- SubjectDomainName
+- SubjectUserName
+- ServiceFileName
+id: ecbc5e16-58e0-4521-9c60-eb9a7ea4ad34
+level: critical
+logsource:
+  product: windows
+  service: security
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment
+- https://blog.cobaltstrike.com/2014/04/02/what-happens-when-i-type-getsystem/
+status: test
+tags:
+- attack.privilege_escalation
+- attack.t1134.001
+- attack.t1134.002
+title: Meterpreter or Cobalt Strike Getsystem Service Installation - Security

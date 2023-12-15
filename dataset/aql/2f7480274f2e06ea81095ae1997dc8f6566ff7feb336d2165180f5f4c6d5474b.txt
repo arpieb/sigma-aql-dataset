@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%.downloadstring(%' OR LOWER(Command) LIKE '%.downloadfile(%' OR LOWER(Command) LIKE '%invoke-webrequest %' OR LOWER(Command) LIKE '%iwr %'

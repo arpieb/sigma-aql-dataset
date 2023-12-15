@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\shelldispatch.dll' AND NOT((LOWER(CONCAT('file directory', '/', filename)) LIKE '%:\users\%' AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\appdata\local\temp\%' OR LOWER(CONCAT('file directory', '/', filename)) LIKE '%:\windows\temp\%'))

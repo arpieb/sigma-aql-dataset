@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%if(0){{{0}}}'' -f $(0 -as [char]) +%' OR LOWER(Message) LIKE '%#<null>%'

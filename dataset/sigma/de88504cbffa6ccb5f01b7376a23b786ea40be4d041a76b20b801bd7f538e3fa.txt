@@ -1,0 +1,23 @@
+author: Max Altgelt (Nextron Systems)
+date: '2022-04-06'
+description: Detects logon events that specify new credentials
+detection:
+  condition: selection
+  selection:
+    EventID: 4624
+    LogonType: 9
+falsepositives:
+- Legitimate remote administration activity
+id: def8b624-e08f-4ae1-8612-1ba21190da6b
+level: low
+logsource:
+  product: windows
+  service: security
+references:
+- https://go.recordedfuture.com/hubfs/reports/mtp-2021-0914.pdf
+status: test
+tags:
+- attack.defense_evasion
+- attack.lateral_movement
+- attack.t1550
+title: Outgoing Logon with New Credentials

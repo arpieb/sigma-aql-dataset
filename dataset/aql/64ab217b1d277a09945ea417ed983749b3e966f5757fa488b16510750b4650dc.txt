@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\gup.exe' OR LOWER("Process Name") LIKE '%\gup.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\libcurl.dll' AND NOT((LOWER("Process Path") LIKE '%\notepad++\updater\gup.exe' OR LOWER("Process Name") LIKE '%\notepad++\updater\gup.exe'))

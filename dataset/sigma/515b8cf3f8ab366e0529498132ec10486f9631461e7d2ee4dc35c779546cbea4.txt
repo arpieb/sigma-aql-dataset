@@ -1,0 +1,26 @@
+author: E.M. Anhaus (originally from Atomic Blue Detections, Dan Beavin), oscd.community
+date: '2019-10-24'
+description: Detects the usage of "hh.exe" to execute ".chm" files.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: .chm
+  selection_img:
+    Image|endswith: \hh.exe
+    OriginalFileName: HH.exe
+falsepositives:
+- False positives are expected with legitimate ".CHM"
+id: 68c8acb4-1b60-4890-8e82-3ddf7a6dba84
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1218.001/T1218.001.md
+- https://eqllib.readthedocs.io/en/latest/analytics/b25aa548-7937-11e9-8f5c-d46d6d62a49e.html
+- https://www.zscaler.com/blogs/security-research/unintentional-leak-glimpse-attack-vectors-apt37
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218.001
+title: HH.EXE Execution

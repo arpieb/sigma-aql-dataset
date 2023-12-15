@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%set-netfirewallprofile %' OR LOWER(Message) LIKE '% -enabled %' OR LOWER(Message) LIKE '% false%') AND (LOWER(Message) LIKE '% -all %' OR LOWER(Message) LIKE '%public%' OR LOWER(Message) LIKE '%domain%' OR LOWER(Message) LIKE '%private%')

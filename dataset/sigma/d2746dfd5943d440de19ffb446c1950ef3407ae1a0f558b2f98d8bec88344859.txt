@@ -1,0 +1,29 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-04'
+description: Detects potential execution of the PowerShell script POWERTRASH
+detection:
+  condition: selection
+  selection:
+    ScriptBlockText|contains|all:
+    - IO.Compression.DeflateStream
+    - IO.MemoryStream
+    - ::FromBase64String
+    - GetDelegateForFunctionPointer
+    - .Invoke()
+    - GlobalAssemblyCache
+falsepositives:
+- Unknown
+id: 4e19528a-f081-40dd-be09-90c39352bd64
+level: high
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://labs.withsecure.com/publications/fin7-target-veeam-servers
+status: test
+tags:
+- attack.execution
+- attack.t1059.001
+- attack.g0046
+- detection.emerging_threats
+title: Potential POWERTRASH Script Execution

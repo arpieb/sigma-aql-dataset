@@ -1,0 +1,1 @@
+SELECT *, URL FROM events WHERE (LOWER(URL) LIKE '%_2f%' OR LOWER(URL) LIKE '%_2b%') AND (LOWER(URL) LIKE '%.avi%' OR LOWER(URL) LIKE '%/images/%')

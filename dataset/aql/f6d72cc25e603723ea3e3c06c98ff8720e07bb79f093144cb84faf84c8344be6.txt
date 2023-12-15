@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/rest/api/latest/projects/%' OR LOWER(URL) LIKE '%prefix=%' OR LOWER(URL) LIKE '%%00--exec%'

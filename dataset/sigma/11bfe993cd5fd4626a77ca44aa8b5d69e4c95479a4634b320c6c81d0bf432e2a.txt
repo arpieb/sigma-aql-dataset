@@ -1,0 +1,32 @@
+author: Nasreddine Bencherchali (Nextron Systems), X__Junior (Nextron Systems)
+date: '2023-05-19'
+description: Detects filename indicators that contain a specific typo seen used by
+  the Small Sieve malware.
+detection:
+  condition: all of selection_typo_* or selection_ioc
+  selection_ioc:
+    TargetFilename|endswith: \AppData\Local\MicrosoftWindowsOutlookDataPlus.txt
+  selection_typo_keyword:
+    TargetFilename|contains: Microsift
+  selection_typo_path:
+    TargetFilename|contains:
+    - \Roaming\
+    - \Local\
+    TargetFilename|contains|all:
+    - :\Users\
+    - \AppData\
+falsepositives:
+- Unlikely
+id: 39466c42-c189-476a-989f-8cdb135c163a
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/small-sieve/NCSC-MAR-Small-Sieve.pdf
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1036.005
+- detection.emerging_threats
+title: Small Sieve Malware File Indicator Creation

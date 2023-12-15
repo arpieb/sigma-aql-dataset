@@ -1,0 +1,48 @@
+author: Michael Haag
+date: '2019-01-16'
+description: Detects a suspicious process spawning from an "mshta.exe" process, which
+  could be indicative of a malicious HTA script execution
+detection:
+  condition: all of selection*
+  selection_child:
+    Image|endswith:
+    - \cmd.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \wscript.exe
+    - \cscript.exe
+    - \sh.exe
+    - \bash.exe
+    - \reg.exe
+    - \regsvr32.exe
+    - \bitsadmin.exe
+    OriginalFileName:
+    - Cmd.Exe
+    - PowerShell.EXE
+    - pwsh.dll
+    - wscript.exe
+    - cscript.exe
+    - Bash.exe
+    - reg.exe
+    - REGSVR32.EXE
+    - bitsadmin.exe
+  selection_parent:
+    ParentImage|endswith: \mshta.exe
+falsepositives:
+- Printer software / driver installations
+- HP software
+id: 03cc0c25-389f-4bf8-b48d-11878079f1ca
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.trustedsec.com/july-2015/malicious-htas/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218.005
+- car.2013-02-003
+- car.2013-03-001
+- car.2014-04-003
+title: Suspicious MSHTA Child Process

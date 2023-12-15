@@ -1,0 +1,25 @@
+author: Cedric Maurugeon
+date: '2023-08-22'
+description: Detects user account creation on ESXi system via esxcli
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - 'system '
+    - 'account '
+    - 'add '
+    Image|endswith: /esxcli
+falsepositives:
+- Legitimate administration activities
+id: b28e4eb3-8bbc-4f0c-819f-edfe8e2f25db
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://developer.vmware.com/docs/11743/esxi-7-0-esxcli-command-reference/namespace/esxcli_system.html
+status: experimental
+tags:
+- attack.persistence
+- attack.t1136
+title: ESXi Account Creation Via ESXCLI

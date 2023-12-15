@@ -1,0 +1,39 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-12'
+description: Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords. This
+  is seen being used in combination with "icacls" to look for misconfigured files
+  or folders permissions
+detection:
+  condition: all of selection_findstr_* or selection_special
+  selection_findstr_cli:
+    CommandLine|contains:
+    - '"Everyone"'
+    - '''Everyone'''
+    - '"BUILTIN\"'
+    - '''BUILTIN\'''
+  selection_findstr_img:
+    Image|endswith:
+    - \find.exe
+    - \findstr.exe
+    OriginalFileName:
+    - FIND.EXE
+    - FINDSTR.EXE
+  selection_special:
+    CommandLine|contains|all:
+    - 'icacls '
+    - 'findstr '
+    - Everyone
+falsepositives:
+- Unknown
+id: 47e4bab7-c626-47dc-967b-255608c9a920
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.absolomb.com/2018-01-26-Windows-Privilege-Escalation-Guide/
+status: experimental
+tags:
+- attack.credential_access
+- attack.t1552.006
+title: Permission Misconfiguration Reconnaissance Via Findstr.EXE

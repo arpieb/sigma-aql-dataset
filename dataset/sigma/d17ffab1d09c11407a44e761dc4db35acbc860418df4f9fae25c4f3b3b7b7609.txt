@@ -1,0 +1,22 @@
+author: Zach Mathis
+date: '2023-05-13'
+description: Detects when an application acquires a certificate private key
+detection:
+  condition: selection
+  selection:
+    EventID: 70
+falsepositives:
+- Legitimate application requesting certificate exports will trigger this. Apply additional
+  filters as needed
+id: e2b5163d-7deb-4566-9af3-40afea6858c3
+level: medium
+logsource:
+  product: windows
+  service: capi2
+references:
+- https://www.splunk.com/en_us/blog/security/breaking-the-chain-defending-against-certificate-services-abuse.html
+status: experimental
+tags:
+- attack.credential_access
+- attack.t1649
+title: Certificate Private Key Acquired

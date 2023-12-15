@@ -1,0 +1,1 @@
+SELECT *, Command FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\runscripthelper.exe' OR LOWER("Process Name") LIKE '%\runscripthelper.exe') AND LOWER(Command) LIKE '%surfacecheck%'

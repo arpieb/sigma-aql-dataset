@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER("Parent Process Path") LIKE '%\bash' AND (LOWER(Command) LIKE '%id -gn `%' OR LOWER(Command) LIKE '%id -gn ''%')

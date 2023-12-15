@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\ldifde.exe' OR LOWER("Process Name") LIKE '%\ldifde.exe' OR Filename='ldifde.exe') AND LOWER(Command) LIKE '%-f%' AND NOT(LOWER(Command) LIKE '% -i%')

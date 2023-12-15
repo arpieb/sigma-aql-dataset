@@ -1,0 +1,37 @@
+author: Florian Roth (Nextron Systems), Samir Bousseaden
+date: '2019-10-15'
+description: Detects potentially suspicious command line arguments of common data
+  compression tools
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_generic:
+    ParentImage|contains:
+    - :\Program Files\
+    - :\Program Files (x86)\
+  selection:
+    CommandLine|contains:
+    - ' -p'
+    - ' -ta'
+    - ' -tb'
+    - ' -sdel'
+    - ' -dw'
+    - ' -hp'
+    OriginalFileName:
+    - 7z*.exe
+    - '*rar.exe'
+    - '*Command*Line*RAR*'
+falsepositives:
+- Unknown
+id: 27a72a60-7e5e-47b1-9d17-909c9abafdcd
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/SBousseaden/status/1184067445612535811
+status: test
+tags:
+- attack.collection
+- attack.t1560.001
+- detection.threat_hunting
+title: Potentially Suspicious Compression Tool Parameters

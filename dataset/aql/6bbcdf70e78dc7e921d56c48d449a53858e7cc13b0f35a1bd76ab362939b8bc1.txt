@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\edputil.dll' AND NOT((LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\windows\system32\%' OR LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\windows\syswow64\%' OR LOWER(CONCAT('file directory', '/', filename)) LIKE 'c\windows\winsxs\%'))

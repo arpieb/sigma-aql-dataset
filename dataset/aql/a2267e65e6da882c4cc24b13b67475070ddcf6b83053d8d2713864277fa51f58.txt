@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/rm' OR LOWER("Process Path") LIKE '%/shred' OR LOWER("Process Path") LIKE '%/unlink' OR LOWER("Process Name") LIKE '%/rm' OR LOWER("Process Name") LIKE '%/shred' OR LOWER("Process Name") LIKE '%/unlink') AND (LOWER(Command) LIKE '%/var/log%' OR LOWER(Command) LIKE '%/var/spool/mail%')

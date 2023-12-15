@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\aspnet_compiler.exe' OR LOWER("Process Name") LIKE '%\aspnet_compiler.exe') AND LOWER(Filename) LIKE '%\temporary asp.net files\%' AND LOWER(Filename) LIKE '%\assembly\tmp\%' AND LOWER(Filename) LIKE '%.dll%'

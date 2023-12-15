@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\reg.exe' OR LOWER("Process Name") LIKE '%\reg.exe') AND LOWER(Command) LIKE '%add %' AND LOWER(Command) LIKE '%system\currentcontrolset\services\%' AND LOWER(Command) LIKE '% imagepath %' AND (LOWER(Command) LIKE '% /d %' OR LOWER(Command) LIKE '% -d %')

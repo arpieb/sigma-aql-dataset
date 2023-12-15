@@ -1,0 +1,32 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-04'
+description: Detects PsExec default pipe creation where the image executed is located
+  in a suspicious location. Which could indicate that the tool is being used in an
+  attack
+detection:
+  condition: selection
+  selection:
+    Image|contains:
+    - :\Users\Public\
+    - :\Windows\Temp\
+    - \AppData\Local\Temp\
+    - \Desktop\
+    - \Downloads\
+    PipeName: \PSEXESVC
+falsepositives:
+- Rare legitimate use of psexec from the locations mentioned above. This will require
+  initial tuning based on your environment.
+id: 41504465-5e3a-4a5b-a5b4-2a0baadd4463
+level: medium
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- https://www.jpcert.or.jp/english/pub/sr/ir_research.html
+- https://jpcertcc.github.io/ToolAnalysisResultSheet
+status: experimental
+tags:
+- attack.execution
+- attack.t1569.002
+- attack.s0029
+title: PsExec Tool Execution From Suspicious Locations - PipeName

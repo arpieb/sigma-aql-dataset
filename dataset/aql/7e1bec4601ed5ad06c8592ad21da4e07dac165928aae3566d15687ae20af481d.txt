@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%powershell.exe%' OR LOWER(Command) LIKE '%\powershell%' OR LOWER(Command) LIKE '%\pwsh%' OR LOWER(Command) LIKE '%pwsh.exe%') AND LOWER(Command) LIKE '%/c %' AND LOWER(Command) LIKE '%\appdata\%' AND (LOWER(Command) LIKE '%local\%' OR LOWER(Command) LIKE '%roaming\%')

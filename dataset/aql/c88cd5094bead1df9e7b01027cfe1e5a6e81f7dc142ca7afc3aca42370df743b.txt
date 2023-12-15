@@ -1,0 +1,1 @@
+SELECT *, URL, "User Agent" FROM events WHERE LOWER(URL) LIKE '%.paste.ee/r/%' OR LOWER(URL) LIKE '%.pastebin.com/raw/%' OR LOWER(URL) LIKE '%.hastebin.com/raw/%' OR LOWER(URL) LIKE '%.ghostbin.co/paste/%/raw/%' OR LOWER(URL) LIKE '%pastetext.net/%' OR LOWER(URL) LIKE '%pastebin.pl/%' OR LOWER(URL) LIKE '%paste.ee/%'

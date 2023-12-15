@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\appdata\local\temp\sam-%' AND LOWER(Filename) LIKE '%.dmp%'

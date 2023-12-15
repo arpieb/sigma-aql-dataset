@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Parent Process Path"='C:\Windows\PSEXESVC.exe' AND (LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%')

@@ -1,0 +1,24 @@
+author: Sohan G (D4rkCiph3r), Red Canary (Idea)
+date: '2023-04-03'
+description: Detects potential suspicious applet or osascript executing "osacompile".
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: osacompile
+    ParentImage|endswith:
+    - /applet
+    - /osascript
+falsepositives:
+- Unknown
+id: a753a6af-3126-426d-8bd0-26ebbcb92254
+level: medium
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://redcanary.com/blog/mac-application-bundles/
+status: experimental
+tags:
+- attack.execution
+- attack.t1059.002
+title: Osacompile Execution By Potentially Suspicious Applet/Osascript

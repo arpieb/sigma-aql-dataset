@@ -1,0 +1,38 @@
+author: X__Junior (Nextron Systems)
+date: '2023-05-24'
+description: Detects specific process tree behavior of a "rundll32" execution often
+  linked with potential Qakbot activity.
+detection:
+  condition: all of selection_*
+  selection_extension:
+    CommandLine|contains: .dll
+  selection_paths:
+    CommandLine|contains:
+    - :\ProgramData\
+    - :\Users\Public\
+    - \AppData\Local\Temp\
+    - \AppData\Roaming\
+    Image|endswith: \rundll32.exe
+    ParentImage|endswith:
+    - \cmd.exe
+    - \cscript.exe
+    - \curl.exe
+    - \mshta.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \wscript.exe
+falsepositives:
+- Unlikely
+id: cf879ffb-793a-4753-9a14-bc8f37cc90df
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/pr0xylife/Qakbot/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.execution
+- detection.emerging_threats
+title: Potential Qakbot Rundll32 Execution

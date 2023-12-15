@@ -1,0 +1,42 @@
+author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
+  (fp)
+date: '2020-10-15'
+description: Detects the PowerShell command lines with special characters
+detection:
+  condition: all of selection_* and not 1 of filter_optional_*
+  filter_optional_amazonSSM:
+    ParentImage: C:\Program Files\Amazon\SSM\ssm-document-worker.exe
+  filter_optional_defender_atp:
+    CommandLine|contains:
+    - new EventSource("Microsoft.Windows.Sense.Client.Management"
+    - public static extern bool InstallELAMCertificateInfo(SafeFileHandle handle);
+  selection_img:
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+    OriginalFileName:
+    - PowerShell.EXE
+    - pwsh.dll
+  selection_re:
+    CommandLine|re|all:
+    - .*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*\+.*
+    - .*\{.*\{.*\{.*\{.*\{.*\{.*\{.*\{.*\{.*\{.*
+    - .*\^.*\^.*\^.*\^.*\^.*
+    - .*`.*`.*`.*`.*`.*
+falsepositives:
+- Amazon SSM Document Worker
+- Windows Defender ATP
+id: d7bcd677-645d-4691-a8d4-7a5602b780d1
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-powershell-abuse?slide=64
+status: test
+tags:
+- attack.execution
+- attack.defense_evasion
+- attack.t1027
+- attack.t1059.001
+title: Potential PowerShell Command Line Obfuscation

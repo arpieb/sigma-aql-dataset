@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\schtasks.exe' OR LOWER("Process Name") LIKE '%\schtasks.exe') AND LOWER(Command) LIKE '% /create %' AND LOWER(Command) LIKE '% /sc once %' AND LOWER(Command) LIKE '%\temp\%'

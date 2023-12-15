@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-adreplaccount%' OR LOWER(Message) LIKE '%-all %' OR LOWER(Message) LIKE '%-server %'

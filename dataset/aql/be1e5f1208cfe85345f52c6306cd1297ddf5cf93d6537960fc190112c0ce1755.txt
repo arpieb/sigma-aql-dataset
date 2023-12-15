@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\iviewers.dll' AND NOT((LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\program files (x86)\windows kits\%' OR LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\program files\windows kits\%'))

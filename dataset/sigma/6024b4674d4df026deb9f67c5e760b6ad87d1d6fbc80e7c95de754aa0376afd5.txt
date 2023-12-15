@@ -1,0 +1,32 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-23'
+description: Detects the creation of a "Report.wer" file in an uncommon folder structure.
+  This could be a sign of potential exploitation of CVE-2023-36874.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_locations:
+    TargetFilename|contains:
+    - \ReportArchive\AppCrash_
+    - \ReportArchive\AppHang_
+    - \ReportArchive\Critical_
+    - \ReportArchive\Kernel_
+    - \ReportArchive\NonCritical_
+  selection:
+    TargetFilename|contains: :\ProgramData\Microsoft\Windows\WER\ReportArchive\
+    TargetFilename|endswith: \Report.wer
+falsepositives:
+- Unknown
+id: 92389a99-5215-43b0-a09f-e334453b2ed3
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://github.com/Wh04m1001/CVE-2023-36874
+- https://www.crowdstrike.com/blog/falcon-complete-zero-day-exploit-cve-2023-36874/
+status: experimental
+tags:
+- attack.execution
+- cve.2023.36874
+- detection.emerging_threats
+title: Potential CVE-2023-36874 Exploitation - Uncommon Report.Wer Location

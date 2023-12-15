@@ -1,0 +1,90 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-21'
+description: 'Detects suspicious child processes of electron apps (teams, discord,
+  slack, etc.). This could be a potential sign of ".asar" file tampering (See reference
+  section for more information) or binary execution proxy through specific CLI arguments
+  (see related rule)
+
+  '
+detection:
+  condition: selection_parent and 1 of selection_child_* and not 1 of filter_main_*
+    and not 1 of filter_optional_*
+  filter_main_chrome:
+    Image|endswith: \chrome.exe
+    ParentImage|endswith: \chrome.exe
+  filter_main_discord:
+    Image|endswith: \discord.exe
+    ParentImage|endswith: \discord.exe
+  filter_main_githubdesktop:
+    Image|endswith: \GitHubDesktop.exe
+    ParentImage|endswith: \GitHubDesktop.exe
+  filter_main_keybase:
+    Image|endswith: \keybase.exe
+    ParentImage|endswith: \keybase.exe
+  filter_main_msedge:
+    Image|endswith: \msedge.exe
+    ParentImage|endswith: \msedge.exe
+  filter_main_msedgewebview:
+    Image|endswith: \msedgewebview2.exe
+    ParentImage|endswith: \msedgewebview2.exe
+  filter_main_msteams:
+    Image|endswith: \msteams.exe
+    ParentImage|endswith: \msteams.exe
+  filter_main_slack:
+    Image|endswith: \slack.exe
+    ParentImage|endswith: \slack.exe
+  filter_main_teams:
+    Image|endswith: \teams.exe
+    ParentImage|endswith: \teams.exe
+  filter_main_werfault:
+    Image:
+    - C:\Windows\SysWOW64\WerFault.exe
+    - C:\Windows\System32\WerFault.exe
+  filter_optional_discord:
+    CommandLine|contains: \NVSMI\nvidia-smi.exe
+    ParentImage|endswith: \Discord.exe
+  selection_child_image:
+    Image|endswith:
+    - \cmd.exe
+    - \cscript.exe
+    - \mshta.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \regsvr32.exe
+    - \wscript.exe
+  selection_child_paths:
+    Image|contains:
+    - \AppData\Local\Temp\
+    - \Users\Public\
+    - \Windows\Temp\
+    - :\Temp\
+  selection_parent:
+    ParentImage|endswith:
+    - \chrome.exe
+    - \discord.exe
+    - \GitHubDesktop.exe
+    - \keybase.exe
+    - \msedge.exe
+    - \msedgewebview2.exe
+    - \msteams.exe
+    - \slack.exe
+    - \Teams.exe
+falsepositives:
+- Legitimate child processes can occur in cases of debugging
+id: f26eb764-fd89-464b-85e2-dc4a8e6e77b8
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://taggart-tech.com/quasar-electron/
+- https://github.com/mttaggart/quasar
+- https://positive.security/blog/ms-officecmd-rce
+- https://lolbas-project.github.io/lolbas/Binaries/Msedge/
+- https://lolbas-project.github.io/lolbas/Binaries/Teams/
+- https://lolbas-project.github.io/lolbas/Binaries/msedgewebview2/
+- https://medium.com/@MalFuzzer/one-electron-to-rule-them-all-dc2e9b263daf
+status: experimental
+tags:
+- attack.execution
+title: Suspicious Electron Application Child Processes

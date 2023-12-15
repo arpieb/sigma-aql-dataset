@@ -1,0 +1,32 @@
+author: John Lambert (tech), Florian Roth (Nextron Systems)
+date: '2017-03-04'
+description: Detects a process access to verclsid.exe that injects shellcode from
+  a Microsoft Office application / VBA macro
+detection:
+  condition: selection_target and 1 of selection_calltrace_*
+  selection_calltrace_1:
+    CallTrace|contains|all:
+    - '|UNKNOWN('
+    - VBE7.DLL
+  selection_calltrace_2:
+    CallTrace|contains: '|UNKNOWN'
+    SourceImage|contains: \Microsoft Office\
+  selection_target:
+    GrantedAccess: '0x1FFFFF'
+    TargetImage|endswith: \verclsid.exe
+falsepositives:
+- Unknown
+id: b7967e22-3d7e-409b-9ed5-cdae3f9243a1
+level: high
+logsource:
+  category: process_access
+  product: windows
+references:
+- https://twitter.com/JohnLaTwC/status/837743453039534080
+status: test
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1055
+- detection.emerging_threats
+title: Malware Shellcode in Verclsid Target Process

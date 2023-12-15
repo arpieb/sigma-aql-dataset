@@ -1,0 +1,39 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-09'
+description: Detects usage of the Get-ADUser cmdlet to collect user information and
+  output it to a file
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - ' > '
+    - ' | Select '
+    - Out-File
+    - Set-Content
+    - Add-Content
+    CommandLine|contains|all:
+    - 'Get-ADUser '
+    - ' -Filter *'
+  selection_img:
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+    OriginalFileName:
+    - PowerShell.EXE
+    - pwsh.dll
+falsepositives:
+- Legitimate admin scripts may use the same technique, it's better to exclude specific
+  computers or users who execute these commands or scripts often
+id: 1114e048-b69c-4f41-bc20-657245ae6e3f
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- http://blog.talosintelligence.com/2022/09/lazarus-three-rats.html
+- https://www.microsoft.com/en-us/security/blog/2022/10/18/defenders-beware-a-case-for-post-ransomware-investigations/
+status: test
+tags:
+- attack.discovery
+- attack.t1033
+title: User Discovery And Export Via Get-ADUser Cmdlet

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\quarkspwdump.exe' OR LOWER("Process Name") LIKE '%\quarkspwdump.exe' OR Command IN(' -dhl', ' --dump-hash-local', ' -dhdc', ' --dump-hash-domain-cached', ' --dump-bitlocker', ' -dhd ', ' --dump-hash-domain ', '--ntds-file')

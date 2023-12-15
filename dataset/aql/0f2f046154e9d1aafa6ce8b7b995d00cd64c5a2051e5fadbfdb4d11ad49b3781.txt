@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%7za.exe%' AND LOWER(Command) LIKE '%\c$\temp\log.zip%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%\harddiskvolumeshadowcopy%' AND LOWER(Command) LIKE '%system32\config\sam%' AND (LOWER(Command) LIKE '%copy-item%' OR LOWER(Command) LIKE '%cp $_.%' OR LOWER(Command) LIKE '%cpi $_.%' OR LOWER(Command) LIKE '%copy $_.%' OR LOWER(Command) LIKE '%.file]::copy(%')

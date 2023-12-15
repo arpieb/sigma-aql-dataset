@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\winrar.exe' OR LOWER("Process Name") LIKE '%\winrar.exe') AND LOWER(Filename) LIKE '%\appdata\local\temp\rar$%' AND Filename MATCHES '\.[a-zA-Z0-9]{1,4} \.'

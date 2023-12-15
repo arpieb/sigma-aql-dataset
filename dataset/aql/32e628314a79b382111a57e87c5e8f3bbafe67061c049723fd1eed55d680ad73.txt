@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%-exec bypass -w 1 -enc%' AND LOWER(Command) LIKE '%uwb0ageacgb0ac0asgbvagiaiaatafmaywbyagkacab0aeiababvagmaawagahsakabzageacabzacaakaaiahaa%'

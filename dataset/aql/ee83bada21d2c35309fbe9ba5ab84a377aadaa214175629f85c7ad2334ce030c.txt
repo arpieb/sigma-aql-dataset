@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%\\?\globalroot\device\harddiskvolumeshadowcopy%' AND (LOWER(Command) LIKE '%\ntds.dit%' OR LOWER(Command) LIKE '%\system%' OR LOWER(Command) LIKE '%\security%' OR LOWER(Command) LIKE '%c:\tmp\log%')

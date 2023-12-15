@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%/factory,{75dff2b7-6936-4c06-a8bb-676a7b00b24b}%' OR LOWER(Command) LIKE '%explorer.exe%' AND LOWER(Command) LIKE '% /root,%'

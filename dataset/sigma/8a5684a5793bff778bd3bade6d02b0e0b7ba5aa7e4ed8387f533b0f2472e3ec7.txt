@@ -1,0 +1,28 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-14'
+description: 'Detects the creation of new DLL assembly files by "aspnet_compiler.exe",
+  which could be a sign of "aspnet_compiler" abuse to proxy execution through a build
+  provider.
+
+  '
+detection:
+  condition: selection
+  selection:
+    Image|endswith: \aspnet_compiler.exe
+    TargetFilename|contains|all:
+    - \Temporary ASP.NET Files\
+    - \assembly\tmp\
+    - .dll
+falsepositives:
+- Legitimate assembly compilation using a build provider
+id: 4c7f49ee-2638-43bb-b85b-ce676c30b260
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- Internal Research
+status: experimental
+tags:
+- attack.execution
+title: Assembly DLL Creation Via AspNetCompiler

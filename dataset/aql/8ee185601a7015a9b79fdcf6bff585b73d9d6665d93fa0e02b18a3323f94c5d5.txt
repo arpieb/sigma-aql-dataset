@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Parent Process Path"='C:\Windows\explorer.exe' AND ("Process Path"='C:\Windows\System32\cmd.exe' OR "Process Name"='C:\Windows\System32\cmd.exe') AND LOWER(Command) LIKE '%powershell%' AND LOWER(Command) LIKE '%.lnk%'

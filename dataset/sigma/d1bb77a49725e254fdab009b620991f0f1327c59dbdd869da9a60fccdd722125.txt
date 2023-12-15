@@ -1,0 +1,29 @@
+author: Markus Neis
+date: '2017-11-06'
+description: Detects a named pipe used by Turla group samples
+detection:
+  condition: selection
+  selection:
+    PipeName:
+    - \atctl
+    - \comnap
+    - \iehelper
+    - \sdlrpc
+    - \userpipe
+falsepositives:
+- Unlikely
+id: 739915e4-1e70-4778-8b8a-17db02f66db1
+level: critical
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- Internal Research
+- https://attack.mitre.org/groups/G0010/
+status: test
+tags:
+- attack.g0010
+- attack.execution
+- attack.t1106
+- detection.emerging_threats
+title: Turla Group Named Pipes

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Integrity Level"='Medium' AND LOWER(Command) LIKE '%controlset%' AND LOWER(Command) LIKE '%services%' AND (LOWER(Command) LIKE '%\imagepath%' OR LOWER(Command) LIKE '%\failurecommand%' OR LOWER(Command) LIKE '%\servicedll%')

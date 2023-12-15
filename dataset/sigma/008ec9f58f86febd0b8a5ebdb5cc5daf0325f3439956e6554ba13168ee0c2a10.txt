@@ -1,0 +1,32 @@
+author: Florian Roth (Nextron Systems)
+date: '2017-03-12'
+description: Detects suspicious PowerShell invocation command parameters
+detection:
+  condition: all of selection*
+  selection_encoded:
+    ScriptBlockText|contains:
+    - ' -enc '
+    - ' -EncodedCommand '
+    - ' -ec '
+  selection_hidden:
+    ScriptBlockText|contains:
+    - ' -w hidden '
+    - ' -window hidden '
+    - ' -windowstyle hidden '
+    - ' -w 1 '
+  selection_noninteractive:
+    ScriptBlockText|contains:
+    - ' -noni '
+    - ' -noninteractive '
+falsepositives:
+- Very special / sneaky PowerShell scripts
+id: ed965133-513f-41d9-a441-e38076a0798f
+level: high
+logsource:
+  category: ps_script
+  product: windows
+status: test
+tags:
+- attack.execution
+- attack.t1059.001
+title: Suspicious PowerShell Invocations - Generic

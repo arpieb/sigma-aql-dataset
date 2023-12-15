@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-itemproperty%' OR LOWER(Message) LIKE '%\software\%' OR LOWER(Message) LIKE '%select-object%' OR LOWER(Message) LIKE '%format-table%'

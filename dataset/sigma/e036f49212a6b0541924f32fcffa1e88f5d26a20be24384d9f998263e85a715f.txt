@@ -1,0 +1,24 @@
+author: frack113
+date: '2022-05-28'
+description: Detects the use of the 'Pubprn.vbs' Microsoft signed script to execute
+  commands.
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - \pubprn.vbs
+    - 'script:'
+falsepositives:
+- Unknown
+id: 1fb76ab8-fa60-4b01-bddd-71e89bf555da
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Scripts/Pubprn/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1216.001
+title: Pubprn.vbs Proxy Execution

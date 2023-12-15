@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%rundll32.exe%' OR LOWER(Message) LIKE '%shell32.dll%' OR LOWER(Message) LIKE '%shellexec_rundll%' OR LOWER(Message) LIKE '%powershell%'

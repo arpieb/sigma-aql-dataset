@@ -1,0 +1,27 @@
+author: frack113
+date: '2021-07-30'
+description: Once established within a system or network, an adversary may use automated
+  techniques for collecting internal data
+detection:
+  condition: all of selection*
+  selection_action:
+    ScriptBlockText|contains:
+    - 'Get-Service '
+    - 'Get-ChildItem '
+    - 'Get-Process '
+  selection_redirect:
+    ScriptBlockText|contains: '> $env:TEMP\'
+falsepositives:
+- Unknown
+id: a9723fcc-881c-424c-8709-fd61442ab3c3
+level: medium
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1119/T1119.md
+status: test
+tags:
+- attack.collection
+- attack.t1119
+title: Recon Information for Export with PowerShell

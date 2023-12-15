@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename='whoami.exe' AND NOT((LOWER("Process Path") LIKE '%\whoami.exe' OR LOWER("Process Name") LIKE '%\whoami.exe'))

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\svchost.exe' AND (LOWER("Process Path") LIKE '%\mmc.exe' OR LOWER("Process Name") LIKE '%\mmc.exe') AND LOWER(Command) LIKE '%-embedding%'

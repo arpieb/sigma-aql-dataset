@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename IN('C:\ProgramData\GoogleUpdate\config.dat', 'C:\ProgramData\GoogleUpdate\GoogleUpdate.exe', 'C:\ProgramData\GoogleUpdate\GoogleUpdate\tmp.bat', 'C:\ProgramData\GoogleUpdate\goopdate.dll')

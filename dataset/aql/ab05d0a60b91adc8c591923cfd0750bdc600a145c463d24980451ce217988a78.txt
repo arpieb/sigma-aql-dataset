@@ -1,0 +1,1 @@
+SELECT *, Command, "Process Path", "Process Name", "Parent Process Path" FROM events WHERE devicetype=12 AND Command IN('rundll32.exe', 'rundll32')

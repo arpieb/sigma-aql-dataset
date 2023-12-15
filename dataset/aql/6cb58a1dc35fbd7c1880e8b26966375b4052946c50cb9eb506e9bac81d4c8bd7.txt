@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND "Process Path"='/usr/sbin/screencapture' OR "Process Name"='/usr/sbin/screencapture'

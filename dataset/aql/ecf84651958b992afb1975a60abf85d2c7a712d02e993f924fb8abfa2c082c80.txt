@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\rjvplatform.dll' AND ("Process Path"='\SystemResetPlatform.exe' OR "Process Name"='\SystemResetPlatform.exe') AND NOT((LOWER("Process Path") LIKE 'c:\windows\system32\systemresetplatform\%' OR LOWER("Process Name") LIKE 'c:\windows\system32\systemresetplatform\%'))

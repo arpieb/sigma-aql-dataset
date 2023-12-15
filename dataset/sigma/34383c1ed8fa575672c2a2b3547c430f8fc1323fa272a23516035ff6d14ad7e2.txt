@@ -1,0 +1,34 @@
+author: Max Altgelt (Nextron Systems), Roberto Rodriguez (Cyb3rWard0g), OTR (Open
+  Threat Research), MSTIC
+date: '2021-10-15'
+description: Detects specific commands commonly used to remove or empty the syslog.
+  Which is often used by attacker as a method to hide their tracks
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - rm /var/log/syslog
+    - rm -r /var/log/syslog
+    - rm -f /var/log/syslog
+    - rm -rf /var/log/syslog
+    - unlink /var/log/syslog
+    - unlink -r /var/log/syslog
+    - unlink -f /var/log/syslog
+    - unlink -rf /var/log/syslog
+    - mv /var/log/syslog
+    - ' >/var/log/syslog'
+    - ' > /var/log/syslog'
+falsepositives:
+- Log rotation.
+id: 3fcc9b35-39e4-44c0-a2ad-9e82b6902b31
+level: high
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1070.002/T1070.002.md
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1070.002
+title: Commands to Clear or Remove the Syslog

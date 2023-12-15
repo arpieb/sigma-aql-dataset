@@ -1,0 +1,24 @@
+author: frack113
+date: '2021-12-28'
+description: Detects changes to the registry values related to outlook security settings
+detection:
+  condition: selection
+  selection:
+    TargetObject|contains|all:
+    - \SOFTWARE\Microsoft\Office\
+    - \Outlook\Security\
+falsepositives:
+- Administrative activity
+id: c3cefdf4-6703-4e1c-bad8-bf422fc5015a
+level: medium
+logsource:
+  category: registry_set
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1137/T1137.md
+- https://docs.microsoft.com/en-us/outlook/troubleshoot/security/information-about-email-security-settings
+status: test
+tags:
+- attack.persistence
+- attack.t1137
+title: Outlook Security Settings Updated - Registry

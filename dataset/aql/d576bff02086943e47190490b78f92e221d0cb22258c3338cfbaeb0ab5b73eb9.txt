@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\vboxdrvinst.exe' OR LOWER("Process Name") LIKE '%\vboxdrvinst.exe') AND LOWER(Command) LIKE '%driver%' AND LOWER(Command) LIKE '%executeinf%'

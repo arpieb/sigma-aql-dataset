@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%mount-diskimage %' OR LOWER(Message) LIKE '%-imagepath %'

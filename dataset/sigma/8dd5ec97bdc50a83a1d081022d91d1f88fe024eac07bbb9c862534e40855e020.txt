@@ -1,0 +1,27 @@
+author: X__Junior (Nextron Systems)
+date: '2023-04-30'
+description: Detects the creation of an "svchost" process with specific command line
+  flags, that were seen present and used by ColdSteel RAT
+detection:
+  condition: selection
+  selection:
+    CommandLine|endswith:
+    - ' -k msupdate'
+    - ' -k msupdate2'
+    - ' -k alg'
+    Image|endswith: \svchost.exe
+falsepositives:
+- Unlikely
+id: 9f9cd389-cea0-4142-bf1a-a3fd424abedd
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/cold-steel/NCSC-MAR-Cold-Steel.pdf
+status: experimental
+tags:
+- attack.persistence
+- attack.defense_evasion
+- detection.emerging_threats
+title: COLDSTEEL RAT Service Persistence Execution

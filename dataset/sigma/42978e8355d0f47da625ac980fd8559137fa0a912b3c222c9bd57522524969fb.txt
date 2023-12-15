@@ -1,0 +1,29 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-11'
+description: Detects when a user enable developer features such as "Developer Mode"
+  or "Application Sideloading". Which allows the user to install untrusted packages.
+detection:
+  condition: all of selection_*
+  selection_flag:
+    CommandLine|contains: TurnOnDeveloperFeatures
+  selection_img:
+    Image|endswith: \SystemSettingsAdminFlows.exe
+    OriginalFileName: SystemSettingsAdminFlows.EXE
+  selection_options:
+    CommandLine|contains:
+    - DeveloperUnlock
+    - EnableSideloading
+falsepositives:
+- Unknown
+id: a383dec4-deec-4e6e-913b-ed9249670848
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- Internal Research
+- https://www.sentinelone.com/labs/inside-malicious-windows-apps-for-malware-deployment/
+status: test
+tags:
+- attack.defense_evasion
+title: Potential Signing Bypass Via Windows Developer Features

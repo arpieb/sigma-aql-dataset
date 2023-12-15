@@ -1,0 +1,34 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-24'
+description: Detects the presence and execution of Inveigh via dropped artefacts
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith:
+    - \Inveigh-Log.txt
+    - \Inveigh-Cleartext.txt
+    - \Inveigh-NTLMv1Users.txt
+    - \Inveigh-NTLMv2Users.txt
+    - \Inveigh-NTLMv1.txt
+    - \Inveigh-NTLMv2.txt
+    - \Inveigh-FormInput.txt
+    - \Inveigh.dll
+    - \Inveigh.exe
+    - \Inveigh.ps1
+    - \Inveigh-Relay.ps1
+falsepositives:
+- Unlikely
+id: bb09dd3e-2b78-4819-8e35-a7c1b874e449
+level: critical
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://github.com/Kevin-Robertson/Inveigh/blob/29d9e3c3a625b3033cdaf4683efaafadcecb9007/Inveigh/Support/Output.cs
+- https://github.com/Kevin-Robertson/Inveigh/blob/29d9e3c3a625b3033cdaf4683efaafadcecb9007/Inveigh/Support/Control.cs
+- https://thedfirreport.com/2020/11/23/pysa-mespinoza-ransomware/
+status: test
+tags:
+- attack.command_and_control
+- attack.t1219
+title: Inveigh Execution Artefacts

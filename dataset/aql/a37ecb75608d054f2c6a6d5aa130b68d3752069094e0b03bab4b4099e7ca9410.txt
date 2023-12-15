@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dotnet.exe' OR LOWER("Process Name") LIKE '%\dotnet.exe' OR Filename='.NET Host') AND (LOWER(Command) LIKE '%.dll' OR LOWER(Command) LIKE '%.csproj')

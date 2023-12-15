@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\unregmp2.exe' OR LOWER("Process Name") LIKE '%\unregmp2.exe' OR Filename='unregmp2.exe') AND LOWER(Command) LIKE '% /hidewmp%'

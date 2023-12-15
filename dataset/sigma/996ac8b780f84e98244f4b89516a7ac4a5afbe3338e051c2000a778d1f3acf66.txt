@@ -1,0 +1,100 @@
+author: frack113
+date: '2022-03-09'
+description: Detects the creation of an executable by another executable
+detection:
+  condition: selection and not 1 of filter_main_* and not 1 of filter_optional_*
+  filter_main_defender:
+    Image|contains:
+    - :\ProgramData\Microsoft\Windows Defender\
+    - :\Program Files\Windows Defender\
+  filter_main_dot_net:
+    Image|contains: :\Windows\Microsoft.NET\Framework
+    Image|endswith: \mscorsvw.exe
+    TargetFilename|contains: :\Windows\assembly
+  filter_main_generic_1:
+    Image|endswith:
+    - :\Windows\System32\msiexec.exe
+    - :\Windows\system32\cleanmgr.exe
+    - :\Windows\explorer.exe
+    - :\WINDOWS\system32\dxgiadaptercache.exe
+    - :\WINDOWS\system32\Dism.exe
+    - :\Windows\System32\wuauclt.exe
+  filter_main_githubdesktop:
+    Image|endswith: \AppData\Local\GitHubDesktop\Update.exe
+    TargetFilename|contains: \AppData\Local\SquirrelTemp\
+  filter_main_mscorsvw:
+    Image|contains: :\Windows\Microsoft.NET\Framework\
+    Image|endswith: \mscorsvw.exe
+    TargetFilename|contains: :\Windows\assembly\NativeImages_
+  filter_main_programfiles:
+    Image|contains:
+    - :\Program Files\
+    - :\Program Files (x86)\
+    TargetFilename|contains:
+    - :\Program Files\
+    - :\Program Files (x86)\
+  filter_main_teams:
+    Image|endswith: \AppData\Local\Microsoft\Teams\Update.exe
+    TargetFilename|endswith:
+    - \AppData\Local\Microsoft\Teams\stage\Teams.exe
+    - \AppData\Local\Microsoft\Teams\stage\Squirrel.exe
+    - \AppData\Local\Microsoft\SquirrelTemp\tempb\
+  filter_main_temp_installers:
+    Image|contains: \AppData\Local\Temp\
+    TargetFilename|contains: \AppData\Local\Temp\
+  filter_main_tiworker:
+    Image|contains: :\Windows\WinSxS\
+    Image|endswith: \TiWorker.exe
+  filter_main_update:
+    Image|endswith: :\WINDOWS\system32\svchost.exe
+    TargetFilename|contains: :\Windows\SoftwareDistribution\Download\
+  filter_main_upgrade:
+    Image|endswith: :\Windows\system32\svchost.exe
+    TargetFilename|contains|all:
+    - :\WUDownloadCache\
+    - \WindowsUpdateBox.exe
+  filter_main_vscode:
+    Image|contains: \AppData\Local\
+    Image|endswith: \Microsoft VS Code\Code.exe
+    TargetFilename|contains: \.vscode\extensions\
+  filter_main_windows_apps:
+    TargetFilename|contains: \AppData\Local\Microsoft\WindowsApps\
+  filter_main_windows_temp:
+    Image|contains: :\WINDOWS\TEMP\
+    TargetFilename|contains: :\WINDOWS\TEMP\
+  filter_main_windows_update_box:
+    Image|contains: :\WINDOWS\SoftwareDistribution\Download\
+    Image|endswith: \WindowsUpdateBox.Exe
+    TargetFilename|contains: :\$WINDOWS.~BT\Sources\
+  filter_optional_chrome:
+    Image|endswith: \ChromeSetup.exe
+    TargetFilename|contains: \Google
+  filter_optional_python:
+    Image|contains: \Python27\python.exe
+    TargetFilename|contains:
+    - \Python27\Lib\site-packages\
+    - \Python27\Scripts\
+    - \AppData\Local\Temp\
+  filter_optional_squirrel:
+    Image|contains: \AppData\Local\SquirrelTemp\Update.exe
+    TargetFilename|contains: \AppData\Local
+  selection:
+    Image|endswith: .exe
+    TargetFilename|endswith: .exe
+falsepositives:
+- Software installers
+- Update utilities
+- 32bit applications launching their 64bit versions
+id: 297afac9-5d02-4138-8c58-b977bac60556
+level: low
+logsource:
+  category: file_event
+  product: windows
+references:
+- Malware Sandbox
+status: experimental
+tags:
+- attack.resource_development
+- attack.t1587.001
+- detection.threat_hunting
+title: Creation of an Executable by an Executable

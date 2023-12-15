@@ -1,0 +1,35 @@
+author: Christian Burkard (Nextron Systems)
+date: '2021-11-24'
+description: Detects shell32.dll executing a DLL in a suspicious directory
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - '%AppData%'
+    - '%LocalAppData%'
+    - '%Temp%'
+    - '%tmp%'
+    - \AppData\
+    - \Temp\
+    - \Users\Public\
+    CommandLine|contains|all:
+    - shell32.dll
+    - Control_RunDLL
+  selection_img:
+    Image|endswith: \rundll32.exe
+    OriginalFileName: RUNDLL32.EXE
+falsepositives:
+- Unknown
+id: 32b96012-7892-429e-b26c-ac2bf46066ff
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.group-ib.com/resources/threat-research/red-curl-2.html
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.execution
+- attack.t1218.011
+title: Shell32 DLL Execution in Suspicious Directory

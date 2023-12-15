@@ -1,0 +1,25 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-10-25'
+description: 'Detects the creation of file by the "node.exe" process in the ".vscode-server"
+  directory. Could be a sign of remote file creation via VsCode tunnel feature
+
+  '
+detection:
+  condition: selection
+  selection:
+    Image|contains: \servers\Stable-
+    Image|endswith: \server\node.exe
+    TargetFilename|contains: \.vscode-server\data\User\History\
+falsepositives:
+- Unknown
+id: 56e05d41-ce99-4ecd-912d-93f019ee0b71
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- Internal Research
+status: experimental
+tags:
+- attack.command_and_control
+title: Visual Studio Code Tunnel Remote File Creation

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\xordump.exe' OR LOWER("Process Name") LIKE '%\xordump.exe' OR LOWER(Command) LIKE '% -process lsass.exe %' OR LOWER(Command) LIKE '% -m comsvcs %' OR LOWER(Command) LIKE '% -m dbghelp %' OR LOWER(Command) LIKE '% -m dbgcore %'

@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-02-08'
+description: Detects creation of files which are the results of executing the built-in
+  reconnaissance script "C:\Windows\System32\gatherNetworkInfo.vbs".
+detection:
+  condition: all of selection*
+  selection:
+    TargetFilename|endswith:
+    - \Hotfixinfo.txt
+    - \netiostate.txt
+    - \sysportslog.txt
+    - \VmSwitchLog.evtx
+    TargetFilename|startswith: C:\Windows\System32\config
+falsepositives:
+- Unknown
+id: f92a6f1e-a512-4a15-9735-da09e78d7273
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://posts.slayerlabs.com/living-off-the-land/#gathernetworkinfovbs
+- https://www.mandiant.com/resources/blog/trojanized-windows-installers-ukrainian-government
+status: experimental
+tags:
+- attack.discovery
+title: GatherNetworkInfo.VBS Reconnaissance Script Output

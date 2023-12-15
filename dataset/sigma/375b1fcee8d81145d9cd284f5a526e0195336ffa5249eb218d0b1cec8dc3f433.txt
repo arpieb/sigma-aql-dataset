@@ -1,0 +1,87 @@
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: '2020-10-12'
+description: 'Detects the use of the Windows Update Client binary (wuauclt.exe) to
+  proxy execute code and making network connections.
+
+  One could easily make the DLL spawn a new process and inject to it to proxy the
+  network connection and bypass this rule.
+
+  '
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_cli_empty:
+    CommandLine: ''
+  filter_main_cli_null:
+    CommandLine: null
+  filter_main_ipv4:
+    DestinationIp|startswith:
+    - '10.'
+    - '127.'
+    - 169.254.
+    - '172.16'
+    - '172.17'
+    - '172.18'
+    - '172.19'
+    - '172.20'
+    - '172.21'
+    - '172.22'
+    - '172.23'
+    - '172.24'
+    - '172.25'
+    - '172.26'
+    - '172.27'
+    - '172.28'
+    - '172.29'
+    - '172.30'
+    - '172.31'
+    - '192.168'
+  filter_main_ipv6:
+    DestinationIp|startswith:
+    - ::1
+    - 0:0:0:0:0:0:0:1
+    - 'fe80:'
+    - fc
+    - fd
+  filter_main_msrange:
+    DestinationIp|startswith:
+    - 20.184.
+    - 20.185.
+    - 20.186.
+    - 20.187.
+    - 20.188.
+    - 20.189.
+    - 20.190.
+    - 20.191.
+    - 20.220.
+    - 20.221.
+    - 23.79.
+    - 51.10.
+    - 51.103.
+    - 51.104.
+    - 51.105.
+    - 52.239.
+  filter_main_uus:
+    CommandLine|contains:
+    - :\Windows\UUS\Packages\Preview\amd64\updatedeploy.dll /ClassId
+    - :\Windows\UUS\amd64\UpdateDeploy.dll /ClassId
+  filter_main_winsxs:
+    CommandLine|contains|all:
+    - :\Windows\WinSxS\
+    - '\UpdateDeploy.dll /ClassId '
+  selection:
+    CommandLine|contains: ' /RunHandlerComServer'
+    Image|contains: wuauclt
+falsepositives:
+- Unknown
+id: c649a6c7-cd8c-4a78-9c04-000fc76df954
+level: medium
+logsource:
+  category: network_connection
+  product: windows
+references:
+- https://dtm.uk/wuauclt/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218
+title: Potentially Suspicious Wuauclt Network Connection

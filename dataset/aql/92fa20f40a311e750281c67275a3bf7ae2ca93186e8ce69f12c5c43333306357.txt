@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Filename) LIKE '%.iso.lnk' OR LOWER(Filename) LIKE '%.img.lnk' OR LOWER(Filename) LIKE '%.vhd.lnk' OR LOWER(Filename) LIKE '%.vhdx.lnk') AND LOWER(Filename) LIKE '%\microsoft\windows\recent\%'

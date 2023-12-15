@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(UTF8(payload)) LIKE '%import-module %' OR LOWER(UTF8(payload)) LIKE '%ipmo %') AND LOWER(UTF8(payload)) LIKE '%microsoft.activedirectory.management.dll%'

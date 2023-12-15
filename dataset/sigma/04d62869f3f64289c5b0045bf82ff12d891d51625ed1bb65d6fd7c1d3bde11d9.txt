@@ -1,0 +1,32 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-02-23'
+description: Detects suspicious scheduled task creations from a parent stored in a
+  temporary folder
+detection:
+  condition: selection and not 1 of filter*
+  filter:
+    CommandLine|contains:
+    - update_task.xml
+    - unattended.ini
+  selection:
+    CommandLine|contains: '/Create '
+    Image|endswith: \schtasks.exe
+    ParentImage|contains:
+    - \AppData\Local\
+    - \AppData\Roaming\
+    - \Temporary Internet
+    - \Users\Public\
+falsepositives:
+- Software installers that run from temporary folders and also install scheduled tasks
+id: 9494479d-d994-40bf-a8b1-eea890237021
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://app.any.run/tasks/649e7b46-9bec-4d05-98a5-dfa9a13eaae5/
+status: test
+tags:
+- attack.execution
+- attack.t1053.005
+title: Suspicious Add Scheduled Task Parent

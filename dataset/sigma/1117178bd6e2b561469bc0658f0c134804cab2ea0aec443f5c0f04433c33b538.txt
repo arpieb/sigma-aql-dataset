@@ -1,0 +1,23 @@
+author: Florian Roth (Nextron Systems)
+date: '2023-10-11'
+description: Detects the pattern of a pipe name as used by the hack tool CoercedPotato
+detection:
+  condition: selection
+  selection:
+    PipeName|contains: \coerced\
+falsepositives:
+- Unknown
+id: 4d0083b3-580b-40da-9bba-626c19fe4033
+level: high
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- https://blog.hackvens.fr/articles/CoercedPotato.html
+- https://github.com/hackvens/CoercedPotato
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1055
+title: HackTool - CoercedPotato Named Pipe Creation

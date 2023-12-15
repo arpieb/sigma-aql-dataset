@@ -1,0 +1,24 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-31'
+description: Detects REGSVR32.exe to execute DLL hosted on remote shares
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: ' \\'
+  selection_img:
+    Image|endswith: \regsvr32.exe
+    OriginalFileName: \REGSVR32.EXE
+falsepositives:
+- Unknown
+id: 88a87a10-384b-4ad7-8871-2f9bf9259ce5
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2022/10/31/follina-exploit-leads-to-domain-compromise/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218.010
+title: Suspicious Regsvr32 Execution From Remote Share

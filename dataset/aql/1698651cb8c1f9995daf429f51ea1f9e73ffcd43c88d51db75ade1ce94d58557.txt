@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\winword.exe' AND (LOWER("Process Path") LIKE '%\fltldr.exe%' OR LOWER("Process Name") LIKE '%\fltldr.exe%')

@@ -1,0 +1,24 @@
+author: elhoim
+date: '2022-09-09'
+description: Detects renamed vmnat.exe or portable version that can be used for DLL
+  side-loading
+detection:
+  condition: selection and not 1 of filter_*
+  filter_rename:
+    Image|endswith: vmnat.exe
+  selection:
+    OriginalFileName: vmnat.exe
+falsepositives:
+- Unknown
+id: 7b4f794b-590a-4ad4-ba18-7964a2832205
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/malmoeb/status/1525901219247845376
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1574.002
+title: Renamed Vmnat.exe Execution

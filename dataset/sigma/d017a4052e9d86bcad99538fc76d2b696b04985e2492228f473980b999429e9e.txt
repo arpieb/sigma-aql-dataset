@@ -1,0 +1,44 @@
+author: Teymur Kheirkhabarov, Ecco, Florian Roth
+date: '2019-10-26'
+description: Detects the use of getsystem Meterpreter/Cobalt Strike command by detecting
+  a specific service starting
+detection:
+  condition: selection_img and 1 of selection_technique_* and not 1 of filter_*
+  filter_defender:
+    CommandLine|contains: MpCmdRun
+  selection_img:
+    ParentImage|endswith: \services.exe
+  selection_technique_1:
+    CommandLine|contains:
+    - cmd
+    - '%COMSPEC%'
+    CommandLine|contains|all:
+    - /c
+    - echo
+    - \pipe\
+  selection_technique_2:
+    CommandLine|contains|all:
+    - rundll32
+    - .dll,a
+    - '/p:'
+falsepositives:
+- Commandlines containing components like cmd accidentally
+- Jobs and services started with cmd
+fields:
+- ComputerName
+- User
+- CommandLine
+id: 15619216-e993-4721-b590-4c520615a67d
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment
+- https://blog.cobaltstrike.com/2014/04/02/what-happens-when-i-type-getsystem/
+status: test
+tags:
+- attack.privilege_escalation
+- attack.t1134.001
+- attack.t1134.002
+title: Potential Meterpreter/CobaltStrike Activity

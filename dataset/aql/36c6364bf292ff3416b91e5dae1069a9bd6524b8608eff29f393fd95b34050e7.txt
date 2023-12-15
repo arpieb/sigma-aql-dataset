@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\winget.exe' OR LOWER("Process Name") LIKE '%\winget.exe' OR Filename='winget.exe') AND LOWER(Command) LIKE '%source %' AND LOWER(Command) LIKE '%add %'

@@ -1,0 +1,39 @@
+author: Florian Roth (Nextron Systems), frack113
+date: '2019-12-20'
+description: Detects activity mentioned in Operation Wocao report
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - checkadmin.exe 127.0.0.1 -all
+    - netsh advfirewall firewall add rule name=powershell dir=in
+    - cmd /c powershell.exe -ep bypass -file c:\s.ps1
+    - /tn win32times /f
+    - create win32times binPath=
+    - \c$\windows\system32\devmgr.dll
+    - ' -exec bypass -enc JgAg'
+    - type *keepass\KeePass.config.xml
+    - iie.exe iie.txt
+    - reg query HKEY_CURRENT_USER\Software\*\PuTTY\Sessions\
+falsepositives:
+- Administrators that use checkadmin.exe tool to enumerate local administrators
+id: 1cfac73c-be78-4f9a-9b08-5bde0c3953ab
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.fox-it.com/en/news/whitepapers/operation-wocao-shining-a-light-on-one-of-chinas-hidden-hacking-groups/
+- https://twitter.com/SBousseaden/status/1207671369963646976
+status: test
+tags:
+- attack.discovery
+- attack.t1012
+- attack.defense_evasion
+- attack.t1036.004
+- attack.t1027
+- attack.execution
+- attack.t1053.005
+- attack.t1059.001
+- detection.emerging_threats
+title: Operation Wocao Activity

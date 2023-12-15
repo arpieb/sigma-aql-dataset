@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\microsoft\windows\start menu\programs\startup%' AND NOT(("Process Path"='C:\Windows\System32\wuauclt.exe' OR "Process Name"='C:\Windows\System32\wuauclt.exe' OR LOWER(Filename) LIKE 'c:\$windows.~bt\newos\%'))

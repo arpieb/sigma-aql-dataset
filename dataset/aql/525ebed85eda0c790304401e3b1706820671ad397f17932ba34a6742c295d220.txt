@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%add member to role%' OR LOWER(Message) LIKE '%add eligible member to role%' OR LOWER(Message) LIKE '%add scoped member to role%'

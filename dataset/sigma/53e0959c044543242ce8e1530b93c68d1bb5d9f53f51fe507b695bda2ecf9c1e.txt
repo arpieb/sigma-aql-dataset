@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-30'
+description: Detects the creation of a file with a double extension and a space by
+  WinRAR. This could be a sign of exploitation of CVE-2023-38331
+detection:
+  condition: selection
+  selection:
+    Image|endswith: \WinRAR.exe
+    TargetFilename|contains: \AppData\Local\Temp\Rar$
+    TargetFilename|re: \.[a-zA-Z0-9]{1,4} \.
+falsepositives:
+- Unknown
+id: e4556676-fc5c-4e95-8c39-5ef27791541f
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.group-ib.com/blog/cve-2023-38831-winrar-zero-day/
+- https://github.com/knight0x07/WinRAR-Code-Execution-Vulnerability-CVE-2023-38831/blob/26ab6c40b6d2c09bb4fc60feaa4a3a90cfd20c23/Part-1-Overview.md
+status: experimental
+tags:
+- attack.execution
+- cve.2023.38331
+- detection.emerging_threats
+title: CVE-2023-38331 Exploitation Attempt - Suspicious Double Extension File

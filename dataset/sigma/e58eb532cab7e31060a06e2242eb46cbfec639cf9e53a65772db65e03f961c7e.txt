@@ -1,0 +1,46 @@
+author: Connor Martin, Nasreddine Bencherchali (Nextron Systems)
+date: '2022-12-23'
+description: Detects service installation of different remote access tools software.
+  These software are often abused by threat actors to perform
+detection:
+  condition: selection
+  selection:
+    EventID: 4697
+    ServiceFileName|contains:
+    - AmmyyAdmin
+    - Atera
+    - BASupportExpressSrvcUpdater
+    - BASupportExpressStandaloneService
+    - chromoting
+    - GoToAssist
+    - GoToMyPC
+    - jumpcloud
+    - LMIGuardianSvc
+    - LogMeIn
+    - monblanking
+    - Parsec
+    - RManService
+    - RPCPerformanceService
+    - RPCService
+    - SplashtopRemoteService
+    - SSUService
+    - TeamViewer
+    - TightVNC
+    - vncserver
+    - Zoho
+falsepositives:
+- The rule doesn't look for anything suspicious so false positives are expected. If
+  you use one of the tools mentioned, comment it out
+id: c8b00925-926c-47e3-beea-298fd563728e
+level: medium
+logsource:
+  product: windows
+  service: security
+references:
+- https://redcanary.com/blog/misbehaving-rats/
+status: experimental
+tags:
+- attack.persistence
+- attack.t1543.003
+- attack.t1569.002
+title: Remote Access Tool Services Have Been Installed - Security

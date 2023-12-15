@@ -1,0 +1,64 @@
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: '2022-06-05'
+description: Detects the creation of a file with an uncommon extension in an Office
+  application startup folder
+detection:
+  condition: ((selection_word_paths and not filter_exclude_word_ext) or (selection_excel_paths
+    and not filter_exclude_excel_ext)) and not 1 of filter_main_*
+  filter_exclude_excel_ext:
+    TargetFilename|endswith:
+    - .xls
+    - .xlsm
+    - .xlsx
+    - .xlt
+    - .xltm
+    - .xll
+    - .xlw
+  filter_exclude_word_ext:
+    TargetFilename|endswith:
+    - .docb
+    - .docm
+    - .docx
+    - .dotm
+    - .pdf
+    - .wll
+    - .wwl
+  filter_main_office_apps:
+    Image|endswith:
+    - \winword.exe
+    - \excel.exe
+    Image|startswith:
+    - C:\Program Files\Microsoft Office\
+    - C:\Program Files (x86)\Microsoft Office\
+  filter_main_office_click_to_run:
+    Image|endswith: \OfficeClickToRun.exe
+    Image|startswith: C:\Program Files\Common Files\Microsoft Shared\ClickToRun\
+  selection_excel_paths:
+    TargetFilename|contains: \Microsoft\Excel\XLSTART
+    TargetFilename|contains|all:
+    - \Office
+    - \Program Files
+    - \XLSTART
+  selection_word_paths:
+    TargetFilename|contains: \Microsoft\Word\STARTUP
+    TargetFilename|contains|all:
+    - \Office
+    - \Program Files
+    - \STARTUP
+falsepositives:
+- Other legitimate extensions used by either excel or word
+id: a10a2c40-2c4d-49f8-b557-1a946bc55d9d
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://app.any.run/tasks/d6fe6624-6ef8-485d-aa75-3d1bdda2a08c/
+- http://addbalance.com/word/startup.htm
+- https://answers.microsoft.com/en-us/msoffice/forum/all/document-in-word-startup-folder-doesnt-open-when/44ab0932-2917-4150-8cdc-2f2cf39e86f3
+- https://en.wikipedia.org/wiki/List_of_Microsoft_Office_filename_extensions
+status: experimental
+tags:
+- attack.resource_development
+- attack.t1587.001
+title: Uncommon File Created In Office Startup Folder

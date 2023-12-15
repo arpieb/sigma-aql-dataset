@@ -1,0 +1,31 @@
+author: Nasreddine Bencherchali (Nextron Systems), oscd.community, Natalia Shornikova,
+  frack113
+date: '2022-05-21'
+description: Detects the use of the Microsoft signed script "CL_mutexverifiers" to
+  proxy the execution of additional PowerShell script commands
+detection:
+  condition: all of selection_*
+  selection_pwsh:
+    CommandLine|contains: ' -nologo -windowstyle minimized -file '
+    Image|endswith: \powershell.exe
+    ParentImage|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+  selection_temp:
+    CommandLine|contains:
+    - \AppData\Local\Temp\
+    - \Windows\Temp\
+falsepositives:
+- Unknown
+id: 1e0e1a81-e79b-44bc-935b-ddb9c8006b3d
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Scripts/CL_mutexverifiers/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1216
+title: Potential Script Proxy Execution Via CL_Mutexverifiers.ps1

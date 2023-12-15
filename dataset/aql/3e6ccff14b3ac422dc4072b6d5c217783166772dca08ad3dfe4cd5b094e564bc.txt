@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%powershell%' OR LOWER(Message) LIKE '%windowstyle%' OR LOWER(Message) LIKE '%hidden%') AND NOT((LOWER(Message) LIKE '%:\program files\amazon\workspacesconfig\scripts*%' OR LOWER(Message) LIKE '%$psscriptroot\module\workspacescriptmodule\workspacescriptmodule%'))

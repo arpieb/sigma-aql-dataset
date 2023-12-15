@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\mshta.exe' OR LOWER("Process Name") LIKE '%\mshta.exe' OR Filename='MSHTA.EXE') AND LOWER(Command) LIKE '%javascript%'

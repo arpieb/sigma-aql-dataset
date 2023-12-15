@@ -1,0 +1,136 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-11-27'
+description: Detects process access to LSASS memory with suspicious access flags and
+  from a potentially suspicious folder
+detection:
+  condition: selection and not 1 of filter_optional_*
+  filter_optional_adobe_arm_helper:
+    GrantedAccess: '0x1410'
+    SourceImage|contains:
+    - :\Program Files\Common Files\Adobe\ARM\
+    - :\Program Files (x86)\Common Files\Adobe\ARM\
+    SourceImage|endswith: \AdobeARMHelper.exe
+  filter_optional_avira:
+    GrantedAccess: '0x1410'
+    SourceImage|contains: \AppData\Local\Temp\is-
+    SourceImage|endswith: .tmp\avira_system_speedup.tmp
+  filter_optional_chrome_update:
+    GrantedAccess:
+    - '0x410'
+    - '0x1410'
+    SourceImage|contains: :\Program Files (x86)\Google\Temp\
+    SourceImage|endswith: .tmp\GoogleUpdate.exe
+  filter_optional_dropbox_1:
+    GrantedAccess:
+    - '0x410'
+    - '0x1410'
+    SourceImage|contains: :\Windows\Temp\
+    SourceImage|endswith: .tmp\DropboxUpdate.exe
+  filter_optional_dropbox_2:
+    GrantedAccess: '0x1410'
+    SourceImage|contains|all:
+    - :\Users\
+    - \AppData\Local\Temp\
+    SourceImage|endswith: .tmp\DropboxUpdate.exe
+  filter_optional_dropbox_3:
+    GrantedAccess: '0x1410'
+    SourceImage|contains:
+    - :\Program Files (x86)\Dropbox\
+    - :\Program Files\Dropbox\
+    SourceImage|endswith: \DropboxUpdate.exe
+  filter_optional_generic_appdata:
+    GrantedAccess: '0x410'
+    SourceImage|contains|all:
+    - :\Users\
+    - \AppData\Local\
+    SourceImage|endswith:
+    - \Microsoft VS Code\Code.exe
+    - \software_reporter_tool.exe
+    - \DropboxUpdate.exe
+    - \MBAMInstallerService.exe
+    - \WebexMTA.exe
+    - \WebEx\WebexHost.exe
+    - \JetBrains\Toolbox\bin\jetbrains-toolbox.exe
+  filter_optional_keybase:
+    GrantedAccess: '0x1fffff'
+    SourceImage|contains: :\Users\
+    SourceImage|endswith: \AppData\Local\Keybase\keybase.exe
+  filter_optional_ms_products:
+    GrantedAccess: '0x1410'
+    SourceImage|contains|all:
+    - :\Users\
+    - \AppData\Local\Temp\
+    - \vs_bootstrapper_
+  filter_optional_nextron:
+    GrantedAccess:
+    - '0x1fffff'
+    - '0x1010'
+    - '0x101010'
+    SourceImage|contains:
+    - :\Windows\Temp\asgard2-agent\
+    - :\Windows\Temp\asgard2-agent-sc\
+    SourceImage|endswith:
+    - \thor64.exe
+    - \thor.exe
+    - \aurora-agent-64.exe
+    - \aurora-agent.exe
+  filter_optional_viberpc_updater:
+    GrantedAccess: '0x1fffff'
+    SourceImage|contains: \AppData\Roaming\ViberPC\
+    SourceImage|endswith: \updater.exe
+    TargetImage|endswith: \winlogon.exe
+  selection:
+    GrantedAccess|endswith:
+    - '10'
+    - '30'
+    - '50'
+    - '70'
+    - '90'
+    - B0
+    - D0
+    - F0
+    - '18'
+    - '38'
+    - '58'
+    - '78'
+    - '98'
+    - B8
+    - D8
+    - F8
+    - 1A
+    - 3A
+    - 5A
+    - 7A
+    - 9A
+    - BA
+    - DA
+    - FA
+    - '0x14C2'
+    - FF
+    SourceImage|contains:
+    - \Temp\
+    - \Users\Public\
+    - \PerfLogs\
+    - \AppData\
+    - \Temporary
+    TargetImage|endswith: \lsass.exe
+falsepositives:
+- Updaters and installers are typical false positives. Apply custom filters depending
+  on your environment
+id: fa34b441-961a-42fa-a100-ecc28c886725
+level: medium
+logsource:
+  category: process_access
+  product: windows
+references:
+- https://docs.microsoft.com/en-us/windows/win32/procthread/process-security-and-access-rights
+- https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&ithint=file%2cpptx&app=PowerPoint&authkey=!AMvCRTKB_V1J5ow
+- https://web.archive.org/web/20230208123920/https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for_22.html
+- https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment
+- http://security-research.dyndns.org/pub/slides/FIRST2017/FIRST-2017_Tom-Ueltschi_Sysmon_FINAL_notes.pdf
+status: experimental
+tags:
+- attack.credential_access
+- attack.t1003.001
+- attack.s0002
+title: LSASS Access From Program In Potentially Suspicious Folder

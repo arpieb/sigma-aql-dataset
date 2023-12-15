@@ -1,0 +1,31 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-06-21'
+description: Detects registry changes to Office trust records where the path is located
+  in a potentially suspicious location
+detection:
+  condition: all of selection_*
+  selection_paths:
+    TargetObject|contains:
+    - /AppData/Local/Microsoft/Windows/INetCache/
+    - /AppData/Local/Temp/
+    - /PerfLogs/
+    - C:/Users/Public/
+    - file:///D:/
+    - file:///E:/
+  selection_value:
+    TargetObject|contains: \Security\Trusted Documents\TrustRecords
+falsepositives:
+- Unlikely
+id: a166f74e-bf44-409d-b9ba-ea4b2dd8b3cd
+level: high
+logsource:
+  category: registry_set
+  product: windows
+references:
+- https://twitter.com/inversecos/status/1494174785621819397
+- Internal Research
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1112
+title: Macro Enabled In A Potentially Suspicious Document

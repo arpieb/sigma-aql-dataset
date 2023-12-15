@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%:\windows\system32\query.exe' OR LOWER("Process Name") LIKE '%:\windows\system32\query.exe') AND (LOWER(Command) LIKE '%session >%' OR LOWER(Command) LIKE '%process >%')

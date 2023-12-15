@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4697 AND LOWER("Service Filename") LIKE '%set%' AND LOWER("Service Filename") LIKE '%&&%' AND (LOWER("Service Filename") LIKE '%environment%' OR LOWER("Service Filename") LIKE '%invoke%' OR LOWER("Service Filename") LIKE '%${input)%')

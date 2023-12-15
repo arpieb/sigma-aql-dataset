@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msexchangemailboxreplication.exe' OR LOWER("Process Name") LIKE '%\msexchangemailboxreplication.exe') AND (LOWER(Filename) LIKE '%.aspx' OR LOWER(Filename) LIKE '%.asp')

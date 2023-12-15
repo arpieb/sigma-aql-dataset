@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\nslookup.exe%' OR LOWER("Process Name") LIKE '%\nslookup.exe%' OR Filename='\nslookup.exe') AND (LOWER("Parent Process Path") LIKE '%\powershell.exe' OR LOWER("Parent Process Path") LIKE '%\pwsh.exe') AND (LOWER(Command) LIKE '% -q=txt %' OR LOWER(Command) LIKE '% -querytype=txt %')

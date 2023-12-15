@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER("Process Path") LIKE '%/at' OR LOWER("Process Path") LIKE '%/atd' OR LOWER("Process Name") LIKE '%/at' OR LOWER("Process Name") LIKE '%/atd'

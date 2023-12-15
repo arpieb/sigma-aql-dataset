@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename='iCACLS.EXE' OR LOWER("Process Path") LIKE '%\icacls.exe' OR LOWER("Process Name") LIKE '%\icacls.exe') AND LOWER(Command) LIKE '%c:\users\%' AND LOWER(Command) LIKE '%/deny%' AND LOWER(Command) LIKE '%s-1-1-0:%'

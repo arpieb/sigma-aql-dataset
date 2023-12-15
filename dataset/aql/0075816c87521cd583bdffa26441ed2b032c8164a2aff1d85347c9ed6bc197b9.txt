@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%delete device%' OR LOWER(Message) LIKE '%delete device configuration%' OR LOWER(Message) LIKE '%update device%' OR LOWER(Message) LIKE '%update device configuration%'

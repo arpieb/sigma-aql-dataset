@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/bin/bash' OR LOWER("Process Name") LIKE '%/bin/bash') AND NOT((destinationip IN('127.0.0.1', '0.0.0.0')))

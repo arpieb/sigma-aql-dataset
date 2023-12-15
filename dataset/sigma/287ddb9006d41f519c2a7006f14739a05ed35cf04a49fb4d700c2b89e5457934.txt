@@ -1,0 +1,50 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-04'
+description: Detects suspicious child processes of the Veeam service process. This
+  could indicate potential RCE or SQL Injection.
+detection:
+  condition: selection_parent and 1 of selection_child_*
+  selection_child_1:
+    CommandLine|contains:
+    - '-ex '
+    - bypass
+    - cscript
+    - DownloadString
+    - http://
+    - https://
+    - mshta
+    - regsvr32
+    - rundll32
+    - wscript
+    - 'copy '
+    Image|endswith:
+    - \cmd.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \wsl.exe
+    - \wt.exe
+  selection_child_2:
+    Image|endswith:
+    - \net.exe
+    - \net1.exe
+    - \netstat.exe
+    - \nltest.exe
+    - \ping.exe
+    - \tasklist.exe
+    - \whoami.exe
+  selection_parent:
+    ParentCommandLine|contains: VEEAMSQL
+    ParentImage|endswith: \sqlservr.exe
+id: d55b793d-f847-4eea-b59a-5ab09908ac90
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://labs.withsecure.com/publications/fin7-target-veeam-servers
+status: experimental
+tags:
+- attack.initial_access
+- attack.persistence
+- attack.privilege_escalation
+title: Suspicious Child Process Of Veeam Dabatase

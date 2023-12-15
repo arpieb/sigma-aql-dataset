@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\diskshadow.exe' AND NOT((LOWER("Process Path") LIKE '%:\windows\system32\werfault.exe' OR LOWER("Process Name") LIKE '%:\windows\system32\werfault.exe'))

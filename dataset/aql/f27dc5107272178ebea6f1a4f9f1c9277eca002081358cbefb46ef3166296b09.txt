@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\soundrecorder.exe' OR LOWER("Process Name") LIKE '%\soundrecorder.exe') AND LOWER(Command) LIKE '%/file%'

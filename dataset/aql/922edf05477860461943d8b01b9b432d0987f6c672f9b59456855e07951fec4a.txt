@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%get-wmiobject %' OR LOWER(Message) LIKE '%gwmi %') AND (LOWER(Message) LIKE '% win32_service %' OR LOWER(Message) LIKE '%name%' OR LOWER(Message) LIKE '%displayname%' OR LOWER(Message) LIKE '%pathname%' OR LOWER(Message) LIKE '%startmode%')

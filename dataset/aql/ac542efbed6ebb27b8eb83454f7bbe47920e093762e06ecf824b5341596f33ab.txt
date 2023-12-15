@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND ("Process Path"='/usr/bin/security' OR "Process Name"='/usr/bin/security') AND (LOWER(Command) LIKE '%find-certificate%' OR LOWER(Command) LIKE '% export %') OR LOWER(Command) LIKE '% dump-keychain %' OR LOWER(Command) LIKE '% login-keychain %'

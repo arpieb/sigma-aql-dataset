@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%io.compression.deflatestream%' OR LOWER(Message) LIKE '%io.memorystream%' OR LOWER(Message) LIKE '%::frombase64string%' OR LOWER(Message) LIKE '%getdelegateforfunctionpointer%' OR LOWER(Message) LIKE '%.invoke()%' OR LOWER(Message) LIKE '%globalassemblycache%'

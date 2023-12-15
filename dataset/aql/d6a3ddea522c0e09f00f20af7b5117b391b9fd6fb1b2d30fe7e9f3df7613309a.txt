@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%-export dll_u%' OR LOWER(Command) LIKE '%,dll_u' OR LOWER(Command) LIKE '% dll_u'

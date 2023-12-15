@@ -1,0 +1,36 @@
+author: frack113
+date: '2021-11-15'
+description: Detects suspicious addition to BitLocker related registry keys via the
+  reg.exe utility
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - EnableBDEWithNoTPM
+    - UseAdvancedStartup
+    - UseTPM
+    - UseTPMKey
+    - UseTPMKeyPIN
+    - RecoveryKeyMessageSource
+    - UseTPMPIN
+    - RecoveryKeyMessage
+    CommandLine|contains|all:
+    - REG
+    - ADD
+    - \SOFTWARE\Policies\Microsoft\FVE
+    - /v
+    - /f
+falsepositives:
+- Unlikely
+id: 0e0255bf-2548-47b8-9582-c0955c9283f5
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2021/11/15/exchange-exploit-leads-to-domain-wide-ransomware/
+status: test
+tags:
+- attack.impact
+- attack.t1486
+title: Suspicious Reg Add BitLocker

@@ -1,0 +1,30 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-02-02'
+description: Detects when a share is mounted using the "net.exe" utility
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - ' use '
+    - ' \\'
+  selection_img:
+    Image|endswith:
+    - \net.exe
+    - \net1.exe
+    OriginalFileName:
+    - net.exe
+    - net1.exe
+falsepositives:
+- Legitimate activity by administrators and scripts
+id: f117933c-980c-4f78-b384-e3d838111165
+level: low
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://drive.google.com/file/d/1lKya3_mLnR3UQuCoiYruO3qgu052_iS_/view
+status: experimental
+tags:
+- attack.lateral_movement
+- attack.t1021.002
+title: Windows Share Mount Via Net.EXE

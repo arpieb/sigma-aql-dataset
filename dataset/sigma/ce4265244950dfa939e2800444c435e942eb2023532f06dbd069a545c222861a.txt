@@ -1,0 +1,39 @@
+author: X__Junior (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-24'
+description: Detects specific process tree behavior of a "rundll32" execution where
+  the DLL doesn't have the ".dll" extension. This is often linked with potential Qakbot
+  activity.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_extension:
+    CommandLine|contains: .dll
+  selection:
+    CommandLine|contains:
+    - :\ProgramData\
+    - :\Users\Public\
+    - \AppData\Local\Temp\
+    - \AppData\Roaming\
+    Image|endswith: \rundll32.exe
+    ParentImage|endswith:
+    - \cmd.exe
+    - \cscript.exe
+    - \curl.exe
+    - \mshta.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \wscript.exe
+falsepositives:
+- Unlikely
+id: bfd34392-c591-4009-b938-9fd985a28b85
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/pr0xylife/Qakbot/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.execution
+- detection.emerging_threats
+title: Qakbot Rundll32 Fake DLL Extension Execution

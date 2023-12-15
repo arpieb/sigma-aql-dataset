@@ -1,0 +1,33 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-09'
+description: Detects when adversaries stop services or processes by deleting their
+  respective scheduled tasks in order to conduct data destructive activities
+detection:
+  condition: all of schtasks_*
+  schtasks_exe:
+    CommandLine|contains:
+    - \Windows\SystemRestore\SR
+    - \Windows\Windows Defender\
+    - \Windows\BitLocker
+    - \Windows\WindowsBackup\
+    - \Windows\WindowsUpdate\
+    - \Windows\UpdateOrchestrator\
+    - \Windows\ExploitGuard
+    CommandLine|contains|all:
+    - /delete
+    - /tn
+    Image|endswith: \schtasks.exe
+falsepositives:
+- Unlikely
+id: dbc1f800-0fe0-4bc0-9c66-292c2abe3f78
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- Internal Research
+status: test
+tags:
+- attack.impact
+- attack.t1489
+title: Delete Important Scheduled Task

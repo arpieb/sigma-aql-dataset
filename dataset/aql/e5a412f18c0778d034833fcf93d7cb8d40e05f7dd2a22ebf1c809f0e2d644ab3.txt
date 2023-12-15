@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4697 AND LOWER("Service Filename") LIKE '%new-object%' AND LOWER("Service Filename") LIKE '%text.encoding]::ascii%' AND LOWER("Service Filename") LIKE '%readtoend%' AND (LOWER("Service Filename") LIKE '%system.io.compression.deflatestream%' OR LOWER("Service Filename") LIKE '%system.io.streamreader%')

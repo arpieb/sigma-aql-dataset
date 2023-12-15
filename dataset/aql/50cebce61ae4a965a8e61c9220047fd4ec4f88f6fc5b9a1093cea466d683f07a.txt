@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%\event viewer\recentviews%' OR LOWER(Command) LIKE '%\eventv~1\recentviews%') AND LOWER(Command) LIKE '%>%'

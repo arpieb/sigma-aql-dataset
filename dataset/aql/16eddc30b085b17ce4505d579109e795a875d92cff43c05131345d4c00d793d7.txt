@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msdt.exe' OR LOWER("Process Name") LIKE '%\msdt.exe' OR Filename='msdt.exe') AND (LOWER(Command) LIKE '% /cab %' OR LOWER(Command) LIKE '% -cab %')

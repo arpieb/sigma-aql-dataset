@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%system.net.webclient%' AND (LOWER(Message) LIKE '%.downloadfile(%' OR LOWER(Message) LIKE '%.downloadstring(%')

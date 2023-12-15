@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE 'c:\windows\system32\consent.exe.@%' AND LOWER(Filename) LIKE '%\comctl32.dll'

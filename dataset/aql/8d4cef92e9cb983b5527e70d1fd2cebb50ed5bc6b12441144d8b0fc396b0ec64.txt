@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command", Username FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cmdkey.exe' OR LOWER("Process Name") LIKE '%\cmdkey.exe' OR Filename='cmdkey.exe') AND (LOWER(Command) LIKE '% /l%' OR LOWER(Command) LIKE '% -l%')

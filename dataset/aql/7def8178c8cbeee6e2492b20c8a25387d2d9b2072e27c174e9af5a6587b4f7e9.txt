@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(CONCAT('file directory', '/', filename)) LIKE '%\dbghelp.dll' OR LOWER(CONCAT('file directory', '/', filename)) LIKE '%\dbgcore.dll') AND Signed='false'

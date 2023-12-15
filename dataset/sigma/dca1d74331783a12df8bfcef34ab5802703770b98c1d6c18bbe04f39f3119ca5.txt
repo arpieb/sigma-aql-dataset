@@ -1,0 +1,33 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-31'
+description: Detects creation of a scheduled task with a GUID like name
+detection:
+  condition: all of selection_*
+  selection_end:
+    CommandLine|contains:
+    - '}"'
+    - '}'''
+    - '} '
+  selection_img:
+    CommandLine|contains: '/Create '
+    Image|endswith: \schtasks.exe
+  selection_tn:
+    CommandLine|contains:
+    - /TN "{
+    - /TN '{
+    - /TN {
+falsepositives:
+- Legitimate software naming their tasks as GUIDs
+id: ff2fff64-4cd6-4a2b-ba7d-e28a30bbe66b
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2022/10/31/follina-exploit-leads-to-domain-compromise/
+- https://thedfirreport.com/2022/02/21/qbot-and-zerologon-lead-to-full-domain-compromise/
+status: test
+tags:
+- attack.execution
+- attack.t1053.005
+title: Suspicious Scheduled Task Name As GUID

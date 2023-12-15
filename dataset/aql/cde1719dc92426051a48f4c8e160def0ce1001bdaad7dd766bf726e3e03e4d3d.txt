@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\appcmd.exe' OR LOWER("Process Name") LIKE '%\appcmd.exe' OR Filename='appcmd.exe') AND LOWER(Command) LIKE '%install%' AND LOWER(Command) LIKE '%module%' AND (LOWER(Command) LIKE '%/name:%' OR LOWER(Command) LIKE '%-name:%') AND NOT("Parent Process Path"='C:\Windows\System32\inetsrv\iissetup.exe')

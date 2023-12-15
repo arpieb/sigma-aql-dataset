@@ -1,0 +1,1 @@
+SELECT *, Filename FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\regedit.exe' OR LOWER("Process Name") LIKE '%\regedit.exe'

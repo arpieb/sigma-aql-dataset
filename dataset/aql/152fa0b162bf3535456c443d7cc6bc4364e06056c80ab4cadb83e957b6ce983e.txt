@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/openssl' OR LOWER("Process Name") LIKE '%/openssl') AND Command MATCHES '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' AND LOWER(Command) LIKE '%s_client%' AND LOWER(Command) LIKE '%-quiet%' AND LOWER(Command) LIKE '%-connect%' AND (LOWER(Command) LIKE '%:443%' OR LOWER(Command) LIKE '%:8080%')

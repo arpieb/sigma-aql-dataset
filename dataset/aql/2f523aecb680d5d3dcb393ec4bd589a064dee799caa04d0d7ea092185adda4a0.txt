@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/getcap' OR LOWER("Process Name") LIKE '%/getcap') AND (LOWER(Command) LIKE '% /r %' OR LOWER(Command) LIKE '% -r %')

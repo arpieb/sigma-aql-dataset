@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\regsvr32.exe' OR LOWER("Process Name") LIKE '%\regsvr32.exe' OR Filename='\REGSVR32.EXE') AND LOWER(Command) LIKE '% \\%'

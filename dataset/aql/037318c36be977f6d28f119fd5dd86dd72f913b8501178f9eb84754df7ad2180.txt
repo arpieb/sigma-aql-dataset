@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%ps.exe -accepteula%' AND LOWER(Command) LIKE '%-s cmd /c netstat%'

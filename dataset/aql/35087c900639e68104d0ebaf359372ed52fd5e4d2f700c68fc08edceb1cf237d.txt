@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Message MATCHES '.*cmd.{0,5}(?:/c|/r).+clip(?:\.exe)?.{0,4}&&.+clipboard]::\(\s\\"\{\d\}.+-f.+".*'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%-securitydescriptorsddl %' OR LOWER(Message) LIKE '%-sd %') AND (LOWER(Message) LIKE '%set-service %' OR LOWER(Message) LIKE '%d;;%') AND (LOWER(Message) LIKE '%;;;iu%' OR LOWER(Message) LIKE '%;;;su%' OR LOWER(Message) LIKE '%;;;ba%' OR LOWER(Message) LIKE '%;;;sy%' OR LOWER(Message) LIKE '%;;;wd%')

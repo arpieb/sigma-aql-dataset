@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='C:\WINDOWS\system32\wbem\scrcons.exe' OR "Process Name"='C:\WINDOWS\system32\wbem\scrcons.exe') AND "Parent Process Path"='C:\Windows\System32\svchost.exe'

@@ -1,0 +1,31 @@
+author: Bhabesh Raj
+date: '2022-08-01'
+description: Detects potential sideloading of "mpclient.dll" by Windows Defender processes
+  ("MpCmdRun" and "NisSrv") from their non-default directory.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_known_locations:
+    Image|startswith:
+    - C:\Program Files (x86)\Windows Defender\
+    - C:\Program Files\Microsoft Security Client\
+    - C:\Program Files\Windows Defender\
+    - C:\ProgramData\Microsoft\Windows Defender\Platform\
+    - C:\Windows\WinSxS\
+  selection:
+    Image|endswith:
+    - \MpCmdRun.exe
+    - \NisSrv.exe
+falsepositives:
+- Unlikely
+id: 7002aa10-b8d4-47ae-b5ba-51ab07e228b9
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.sentinelone.com/blog/living-off-windows-defender-lockbit-ransomware-sideloads-cobalt-strike-through-microsoft-security-tool
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1574.002
+title: Potential Mpclient.DLL Sideloading Via Defender Binaries

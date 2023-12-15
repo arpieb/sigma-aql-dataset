@@ -1,0 +1,23 @@
+author: Nasreddine Bencherchali (Nextron Systems), MSTIC (idea)
+date: '2023-04-20'
+description: Detects Log4J Wstomcat process execution as seen in Mint Sandstorm activity
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_repadmin:
+    Image|endswith: \repadmin.exe
+  selection:
+    ParentImage|endswith: \ws_tomcatservice.exe
+falsepositives:
+- Unknown
+id: 7c97c625-0350-4f0a-8943-f6cadc88125e
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.microsoft.com/en-us/security/blog/2023/04/18/nation-state-threat-actor-mint-sandstorm-refines-tradecraft-to-attack-high-value-targets/
+status: test
+tags:
+- attack.execution
+- detection.emerging_threats
+title: Mint Sandstorm - Log4J Wstomcat Process Execution

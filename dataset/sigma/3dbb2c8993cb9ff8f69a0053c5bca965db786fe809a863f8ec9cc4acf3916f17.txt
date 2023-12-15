@@ -1,0 +1,30 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-06-01'
+description: Detects PowerShell core DLL being loaded by an Office Product
+detection:
+  condition: selection
+  selection:
+    ImageLoaded|contains:
+    - \System.Management.Automation.Dll
+    - \System.Management.Automation.ni.Dll
+    Image|endswith:
+    - \excel.exe
+    - \mspub.exe
+    - \outlook.exe
+    - \onenote.exe
+    - \onenoteim.exe
+    - \powerpnt.exe
+    - \winword.exe
+falsepositives:
+- Unknown
+id: bb2ba6fb-95d4-4a25-89fc-30bb736c021a
+level: medium
+logsource:
+  category: image_load
+  product: windows
+references:
+- Internal Research
+status: experimental
+tags:
+- attack.defense_evasion
+title: PowerShell Core DLL Loaded Via Office Application

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Process Name"='HKLM\SYSTEM\CurrentControlSet\Services\PortProxy\v4tov4\tcp' OR "Target Process Name"='HKLM\SYSTEM\CurrentControlSet\Services\PortProxy\v4tov4\tcp' OR "Object Name"='HKLM\SYSTEM\CurrentControlSet\Services\PortProxy\v4tov4\tcp'

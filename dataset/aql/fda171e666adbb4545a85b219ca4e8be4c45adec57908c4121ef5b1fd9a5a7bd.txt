@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%setup0.exe -p%' OR LOWER(Command) LIKE '%setup.exe%' AND (LOWER(Command) LIKE '%-x:0' OR LOWER(Command) LIKE '%-x:1' OR LOWER(Command) LIKE '%-x:2')

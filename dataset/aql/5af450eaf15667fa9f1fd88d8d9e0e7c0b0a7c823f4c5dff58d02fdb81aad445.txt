@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%') AND (LOWER("Process Path") LIKE '%\tscon.exe' OR LOWER("Process Name") LIKE '%\tscon.exe')

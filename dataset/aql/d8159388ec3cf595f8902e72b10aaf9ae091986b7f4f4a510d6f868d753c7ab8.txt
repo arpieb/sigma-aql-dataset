@@ -1,0 +1,1 @@
+SELECT *, Command FROM events WHERE devicetype=102 AND LOWER(Command) LIKE '%osacompile%' AND LOWER(Command) LIKE '% -x %' AND LOWER(Command) LIKE '% -e %'

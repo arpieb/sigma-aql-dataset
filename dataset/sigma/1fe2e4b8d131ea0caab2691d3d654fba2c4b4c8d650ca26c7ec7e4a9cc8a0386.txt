@@ -1,0 +1,26 @@
+author: frack113
+date: '2022-07-27'
+description: Detects potential persistence using Appx DebugPath
+detection:
+  condition: 1 of selection_*
+  selection_debug:
+    TargetObject|contains: Classes\ActivatableClasses\Package\Microsoft.
+    TargetObject|endswith: \DebugPath
+  selection_default:
+    TargetObject|contains: \Software\Microsoft\Windows\CurrentVersion\PackagedAppXDebug\Microsoft.
+    TargetObject|endswith: \(Default)
+falsepositives:
+- Unknown
+id: df4dc653-1029-47ba-8231-3c44238cc0ae
+level: medium
+logsource:
+  category: registry_set
+  product: windows
+references:
+- https://oddvar.moe/2018/09/06/persistence-using-universal-windows-platform-apps-appx/
+- https://github.com/rootm0s/WinPwnage
+status: experimental
+tags:
+- attack.persistence
+- attack.t1546.015
+title: Potential Persistence Using DebugPath

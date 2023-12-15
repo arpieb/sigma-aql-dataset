@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4697 AND LOWER("Service Filename") LIKE '%rundll32.exe%' AND LOWER("Service Filename") LIKE '%shell32.dll%' AND LOWER("Service Filename") LIKE '%shellexec_rundll%' AND LOWER("Service Filename") LIKE '%powershell%'

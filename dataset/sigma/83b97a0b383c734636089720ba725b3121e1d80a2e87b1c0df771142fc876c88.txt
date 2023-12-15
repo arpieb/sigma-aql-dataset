@@ -1,0 +1,35 @@
+author: Aaron Stratton
+date: '2023-11-13'
+description: 'Detects suspicious child processes of Excel which could be an indicator
+  of lateral movement leveraging the "ActivateMicrosoftApp" Excel DCOM object.
+
+  '
+detection:
+  condition: all of selection_*
+  selection_child:
+    Image|endswith:
+    - \foxprow.exe
+    - \schdplus.exe
+    - \winproj.exe
+    OriginalFileName:
+    - foxprow.exe
+    - schdplus.exe
+    - winproj.exe
+  selection_parent:
+    ParentImage|endswith: \excel.exe
+falsepositives:
+- Unknown
+id: 551d9c1f-816c-445b-a7a6-7a3864720d60
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://posts.specterops.io/lateral-movement-abuse-the-power-of-dcom-excel-application-3c016d0d9922
+- https://github.com/grayhatkiller/SharpExShell
+- https://learn.microsoft.com/en-us/office/vba/api/excel.xlmsapplication
+status: experimental
+tags:
+- attack.t1021.003
+- attack.lateral_movement
+title: Potential Excel.EXE DCOM Lateral Movement Via ActivateMicrosoftApp

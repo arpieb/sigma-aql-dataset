@@ -1,0 +1,25 @@
+author: E.M. Anhaus, Tony Lambert, oscd.community, omkar72
+date: '2019-10-24'
+description: Detects execution of "dsquery.exe" for domain trust discovery
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: trustedDomain
+  selection_img:
+    Image|endswith: \dsquery.exe
+    OriginalFileName: dsquery.exe
+falsepositives:
+- Legitimate use of the utilities by legitimate user for legitimate reason
+id: 3bad990e-4848-4a78-9530-b427d854aac0
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1482/T1482.md
+- https://posts.specterops.io/an-introduction-to-manual-active-directory-querying-with-dsquery-and-ldapsearch-84943c13d7eb?gi=41b97a644843
+status: test
+tags:
+- attack.discovery
+- attack.t1482
+title: Domain Trust Discovery Via Dsquery

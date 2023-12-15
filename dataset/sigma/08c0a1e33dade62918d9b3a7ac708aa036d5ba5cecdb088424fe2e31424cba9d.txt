@@ -1,0 +1,32 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-02-22'
+description: Detects access to DEWMODE webshell as described in FIREEYE report
+detection:
+  condition: 1 of selection*
+  selection1:
+    cs-uri-query|contains|all:
+    - ?dwn=
+    - '&fn='
+    - .html?
+  selection2:
+    cs-uri-query|contains|all:
+    - '&dwn='
+    - ?fn=
+    - .html?
+falsepositives:
+- Unknown
+fields:
+- client_ip
+- response
+id: fdf96c90-42d5-4406-8a9c-14a2c9a016b5
+level: high
+logsource:
+  category: webserver
+references:
+- https://www.mandiant.com/resources/blog/accellion-fta-exploited-for-data-theft-and-extortion
+status: test
+tags:
+- attack.persistence
+- attack.t1505.003
+- detection.emerging_threats
+title: DEWMODE Webshell Access

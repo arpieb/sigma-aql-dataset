@@ -1,0 +1,32 @@
+author: Tim Rauch
+date: '2022-09-27'
+description: Detects a remote file copy attempt to a hidden network share. This may
+  indicate lateral movement or data staging activity.
+detection:
+  condition: all of selection*
+  selection_args:
+    CommandLine|contains|all:
+    - echo
+    - '>'
+    - \\.\pipe\
+  selection_name:
+    Image|endswith:
+    - \cmd.exe
+    - \powershell.exe
+    OriginalFileName:
+    - Cmd.Exe
+    - PowerShell.EXE
+falsepositives:
+- Other programs that cause these patterns (please report)
+id: 9bd04a79-dabe-4f1f-a5ff-92430265c96b
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.elastic.co/guide/en/security/current/privilege-escalation-via-named-pipe-impersonation.html
+status: test
+tags:
+- attack.lateral_movement
+- attack.t1021
+title: Privilege Escalation via Named Pipe Impersonation

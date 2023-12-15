@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4663 AND LOWER("Object Name") LIKE '%\system\%' AND LOWER("Object Name") LIKE '%controlset\services\%' AND "Rule Name" LIKE '%%%1538%'

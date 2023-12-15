@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4697 AND LOWER("Service Filename") LIKE '%cmd%' AND LOWER("Service Filename") LIKE '%powershell%' AND (LOWER("Service Filename") LIKE '%${input}%' OR LOWER("Service Filename") LIKE '%noexit%') AND (LOWER("Service Filename") LIKE '% /c %' OR LOWER("Service Filename") LIKE '% /r %')

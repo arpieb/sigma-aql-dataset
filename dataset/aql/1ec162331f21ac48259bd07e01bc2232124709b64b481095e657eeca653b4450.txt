@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%verb:sync%' AND LOWER(Command) LIKE '%-source:runcommand%' AND LOWER(Command) LIKE '%-dest:runcommand%' AND (LOWER("Process Path") LIKE '%\msdeploy.exe' OR LOWER("Process Name") LIKE '%\msdeploy.exe')

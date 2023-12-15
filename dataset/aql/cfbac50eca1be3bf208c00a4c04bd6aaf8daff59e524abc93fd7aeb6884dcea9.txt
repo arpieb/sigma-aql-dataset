@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\sdbinst.exe' OR LOWER("Process Name") LIKE '%\sdbinst.exe' OR Filename='sdbinst.exe') AND LOWER(Command) LIKE '%.sdb%' AND NOT((LOWER("Parent Process Path") LIKE '%\msiexec.exe' AND LOWER(Command) LIKE '%iisexpressshim.sdb%'))

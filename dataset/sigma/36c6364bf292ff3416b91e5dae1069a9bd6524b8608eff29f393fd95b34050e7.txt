@@ -1,0 +1,28 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-04-17'
+description: Detects usage of winget to add new additional download sources
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains|all:
+    - 'source '
+    - 'add '
+  selection_img:
+    Image|endswith: \winget.exe
+    OriginalFileName: winget.exe
+falsepositives:
+- False positive are expected with legitimate sources
+id: 05ebafc8-7aa2-4bcd-a269-2aec93f9e842
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://learn.microsoft.com/en-us/windows/package-manager/winget/source
+- https://github.com/nasbench/Misc-Research/tree/b9596e8109dcdb16ec353f316678927e507a5b8d/LOLBINs/Winget
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.execution
+- attack.t1059
+title: Add New Download Source To Winget

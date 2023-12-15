@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%foreach%' OR LOWER(Message) LIKE '%get-childitem%' OR LOWER(Message) LIKE '%-path %' OR LOWER(Message) LIKE '%-erroraction %' OR LOWER(Message) LIKE '%silentlycontinue%' OR LOWER(Message) LIKE '%out-file %' OR LOWER(Message) LIKE '%-append%'

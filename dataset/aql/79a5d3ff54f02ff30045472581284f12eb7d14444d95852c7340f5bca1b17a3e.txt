@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/wget' OR LOWER("Process Name") LIKE '%/wget') AND (LOWER(Filename) LIKE '/tmp/%' OR LOWER(Filename) LIKE '/var/tmp/%')

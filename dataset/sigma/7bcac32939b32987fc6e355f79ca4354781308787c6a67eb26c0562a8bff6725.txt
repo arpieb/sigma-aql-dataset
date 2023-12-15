@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-23'
+description: Detects usage of Sysinternals PsSuspend which can be abused to suspend
+  critical processes
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - \pssuspend.exe
+    - \pssuspend64.exe
+    OriginalFileName: pssuspend.exe
+falsepositives:
+- Unknown
+id: 48bbc537-b652-4b4e-bd1d-281172df448f
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://learn.microsoft.com/en-us/sysinternals/downloads/pssuspend
+- https://twitter.com/0gtweet/status/1638069413717975046
+status: experimental
+tags:
+- attack.discovery
+- attack.persistence
+- attack.t1543.003
+title: Sysinternals PsSuspend Execution

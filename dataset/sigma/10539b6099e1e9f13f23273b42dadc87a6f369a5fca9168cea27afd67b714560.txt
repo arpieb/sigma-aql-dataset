@@ -1,0 +1,42 @@
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research), Florian Roth
+  (Nextron Systems), Sreeman, FPT.EagleEye Team
+date: '2020-10-12'
+description: Detects the use of the Windows Update Client binary (wuauclt.exe) for
+  proxy execution.
+detection:
+  condition: all of selection_* and not 1 of filter_main_*
+  filter_main_generic:
+    CommandLine|contains: ' /UpdateDeploymentProvider UpdateDeploymentProvider.dll '
+  filter_main_uus:
+    CommandLine|contains:
+    - :\Windows\UUS\Packages\Preview\amd64\updatedeploy.dll /ClassId
+    - :\Windows\UUS\amd64\UpdateDeploy.dll /ClassId
+  filter_main_winsxs:
+    CommandLine|contains|all:
+    - :\Windows\WinSxS\
+    - '\UpdateDeploy.dll /ClassId '
+  filter_main_wuaueng:
+    CommandLine|contains: ' wuaueng.dll '
+  selection_cli:
+    CommandLine|contains|all:
+    - UpdateDeploymentProvider
+    - RunHandlerComServer
+  selection_img:
+    Image|endswith: \wuauclt.exe
+    OriginalFileName: wuauclt.exe
+falsepositives:
+- Unknown
+id: af77cf95-c469-471c-b6a0-946c685c4798
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://dtm.uk/wuauclt/
+- https://blog.malwarebytes.com/threat-intelligence/2022/01/north-koreas-lazarus-apt-leverages-windows-update-client-github-in-latest-campaign/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218
+- attack.execution
+title: Proxy Execution Via Wuauclt.EXE

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-keystrokes%' OR LOWER(Message) LIKE '%get-procaddress user32.dll getasynckeystate%' OR LOWER(Message) LIKE '%get-procaddress user32.dll getforegroundwindow%'

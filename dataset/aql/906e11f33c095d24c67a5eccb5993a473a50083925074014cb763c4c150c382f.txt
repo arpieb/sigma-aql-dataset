@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%type %windir%\system32\ntdll.dll%' OR LOWER(Command) LIKE '%type %systemroot%\system32\ntdll.dll%' OR LOWER(Command) LIKE '%type c:\windows\system32\ntdll.dll%' OR LOWER(Command) LIKE '%\ntdll.dll > \\.\pipe\%'

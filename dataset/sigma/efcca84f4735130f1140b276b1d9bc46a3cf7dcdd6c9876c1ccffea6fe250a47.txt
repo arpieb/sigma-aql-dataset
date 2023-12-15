@@ -1,0 +1,24 @@
+author: Joseliyo Sanchez, @Joseliyo_Jstnk
+date: '2023-01-11'
+description: Detects usage of the "touch" process in service file.
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: ' -t '
+    CommandLine|endswith: .service
+    Image|endswith: /touch
+falsepositives:
+- Admin changing date of files.
+id: 31545105-3444-4584-bebf-c466353230d2
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://blogs.blackberry.com/
+- https://twitter.com/Joseliyo_Jstnk/status/1620131033474822144
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1070.006
+title: Touch Suspicious Service File

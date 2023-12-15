@@ -1,0 +1,62 @@
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: '2021-11-23'
+description: Detects suspicious commandline flags used by PsExec and PAExec to escalate
+  a command line to LOCAL_SYSTEM rights
+detection:
+  condition: all of selection_*
+  selection_other:
+    CommandLine|contains:
+    - psexec
+    - paexec
+    - accepteula
+  selection_sys:
+    CommandLine|contains:
+    - ' -s cmd'
+    - ' /s cmd'
+    - ' -s -i cmd'
+    - ' /s /i cmd'
+    - ' /s -i cmd'
+    - ' -s /i cmd'
+    - ' -i -s cmd'
+    - ' /i /s cmd'
+    - ' -i /s cmd'
+    - ' /i -s cmd'
+    - ' -s pwsh'
+    - ' /s pwsh'
+    - ' -s -i pwsh'
+    - ' /s /i pwsh'
+    - ' /s -i pwsh'
+    - ' -s /i pwsh'
+    - ' -i -s pwsh'
+    - ' /i /s pwsh'
+    - ' -i /s pwsh'
+    - ' /i -s pwsh'
+    - ' -s powershell'
+    - ' /s powershell'
+    - ' -s -i powershell'
+    - ' /s /i powershell'
+    - ' /s -i powershell'
+    - ' -s /i powershell'
+    - ' -i -s powershell'
+    - ' /i /s powershell'
+    - ' -i /s powershell'
+    - ' /i -s powershell'
+falsepositives:
+- Admins that use PsExec or PAExec to escalate to the SYSTEM account for maintenance
+  purposes (rare)
+- Users that debug Microsoft Intune issues using the commands mentioned in the official
+  documentation; see https://learn.microsoft.com/en-us/mem/intune/apps/intune-management-extension
+id: 8834e2f7-6b4b-4f09-8906-d2276470ee23
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+- https://www.poweradmin.com/paexec/
+- https://www.fireeye.com/blog/threat-research/2020/10/kegtap-and-singlemalt-with-a-ransomware-chaser.html
+status: experimental
+tags:
+- attack.resource_development
+- attack.t1587.001
+title: PsExec/PAExec Escalation to LOCAL SYSTEM

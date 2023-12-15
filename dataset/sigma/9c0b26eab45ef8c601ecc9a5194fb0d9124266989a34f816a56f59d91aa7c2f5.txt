@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-15'
+description: Detects the usage of utilities such as 'systemctl', 'service'...etc to
+  stop or disable tools and services
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - stop
+    - disable
+    Image|endswith:
+    - /service
+    - /systemctl
+    - /chkconfig
+falsepositives:
+- Legitimate administration activities
+id: de25eeb8-3655-4643-ac3a-b662d3f26b6b
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://www.trendmicro.com/pl_pl/research/20/i/the-evolution-of-malicious-shell-scripts.html
+status: test
+tags:
+- attack.defense_evasion
+title: Disable Or Stop Services

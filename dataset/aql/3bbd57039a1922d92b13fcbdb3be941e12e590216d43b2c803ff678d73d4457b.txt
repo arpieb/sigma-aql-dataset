@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Command MATCHES '\s[a-fA-F0-9]{64}\s[a-fA-F0-9]{16}'

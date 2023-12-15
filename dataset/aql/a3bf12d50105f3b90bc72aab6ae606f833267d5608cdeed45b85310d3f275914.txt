@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/perl' OR LOWER("Process Name") LIKE '%/perl') AND LOWER(Command) LIKE '% -e %' AND (LOWER(Command) LIKE '%fdopen(%' AND LOWER(Command) LIKE '%::socket::inet%' OR LOWER(Command) LIKE '%socket%' AND LOWER(Command) LIKE '%connect%' AND LOWER(Command) LIKE '%open%' AND LOWER(Command) LIKE '%exec%')

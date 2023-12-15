@@ -1,0 +1,31 @@
+author: X__Junior (Nextron Systems)
+date: '2023-06-20'
+description: Detects potential DLL sideloading of "appverifUI.dll"
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_legit_path:
+    Image:
+    - C:\Windows\SysWOW64\appverif.exe
+    - C:\Windows\System32\appverif.exe
+    ImageLoaded|startswith:
+    - C:\Windows\System32\
+    - C:\Windows\SysWOW64\
+    - C:\Windows\WinSxS\
+  selection:
+    ImageLoaded|endswith: \appverifUI.dll
+falsepositives:
+- Unlikely
+id: ee6cea48-c5b6-4304-a332-10fc6446f484
+level: high
+logsource:
+  category: image_load
+  product: windows
+references:
+- https://fatrodzianko.com/2020/02/15/dll-side-loading-appverif-exe/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1574.001
+- attack.t1574.002
+title: Potential appverifUI.DLL Sideloading

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/grep' OR LOWER("Process Name") LIKE '%/grep') AND (LOWER(Command) LIKE '%apached%' OR LOWER(Command) LIKE '%frpc%' OR LOWER(Command) LIKE '%sshd.sh%' OR LOWER(Command) LIKE '%zone.arm%')

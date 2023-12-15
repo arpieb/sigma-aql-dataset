@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dism.exe' OR LOWER("Process Name") LIKE '%\dism.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\dismcore.dll' AND NOT(CONCAT('file directory', '/', filename)='C:\Windows\System32\Dism\dismcore.dll')

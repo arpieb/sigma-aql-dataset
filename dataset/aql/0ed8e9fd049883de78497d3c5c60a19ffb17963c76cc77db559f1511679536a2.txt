@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\node.exe' OR LOWER("Process Name") LIKE '%\node.exe') AND (LOWER(Command) LIKE '% -e %' OR LOWER(Command) LIKE '% --eval %') AND LOWER(Command) LIKE '%.exec(%' AND LOWER(Command) LIKE '%net.socket%' AND LOWER(Command) LIKE '%.connect%' AND LOWER(Command) LIKE '%child_process%'

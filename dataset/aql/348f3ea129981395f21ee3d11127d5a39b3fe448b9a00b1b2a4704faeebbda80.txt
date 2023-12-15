@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%printnightmare.gentilkiwi.com%' OR LOWER(Command) LIKE '% /user:gentilguest %' OR LOWER(Command) LIKE '%kiwi legit printer%'

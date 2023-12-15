@@ -1,0 +1,21 @@
+author: frack113
+date: '2023-07-20'
+description: Triggers on any Sysmon "FileBlockShredding" event, which indicates a
+  violation of the configured shredding policy.
+detection:
+  condition: selection
+  selection:
+    EventID: 28
+falsepositives:
+- Unlikely
+id: c3e5c1b1-45e9-4632-b242-27939c170239
+level: high
+logsource:
+  product: windows
+  service: sysmon
+references:
+- https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+status: experimental
+tags:
+- attack.defense_evasion
+title: Sysmon Blocked File Shredding

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Initiated='true' AND (LOWER("Destination Hostname") LIKE '%.ngrok-free.app' OR LOWER("Destination Hostname") LIKE '%.ngrok-free.dev' OR LOWER("Destination Hostname") LIKE '%.ngrok.app' OR LOWER("Destination Hostname") LIKE '%.ngrok.dev' OR LOWER("Destination Hostname") LIKE '%.ngrok.io')

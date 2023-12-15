@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%-noexit -command [console]::outputencoding=[text.utf8encoding]::utf8%'

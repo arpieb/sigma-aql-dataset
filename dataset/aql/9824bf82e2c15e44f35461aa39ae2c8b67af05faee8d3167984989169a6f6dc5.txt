@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\razerinstaller.exe' AND "Integrity Level"='System' AND NOT((LOWER("Process Path") LIKE 'c:\windows\installer\razer\installer\%' OR LOWER("Process Name") LIKE 'c:\windows\installer\razer\installer\%'))

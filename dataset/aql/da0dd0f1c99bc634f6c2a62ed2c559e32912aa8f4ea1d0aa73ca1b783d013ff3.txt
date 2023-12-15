@@ -1,0 +1,1 @@
+SELECT *, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\ping.exe' OR LOWER("Process Name") LIKE '%\ping.exe') AND LOWER(Command) LIKE '%0x%'

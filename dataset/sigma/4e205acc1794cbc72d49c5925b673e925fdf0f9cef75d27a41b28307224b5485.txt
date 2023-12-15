@@ -1,0 +1,26 @@
+author: Ali Alwashali
+date: '2023-10-10'
+description: Detects the execution of a system command via the ScreenConnect RMM service.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: \TEMP\ScreenConnect\
+  selection_img:
+    Image|endswith: \cmd.exe
+    OriginalFileName: Cmd.Exe
+  selection_parent:
+    ParentImage|endswith: \ScreenConnect.ClientService.exe
+falsepositives:
+- Legitimate use of ScreenConnect. Disable this rule if ScreenConnect is heavily used.
+id: b1f73849-6329-4069-bc8f-78a604bb8b23
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/SigmaHQ/sigma/pull/4467
+status: experimental
+tags:
+- attack.execution
+- attack.t1059.003
+title: Remote Access Tool - ScreenConnect Remote Command Execution

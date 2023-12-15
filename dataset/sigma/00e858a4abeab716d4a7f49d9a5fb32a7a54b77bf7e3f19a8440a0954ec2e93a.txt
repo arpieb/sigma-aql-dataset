@@ -1,0 +1,45 @@
+author: Timur Zinniatullin, oscd.community, Swachchhanda Shrawan Poudel
+date: '2019-10-21'
+description: 'Detects the execution of WMIC with the "format" flag to potentially
+  load XSL files.
+
+  Adversaries abuse this functionality to execute arbitrary files while potentially
+  bypassing application whitelisting defenses.
+
+  Extensible Stylesheet Language (XSL) files are commonly used to describe the processing
+  and rendering of data within XML files.
+
+  '
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_known_format:
+    CommandLine|contains:
+    - Format:List
+    - Format:htable
+    - Format:hform
+    - Format:table
+    - Format:mof
+    - Format:value
+    - Format:rawxml
+    - Format:xml
+    - Format:csv
+  selection:
+    CommandLine|contains:
+    - /format
+    - -format
+    Image|endswith: \wmic.exe
+falsepositives:
+- WMIC.exe FP depend on scripts and administrative methods used in the monitored environment.
+- Static format arguments - https://petri.com/command-line-wmi-part-3
+id: 05c36dd6-79d6-4a9a-97da-3db20298ab2d
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1220/T1220.md
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1220
+title: XSL Script Execution Via WMIC.EXE

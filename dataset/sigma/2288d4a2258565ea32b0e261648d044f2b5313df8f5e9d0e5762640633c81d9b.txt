@@ -1,0 +1,35 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-19'
+description: Detect usage of the "driverquery" utility to perform reconnaissance on
+  installed drivers
+detection:
+  condition: all of selection_*
+  selection_img:
+    Image|endswith: driverquery.exe
+    OriginalFileName: drvqry.exe
+  selection_parent:
+    ParentImage|contains:
+    - \AppData\Local\
+    - \Users\Public\
+    - \Windows\Temp\
+    ParentImage|endswith:
+    - \cscript.exe
+    - \mshta.exe
+    - \regsvr32.exe
+    - \rundll32.exe
+    - \wscript.exe
+falsepositives:
+- Legitimate usage by some scripts might trigger this as well
+id: 9fc3072c-dc8f-4bf7-b231-18950000fadd
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2023/01/09/unwrapping-ursnifs-gifts/
+- https://www.vmray.com/cyber-security-blog/analyzing-ursnif-behavior-malware-sandbox/
+- https://www.fireeye.com/blog/threat-research/2020/01/saigon-mysterious-ursnif-fork.html
+status: experimental
+tags:
+- attack.discovery
+title: Potential Recon Activity Using DriverQuery.EXE

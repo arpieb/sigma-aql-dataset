@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%"\system32\cleanmgr.exe /autoclean /d c:' AND "Parent Command"='C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule' AND ("Integrity Level" IN('High', 'System'))

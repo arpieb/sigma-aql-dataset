@@ -1,0 +1,24 @@
+author: Tobias Michalski (Nextron Systems)
+date: '2021-06-08'
+description: Detects the Installation of a Exchange Transport Agent
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: Install-TransportAgent
+falsepositives:
+- Legitimate installations of exchange TransportAgents. AssemblyPath is a good indicator
+  for this.
+fields:
+- AssemblyPath
+id: 83809e84-4475-4b69-bc3e-4aad8568612f
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-persistence-via-microsoft-exchange-server-or-outlook?slide=7
+status: test
+tags:
+- attack.persistence
+- attack.t1505.002
+title: MSExchange Transport Agent Installation

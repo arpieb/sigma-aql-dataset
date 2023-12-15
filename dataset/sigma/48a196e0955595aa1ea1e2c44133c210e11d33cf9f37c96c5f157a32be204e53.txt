@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-02'
+description: Detects execution of perl using the "-e"/"-E" flags. This is could be
+  used as a way to launch a reverse shell or execute live perl code.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: ' -e'
+  selection_img:
+    Image|endswith: \perl.exe
+    OriginalFileName: perl.exe
+falsepositives:
+- Unknown
+id: f426547a-e0f7-441a-b63e-854ac5bdf54d
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+- https://www.revshells.com/
+status: test
+tags:
+- attack.execution
+- attack.t1059
+title: Perl Inline Command Execution

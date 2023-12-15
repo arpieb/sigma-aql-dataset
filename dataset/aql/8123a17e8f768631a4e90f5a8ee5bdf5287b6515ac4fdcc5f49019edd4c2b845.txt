@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%.bat.exe' OR LOWER(Filename) LIKE '%.sys.exe' OR Filename IN('C:\$Recycle.Bin.exe', 'C:\Documents and Settings.exe', 'C:\MSOCache.exe', 'C:\Recovery.exe', 'C:\PerfLogs.exe')

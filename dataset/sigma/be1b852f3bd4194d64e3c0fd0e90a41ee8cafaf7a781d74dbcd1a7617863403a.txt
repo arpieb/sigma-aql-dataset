@@ -1,0 +1,35 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-12'
+description: Detects unusual parent or children of the wab.exe (Windows Contacts)
+  and Wabmig.exe (Microsoft Address Book Import Tool) processes as seen being used
+  with bumblebee activity
+detection:
+  condition: 1 of selection_*
+  selection_child:
+    ParentImage|endswith:
+    - \wab.exe
+    - \wabmig.exe
+  selection_parent:
+    Image|endswith:
+    - \wab.exe
+    - \wabmig.exe
+    ParentImage|endswith:
+    - \WmiPrvSE.exe
+    - \svchost.exe
+    - \dllhost.exe
+falsepositives:
+- Unknown
+id: 63d1ccc0-2a43-4f4b-9289-361b308991ff
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2022/08/08/bumblebee-roasts-its-way-to-domain-admin/
+- https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/bumblebee-loader-cybercrime
+- https://thedfirreport.com/2022/09/26/bumblebee-round-two/
+status: test
+tags:
+- attack.defense_evasion
+- attack.execution
+title: Wab/Wabmig Unusual Parent Or Child Processes

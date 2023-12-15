@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\vivaldi_elf.dll' AND NOT(((LOWER("Process Path") LIKE '%\vivaldi\application\vivaldi.exe' OR LOWER("Process Name") LIKE '%\vivaldi\application\vivaldi.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\vivaldi\application\%'))

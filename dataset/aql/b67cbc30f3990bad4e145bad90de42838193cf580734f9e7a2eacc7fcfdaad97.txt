@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%compress-archive %' AND LOWER(Command) LIKE '% -path %' AND LOWER(Command) LIKE '% -destinationpath %' AND LOWER(Command) LIKE '%$env:temp\%'

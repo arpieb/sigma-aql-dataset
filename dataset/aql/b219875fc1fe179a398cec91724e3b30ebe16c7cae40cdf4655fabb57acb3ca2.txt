@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Event ID" IN('4656', '4663')) AND "Object Type"='key' AND (LOWER("Object Name") LIKE '%lsa\jd' OR LOWER("Object Name") LIKE '%lsa\gbg' OR LOWER("Object Name") LIKE '%lsa\skew1' OR LOWER("Object Name") LIKE '%lsa\data')

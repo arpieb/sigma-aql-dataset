@@ -1,0 +1,37 @@
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: '2022-02-15'
+description: Detects possible payload obfuscation via the commandline
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - ^^
+    - ^|^
+    - ',;,'
+    - ;;;;
+    - ;; ;;
+    - (,(,
+    - '%COMSPEC:~'
+    - ' c^m^d'
+    - ^c^m^d
+    - ' c^md'
+    - ' cm^d'
+    - ^cm^d
+    - ' s^et '
+    - ' s^e^t '
+    - ' se^t '
+falsepositives:
+- Unknown
+id: a77c1610-fc73-4019-8e29-0f51efc04a51
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.fireeye.com/content/dam/fireeye-www/blog/pdfs/dosfuscation-report.pdf
+- https://github.com/danielbohannon/Invoke-DOSfuscation
+status: experimental
+tags:
+- attack.execution
+- attack.t1059
+title: Potential Dosfuscation Activity

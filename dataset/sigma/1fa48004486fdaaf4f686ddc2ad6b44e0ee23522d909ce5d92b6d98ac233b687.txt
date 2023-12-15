@@ -1,0 +1,26 @@
+author: TuanLe (GTSC)
+date: '2022-12-21'
+description: Detects usage of the "usermod" binary to add users add users to the root
+  or suoders groups
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - -aG root
+    - -aG sudoers
+    Image|endswith: /usermod
+falsepositives:
+- Legitimate administrator activities
+id: 6a50f16c-3b7b-42d1-b081-0fdd3ba70a73
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/
+- https://www.configserverfirewall.com/ubuntu-linux/ubuntu-add-user-to-root-group/
+status: test
+tags:
+- attack.privilege_escalation
+- attack.persistence
+title: User Added To Root/Sudoers Group Using Usermod

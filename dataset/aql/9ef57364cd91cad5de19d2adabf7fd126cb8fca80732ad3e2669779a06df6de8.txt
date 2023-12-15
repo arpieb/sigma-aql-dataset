@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename='CIPHER.EXE' OR LOWER("Process Path") LIKE '%\cipher.exe' OR LOWER("Process Name") LIKE '%\cipher.exe') AND LOWER(Command) LIKE '% /w:%'

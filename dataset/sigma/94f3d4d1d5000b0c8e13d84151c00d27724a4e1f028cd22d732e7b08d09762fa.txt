@@ -1,0 +1,44 @@
+author: Florian Roth (Nextron Systems)
+date: '2019-08-23'
+description: Detects usage of a base64 encoded "IEX" cmdlet in a process command line
+detection:
+  condition: selection
+  selection:
+    CommandLine|base64offset|contains:
+    - IEX ([
+    - iex ([
+    - iex (New
+    - IEX (New
+    - IEX([
+    - iex([
+    - iex(New
+    - IEX(New
+    - IEX(('
+    - iex(('
+    CommandLine|contains:
+    - SQBFAFgAIAAoAFsA
+    - kARQBYACAAKABbA
+    - JAEUAWAAgACgAWw
+    - aQBlAHgAIAAoAFsA
+    - kAZQB4ACAAKABbA
+    - pAGUAeAAgACgAWw
+    - aQBlAHgAIAAoAE4AZQB3A
+    - kAZQB4ACAAKABOAGUAdw
+    - pAGUAeAAgACgATgBlAHcA
+    - SQBFAFgAIAAoAE4AZQB3A
+    - kARQBYACAAKABOAGUAdw
+    - JAEUAWAAgACgATgBlAHcA
+falsepositives:
+- Unknown
+id: 88f680b8-070e-402c-ae11-d2914f2257f1
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- Internal Research
+status: test
+tags:
+- attack.execution
+- attack.t1059.001
+title: PowerShell Base64 Encoded IEX Cmdlet

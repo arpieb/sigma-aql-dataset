@@ -1,0 +1,37 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-12-06'
+description: Detects suspicious command line in which a user gets added to the local
+  Remote Desktop Users group
+detection:
+  condition: all of selection_*
+  selection_group:
+    CommandLine|contains:
+    - Remote Desktop Users
+    - "Utilisateurs du Bureau \xE0 distance"
+    - Usuarios de escritorio remoto
+  selection_main:
+    CommandLine|contains|all:
+    - 'localgroup '
+    - ' /add'
+    - 'Add-LocalGroupMember '
+    - ' -Group '
+falsepositives:
+- Administrative activity
+fields:
+- CommandLine
+- ParentCommandLine
+id: ffa28e60-bdb1-46e0-9f82-05f7a61cc06e
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.microsoft.com/security/blog/2021/11/16/evolving-trends-in-iranian-threat-actor-activity-mstic-presentation-at-cyberwarcon-2021/
+status: test
+tags:
+- attack.persistence
+- attack.lateral_movement
+- attack.t1133
+- attack.t1136.001
+- attack.t1021.001
+title: Suspicious Add User to Remote Desktop Users Group

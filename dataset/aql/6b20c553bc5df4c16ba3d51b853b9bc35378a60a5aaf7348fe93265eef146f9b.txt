@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\umworkerprocess.exe' AND NOT((LOWER("Process Path") LIKE '%wermgr.exe' OR LOWER("Process Path") LIKE '%werfault.exe' OR LOWER("Process Name") LIKE '%wermgr.exe' OR LOWER("Process Name") LIKE '%werfault.exe'))

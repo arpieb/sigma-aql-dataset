@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\net.exe' OR LOWER("Process Path") LIKE '%\net1.exe' OR LOWER("Process Name") LIKE '%\net.exe' OR LOWER("Process Name") LIKE '%\net1.exe' OR Filename IN('net.exe', 'net1.exe')) AND LOWER(Command) LIKE '% use %' AND LOWER(Command) LIKE '% http%'

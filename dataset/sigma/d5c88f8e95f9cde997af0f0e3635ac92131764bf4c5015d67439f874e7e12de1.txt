@@ -1,0 +1,28 @@
+author: Florian Roth (Nextron Systems)
+date: '2019-08-24'
+description: Detects usage of a base64 encoded "FromBase64String" cmdlet in a process
+  command line
+detection:
+  condition: selection
+  selection:
+    CommandLine|base64offset|contains: ::FromBase64String
+    CommandLine|contains:
+    - OgA6AEYAcgBvAG0AQgBhAHMAZQA2ADQAUwB0AHIAaQBuAGcA
+    - oAOgBGAHIAbwBtAEIAYQBzAGUANgA0AFMAdAByAGkAbgBnA
+    - 6ADoARgByAG8AbQBCAGEAcwBlADYANABTAHQAcgBpAG4AZw
+falsepositives:
+- Unknown
+id: fdb62a13-9a81-4e5c-a38f-ea93a16f6d7c
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- Internal Research
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1140
+- attack.execution
+- attack.t1059.001
+title: PowerShell Base64 Encoded FromBase64String Cmdlet

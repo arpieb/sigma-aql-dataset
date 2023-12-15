@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/plistbuddy' OR LOWER("Process Name") LIKE '%/plistbuddy') AND LOWER(Command) LIKE '%runatload%' AND LOWER(Command) LIKE '%true%' AND (LOWER(Command) LIKE '%launchagents%' OR LOWER(Command) LIKE '%launchdaemons%')

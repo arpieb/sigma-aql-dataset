@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\schtasks.exe' OR LOWER("Process Name") LIKE '%\schtasks.exe' OR Filename='schtasks.exe') AND LOWER(Command) LIKE '%/change%' AND LOWER(Command) LIKE '%/tn%' AND LOWER(Command) LIKE '%/ru%' AND LOWER(Command) LIKE '%/rp%'

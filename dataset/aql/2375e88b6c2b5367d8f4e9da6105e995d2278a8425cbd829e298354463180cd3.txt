@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%tunnel %' AND LOWER(Command) LIKE '%service%' AND LOWER(Command) LIKE '%internal-run%' AND LOWER(Command) LIKE '%tunnel-service.log%'

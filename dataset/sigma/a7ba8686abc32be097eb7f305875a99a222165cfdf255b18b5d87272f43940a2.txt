@@ -1,0 +1,43 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-01'
+description: 'Detects installation of a potentially suspicious new shim with an uncommon
+  extension using sdbinst.exe.
+
+  Adversaries may establish persistence and/or elevate privileges by executing malicious
+  content triggered by application shims
+
+  '
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_empty:
+    CommandLine: ''
+  filter_main_legit_ext:
+    CommandLine|contains: .sdb
+  filter_main_null:
+    CommandLine: null
+  filter_main_svchost1:
+    CommandLine|contains: ' -m -bg'
+    Image|endswith: :\Windows\System32\sdbinst.exe
+    ParentImage|endswith: :\Windows\System32\svchost.exe
+  filter_main_svchost2:
+    CommandLine|endswith: ' -mm'
+    Image|endswith: :\Windows\System32\sdbinst.exe
+    ParentImage|endswith: :\Windows\System32\svchost.exe
+  selection:
+    Image|endswith: \sdbinst.exe
+    OriginalFileName: sdbinst.exe
+falsepositives:
+- Unknown
+id: 18ee686c-38a3-4f65-9f44-48a077141f42
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.fireeye.com/blog/threat-research/2017/05/fin7-shim-databases-persistence.html
+status: test
+tags:
+- attack.persistence
+- attack.privilege_escalation
+- attack.t1546.011
+title: Suspicious Shim Database Installation via Sdbinst.EXE

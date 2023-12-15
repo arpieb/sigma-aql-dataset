@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%windowspowershell\modules\webadministration\webadministration.psm1' AND NOT((LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%'))

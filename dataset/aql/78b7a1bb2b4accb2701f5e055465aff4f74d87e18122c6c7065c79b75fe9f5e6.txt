@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Filename) LIKE '%\appdata\local\temp\%' OR LOWER(Filename) LIKE '%\users\public\%' OR LOWER(Filename) LIKE '%\windows\temp\%' OR LOWER(Filename) LIKE '%c:\temp\%') AND LOWER(Filename) LIKE '%.pub'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\esentutl.exe' OR LOWER("Process Name") LIKE '%\esentutl.exe' OR Filename='esentutl.exe') AND (LOWER(Command) LIKE '%/r%' OR LOWER(Command) LIKE '%-r%') AND LOWER(Command) LIKE '%\windows\webcache%'

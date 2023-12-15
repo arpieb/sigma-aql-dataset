@@ -1,0 +1,40 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-28'
+description: Detects usage of Msiexec.exe to install packages hosted remotely quietly
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - /i
+    - -i
+    - /package
+    - -package
+    - /a
+    - -a
+    - /j
+    - -j
+  selection_img:
+    Image|endswith: \msiexec.exe
+    OriginalFileName: msiexec.exe
+  selection_quiet:
+    CommandLine|contains:
+    - /q
+    - -q
+  selection_remote:
+    CommandLine|contains:
+    - http
+    - \\
+falsepositives:
+- Unknown
+id: 8150732a-0c9d-4a99-82b9-9efb9b90c40c
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.microsoft.com/en-us/security/blog/2022/10/27/raspberry-robin-worm-part-of-larger-ecosystem-facilitating-pre-ransomware-activity/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218.007
+title: Suspicious Msiexec Quiet Install From Remote Location

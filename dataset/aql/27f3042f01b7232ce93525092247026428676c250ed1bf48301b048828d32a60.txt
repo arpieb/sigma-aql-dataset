@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/amazon-ssm-agent' OR LOWER("Process Name") LIKE '%/amazon-ssm-agent') AND LOWER(Command) LIKE '%-register %' AND LOWER(Command) LIKE '%-code %' AND LOWER(Command) LIKE '%-id %' AND LOWER(Command) LIKE '%-region %'

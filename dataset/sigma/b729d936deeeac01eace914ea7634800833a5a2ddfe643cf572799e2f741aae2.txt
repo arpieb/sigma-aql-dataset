@@ -1,0 +1,28 @@
+author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
+date: '2023-09-18'
+description: Detects execution of the Add-In deployment cache updating utility (AddInutil.exe)
+  from a non-standard directory.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_legit_location:
+    Image|contains:
+    - :\Windows\Microsoft.NET\Framework\
+    - :\Windows\Microsoft.NET\Framework64\
+    - :\Windows\WinSxS\
+  selection:
+    Image|endswith: \addinutil.exe
+    OriginalFileName: AddInUtil.exe
+falsepositives:
+- Unknown
+id: 6120ac2a-a34b-42c0-a9bd-1fb9f459f348
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.blue-prints.blog/content/blog/posts/lolbin/addinutil-lolbas.html
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1218
+title: AddinUtil.EXE Execution From Uncommon Directory

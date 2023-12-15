@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4799 AND LOWER("Target Username") LIKE 'administr%' AND LOWER("Process Path") LIKE '%\checkadmin.exe'

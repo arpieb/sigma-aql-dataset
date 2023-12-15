@@ -1,0 +1,32 @@
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali
+date: '2023-01-21'
+description: Detects potential exploitation attempt of undocumented Windows Server
+  Pre Auth Remote Code Execution (RCE)
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: -k DHCPServer
+    Image|endswith: \svchost.exe
+    ParentCommandLine|contains: -k DHCPServer
+    ParentImage|endswith: \svchost.exe
+    User|contains:
+    - NETWORK SERVICE
+    - NETZWERKDIENST
+    - SERVIZIO DI RETE
+    - SERVICIO DE RED
+falsepositives:
+- Unknown
+id: 6d5b8176-d87d-4402-8af4-53aee9db7b5d
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/SigmaHQ/sigma/pull/3946
+- https://twitter.com/hackerfantastic/status/1616455335203438592?s=20
+status: test
+tags:
+- detection.emerging_threats
+- attack.initial_access
+- attack.t1190
+title: Potential Exploitation Attempt Of Undocumented WindowsServer RCE

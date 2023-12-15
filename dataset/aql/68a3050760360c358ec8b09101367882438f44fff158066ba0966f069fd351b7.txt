@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\mfdetours.dll' AND NOT(LOWER(CONCAT('file directory', '/', filename)) LIKE '%:\program files (x86)\windows kits\10\bin\%')

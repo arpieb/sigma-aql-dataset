@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\rasautou.exe' OR LOWER("Process Name") LIKE '%\rasautou.exe' OR Filename='rasdlui.exe') AND LOWER(Command) LIKE '% -d %' AND LOWER(Command) LIKE '% -p %'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename='Plink' OR LOWER(Command) LIKE '% -l forward%' AND LOWER(Command) LIKE '% -p %' AND LOWER(Command) LIKE '% -r %') AND NOT((LOWER("Process Path") LIKE '%\plink.exe' OR LOWER("Process Name") LIKE '%\plink.exe'))

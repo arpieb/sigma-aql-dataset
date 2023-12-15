@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/touch' OR LOWER("Process Name") LIKE '%/touch') AND LOWER(Command) LIKE '% -t %' AND LOWER(Command) LIKE '%.service'

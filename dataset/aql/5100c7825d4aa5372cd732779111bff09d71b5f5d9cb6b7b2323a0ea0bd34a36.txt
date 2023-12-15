@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='POST' AND LOWER(URL) LIKE '%/analytics/telemetry/ph/api/hyper/send_%'

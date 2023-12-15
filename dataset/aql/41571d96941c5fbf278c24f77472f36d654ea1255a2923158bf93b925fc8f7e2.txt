@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%nslookup%' AND LOWER(Command) LIKE '%_ldap._tcp.dc._msdcs.%'

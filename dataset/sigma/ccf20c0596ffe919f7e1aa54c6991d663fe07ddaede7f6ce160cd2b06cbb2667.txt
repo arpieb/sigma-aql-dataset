@@ -1,0 +1,34 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-14'
+description: Detects potentially suspicious child processes of "aspnet_compiler.exe".
+detection:
+  condition: all of selection_*
+  selection_child:
+    Image|contains:
+    - \Users\Public\
+    - \AppData\Local\Temp\
+    - \AppData\Local\Roaming\
+    - :\Temp\
+    - :\Windows\Temp\
+    - :\Windows\System32\Tasks\
+    - :\Windows\Tasks\
+    Image|endswith:
+    - \calc.exe
+    - \notepad.exe
+  selection_parent:
+    ParentImage|endswith: \aspnet_compiler.exe
+falsepositives:
+- Unknown
+id: 9ccba514-7cb6-4c5c-b377-700758f2f120
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Aspnet_Compiler/
+- https://ijustwannared.team/2020/08/01/the-curious-case-of-aspnet_compiler-exe/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1127
+title: Suspicious Child Process of AspNetCompiler

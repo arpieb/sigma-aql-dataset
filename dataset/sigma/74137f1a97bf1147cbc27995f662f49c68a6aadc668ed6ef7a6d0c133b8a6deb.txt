@@ -1,0 +1,22 @@
+author: Florian Roth (Nextron Systems)
+date: '2019-10-01'
+description: Detects a suspicious program execution in Outlook temp folder
+detection:
+  condition: selection
+  selection:
+    Image|contains: \Temporary Internet Files\Content.Outlook\
+falsepositives:
+- Unknown
+fields:
+- CommandLine
+- ParentCommandLine
+id: a018fdc3-46a3-44e5-9afb-2cd4af1d4b39
+level: high
+logsource:
+  category: process_creation
+  product: windows
+status: test
+tags:
+- attack.initial_access
+- attack.t1566.001
+title: Execution in Outlook Temp Folder

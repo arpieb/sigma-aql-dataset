@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command", "Parent Process Path" FROM events WHERE devicetype=12 AND LOWER(CONCAT('MD5=', 'MD5 Hash ', 'SHA1=', 'SHA1 Hash ', 'SHA256=', 'SHA256 Hash ', 'IMPHASH=', 'IMP HASH')) LIKE '%6834b1b94e49701d77ccb3c0895e1afd%' AND NOT((LOWER("Process Path") LIKE '%\dctask64.exe' OR LOWER("Process Name") LIKE '%\dctask64.exe'))

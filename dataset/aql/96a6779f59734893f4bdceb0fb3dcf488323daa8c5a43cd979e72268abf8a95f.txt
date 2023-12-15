@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%system.directoryservices.protocols.ldapdirectoryidentifier%' OR LOWER(Message) LIKE '%system.net.networkcredential%' OR LOWER(Message) LIKE '%system.directoryservices.protocols.ldapconnection%'

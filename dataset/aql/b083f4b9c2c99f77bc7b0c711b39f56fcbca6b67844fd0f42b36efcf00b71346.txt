@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%ds7002.lnk%' OR LOWER(Filename) LIKE '%ds7002.pdf%' OR LOWER(Filename) LIKE '%ds7002.zip%'

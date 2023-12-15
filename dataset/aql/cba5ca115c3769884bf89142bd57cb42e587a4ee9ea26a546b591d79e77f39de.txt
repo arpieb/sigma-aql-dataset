@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%xclip%' OR LOWER("Process Name") LIKE '%xclip%') AND LOWER(Command) LIKE '%-sel%' AND LOWER(Command) LIKE '%clip%' AND LOWER(Command) LIKE '%-o%'

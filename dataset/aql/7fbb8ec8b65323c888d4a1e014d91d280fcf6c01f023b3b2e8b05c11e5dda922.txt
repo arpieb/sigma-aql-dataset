@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\bitsadmin.exe' OR LOWER("Process Name") LIKE '%\bitsadmin.exe' OR Filename='bitsadmin.exe') AND (LOWER(Command) LIKE '% /transfer %' OR (LOWER(Command) LIKE '% /create %' OR LOWER(Command) LIKE '% /addfile %') AND LOWER(Command) LIKE '%http%')

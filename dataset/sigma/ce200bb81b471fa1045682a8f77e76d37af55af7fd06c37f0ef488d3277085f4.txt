@@ -1,0 +1,88 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-05'
+description: Detects potentially suspicious file download from file sharing domains
+  using curl.exe
+detection:
+  condition: all of selection_*
+  selection_ext:
+    CommandLine|endswith:
+    - .ps1
+    - .ps1'
+    - .ps1"
+    - .dat
+    - .dat'
+    - .dat"
+    - .msi
+    - .msi'
+    - .msi"
+    - .bat
+    - .bat'
+    - .bat"
+    - .exe
+    - .exe'
+    - .exe"
+    - .vbs
+    - .vbs'
+    - .vbs"
+    - .vbe
+    - .vbe'
+    - .vbe"
+    - .hta
+    - .hta'
+    - .hta"
+    - .dll
+    - .dll'
+    - .dll"
+    - .psm1
+    - .psm1'
+    - .psm1"
+  selection_flag:
+    CommandLine|contains:
+    - ' -O'
+    - --remote-name
+    - --output
+  selection_http:
+    CommandLine|contains: http
+  selection_img:
+    Image|endswith: \curl.exe
+    OriginalFileName: curl.exe
+  selection_websites:
+    CommandLine|contains:
+    - .githubusercontent.com
+    - anonfiles.com
+    - cdn.discordapp.com
+    - cdn.discordapp.com/attachments/
+    - ddns.net
+    - dl.dropboxusercontent.com
+    - ghostbin.co
+    - gofile.io
+    - hastebin.com
+    - mediafire.com
+    - mega.nz
+    - paste.ee
+    - pastebin.com
+    - pastebin.pl
+    - pastetext.net
+    - privatlab.com
+    - privatlab.net
+    - send.exploit.in
+    - sendspace.com
+    - storage.googleapis.com
+    - storjshare.io
+    - temp.sh
+    - transfer.sh
+    - ufile.io
+falsepositives:
+- Unknown
+id: 56454143-524f-49fb-b1c6-3fb8b1ad41fb
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://labs.withsecure.com/publications/fin7-target-veeam-servers
+- https://github.com/WithSecureLabs/iocs/blob/344203de742bb7e68bd56618f66d34be95a9f9fc/FIN7VEEAM/iocs.csv
+status: experimental
+tags:
+- attack.execution
+title: Suspicious File Download From File Sharing Domain Via Curl.EXE

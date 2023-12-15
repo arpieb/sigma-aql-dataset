@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\wmiprvse.exe' OR LOWER("Process Name") LIKE '%\wmiprvse.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\wbem\wbemcomn.dll'

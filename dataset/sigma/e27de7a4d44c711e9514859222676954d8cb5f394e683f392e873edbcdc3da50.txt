@@ -1,0 +1,25 @@
+author: Sohan G (D4rkCiph3r)
+date: '2023-02-18'
+description: Detects attempts to enable the guest account using the sysadminctl utility
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - ' -guestAccount'
+    - ' on'
+    Image|endswith: /sysadminctl
+falsepositives:
+- Unknown
+id: d7329412-13bd-44ba-a072-3387f804a106
+level: low
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://ss64.com/osx/sysadminctl.html
+status: experimental
+tags:
+- attack.initial_access
+- attack.t1078
+- attack.t1078.001
+title: Guest Account Enabled Via Sysadminctl

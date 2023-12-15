@@ -1,0 +1,24 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-07-27'
+description: Detects execution of "curl.exe" with the "file://" protocol handler in
+  order to read local files.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: file:///
+  selection_img:
+    Image|endswith: \curl.exe
+    OriginalFileName: curl.exe
+falsepositives:
+- Unknown
+id: aa6f6ea6-0676-40dd-b510-6e46f02d8867
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://curl.se/docs/manpage.html
+status: experimental
+tags:
+- attack.execution
+title: Local File Read Using Curl.EXE

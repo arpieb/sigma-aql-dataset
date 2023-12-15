@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%new-object %' OR LOWER(Message) LIKE '%system.directoryservices.directorysearcher%' OR LOWER(Message) LIKE '%.propertiestoload.add%' OR LOWER(Message) LIKE '%.findall()%' OR LOWER(Message) LIKE '%properties.name%'

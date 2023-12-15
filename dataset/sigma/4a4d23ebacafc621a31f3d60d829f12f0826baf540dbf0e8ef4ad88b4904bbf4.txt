@@ -1,0 +1,26 @@
+author: Cedric MAURUGEON
+date: '2021-09-29'
+description: Detects the deletion of a prefetch file which may indicate an attempt
+  to destroy forensic evidence
+detection:
+  condition: selection and not filter
+  filter:
+    Image: C:\windows\system32\svchost.exe
+    User|contains:
+    - AUTHORI
+    - AUTORI
+  selection:
+    TargetFilename|endswith: .pf
+    TargetFilename|startswith: C:\Windows\Prefetch\
+falsepositives:
+- Unknown
+id: 0a1f9d29-6465-4776-b091-7f43b26e4c89
+level: high
+logsource:
+  category: file_delete
+  product: windows
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070.004
+title: Prefetch File Deleted

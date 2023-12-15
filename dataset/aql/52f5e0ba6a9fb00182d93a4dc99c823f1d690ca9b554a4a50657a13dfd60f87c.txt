@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='C:\Windows\SysWOW64\iscsicpl.exe' OR "Process Name"='C:\Windows\SysWOW64\iscsicpl.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\iscsiexe.dll' AND NOT((LOWER(CONCAT('file directory', '/', filename)) LIKE '%c:\windows\%' AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%iscsiexe.dll%'))

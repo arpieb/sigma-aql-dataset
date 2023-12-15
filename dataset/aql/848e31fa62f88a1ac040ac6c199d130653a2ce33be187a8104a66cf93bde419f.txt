@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(UTF8(payload)) LIKE '%rundll32.exe%' AND LOWER(UTF8(payload)) LIKE '%shell32.dll%' AND LOWER(UTF8(payload)) LIKE '%shellexec_rundll%' AND LOWER(UTF8(payload)) LIKE '%powershell%'

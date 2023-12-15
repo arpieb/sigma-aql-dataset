@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dllhost.exe' OR LOWER("Process Name") LIKE '%\dllhost.exe') AND LOWER(Filename) LIKE 'c:\windows\system32\%' AND LOWER(Filename) LIKE '%.dll'

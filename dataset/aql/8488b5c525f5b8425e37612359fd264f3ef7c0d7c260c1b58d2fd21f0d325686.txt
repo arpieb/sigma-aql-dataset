@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\wusa.exe' OR LOWER("Process Name") LIKE '%\wusa.exe') AND LOWER(Command) LIKE '%/extract:%'

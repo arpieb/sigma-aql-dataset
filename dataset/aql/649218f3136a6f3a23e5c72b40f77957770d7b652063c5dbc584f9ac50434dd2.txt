@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\hwp.exe' AND (LOWER("Process Path") LIKE '%\gbb.exe' OR LOWER("Process Name") LIKE '%\gbb.exe')

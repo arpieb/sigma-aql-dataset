@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Name") LIKE '%\iscredguardenabled' OR LOWER("Target Process Name") LIKE '%\iscredguardenabled' OR LOWER("Object Name") LIKE '%\iscredguardenabled'

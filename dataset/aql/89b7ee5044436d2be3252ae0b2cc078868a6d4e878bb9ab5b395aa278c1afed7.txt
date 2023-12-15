@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\takeown.exe' OR LOWER("Process Name") LIKE '%\takeown.exe') AND LOWER(Command) LIKE '%/f %' AND LOWER(Command) LIKE '%/r%'

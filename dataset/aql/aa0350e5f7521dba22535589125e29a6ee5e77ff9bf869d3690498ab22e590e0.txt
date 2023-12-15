@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/cgi-bin/jarrewrite.sh%' AND (LOWER("User Agent") LIKE '%:;%' OR LOWER("User Agent") LIKE '%() {%' OR LOWER("User Agent") LIKE '%/bin/bash -c%')

@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-05-16'
+description: Detects execution of the IEExec utility to download and execute files
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - http://
+    - https://
+  selection_img:
+    Image|endswith: \IEExec.exe
+    OriginalFileName: IEExec.exe
+falsepositives:
+- Unknown
+id: 9801abb8-e297-4dbf-9fbd-57dde0e830ad
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Ieexec/
+status: test
+tags:
+- attack.command_and_control
+- attack.t1105
+title: File Download And Execution Via IEExec.EXE

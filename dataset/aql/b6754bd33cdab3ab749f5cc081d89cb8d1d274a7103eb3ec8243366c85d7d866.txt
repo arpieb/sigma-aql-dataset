@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%invoke-webrequest %' OR LOWER(Command) LIKE '%iwr %') AND LOWER(Command) LIKE '%http%' AND LOWER(Command) LIKE '%outfile%' AND LOWER(Command) LIKE '%.dll%'

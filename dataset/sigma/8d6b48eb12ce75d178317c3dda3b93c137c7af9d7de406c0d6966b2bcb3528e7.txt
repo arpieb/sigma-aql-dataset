@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-12-28'
+description: Detects usage of "apt" and "apt-get" as a GTFOBin to execute and proxy
+  command and binary execution
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: APT::Update::Pre-Invoke::=
+    Image|endswith:
+    - /apt
+    - /apt-get
+falsepositives:
+- Unknown
+id: bb382fd5-b454-47ea-a264-1828e4c766d6
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://gtfobins.github.io/gtfobins/apt/
+- https://gtfobins.github.io/gtfobins/apt-get/
+status: test
+tags:
+- attack.discovery
+- attack.t1083
+title: Apt GTFOBin Abuse - Linux

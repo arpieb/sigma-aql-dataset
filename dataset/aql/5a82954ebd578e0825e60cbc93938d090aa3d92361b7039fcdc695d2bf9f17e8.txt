@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Name") LIKE '%\currentcontrolset\services\wercplsupport\parameters\servicedll' OR LOWER("Target Process Name") LIKE '%\currentcontrolset\services\wercplsupport\parameters\servicedll' OR LOWER("Object Name") LIKE '%\currentcontrolset\services\wercplsupport\parameters\servicedll'

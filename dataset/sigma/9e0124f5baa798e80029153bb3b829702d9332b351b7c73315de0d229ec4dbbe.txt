@@ -1,0 +1,52 @@
+author: Florian Roth (Nextron Systems), oscd.community, Nasreddine Bencherchali (Nextron
+  Systems)
+date: '2019-01-10'
+description: Detects potential Dridex acitvity via specific process patterns
+detection:
+  condition: (selection_svchost and not filter_svchost) or (selection_regsvr and not
+    filter_regsvr) or (selection_anomaly_parent and 1 of selection_anomaly_child_*)
+  filter_regsvr:
+    CommandLine|contains: .dll
+  filter_svchost:
+    ParentImage|startswith: C:\Windows\System32\
+  selection_anomaly_child_1:
+    CommandLine|contains: ' /all'
+    Image|endswith: \whoami.exe
+  selection_anomaly_child_2:
+    CommandLine|contains: ' view'
+    Image|endswith:
+    - \net.exe
+    - \net1.exe
+  selection_anomaly_parent:
+    ParentImage|endswith: \svchost.exe
+  selection_regsvr:
+    CommandLine|contains:
+    - ' -s '
+    - \AppData\Local\Temp\
+    Image|endswith: \regsvr32.exe
+    ParentImage|endswith: \excel.exe
+  selection_svchost:
+    CommandLine|contains|all:
+    - C:\Users\
+    - \Desktop\
+    Image|endswith: \svchost.exe
+falsepositives:
+- Unlikely
+id: e6eb5a96-9e6f-4a18-9cdd-642cfda21c8e
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://app.any.run/tasks/993daa5e-112a-4ff6-8b5a-edbcec7c7ba3
+- https://redcanary.com/threat-detection-report/threats/dridex/
+status: stable
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1055
+- attack.discovery
+- attack.t1135
+- attack.t1033
+- detection.emerging_threats
+title: Potential Dridex Activity

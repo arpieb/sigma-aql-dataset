@@ -1,0 +1,24 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-31'
+description: Detects potential malicious .ICO files download from a compromised 3CXDesktopApp
+  via web requests to the the malicious Github repository
+detection:
+  condition: selection
+  selection:
+    c-uri|contains|all:
+    - IconStorages/images/main/icon
+    - .ico
+falsepositives:
+- Unknown
+id: 76bc1601-9546-4b75-9419-06e0e8d10651
+level: high
+logsource:
+  category: proxy
+references:
+- https://www.sentinelone.com/blog/smoothoperator-ongoing-campaign-trojanizes-3cx-software-in-software-supply-chain-attack/
+- https://www.linkedin.com/feed/update/urn:li:activity:7047435754834198529/
+status: experimental
+tags:
+- attack.command_and_control
+- detection.emerging_threats
+title: Potential Compromised 3CXDesktopApp ICO C2 File Download

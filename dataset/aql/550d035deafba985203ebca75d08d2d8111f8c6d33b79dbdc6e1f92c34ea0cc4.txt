@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Event ID" IN('4656', '4663', '4658')) AND (LOWER("Object Name") LIKE '%.aaa' OR LOWER("Object Name") LIKE '%.zzz')

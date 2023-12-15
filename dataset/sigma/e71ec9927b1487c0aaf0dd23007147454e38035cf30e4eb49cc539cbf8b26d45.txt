@@ -1,0 +1,25 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-07-28'
+description: Detects the creation of suspcious binary files inside the "\windows\system32\spool\drivers\color\"
+  as seen in the blog referenced below
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith:
+    - .dll
+    - .exe
+    - .sys
+    TargetFilename|startswith: C:\Windows\System32\spool\drivers\color\
+falsepositives:
+- Unknown
+id: ce7066a6-508a-42d3-995b-2952c65dc2ce
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.microsoft.com/security/blog/2022/07/27/untangling-knotweed-european-private-sector-offensive-actor-using-0-day-exploits/
+status: test
+tags:
+- attack.defense_evasion
+title: Drop Binaries Into Spool Drivers Color Folder

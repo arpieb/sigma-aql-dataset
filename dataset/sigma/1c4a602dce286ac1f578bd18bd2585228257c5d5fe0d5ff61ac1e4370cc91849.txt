@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-26'
+description: Detects a specific command line of "regsvr32" where the "calc" keyword
+  is used in conjunction with the "/s" flag. This behavior is often seen used by Qakbot
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - ' /s'
+    - ' -s'
+    CommandLine|endswith: ' calc'
+    Image|endswith: \regsvr32.exe
+falsepositives:
+- Unlikely
+id: 0033cf83-fb87-446d-9cac-43d63ad4d5a9
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/pr0xylife/Qakbot/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.execution
+- detection.emerging_threats
+title: Qakbot Regsvr32 Calc Pattern

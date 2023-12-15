@@ -1,0 +1,44 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-29'
+description: Detects potential beaconing activity to domains related to 3CX 3CXDesktopApp
+  compromise
+detection:
+  condition: selection
+  selection:
+    DestinationHostname|contains:
+    - akamaicontainer.com
+    - akamaitechcloudservices.com
+    - azuredeploystore.com
+    - azureonlinecloud.com
+    - azureonlinestorage.com
+    - dunamistrd.com
+    - glcloudservice.com
+    - journalide.org
+    - msedgepackageinfo.com
+    - msstorageazure.com
+    - msstorageboxes.com
+    - officeaddons.com
+    - officestoragebox.com
+    - pbxcloudeservices.com
+    - pbxphonenetwork.com
+    - pbxsources.com
+    - qwepoi123098.com
+    - sbmsa.wiki
+    - sourceslabs.com
+    - visualstudiofactory.com
+    - zacharryblogs.com
+    Image|endswith: \3CXDesktopApp.exe
+falsepositives:
+- Unlikely
+id: 51eecf75-d069-43c7-9ea2-63f75499edd4
+level: high
+logsource:
+  category: network_connection
+  product: windows
+references:
+- https://www.reddit.com/r/crowdstrike/comments/125r3uu/20230329_situational_awareness_crowdstrike/
+status: experimental
+tags:
+- attack.command_and_control
+- detection.emerging_threats
+title: Potential Compromised 3CXDesktopApp Beaconing Activity - Netcon

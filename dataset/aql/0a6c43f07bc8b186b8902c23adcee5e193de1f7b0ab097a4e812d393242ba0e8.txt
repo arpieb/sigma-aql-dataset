@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%add eligible member (permanent)%' OR LOWER(Message) LIKE '%add eligible member (eligible)%'

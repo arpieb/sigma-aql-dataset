@@ -1,0 +1,22 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-15'
+description: Detects usage of the 'chattr' utility to remove immutable file attribute.
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: ' -i '
+    Image|endswith: /chattr
+falsepositives:
+- Administrator interacting with immutable files (e.g. for instance backups).
+id: 34979410-e4b5-4e5d-8cfb-389fdff05c12
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://www.trendmicro.com/en_us/research/22/i/how-malicious-actors-abuse-native-linux-tools-in-their-attacks.html
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1222.002
+title: Remove Immutable File Attribute

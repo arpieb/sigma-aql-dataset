@@ -1,0 +1,36 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-20'
+description: Detects potential exploitation attempts that target the Centos Web Panel
+  7 Unauthenticated Remote Code Execution CVE-2022-44877
+detection:
+  condition: selection
+  selection:
+    cs-method: POST
+    cs-uri-query|contains:
+    - login=$(
+    - base64
+    - subprocess
+    - socket
+    - ${IFS}
+    - cHl0aG9u
+    - B5dGhvb
+    - weXRob2
+    cs-uri-query|contains|all:
+    - /login/index.php
+    - login=
+falsepositives:
+- Web vulnerability scanners
+id: 1b2eeb27-949b-4704-8bfa-d8e5cfa045a1
+level: high
+logsource:
+  category: webserver
+references:
+- https://seclists.org/fulldisclosure/2023/Jan/1
+- https://www.rapid7.com/blog/post/2023/01/19/etr-exploitation-of-control-web-panel-cve-2022-44877/
+status: test
+tags:
+- attack.initial_access
+- attack.t1190
+- cve.2022.44877
+- detection.emerging_threats
+title: Potential Centos Web Panel Exploitation Attempt - CVE-2022-44877

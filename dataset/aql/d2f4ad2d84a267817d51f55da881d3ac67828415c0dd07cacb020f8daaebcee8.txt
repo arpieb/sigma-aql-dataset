@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Initiated='true' AND (LOWER("Destination Hostname") LIKE '%api.dropboxapi.com' OR LOWER("Destination Hostname") LIKE '%content.dropboxapi.com') AND NOT((LOWER("Process Path") LIKE '%\dropbox%' OR LOWER("Process Name") LIKE '%\dropbox%'))

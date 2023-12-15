@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Name") LIKE '%\software\classes\folder\shell\open\command\delegateexecute%' OR LOWER("Target Process Name") LIKE '%\software\classes\folder\shell\open\command\delegateexecute%' OR LOWER("Object Name") LIKE '%\software\classes\folder\shell\open\command\delegateexecute%'

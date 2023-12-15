@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%rundll32%' AND LOWER(Command) LIKE '%javascript%' AND LOWER(Command) LIKE '%..\..\mshtml,runhtmlapplication%' OR LOWER(Command) LIKE '%;document.write();getobject("script%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Initiated='true' AND (LOWER("Process Path") LIKE '%\addinutil.exe' OR LOWER("Process Name") LIKE '%\addinutil.exe')

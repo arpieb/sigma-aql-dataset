@@ -1,0 +1,34 @@
+author: Nextron Systems
+date: '2022-06-03'
+description: Detects python spawning a pretty tty which could be indicative of potential
+  reverse shell activity
+detection:
+  condition: selection_img and 1 of selection_cli_*
+  selection_cli_1:
+    CommandLine|contains|all:
+    - import pty
+    - .spawn(
+  selection_cli_2:
+    CommandLine|contains: from pty import spawn
+  selection_img:
+    Image|contains:
+    - /python2.
+    - /python3.
+    Image|endswith:
+    - /python
+    - /python2
+    - /python3
+falsepositives:
+- Unknown
+id: c4042d54-110d-45dd-a0e1-05c47822c937
+level: high
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://www.volexity.com/blog/2022/06/02/zero-day-exploitation-of-atlassian-confluence/
+status: experimental
+tags:
+- attack.execution
+- attack.t1059
+title: Python Spawning Pretty TTY

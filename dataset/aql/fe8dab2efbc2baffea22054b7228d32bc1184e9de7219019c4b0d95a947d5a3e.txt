@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%-nop -w hidden -c iex ((new-object net.webclient).downloadstring(%' AND LOWER(Command) LIKE '%/a'')%'

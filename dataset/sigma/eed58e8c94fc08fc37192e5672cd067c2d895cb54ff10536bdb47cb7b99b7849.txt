@@ -1,0 +1,37 @@
+author: Nasreddine Bencherchali (Nextron Systems), citron_ninja
+date: '2023-10-25'
+description: Detects Visual Studio Code tunnel execution. Attackers can abuse this
+  functionality to establish a C2 channel
+detection:
+  condition: 1 of selection_*
+  selection_only_tunnel:
+    CommandLine|endswith: .exe tunnel
+    OriginalFileName: null
+  selection_parent_tunnel:
+    CommandLine|contains|all:
+    - '/d /c '
+    - \servers\Stable-
+    - code-server.cmd
+    Image|endswith: \cmd.exe
+    ParentCommandLine|endswith: ' tunnel'
+  selection_tunnel_args:
+    CommandLine|contains|all:
+    - .exe tunnel
+    - '--name '
+    - --accept-server-license-terms
+falsepositives:
+- Legitimate use of Visual Studio Code tunnel
+id: 90d6bd71-dffb-4989-8d86-a827fedd6624
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://ipfyx.fr/post/visual-studio-code-tunnel/
+- https://badoption.eu/blog/2023/01/31/code_c2.html
+- https://code.visualstudio.com/docs/remote/tunnels
+status: experimental
+tags:
+- attack.command_and_control
+- attack.t1071.001
+title: Visual Studio Code Tunnel Execution

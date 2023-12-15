@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cmstp.exe' OR LOWER("Process Name") LIKE '%\cmstp.exe') AND Initiated='true'

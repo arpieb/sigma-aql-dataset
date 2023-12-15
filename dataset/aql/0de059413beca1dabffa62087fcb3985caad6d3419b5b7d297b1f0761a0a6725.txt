@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Source Process Path") LIKE '%\ttdinject.exe'

@@ -1,0 +1,24 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-12-07'
+description: Detects the use of the Dinject PowerShell cradle based on the specific
+  flags
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - ' /am51'
+    - ' /password'
+falsepositives:
+- Unlikely
+id: d78b5d61-187d-44b6-bf02-93486a80de5a
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/snovvcrash/DInjector
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1055
+title: HackTool - DInjector PowerShell Cradle Execution

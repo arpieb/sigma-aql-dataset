@@ -1,0 +1,36 @@
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: '2021-12-26'
+description: Detects when adversaries stop services or processes by disabling their
+  respective scheduled tasks in order to conduct data destructive activities
+detection:
+  condition: all of schtasks_*
+  schtasks_exe:
+    CommandLine|contains:
+    - \Windows\SystemRestore\SR
+    - \Windows\Windows Defender\
+    - \Windows\BitLocker
+    - \Windows\WindowsBackup\
+    - \Windows\WindowsUpdate\
+    - \Windows\UpdateOrchestrator\
+    - \Windows\ExploitGuard
+    CommandLine|contains|all:
+    - /Change
+    - /TN
+    - /disable
+    Image|endswith: \schtasks.exe
+falsepositives:
+- Unknown
+id: 9ac94dc8-9042-493c-ba45-3b5e7c86b980
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1490/T1490.md#atomic-test-8---windows---disable-the-sr-scheduled-task
+- https://twitter.com/MichalKoczwara/status/1553634816016498688
+- https://thedfirreport.com/2021/10/18/icedid-to-xinglocker-ransomware-in-24-hours/
+status: test
+tags:
+- attack.impact
+- attack.t1489
+title: Disable Important Scheduled Task

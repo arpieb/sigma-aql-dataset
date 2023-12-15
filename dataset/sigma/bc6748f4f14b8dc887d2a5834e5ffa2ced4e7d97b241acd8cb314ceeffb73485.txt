@@ -1,0 +1,27 @@
+author: daniel.bohannon@permiso.io (@danielhbohannon)
+date: '2023-05-17'
+description: Detects S3 Browser utility creating IAM User or AccessKey.
+detection:
+  condition: selection
+  selection:
+    eventName:
+    - CreateUser
+    - CreateAccessKey
+    eventSource: iam.amazonaws.com
+    userAgent|contains: S3 Browser
+falsepositives:
+- Valid usage of S3 Browser for IAM User and/or AccessKey creation
+id: db014773-d9d9-4792-91e5-133337c0ffee
+level: high
+logsource:
+  product: aws
+  service: cloudtrail
+references:
+- https://permiso.io/blog/s/unmasking-guivil-new-cloud-threat-actor
+status: experimental
+tags:
+- attack.execution
+- attack.persistence
+- attack.t1059.009
+- attack.t1078.004
+title: AWS IAM S3Browser User or AccessKey Creation

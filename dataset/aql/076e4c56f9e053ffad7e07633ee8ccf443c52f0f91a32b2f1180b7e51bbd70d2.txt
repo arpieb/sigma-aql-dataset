@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/dsenableroot' OR LOWER("Process Name") LIKE '%/dsenableroot') AND NOT(LOWER(Command) LIKE '% -d %')

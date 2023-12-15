@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%dllregisterserver%' AND NOT((LOWER("Process Path") LIKE '%\rundll32.exe' OR LOWER("Process Name") LIKE '%\rundll32.exe'))

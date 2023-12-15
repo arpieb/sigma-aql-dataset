@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-04-30'
+description: Detects the creation of a process executing as user called "ANONYMOUS"
+  seen used by the "MileStone2016" variant of COLDSTEEL
+detection:
+  condition: selection
+  selection:
+    ParentImage|contains:
+    - \Windows\System32\
+    - \AppData\
+    User|contains: ANONYMOUS
+falsepositives:
+- Unknown
+id: e01b6eb5-1eb4-4465-a165-85d40d874add
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/cold-steel/NCSC-MAR-Cold-Steel.pdf
+status: experimental
+tags:
+- attack.persistence
+- attack.defense_evasion
+- detection.emerging_threats
+title: COLDSTEEL RAT Anonymous User Process Execution

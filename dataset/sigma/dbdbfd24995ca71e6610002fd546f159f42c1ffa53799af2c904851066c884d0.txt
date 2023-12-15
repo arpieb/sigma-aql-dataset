@@ -1,0 +1,43 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-07-30'
+description: Detects the creation of a named pipe matching a pattern used by CobaltStrike
+  Malleable C2 profiles
+detection:
+  condition: selection
+  selection:
+    PipeName|re: \Winsock2\CatalogChangeListener-[0-9a-f]{3}-0,
+    PipeName|re|all:
+    - \mojo\.5688\.8052\.(?:183894939787088877|35780273329370473)[0-9a-f]{2}
+    - \wkssvc_?[0-9a-f]{2}
+    - \ntsvcs[0-9a-f]{2}
+    - \DserNamePipe[0-9a-f]{2}
+    - \SearchTextHarvester[0-9a-f]{2}
+    - \mypipe-(?:f|h)[0-9a-f]{2}
+    - \windows\.update\.manager[0-9a-f]{2,3}
+    - \ntsvcs_[0-9a-f]{2}
+    - \scerpc_?[0-9a-f]{2}
+    - \PGMessagePipe[0-9a-f]{2}
+    - \MsFteWds[0-9a-f]{2}
+    - \f4c3[0-9a-f]{2}
+    - \fullduplex_[0-9a-f]{2}
+    - \msrpc_[0-9a-f]{4}
+    - \win\msrpc_[0-9a-f]{2}
+    - \f53f[0-9a-f]{2}
+    - \rpc_[0-9a-f]{2}
+    - \spoolss_[0-9a-f]{2}
+falsepositives:
+- Unknown
+id: 0e7163d4-9e19-4fa7-9be6-000c61aad77a
+level: critical
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- https://svch0st.medium.com/guide-to-named-pipes-and-hunting-for-cobalt-strike-pipes-dc46b2c5f575
+- https://gist.github.com/MHaggis/6c600e524045a6d49c35291a21e10752
+status: test
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1055
+title: CobaltStrike Named Pipe Pattern Regex

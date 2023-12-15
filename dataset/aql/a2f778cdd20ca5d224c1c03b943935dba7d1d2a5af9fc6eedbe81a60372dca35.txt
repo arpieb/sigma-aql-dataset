@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\explorer.exe' AND (LOWER("Process Path") LIKE '%\rundll32.exe' OR LOWER("Process Name") LIKE '%\rundll32.exe' OR Filename='RUNDLL32.EXE') AND NOT((LOWER(Command) LIKE '% c:\windows\system32\%' OR LOWER(Command) LIKE '% -localserver 22d8c27b-47a1-48d1-ad08-7da7abd79617'))

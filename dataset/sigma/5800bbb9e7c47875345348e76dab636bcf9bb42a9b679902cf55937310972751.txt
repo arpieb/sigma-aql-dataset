@@ -1,0 +1,24 @@
+author: Tim Rauch (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-16'
+description: Detects the deletion of IIS WebServer access logs which may indicate
+  an attempt to destroy forensic evidence
+detection:
+  condition: selection
+  selection:
+    TargetFilename|contains: \inetpub\logs\LogFiles\
+    TargetFilename|endswith: .log
+falsepositives:
+- During uninstallation of the IIS service
+- During log rotation
+id: 3eb8c339-a765-48cc-a150-4364c04652bf
+level: medium
+logsource:
+  category: file_delete
+  product: windows
+references:
+- https://www.elastic.co/guide/en/security/current/webserver-access-logs-deleted.html
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070
+title: IIS WebServer Access Logs Deleted

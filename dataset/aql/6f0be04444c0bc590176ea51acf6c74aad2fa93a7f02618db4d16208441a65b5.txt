@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-localgroup%' OR LOWER(Message) LIKE '%get-localgroupmember%' OR LOWER(Message) LIKE '%get-wmiobject%' OR LOWER(Message) LIKE '%win32_group%'

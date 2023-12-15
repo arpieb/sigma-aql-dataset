@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%python%' OR LOWER("Process Name") LIKE '%python%') AND LOWER(Command) LIKE '% -c %' AND LOWER(Command) LIKE '%import%' AND LOWER(Command) LIKE '%pty%' AND LOWER(Command) LIKE '%spawn(%' AND LOWER(Command) LIKE '%.connect%'

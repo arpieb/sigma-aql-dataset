@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems)
+date: '2018-07-22'
+description: Detects access to a webshell dropped into a keystore folder on the WebLogic
+  server
+detection:
+  condition: selection
+  selection:
+    cs-uri-query: '*/config/keystore/*.js*'
+falsepositives:
+- Unknown
+fields:
+- c-ip
+- c-dns
+id: 37e8369b-43bb-4bf8-83b6-6dd43bda2000
+level: critical
+logsource:
+  category: webserver
+references:
+- https://twitter.com/pyn3rd/status/1020620932967223296
+- https://github.com/LandGrey/CVE-2018-2894
+status: test
+tags:
+- attack.t1190
+- attack.initial_access
+- attack.persistence
+- attack.t1505.003
+- cve.2018.2894
+- detection.emerging_threats
+title: Oracle WebLogic Exploit

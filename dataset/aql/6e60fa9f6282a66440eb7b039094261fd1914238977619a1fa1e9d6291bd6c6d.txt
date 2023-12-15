@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\auditpol.exe' OR LOWER("Process Name") LIKE '%\auditpol.exe' OR Filename='AUDITPOL.EXE') AND (LOWER(Command) LIKE '%disable%' OR LOWER(Command) LIKE '%clear%' OR LOWER(Command) LIKE '%remove%' OR LOWER(Command) LIKE '%restore%')

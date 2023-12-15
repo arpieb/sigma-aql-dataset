@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%iex %' OR LOWER(Command) LIKE '%invoke-expression %' OR LOWER(Command) LIKE '%invoke-command %' OR LOWER(Command) LIKE '%icm %') AND (LOWER(Command) LIKE '%cat %' OR LOWER(Command) LIKE '%get-content %' OR LOWER(Command) LIKE '%type %') AND LOWER(Command) LIKE '% -raw%'

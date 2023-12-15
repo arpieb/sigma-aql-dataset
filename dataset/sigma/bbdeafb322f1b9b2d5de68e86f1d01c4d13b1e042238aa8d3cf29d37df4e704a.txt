@@ -1,0 +1,40 @@
+author: Andreas Braathen (mnemonic.io)
+date: '2023-11-14'
+description: 'Detects exploitation attempt of CVE-2023-22518 (Confluence Data Center
+  / Confluence Server), where an attacker can exploit vulnerable endpoints to e.g.
+  create admin accounts and execute arbitrary commands.
+
+  '
+detection:
+  condition: all of selection_* and not 1 of filter_main_*
+  filter_main_ulimit:
+    CommandLine|contains: ulimit -u
+  selection_child:
+    Image|endswith:
+    - /bash
+    - /curl
+    - /echo
+    - /wget
+  selection_parent:
+    ParentCommandLine|contains: confluence
+    ParentImage|endswith: /java
+falsepositives:
+- Unlikely
+id: f8987c03-4290-4c96-870f-55e75ee377f4
+level: high
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://confluence.atlassian.com/security/cve-2023-22518-improper-authorization-vulnerability-in-confluence-data-center-and-server-1311473907.html
+- https://www.huntress.com/blog/confluence-to-cerber-exploitation-of-cve-2023-22518-for-ransomware-deployment
+- https://github.com/ForceFledgling/CVE-2023-22518
+status: experimental
+tags:
+- detection.emerging_threats
+- attack.execution
+- attack.t1059
+- attack.initial_access
+- attack.t1190
+- cve.2023.22518
+title: CVE-2023-22518 Exploitation Attempt - Suspicious Confluence Child Process (Linux)

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\w3wp.exe' AND (LOWER(Command) LIKE '%appcmd.exe add module%' OR LOWER(Command) LIKE '% system.enterpriseservices.internal.publish%' AND (LOWER("Process Path") LIKE '%\powershell.exe' OR LOWER("Process Name") LIKE '%\powershell.exe') OR LOWER(Command) LIKE '%gacutil%' AND LOWER(Command) LIKE '% /i%')

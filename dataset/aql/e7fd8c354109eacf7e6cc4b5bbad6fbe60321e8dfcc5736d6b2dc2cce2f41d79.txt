@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\hive_sam_%' OR LOWER(Filename) LIKE '%\sam-2021-%' OR LOWER(Filename) LIKE '%\sam-2022-%' OR LOWER(Filename) LIKE '%\sam-2023-%' OR LOWER(Filename) LIKE '%\sam-haxx%' OR LOWER(Filename) LIKE '%\sam.save%' OR Filename='C:\windows\temp\sam'

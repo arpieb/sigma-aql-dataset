@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%/in:%' OR LOWER(Command) LIKE '%/out:%' OR LOWER(Command) LIKE '%/uri:%') AND (LOWER("Process Path") LIKE '%\datasvcutil.exe' OR LOWER("Process Name") LIKE '%\datasvcutil.exe' OR Filename='DataSvcUtil.exe')

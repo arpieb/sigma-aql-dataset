@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/usermod' OR LOWER("Process Name") LIKE '%/usermod') AND (LOWER(Command) LIKE '%-ag root%' OR LOWER(Command) LIKE '%-ag sudoers%')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%ls%' OR LOWER(Message) LIKE '% -r%' OR LOWER(Message) LIKE '%select-string %' OR LOWER(Message) LIKE '%-pattern %'

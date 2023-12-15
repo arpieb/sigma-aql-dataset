@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%get-service %' OR LOWER(Message) LIKE '%get-childitem %' OR LOWER(Message) LIKE '%get-process %') AND LOWER(Message) LIKE '%> $env:temp*%'

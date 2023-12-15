@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE 'c:\program files\windowsapps\microsoft.desktopappinstaller_%' OR LOWER("Process Name") LIKE 'c:\program files\windowsapps\microsoft.desktopappinstaller_%') AND (LOWER("Process Path") LIKE '%\appinstaller.exe' OR LOWER("Process Name") LIKE '%\appinstaller.exe')

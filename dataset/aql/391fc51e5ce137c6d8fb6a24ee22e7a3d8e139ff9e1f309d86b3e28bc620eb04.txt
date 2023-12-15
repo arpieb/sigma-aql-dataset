@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%vaultcmd%' OR LOWER(Message) LIKE '%/listcreds:%') AND (LOWER(Message) LIKE '%windows credentials%' OR LOWER(Message) LIKE '%web credentials%')

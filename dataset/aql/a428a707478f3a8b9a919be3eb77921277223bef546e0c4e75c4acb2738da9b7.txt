@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\wmic.exe' OR LOWER("Process Name") LIKE '%\wmic.exe' OR Filename='wmic.exe') AND LOWER(Command) LIKE '%process%' AND LOWER(Command) LIKE '%call%' AND LOWER(Command) LIKE '%create%'

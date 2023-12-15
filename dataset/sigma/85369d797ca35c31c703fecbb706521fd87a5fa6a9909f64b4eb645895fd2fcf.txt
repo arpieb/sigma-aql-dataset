@@ -1,0 +1,29 @@
+author: Sohan G (D4rkCiph3r)
+date: '2023-01-31'
+description: Detects possible collection of data from the clipboard via execution
+  of the osascript binary
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - osascript
+    - ' -e '
+    - clipboard
+falsepositives:
+- Unlikely
+fields:
+- CommandLine
+id: 7794fa3c-edea-4cff-bec7-267dd4770fd7
+level: high
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://www.sentinelone.com/blog/how-offensive-actors-use-applescript-for-attacking-macos/
+status: test
+tags:
+- attack.collection
+- attack.execution
+- attack.t1115
+- attack.t1059.002
+title: Clipboard Data Collection Via OSAScript

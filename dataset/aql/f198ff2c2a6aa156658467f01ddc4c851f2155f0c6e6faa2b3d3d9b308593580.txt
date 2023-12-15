@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename IN('mavinject32.exe', 'mavinject64.exe')) AND NOT((LOWER("Process Path") LIKE '%\mavinject32.exe' OR LOWER("Process Path") LIKE '%\mavinject64.exe' OR LOWER("Process Name") LIKE '%\mavinject32.exe' OR LOWER("Process Name") LIKE '%\mavinject64.exe'))

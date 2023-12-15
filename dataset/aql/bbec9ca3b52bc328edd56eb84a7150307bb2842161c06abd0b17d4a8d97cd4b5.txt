@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%vboxrt.dll,rtr3init%' OR LOWER(Command) LIKE '%vboxc.dll%' OR LOWER(Command) LIKE '%vboxdrv.sys%' OR LOWER(Command) LIKE '%startvm%' OR LOWER(Command) LIKE '%controlvm%'

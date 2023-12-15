@@ -1,0 +1,24 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-15'
+description: Detects potential C2 communication related to Devil Bait malware
+detection:
+  condition: selection
+  selection:
+    cs-method: GET
+    cs-uri|contains|all:
+    - /cross.php?op=
+    - '&dt='
+    - '&uid='
+falsepositives:
+- Unlikely
+id: 514c50c9-373a-46e5-9012-f0327c526c8f
+level: high
+logsource:
+  category: proxy
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/devil-bait/NCSC-MAR-Devil-Bait.pdf
+status: experimental
+tags:
+- attack.command_and_control
+- detection.emerging_threats
+title: Devil Bait Potential C2 Communication Traffic

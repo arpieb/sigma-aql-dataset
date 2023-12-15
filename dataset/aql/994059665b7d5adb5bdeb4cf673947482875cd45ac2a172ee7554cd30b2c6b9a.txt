@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%add-mppreference %' OR LOWER(Command) LIKE '%set-mppreference %') AND (LOWER(Command) LIKE '% -exclusionpath %' OR LOWER(Command) LIKE '% -exclusionextension %' OR LOWER(Command) LIKE '% -exclusionprocess %' OR LOWER(Command) LIKE '% -exclusionipaddress %')

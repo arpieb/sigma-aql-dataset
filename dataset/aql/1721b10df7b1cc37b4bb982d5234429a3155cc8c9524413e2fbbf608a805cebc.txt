@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE (LOWER(URL) LIKE '%/tmui/%' OR LOWER(URL) LIKE '%/hsqldb%') AND (LOWER(URL) LIKE '%..;/%' OR LOWER(URL) LIKE '%.jsp/..%')

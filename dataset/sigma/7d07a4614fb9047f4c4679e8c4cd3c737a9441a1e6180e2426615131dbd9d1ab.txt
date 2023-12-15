@@ -1,0 +1,37 @@
+author: Florian Roth (Nextron Systems)
+date: '2020-07-10'
+description: Detects exploitation attempt against Citrix Netscaler, Application Delivery
+  Controller (ADS) and Citrix Gateway exploiting vulnerabilities reported as CVE-2020-8193
+  and CVE-2020-8195
+detection:
+  condition: 1 of selection*
+  selection1:
+    cs-uri-query|contains: /rapi/filedownload?filter=path:%2F
+  selection2:
+    cs-uri-query|contains|all:
+    - /pcidss/report
+    - type=all_signatures
+    - sig_name=_default_signature_
+falsepositives:
+- Unknown
+fields:
+- client_ip
+- vhost
+- url
+- response
+id: 0d0d9a8a-a49e-4e27-b061-7ce4b936cfb7
+level: critical
+logsource:
+  category: webserver
+references:
+- https://support.citrix.com/article/CTX276688
+- https://research.nccgroup.com/2020/07/10/rift-citrix-adc-vulnerabilities-cve-2020-8193-cve-2020-8195-and-cve-2020-8196-intelligence/
+- https://dmaasland.github.io/posts/citrix.html
+status: test
+tags:
+- attack.initial_access
+- attack.t1190
+- cve.2020.8193
+- cve.2020.8195
+- detection.emerging_threats
+title: Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195

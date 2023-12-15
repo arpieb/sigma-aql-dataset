@@ -1,0 +1,28 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-02-08'
+description: Detects the creation of a macro file for Outlook.
+detection:
+  condition: selection and not filter
+  filter:
+    Image|endswith: \outlook.exe
+  selection:
+    TargetFilename|endswith: \Microsoft\Outlook\VbaProject.OTM
+falsepositives:
+- Unlikely
+id: 117d3d3a-755c-4a61-b23e-9171146d094c
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.mdsec.co.uk/2020/11/a-fresh-outlook-on-mail-based-persistence/
+- https://speakerdeck.com/heirhabarov/hunting-for-persistence-via-microsoft-exchange-server-or-outlook?slide=53
+- https://www.linkedin.com/pulse/outlook-backdoor-using-vba-samir-b-/
+status: test
+tags:
+- attack.persistence
+- attack.command_and_control
+- attack.t1137
+- attack.t1008
+- attack.t1546
+title: Suspicious Outlook Macro Created

@@ -1,0 +1,29 @@
+author: Harjot Singh @cyb3rjy0t
+date: '2023-09-15'
+description: Detects any child process spawning from "Diskshadow.exe". This could
+  be due to executing Diskshadow in interpreter mode or script mode and using the
+  "exec" flag to launch other applications.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_werfault:
+    Image|endswith: :\Windows\System32\WerFault.exe
+  selection:
+    ParentImage|endswith: \diskshadow.exe
+falsepositives:
+- Likely from legitimate usage of Diskshadow in Interpreter mode.
+id: 56b1dde8-b274-435f-a73a-fb75eb81262a
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://bohops.com/2018/03/26/diskshadow-the-return-of-vss-evasion-persistence-and-active-directory-database-extraction/
+- https://www.ired.team/offensive-security/credential-access-and-credential-dumping/ntds.dit-enumeration
+- https://medium.com/@cyberjyot/lolbin-execution-via-diskshadow-f6ff681a27a4
+- https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskshadow
+status: experimental
+tags:
+- attack.execution
+- attack.t1218
+- detection.threat_hunting
+title: Diskshadow Child Process Spawned

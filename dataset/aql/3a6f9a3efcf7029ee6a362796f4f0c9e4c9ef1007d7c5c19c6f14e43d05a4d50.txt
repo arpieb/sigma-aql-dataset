@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='POST' AND (LOWER(URL) LIKE '%/login/index.php%' OR LOWER(URL) LIKE '%login=%') AND (LOWER(URL) LIKE '%login=$(%' OR LOWER(URL) LIKE '%base64%' OR LOWER(URL) LIKE '%subprocess%' OR LOWER(URL) LIKE '%socket%' OR LOWER(URL) LIKE '%${ifs}%' OR LOWER(URL) LIKE '%chl0ag9u%' OR LOWER(URL) LIKE '%b5dghvb%' OR LOWER(URL) LIKE '%wexrob2%')

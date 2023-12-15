@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/base64' OR LOWER("Process Name") LIKE '%/base64') AND LOWER(Command) LIKE '%-d%'

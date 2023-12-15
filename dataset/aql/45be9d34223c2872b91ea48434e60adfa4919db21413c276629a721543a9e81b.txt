@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%invoke-cimmethod %' OR LOWER(Message) LIKE '%-classname %' OR LOWER(Message) LIKE '%win32_product %' OR LOWER(Message) LIKE '%-methodname %' OR LOWER(Message) LIKE '%.msi%'

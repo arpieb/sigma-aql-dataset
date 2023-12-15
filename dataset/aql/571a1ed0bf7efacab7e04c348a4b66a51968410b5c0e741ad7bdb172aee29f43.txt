@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Parent Process Path") LIKE '%/applet' OR LOWER("Parent Process Path") LIKE '%/osascript') AND LOWER(Command) LIKE '%osacompile%'

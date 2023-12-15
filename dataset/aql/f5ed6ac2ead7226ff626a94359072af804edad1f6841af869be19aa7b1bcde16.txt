@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%/c %' AND LOWER(Command) LIKE '%echo %' AND LOWER(Command) LIKE '%.exe --set-password%'

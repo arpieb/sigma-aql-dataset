@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND LOWER(URL) LIKE '%/mshtml_c7/%' AND URL MATCHES '.*\?d=[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.*'

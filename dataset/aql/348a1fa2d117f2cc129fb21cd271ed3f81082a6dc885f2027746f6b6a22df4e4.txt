@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dsacls.exe' OR LOWER("Process Name") LIKE '%\dsacls.exe' OR Filename='DSACLS.EXE') AND LOWER(Command) LIKE '%/user:%' AND LOWER(Command) LIKE '%/passwd:%'

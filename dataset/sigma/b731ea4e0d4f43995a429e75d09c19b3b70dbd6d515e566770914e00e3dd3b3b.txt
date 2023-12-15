@@ -1,0 +1,39 @@
+author: xknow @xknow_infosec, Tim Shelton
+date: '2020-06-11'
+description: Detects potential path traversal attempt via cmd.exe. Could indicate
+  possible command/argument confusion/hijacking
+detection:
+  condition: all of selection_* and not 1 of filter_*
+  filter_java:
+    CommandLine|contains: \Tasktop\keycloak\bin\/../../jre\bin\java
+  selection_flags:
+    CommandLine|contains:
+    - /c
+    - /k
+    - /r
+    ParentCommandLine|contains:
+    - /c
+    - /k
+    - /r
+  selection_img:
+    Image|endswith: \cmd.exe
+    OriginalFileName: cmd.exe
+    ParentImage|endswith: \cmd.exe
+  selection_path_traversal:
+    CommandLine|contains: /../../
+    ParentCommandLine: /../../
+falsepositives:
+- Java tools are known to produce false-positive when loading libraries
+id: 087790e3-3287-436c-bccf-cbd0184a7db1
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://hackingiscool.pl/cmdhijack-command-argument-confusion-with-path-traversal-in-cmd-exe/
+- https://twitter.com/Oddvarmoe/status/1270633613449723905
+status: test
+tags:
+- attack.execution
+- attack.t1059.003
+title: Potential CommandLine Path Traversal Via Cmd.EXE

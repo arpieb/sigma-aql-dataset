@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/openssl' OR LOWER("Process Name") LIKE '%/openssl') AND LOWER(Command) LIKE '%/volumes/%' AND LOWER(Command) LIKE '%enc%' AND LOWER(Command) LIKE '%-base64%' AND LOWER(Command) LIKE '% -d %'

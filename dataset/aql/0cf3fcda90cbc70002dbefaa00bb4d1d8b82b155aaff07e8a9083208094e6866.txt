@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msiexec.exe' OR LOWER("Process Name") LIKE '%\msiexec.exe' OR Filename='\msiexec.exe') AND (LOWER(Command) LIKE '% /z %' OR LOWER(Command) LIKE '% -z %') AND LOWER(Command) LIKE '%.dll%'

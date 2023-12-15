@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%:\windows\system32\tasks\%' OR LOWER(Filename) LIKE '%:\windows\syswow64\tasks\%' OR LOWER(Filename) LIKE '%:\windows\tasks\%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%tasklist%' OR LOWER("Process Path") LIKE '%\tasklist.exe' OR LOWER("Process Name") LIKE '%\tasklist.exe' OR Filename='tasklist.exe'

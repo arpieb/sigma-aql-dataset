@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE 'c:\windows\prefetch\%' AND LOWER(Filename) LIKE '%.pf' AND NOT((("Process Path"='C:\windows\system32\svchost.exe' OR "Process Name"='C:\windows\system32\svchost.exe') AND (LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%')))

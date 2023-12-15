@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\teamviewer_%' AND LOWER(Filename) LIKE '%.log' AND NOT(("Process Path"='C:\Windows\system32\svchost.exe' OR "Process Name"='C:\Windows\system32\svchost.exe'))

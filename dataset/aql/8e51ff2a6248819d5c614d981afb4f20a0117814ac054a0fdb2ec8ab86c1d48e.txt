@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\purplesharp%' OR LOWER("Process Name") LIKE '%\purplesharp%' OR Filename='PurpleSharp.exe' OR LOWER(Command) LIKE '%xyz123456.exe%' OR LOWER(Command) LIKE '%purplesharp%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\servers\stable-%' OR LOWER("Process Name") LIKE '%\servers\stable-%') AND (LOWER("Process Path") LIKE '%\server\node.exe' OR LOWER("Process Name") LIKE '%\server\node.exe') AND LOWER(Filename) LIKE '%\.vscode-server\data\user\history\%'

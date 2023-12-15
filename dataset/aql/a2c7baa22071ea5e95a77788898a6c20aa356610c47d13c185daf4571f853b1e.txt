@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND UTF8(payload) MATCHES '(?i).*?echo.*clip.*&&.*(Clipboard|i`?n`?v`?o`?k`?e`?).*'

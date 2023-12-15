@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\attrib.exe' OR LOWER("Process Name") LIKE '%\attrib.exe' OR Filename='ATTRIB.EXE') AND LOWER(Command) LIKE '% +h %' AND NOT((LOWER(Command) LIKE '%\desktop.ini %' OR LOWER("Parent Process Path") LIKE '%\cmd.exe' AND Command='+R +H +S +A \*.cui' AND "Parent Command"='C:\WINDOWS\system32\*.bat'))

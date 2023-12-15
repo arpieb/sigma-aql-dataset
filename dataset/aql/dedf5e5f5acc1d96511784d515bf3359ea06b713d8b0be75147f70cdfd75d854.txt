@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND ("Process Path"='/usr/sbin/firmwarepasswd' OR "Process Name"='/usr/sbin/firmwarepasswd') AND (LOWER(Command) LIKE '%setpasswd%' OR LOWER(Command) LIKE '%full%' OR LOWER(Command) LIKE '%delete%' OR LOWER(Command) LIKE '%check%')

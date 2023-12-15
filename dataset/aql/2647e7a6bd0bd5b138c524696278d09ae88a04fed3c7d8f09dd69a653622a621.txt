@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%reg add%' AND LOWER(Command) LIKE '%\system\currentcontrolset\control%' AND LOWER(Command) LIKE '%write protection%' AND Command LIKE '%0%' AND (LOWER(Command) LIKE '%storage%' OR LOWER(Command) LIKE '%storagedevicepolicies%')

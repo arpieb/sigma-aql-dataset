@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4699 AND NOT(("Task Name"='\Microsoft\Windows\RemovalTools\MRT_ERROR_HB' OR LOWER("Task Name") LIKE '%\mozilla\firefox default browser agent %'))

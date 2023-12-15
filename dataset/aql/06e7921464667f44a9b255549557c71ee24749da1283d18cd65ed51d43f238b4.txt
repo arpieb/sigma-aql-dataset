@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%remove-mppreference%' AND (LOWER(Message) LIKE '%-controlledfolderaccessprotectedfolders %' OR LOWER(Message) LIKE '%-attacksurfacereductionrules_ids %' OR LOWER(Message) LIKE '%-attacksurfacereductionrules_actions %' OR LOWER(Message) LIKE '%-checkforsignaturesbeforerunningscan %')

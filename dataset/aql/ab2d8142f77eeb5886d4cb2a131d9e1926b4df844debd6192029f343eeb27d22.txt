@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\secedit.exe' OR LOWER("Process Name") LIKE '%\secedit.exe' OR Filename='SeCEdit') AND (LOWER(Command) LIKE '%/export%' AND LOWER(Command) LIKE '%/cfg%' OR LOWER(Command) LIKE '%/configure%' AND LOWER(Command) LIKE '%/db%')

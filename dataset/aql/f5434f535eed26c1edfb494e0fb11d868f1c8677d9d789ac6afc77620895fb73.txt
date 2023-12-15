@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\pwsh.exe' OR LOWER("Process Name") LIKE '%\pwsh.exe' OR Filename='pwsh.dll') AND LOWER(Command) LIKE '%set-service %' AND LOWER(Command) LIKE '%dclcwpdtsd%' AND (LOWER(Command) LIKE '%-securitydescriptorsddl %' OR LOWER(Command) LIKE '%-sd %')

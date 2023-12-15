@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%for %' OR LOWER(Command) LIKE '%foreach %') AND (LOWER(Command) LIKE '%nslookup%' OR LOWER(Command) LIKE '%ping%')

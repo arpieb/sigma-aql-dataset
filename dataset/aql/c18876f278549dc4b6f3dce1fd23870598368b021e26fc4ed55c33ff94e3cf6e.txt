@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\svchost.exe' OR LOWER("Process Name") LIKE '%\svchost.exe') AND Filename MATCHES '\\Windows\\System32\\[a-zA-Z0-9]{8}\.tmp$'

@@ -1,0 +1,27 @@
+author: Sohan G (D4rkCiph3r)
+date: '2023-03-19'
+description: Detects attempts to create and add an account to the admin group via
+  "sysadminctl"
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - ' -addUser '
+    - ' -admin '
+    Image|endswith: /sysadminctl
+falsepositives:
+- Legitimate administration activities
+id: 652c098d-dc11-4ba6-8566-c20e89042f2b
+level: medium
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078.003/T1078.003.md#atomic-test-3---create-local-account-with-admin-privileges-using-sysadminctl-utility---macos
+- https://ss64.com/osx/sysadminctl.html
+status: experimental
+tags:
+- attack.initial_access
+- attack.privilege_escalation
+- attack.t1078.003
+title: User Added To Admin Group Via Sysadminctl

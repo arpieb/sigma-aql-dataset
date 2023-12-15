@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%copy solidpdfcreator.dll%' AND LOWER(Command) LIKE '%c:\users\public\libraries\phototvrhd\solidpdfcreator.dll%' OR LOWER(Command) LIKE '%reg %' AND LOWER(Command) LIKE '%\windows\currentversion\run%' AND LOWER(Command) LIKE '%solidpdf%' AND LOWER(Command) LIKE '%c:\users\public\libraries\phototvrhd\%'

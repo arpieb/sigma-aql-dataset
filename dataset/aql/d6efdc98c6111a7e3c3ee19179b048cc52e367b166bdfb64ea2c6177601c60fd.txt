@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4662 AND "Object Type"='WMI Namespace' AND LOWER("Object Name") LIKE '%subscription%'

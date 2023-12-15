@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(UTF8(payload)) LIKE '%set%' AND LOWER(UTF8(payload)) LIKE '%&&%' AND LOWER(UTF8(payload)) LIKE '%mshta%' AND LOWER(UTF8(payload)) LIKE '%vbscript:createobject%' AND LOWER(UTF8(payload)) LIKE '%.run%' AND LOWER(UTF8(payload)) LIKE '%(window.close)%'

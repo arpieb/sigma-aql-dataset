@@ -1,0 +1,25 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-09'
+description: Detects process execution patterns related to Griffon malware as reported
+  by Kaspersky
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - \local\temp\
+    - //b /e:jscript
+    - .txt
+falsepositives:
+- Unlikely
+id: bcc6f179-11cd-4111-a9a6-0fab68515cf7
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://securelist.com/fin7-5-the-infamous-cybercrime-rig-fin7-continues-its-activities/90703/
+status: experimental
+tags:
+- attack.execution
+- detection.emerging_threats
+title: Griffon Malware Attack Pattern

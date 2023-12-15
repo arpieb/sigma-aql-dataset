@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Source Process Path") LIKE '%:\windows\syswow64\%' AND "Granted Access"='0x1fffff' AND LOWER("Call Trace") LIKE 'unknown(0000000000000000)|unknown(0000000000000000)|%'

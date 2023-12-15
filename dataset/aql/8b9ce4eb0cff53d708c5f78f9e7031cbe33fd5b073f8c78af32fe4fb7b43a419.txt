@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND (LOWER("Process Path") LIKE '%/osascript' OR LOWER("Process Name") LIKE '%/osascript') AND (LOWER(Command) LIKE '% -e %' OR LOWER(Command) LIKE '%.scpt%' OR LOWER(Command) LIKE '%.js%')

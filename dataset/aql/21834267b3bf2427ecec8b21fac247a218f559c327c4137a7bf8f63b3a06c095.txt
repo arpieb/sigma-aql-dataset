@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%new-psdrive%' OR LOWER(Message) LIKE '%-psprovider %' OR LOWER(Message) LIKE '%filesystem%' OR LOWER(Message) LIKE '%-root %' OR LOWER(Message) LIKE '%\\%' OR LOWER(Message) LIKE '%$%'

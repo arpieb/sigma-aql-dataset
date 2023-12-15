@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\policies\{31b2f340-016d-11d2-945f-00c04fb984f9}\%' AND (LOWER(Filename) LIKE '%.dll' OR LOWER(Filename) LIKE '%.exe')

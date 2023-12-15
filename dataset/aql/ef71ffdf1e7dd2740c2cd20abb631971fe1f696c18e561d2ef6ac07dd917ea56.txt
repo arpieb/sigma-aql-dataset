@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\fltmc.exe' OR LOWER("Process Name") LIKE '%\fltmc.exe' OR Filename='fltMC.exe') AND LOWER(Command) LIKE '%unload%' AND NOT(LOWER(Command) LIKE '%unload rtp_filesystem_filter')

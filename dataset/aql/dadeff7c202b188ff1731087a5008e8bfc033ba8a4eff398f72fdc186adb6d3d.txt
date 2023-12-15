@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\netsh.exe' OR LOWER("Process Name") LIKE '%\netsh.exe' OR Filename='netsh.exe') AND LOWER(Command) LIKE '%wlan%' AND LOWER(Command) LIKE '% s%' AND LOWER(Command) LIKE '% p%' AND LOWER(Command) LIKE '% k%' AND LOWER(Command) LIKE '%=clear%'

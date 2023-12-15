@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%-i%' OR LOWER(Command) LIKE '%/install%' OR LOWER(Command) LIKE '%-a%' OR LOWER(Command) LIKE '%/add-driver%' OR LOWER(Command) LIKE '%.inf%') AND (LOWER("Process Path") LIKE '%\pnputil.exe' OR LOWER("Process Name") LIKE '%\pnputil.exe')

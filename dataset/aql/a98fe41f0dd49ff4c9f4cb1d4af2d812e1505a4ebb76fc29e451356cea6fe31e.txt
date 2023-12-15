@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\tomcat%' AND LOWER(Filename) LIKE '%\logs\%' AND (LOWER(Filename) LIKE '%catalina.%' OR LOWER(Filename) LIKE '%_access_log.%' OR LOWER(Filename) LIKE '%localhost.%')

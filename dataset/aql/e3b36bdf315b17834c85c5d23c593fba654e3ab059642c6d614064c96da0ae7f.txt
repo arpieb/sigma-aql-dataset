@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\customshellhost.exe' AND NOT(("Process Path"='C:\Windows\explorer.exe' OR "Process Name"='C:\Windows\explorer.exe'))

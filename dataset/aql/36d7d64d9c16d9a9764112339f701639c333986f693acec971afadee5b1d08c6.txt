@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/sudo' OR LOWER("Process Name") LIKE '%/sudo') AND LOWER(Command) LIKE '% tc %' AND LOWER(Command) LIKE '% enp0s3 %' AND (LOWER(Command) LIKE '% qdisc %' OR LOWER(Command) LIKE '% filter %')

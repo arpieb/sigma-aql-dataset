@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(UTF8(payload)) LIKE '%new-object%' AND LOWER(UTF8(payload)) LIKE '%text.encoding]::ascii%' AND (LOWER(UTF8(payload)) LIKE '%system.io.compression.deflatestream%' OR LOWER(UTF8(payload)) LIKE '%system.io.streamreader%') AND LOWER(UTF8(payload)) LIKE '%readtoend'

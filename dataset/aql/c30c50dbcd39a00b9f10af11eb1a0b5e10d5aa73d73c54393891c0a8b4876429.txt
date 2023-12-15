@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% -name ieharden %' AND LOWER(Command) LIKE '% -value 0 %' OR LOWER(Command) LIKE '% -name depoff %' AND LOWER(Command) LIKE '% -value 1 %' OR LOWER(Command) LIKE '% -name disablefirstruncustomize %' AND LOWER(Command) LIKE '% -value 2 %'

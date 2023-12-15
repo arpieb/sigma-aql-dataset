@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%remove-etwtraceprovider %' OR LOWER(Message) LIKE '%set-etwtraceprovider %' OR LOWER(Message) LIKE '%0x11%'

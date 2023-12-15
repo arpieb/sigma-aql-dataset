@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-01-25'
+description: Detects exploitation attempts of the SonicWall Jarrewrite Exploit
+detection:
+  condition: selection
+  selection:
+    cs-uri-query|contains: /cgi-bin/jarrewrite.sh
+    cs-user-agent|contains:
+    - :;
+    - () {
+    - /bin/bash -c
+falsepositives:
+- Unknown
+fields:
+- c-ip
+- c-dns
+id: 6f55f047-112b-4101-ad32-43913f52db46
+level: high
+logsource:
+  category: webserver
+references:
+- https://web.archive.org/web/20210126045316/https://darrenmartyn.ie/2021/01/24/visualdoor-sonicwall-ssl-vpn-exploit/
+- https://github.com/darrenmartyn/VisualDoor
+status: test
+tags:
+- attack.t1190
+- attack.initial_access
+- detection.emerging_threats
+title: SonicWall SSL/VPN Jarrewrite Exploitation

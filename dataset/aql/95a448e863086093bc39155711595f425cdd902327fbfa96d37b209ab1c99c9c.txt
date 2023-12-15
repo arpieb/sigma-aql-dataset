@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\internet explorer\iexplore.exe' OR LOWER("Process Name") LIKE '%\internet explorer\iexplore.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\internet explorer\iertutil.dll'

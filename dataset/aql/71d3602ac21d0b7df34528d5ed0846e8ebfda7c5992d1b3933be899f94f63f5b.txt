@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%.docm' OR LOWER(Filename) LIKE '%.dotm' OR LOWER(Filename) LIKE '%.xlsm' OR LOWER(Filename) LIKE '%.xltm' OR LOWER(Filename) LIKE '%.potm' OR LOWER(Filename) LIKE '%.pptm'

@@ -1,0 +1,28 @@
+author: X__Junior (Nextron Systems)
+date: '2023-05-07'
+description: Detects potential DLL sideloading of "SolidPDFCreator.dll"
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_path:
+    ImageLoaded|startswith:
+    - C:\Program Files (x86)\SolidDocuments\SolidPDFCreator\
+    - C:\Program Files\SolidDocuments\SolidPDFCreator\
+    Image|endswith: \SolidPDFCreator.exe
+  selection:
+    ImageLoaded|endswith: \SolidPDFCreator.dll
+falsepositives:
+- Unknown
+id: a2edbce1-95c8-4291-8676-0d45146862b3
+level: medium
+logsource:
+  category: image_load
+  product: windows
+references:
+- https://lab52.io/blog/new-mustang-pandas-campaing-against-australia/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1574.001
+- attack.t1574.002
+title: Potential SolidPDFCreator.DLL Sideloading

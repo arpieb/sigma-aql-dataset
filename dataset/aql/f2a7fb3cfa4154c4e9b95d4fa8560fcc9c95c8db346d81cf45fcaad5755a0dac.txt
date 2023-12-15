@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\sqltoolsps.exe' OR LOWER("Process Name") LIKE '%\sqltoolsps.exe' OR LOWER("Parent Process Path") LIKE '%\sqltoolsps.exe' OR Filename='\sqltoolsps.exe') AND NOT(LOWER("Parent Process Path") LIKE '%\smss.exe')

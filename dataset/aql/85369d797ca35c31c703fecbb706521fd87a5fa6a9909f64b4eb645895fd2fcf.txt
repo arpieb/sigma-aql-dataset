@@ -1,0 +1,1 @@
+SELECT *, Command FROM events WHERE devicetype=102 AND LOWER(Command) LIKE '%osascript%' AND LOWER(Command) LIKE '% -e %' AND LOWER(Command) LIKE '%clipboard%'

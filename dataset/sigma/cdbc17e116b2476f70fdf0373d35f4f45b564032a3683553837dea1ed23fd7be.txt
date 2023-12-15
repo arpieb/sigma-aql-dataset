@@ -1,0 +1,54 @@
+author: Bhabesh Raj
+date: '2022-03-11'
+description: Detects potential shellcode injection used by tools such as Metasploit's
+  migrate and Empire's psinject
+detection:
+  condition: selection and not 1 of filter_optional_*
+  filter_optional_ddvdatacollector:
+    SourceImage|contains: :\Program Files\Microsoft Visual Studio\
+    SourceImage|endswith: \MSBuild\Current\Bin\MSBuild.exe
+    TargetImage|endswith: :\Program Files\Dell\DellDataVault\DDVDataCollector.exe
+  filter_optional_dell_folders:
+    CallTrace|startswith: ?:\Windows\System32\ntdll.dll
+    GrantedAccess: '0x1F3FFF'
+    SourceImage|contains:
+    - :\Program Files\Dell\
+    - :\Program Files (x86)\Dell\
+    TargetImage|contains:
+    - :\Program Files\Dell\
+    - :\Program Files (x86)\Dell\
+  filter_optional_dell_specifc:
+    CallTrace|startswith: ?:\Windows\System32\ntdll.dll
+    GrantedAccess: '0x1F3FFF'
+    SourceImage|endswith: :\Program Files (x86)\Dell\UpdateService\ServiceShell.exe
+    TargetImage|endswith: :\Windows\Explorer.EXE
+  filter_optional_visual_studio:
+    CallTrace|startswith: ?:\Windows\System32\ntdll.dll
+    SourceImage|endswith:
+    - :\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\PerfWatson2.exe
+    - :\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\PerfWatson2.exe
+    TargetImage|endswith:
+    - :\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe
+    - :\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe
+  filter_optional_wmiprvese:
+    CallTrace|startswith: ?:\Windows\SYSTEM32\ntdll.dll
+    SourceImage|endswith: :\Windows\System32\Wbem\Wmiprvse.exe
+    TargetImage|endswith: :\Windows\system32\lsass.exe
+  selection:
+    CallTrace|contains: UNKNOWN
+    GrantedAccess:
+    - '0x147a'
+    - '0x1f3fff'
+falsepositives:
+- Unknown
+id: 250ae82f-736e-4844-a68b-0b5e8cc887da
+level: high
+logsource:
+  category: process_access
+  product: windows
+status: test
+tags:
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1055
+title: Potential Shellcode Injection

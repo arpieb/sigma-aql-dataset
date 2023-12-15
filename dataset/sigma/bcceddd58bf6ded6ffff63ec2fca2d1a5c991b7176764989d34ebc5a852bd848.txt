@@ -1,0 +1,23 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-19'
+description: Detects specific command line argument being passed to a binary as seen
+  being used by the malware Small Sieve.
+detection:
+  condition: selection
+  selection:
+    CommandLine|endswith: .exe Platypus
+falsepositives:
+- Unlikely
+id: 21117127-21c8-437a-ae03-4b51e5a8a088
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/small-sieve/NCSC-MAR-Small-Sieve.pdf
+status: test
+tags:
+- attack.persistence
+- attack.t1574.001
+- detection.emerging_threats
+title: Small Sieve Malware CommandLine Indicator

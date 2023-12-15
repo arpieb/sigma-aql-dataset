@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\colorcpl.exe' OR LOWER("Process Name") LIKE '%\colorcpl.exe') AND NOT((LOWER(Filename) LIKE '%.icm' OR LOWER(Filename) LIKE '%.gmmp' OR LOWER(Filename) LIKE '%.cdmp' OR LOWER(Filename) LIKE '%.camp'))

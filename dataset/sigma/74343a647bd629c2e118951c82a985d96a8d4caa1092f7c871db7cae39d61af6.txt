@@ -1,0 +1,27 @@
+author: Bhabesh Raj
+date: '2021-07-01'
+description: Detect DLL deletions from Spooler Service driver folder. This might be
+  a potential exploitation attempt of CVE-2021-1675
+detection:
+  condition: selection
+  selection:
+    Image|endswith: \spoolsv.exe
+    TargetFilename|contains: C:\Windows\System32\spool\drivers\x64\3\
+falsepositives:
+- Unknown
+id: 5b2bbc47-dead-4ef7-8908-0cf73fcbecbf
+level: high
+logsource:
+  category: file_delete
+  product: windows
+references:
+- https://github.com/hhlxf/PrintNightmare
+- https://github.com/cube0x0/CVE-2021-1675
+status: experimental
+tags:
+- attack.persistence
+- attack.defense_evasion
+- attack.privilege_escalation
+- attack.t1574
+- cve.2021.1675
+title: Potential PrintNightmare Exploitation Attempt

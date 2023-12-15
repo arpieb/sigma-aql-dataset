@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%tvqqaamaaaaeaaaa%' OR LOWER(Command) LIKE '%tvpqaaiaaaaeaa8a%' OR LOWER(Command) LIKE '%tvqaaaeaaaaeabaa%' OR LOWER(Command) LIKE '%tvoaaaaaaaaaaaaa%' OR LOWER(Command) LIKE '%tvptaqeaaaaeaaaa%'

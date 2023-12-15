@@ -1,0 +1,39 @@
+author: Nasreddine Bencherchali (Nextron Systems), Andreas Braathen (mnemonic.io)
+date: '2023-08-30'
+description: Detects exploitation attempt of CVE-2023-38331 (WinRAR before v6.23),
+  where an attacker can leverage WinRAR to execute arbitrary commands and binaries.
+detection:
+  condition: all of selection_*
+  selection_binaries:
+    Image|endswith:
+    - \cmd.exe
+    - \wscript.exe
+    OriginalFileName:
+    - Cmd.Exe
+    - cscript.exe
+    - PowerShell.EXE
+    - pwsh.dll
+    - wscript.exe
+  selection_double_ext:
+    CommandLine|re: \.[a-zA-Z0-9]{1,4} \.
+  selection_folder:
+    CommandLine|contains: \AppData\Local\Temp\Rar$
+  selection_parent:
+    ParentImage|endswith: \WinRAR.exe
+falsepositives:
+- Unlikely
+id: ec3a3c2f-9bb0-4a9b-8f4b-5ec386544343
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.group-ib.com/blog/cve-2023-38831-winrar-zero-day/
+- https://github.com/knight0x07/WinRAR-Code-Execution-Vulnerability-CVE-2023-38831/blob/26ab6c40b6d2c09bb4fc60feaa4a3a90cfd20c23/Part-1-Overview.md
+status: experimental
+tags:
+- detection.emerging_threats
+- attack.execution
+- attack.t1203
+- cve.2023.38331
+title: CVE-2023-38331 Exploitation Attempt - Suspicious WinRAR Child Process

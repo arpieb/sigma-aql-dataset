@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Filename) LIKE '%\werfault.exe' OR LOWER(Filename) LIKE '%\wer.dll') AND NOT((LOWER(Filename) LIKE '%\system32\%' OR LOWER(Filename) LIKE '%\syswow64\%' OR LOWER(Filename) LIKE '%\winsxs\%'))

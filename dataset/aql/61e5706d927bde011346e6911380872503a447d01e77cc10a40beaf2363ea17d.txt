@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND LOWER(Command) LIKE '%osacompile%' AND LOWER(Command) LIKE '%curl%'

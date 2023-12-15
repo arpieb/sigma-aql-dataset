@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dotnet-dump.exe' OR LOWER("Process Name") LIKE '%\dotnet-dump.exe' OR Filename='dotnet-dump.dll') AND LOWER(Command) LIKE '%collect%'

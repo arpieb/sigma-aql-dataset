@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND UTF8(payload) MATCHES '(?i).*&&set.*(\{\d\}){2,}\\"\s+?-f.*&&.*cmd.*/c'

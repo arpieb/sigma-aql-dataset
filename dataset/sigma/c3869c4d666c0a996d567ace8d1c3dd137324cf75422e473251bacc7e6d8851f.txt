@@ -1,0 +1,24 @@
+author: oscd.community, Natalia Shornikova
+date: '2020-10-06'
+description: Detects powershell script installed as a Service
+detection:
+  condition: selection
+  selection:
+    EventID: 4697
+    ServiceFileName|contains:
+    - powershell
+    - pwsh
+falsepositives:
+- Unknown
+id: 2a926e6a-4b81-4011-8a96-e36cc8c04302
+level: high
+logsource:
+  product: windows
+  service: security
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-powershell-abuse
+status: test
+tags:
+- attack.execution
+- attack.t1569.002
+title: PowerShell Scripts Installed as Services - Security

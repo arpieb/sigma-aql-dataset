@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%.scr' AND NOT((LOWER(Filename) LIKE '%:\$windows.~bt\newos\%' OR LOWER(Filename) LIKE '%:\windows\system32\%' OR LOWER(Filename) LIKE '%:\windows\syswow64\%' OR LOWER(Filename) LIKE '%:\windows\winsxs\%' OR LOWER(Filename) LIKE '%:\wudownloadcache\%'))

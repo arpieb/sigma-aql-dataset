@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\sndvol.exe' AND NOT(((LOWER("Process Path") LIKE '%\rundll32.exe' OR LOWER("Process Name") LIKE '%\rundll32.exe') AND LOWER(Command) LIKE '% shell32.dll,control_rundll %'))

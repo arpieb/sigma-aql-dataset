@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='C:\Windows\System32\SystemResetPlatform\SystemResetPlatform.exe' OR "Process Name"='C:\Windows\System32\SystemResetPlatform\SystemResetPlatform.exe') AND CONCAT('file directory', '/', filename)='C:\$SysReset\Framework\Stack\RjvPlatform.dll'

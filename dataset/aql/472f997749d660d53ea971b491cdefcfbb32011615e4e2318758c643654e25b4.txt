@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Parent Process Path") LIKE '%\powershell.exe' OR LOWER("Parent Process Path") LIKE '%\pwsh.exe') AND LOWER("Parent Command") LIKE '%\windowspowershell\modules\pester\%' AND (LOWER("Parent Command") LIKE '%{ invoke-pester -enableexit ;%' OR LOWER("Parent Command") LIKE '%{ get-help "%')

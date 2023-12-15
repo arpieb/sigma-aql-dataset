@@ -1,0 +1,31 @@
+author: Florian Roth (Nextron Systems)
+date: '2020-02-29'
+description: Detects the exploitation of Microsoft Exchange vulnerability as described
+  in CVE-2020-0688
+detection:
+  condition: all of selection*
+  selection1:
+    cs-method: GET
+    cs-uri-query|contains:
+    - /ecp/
+    - /owa/
+  selection2:
+    cs-uri-query|contains: __VIEWSTATE=
+falsepositives:
+- Unknown
+fields:
+- c-ip
+- c-dns
+id: fce2c2e2-0fb5-41ab-a14c-5391e1fd70a5
+level: critical
+logsource:
+  category: webserver
+references:
+- https://www.trustedsec.com/blog/detecting-cve-20200688-remote-code-execution-vulnerability-on-microsoft-exchange-server/
+status: test
+tags:
+- attack.initial_access
+- attack.t1190
+- cve.2020.0688
+- detection.emerging_threats
+title: CVE-2020-0688 Exchange Exploitation via Web Log

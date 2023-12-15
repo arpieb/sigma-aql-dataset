@@ -1,0 +1,43 @@
+author: Florian Roth (Nextron Systems), @twjackomo, Jonhnathan Ribeiro, oscd.community
+date: '2018-03-15'
+description: Detects the usage and installation of a backdoor that uses an option
+  to register a malicious debugger for built-in tools that are accessible in the login
+  screen
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - sethc.exe
+    - utilman.exe
+    - osk.exe
+    - Magnify.exe
+    - Narrator.exe
+    - DisplaySwitch.exe
+    Image|endswith:
+    - \cmd.exe
+    - \cscript.exe
+    - \mshta.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \regsvr32.exe
+    - \rundll32.exe
+    - \wscript.exe
+    - \wt.exe
+    ParentImage|endswith: \winlogon.exe
+falsepositives:
+- Unlikely
+id: 2fdefcb3-dbda-401e-ae23-f0db027628bc
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://learn.microsoft.com/en-us/archive/blogs/jonathantrull/detecting-sticky-key-backdoors
+status: test
+tags:
+- attack.privilege_escalation
+- attack.persistence
+- attack.t1546.008
+- car.2014-11-003
+- car.2014-11-008
+title: Sticky Key Like Backdoor Execution

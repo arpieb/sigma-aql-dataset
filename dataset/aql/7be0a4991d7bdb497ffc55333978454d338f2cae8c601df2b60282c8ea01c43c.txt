@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\ksetup.exe' OR LOWER("Process Name") LIKE '%\ksetup.exe' OR Filename='ksetup.exe') AND LOWER(Command) LIKE '% /setcomputerpassword %'

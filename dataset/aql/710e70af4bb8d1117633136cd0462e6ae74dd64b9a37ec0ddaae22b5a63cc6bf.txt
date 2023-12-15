@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dns.exe' OR LOWER("Process Name") LIKE '%\dns.exe') AND NOT(LOWER(Filename) LIKE '%\dns.log')

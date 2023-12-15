@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\splwow64.exe' OR LOWER("Process Name") LIKE '%\splwow64.exe') AND LOWER(Command) LIKE '%splwow64.exe'

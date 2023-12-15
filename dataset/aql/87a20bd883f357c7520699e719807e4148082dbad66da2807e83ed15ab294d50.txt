@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\mspub.exe' OR LOWER("Process Name") LIKE '%\mspub.exe' OR Filename='MSPUB.exe') AND (LOWER(Command) LIKE '%ftp://%' OR LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%https://%')

@@ -1,0 +1,29 @@
+author: Nikita Khalimonenkov
+date: '2022-11-17'
+description: Alert when a user has performed an export to a search using 'New-ComplianceSearchAction'
+  with the '-Export' flag. This detection will detect PST export even if the 'eDiscovery
+  search or exported' alert is disabled in the O365.This rule will apply to ExchangePowerShell
+  usage and from the cloud.
+detection:
+  condition: selection
+  selection:
+    Payload|contains|all:
+    - New-ComplianceSearchAction
+    - Export
+    - pst
+    eventSource: SecurityComplianceCenter
+falsepositives:
+- Exporting a PST can be done for legitimate purposes by legitimate sources, but due
+  to the sensitive nature of PST content, it must be monitored.
+id: 6897cd82-6664-11ed-9022-0242ac120002
+level: medium
+logsource:
+  product: m365
+  service: threat_management
+references:
+- https://learn.microsoft.com/en-us/powershell/module/exchange/new-compliancesearchaction?view=exchange-ps
+status: test
+tags:
+- attack.collection
+- attack.t1114
+title: PST Export Alert Using New-ComplianceSearchAction

@@ -1,0 +1,31 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-07-16'
+description: Detects an executable accessing ngrok domains, which could be a sign
+  of forbidden data exfiltration by malicious actors
+detection:
+  condition: selection
+  selection:
+    DestinationHostname|endswith:
+    - .ngrok-free.app
+    - .ngrok-free.dev
+    - .ngrok.app
+    - .ngrok.dev
+    - .ngrok.io
+    Initiated: 'true'
+falsepositives:
+- Legitimate use of ngrok domains
+id: 18249279-932f-45e2-b37a-8925f2597670
+level: high
+logsource:
+  category: network_connection
+  product: windows
+references:
+- https://ngrok.com/
+- https://ngrok.com/blog-post/new-ngrok-domains
+- https://www.virustotal.com/gui/file/cca0c1182ac114b44dc52dd2058fcd38611c20bb6b5ad84710681d38212f835a/
+- https://www.rnbo.gov.ua/files/2023_YEAR/CYBERCENTER/november/APT29%20attacks%20Embassies%20using%20CVE-2023-38831%20-%20report%20en.pdf
+status: test
+tags:
+- attack.exfiltration
+- attack.t1567.001
+title: Communication To Ngrok Domains

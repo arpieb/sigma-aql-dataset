@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%device no longer compliant%' OR LOWER(Message) LIKE '%device no longer managed%'

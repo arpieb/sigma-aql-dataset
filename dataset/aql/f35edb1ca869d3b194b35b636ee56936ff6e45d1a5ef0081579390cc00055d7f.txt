@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%ping -n %' AND LOWER(Command) LIKE '% echo eeee > %' OR LOWER(Command) LIKE '%ipconfig /all%' AND LOWER(Command) LIKE '%\temp\res.ip%' OR LOWER(Command) LIKE '%interface ip show config%' AND LOWER(Command) LIKE '%\temp\netsh.res%'

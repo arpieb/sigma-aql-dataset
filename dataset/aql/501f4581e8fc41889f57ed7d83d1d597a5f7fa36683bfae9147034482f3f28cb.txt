@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\schtasks.exe' OR LOWER("Process Name") LIKE '%\schtasks.exe') AND (LOWER(Command) LIKE '%/delete%' OR LOWER(Command) LIKE '%/change%') AND LOWER(Command) LIKE '%/tn%' AND LOWER(Command) LIKE '%\microsoft\windows\defrag\scheduleddefrag%'

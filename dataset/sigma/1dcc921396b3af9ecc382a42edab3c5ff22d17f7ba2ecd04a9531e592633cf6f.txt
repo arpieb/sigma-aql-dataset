@@ -1,0 +1,44 @@
+author: Markus Neis
+date: '2018-08-26'
+description: Detects Access to LSASS Process
+detection:
+  condition: selection and not 1 of filter_*
+  filter_begins:
+    ProcessName|startswith:
+    - C:\Windows\System32\DriverStore\
+    - C:\WINDOWS\Installer\
+    - C:\Program Files\
+    - C:\Program Files (x86)\
+  filter_exact:
+    ProcessName:
+    - C:\Windows\System32\atiesrxx.exe
+    - C:\Windows\System32\CompatTelRunner.exe
+    - C:\Windows\System32\msiexec.exe
+    - C:\Windows\System32\nvwmi64.exe
+    - C:\Windows\System32\svchost.exe
+    - C:\Windows\System32\Taskmgr.exe
+    - C:\Windows\System32\wbem\WmiPrvSE.exe
+    - C:\Windows\SysWOW64\msiexec.exe
+  filter_thor:
+    ProcessName|endswith:
+    - \thor64.exe
+    - \thor.exe
+    ProcessName|startswith: C:\Windows\Temp\asgard2-agent\
+  selection:
+    EventID: 1121
+    Path|endswith: \lsass.exe
+falsepositives:
+- Google Chrome GoogleUpdate.exe
+- Some Taskmgr.exe related activity
+id: a0a278fe-2c0e-4de2-ac3c-c68b08a9ba98
+level: high
+logsource:
+  product: windows
+  service: windefend
+references:
+- https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-exploit-guard/attack-surface-reduction-exploit-guard?WT.mc_id=twitter
+status: test
+tags:
+- attack.credential_access
+- attack.t1003.001
+title: LSASS Access Detected via Attack Surface Reduction

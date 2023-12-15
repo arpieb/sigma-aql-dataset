@@ -1,0 +1,22 @@
+author: X__Junior (Nextron Systems)
+date: '2023-05-14'
+description: Detects a specific broken command that was used by Goofy-Guineapig as
+  described by the NCSC report.
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: choice /t %d /d y /n >nul
+falsepositives:
+- Unlikely
+id: 477a5ed3-a374-4282-9f3b-ed94e159a108
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/goofy-guineapig/NCSC-MAR-Goofy-Guineapig.pdf
+status: experimental
+tags:
+- attack.execution
+- detection.emerging_threats
+title: Potential Goofy Guineapig Backdoor Activity

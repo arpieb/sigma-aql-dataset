@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(Message) LIKE '%update application%' OR LOWER(Message) LIKE '%update service principal%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype IN(11, 12) AND "Event ID"=129 AND (LOWER("File Path") LIKE '%c:\windows\temp\%' OR LOWER("File Path") LIKE '%\appdata\local\temp\%' OR LOWER("File Path") LIKE '%\desktop\%' OR LOWER("File Path") LIKE '%\downloads\%' OR LOWER("File Path") LIKE '%\users\public\%' OR LOWER("File Path") LIKE '%c:\temp\%')

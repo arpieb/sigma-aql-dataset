@@ -1,0 +1,28 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-01-11'
+description: Detects changes to the PowerShell execution policy registry key in order
+  to bypass signing requirements for script execution from the CommandLine
+detection:
+  condition: all of selection_*
+  selection_path:
+    CommandLine|contains:
+    - \ShellIds\Microsoft.PowerShell\ExecutionPolicy
+    - \Policies\Microsoft\Windows\PowerShell\ExecutionPolicy
+  selection_values:
+    CommandLine|contains:
+    - Bypass
+    - RemoteSigned
+    - Unrestricted
+falsepositives:
+- Unknown
+id: cf2e938e-9a3e-4fe8-a347-411642b28a9f
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://learn.microsoft.com/de-de/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.3
+status: test
+tags:
+- attack.defense_evasion
+title: Potential PowerShell Execution Policy Tampering - ProcCreation

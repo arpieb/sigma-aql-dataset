@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE (LOWER(URL) LIKE '%/webresource.axd%' OR LOWER(URL) LIKE '%/scriptresource.axd%' OR LOWER(URL) LIKE '%/i18n.ashx%' OR LOWER(URL) LIKE '%/skipi18n%') AND (LOWER(URL) LIKE '%/solarwinds/%' OR LOWER(URL) LIKE '%/api/%') AND NOT((LOWER(URL) LIKE '%orion/skipi18n/profiler/%' OR LOWER(URL) LIKE '%css.i18n.ashx%' OR LOWER(URL) LIKE '%js.i18n.ashx%'))

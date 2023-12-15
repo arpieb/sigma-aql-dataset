@@ -1,0 +1,37 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-02-28'
+description: Detects suspicious DACL modifications to allow access to a service from
+  a suspicious trustee. This can be used to override access restrictions set by previous
+  ACLs.
+detection:
+  condition: all of selection_*
+  selection_sc:
+    Image|endswith: \sc.exe
+    OriginalFileName: sc.exe
+  selection_sdset:
+    CommandLine|contains|all:
+    - sdset
+    - A;
+  selection_trustee:
+    CommandLine|contains:
+    - ;IU
+    - ;SU
+    - ;BA
+    - ;SY
+    - ;WD
+falsepositives:
+- Unknown
+id: 6c8fbee5-dee8-49bc-851d-c3142d02aa47
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/0gtweet/status/1628720819537936386
+- https://itconnect.uw.edu/tools-services-support/it-systems-infrastructure/msinf/other-help/understanding-sddl-syntax/
+- https://learn.microsoft.com/en-us/windows/win32/secauthz/sid-strings
+status: experimental
+tags:
+- attack.persistence
+- attack.t1543.003
+title: Allow Service Access Using Security Descriptor Tampering Via Sc.EXE

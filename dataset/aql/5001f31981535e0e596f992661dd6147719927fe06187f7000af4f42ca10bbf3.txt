@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/mount' OR LOWER("Process Name") LIKE '%/mount') AND LOWER(Command) LIKE '%hidepid=2%' AND LOWER(Command) LIKE '% -o %'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\control.exe' OR LOWER("Process Name") LIKE '%\control.exe') AND LOWER("Parent Process Path") LIKE '%\workfolders.exe' AND NOT(("Process Path"='C:\Windows\System32\control.exe' OR "Process Name"='C:\Windows\System32\control.exe'))

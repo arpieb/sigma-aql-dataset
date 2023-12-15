@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%remove-adgroupmember%' OR LOWER(Message) LIKE '%-identity %' OR LOWER(Message) LIKE '%-members %'

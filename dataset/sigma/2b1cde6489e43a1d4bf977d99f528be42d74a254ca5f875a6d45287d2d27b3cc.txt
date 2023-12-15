@@ -1,0 +1,32 @@
+author: Bhabesh Raj, Jonhnathan Ribeiro
+date: '2023-11-27'
+description: Detects LSASS process access for potential credential dumping by a Python-like
+  tool such as LaZagne or Pypykatz.
+detection:
+  condition: selection
+  selection:
+    CallTrace|contains:
+    - python27.dll+
+    - python3*.dll+
+    CallTrace|contains|all:
+    - _ctypes.pyd+
+    - :\Windows\System32\KERNELBASE.dll+
+    - :\Windows\SYSTEM32\ntdll.dll+
+    GrantedAccess: '0x1FFFFF'
+    TargetImage|endswith: \lsass.exe
+falsepositives:
+- Unknown
+id: f8be3e82-46a3-4e4e-ada5-8e538ae8b9c9
+level: high
+logsource:
+  category: process_access
+  product: windows
+references:
+- https://twitter.com/bh4b3sh/status/1303674603819081728
+- https://github.com/skelsec/pypykatz
+status: stable
+tags:
+- attack.credential_access
+- attack.t1003.001
+- attack.s0349
+title: Credential Dumping Activity By Python Based Tool

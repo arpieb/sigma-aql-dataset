@@ -1,0 +1,31 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-08-01'
+description: Detects installation of new shim databases that try to patch sections
+  of known processes for potential process injection or persistence.
+detection:
+  condition: selection
+  selection:
+    TargetObject|contains: \SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Custom\
+    TargetObject|endswith:
+    - \csrss.exe
+    - \dllhost.exe
+    - \explorer.exe
+    - \services.exe
+    - \svchost.exe
+    - \taskhostw.exe
+    - \winlogon.exe
+falsepositives:
+- Unknown
+id: bf344fea-d947-4ef4-9192-34d008315d3a
+level: high
+logsource:
+  category: registry_set
+  product: windows
+references:
+- https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/pillowmint-fin7s-monkey-thief/
+- https://www.fireeye.com/blog/threat-research/2017/05/fin7-shim-databases-persistence.html
+status: experimental
+tags:
+- attack.persistence
+- attack.t1546.011
+title: Suspicious Shim Database Patching Activity

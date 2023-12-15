@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\fxssvc.exe' OR LOWER("Process Name") LIKE '%\fxssvc.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%ualapi.dll' AND NOT(LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\windows\winsxs\%')

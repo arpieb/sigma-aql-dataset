@@ -1,0 +1,23 @@
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: '2020-05-02'
+description: A General detection for specific decompress commands in PowerShell logs.
+  This could be an adversary decompressing files.
+detection:
+  condition: selection_4103
+  selection_4103:
+    Payload|contains: Expand-Archive
+falsepositives:
+- Unknown
+id: 1ddc1472-8e52-4f7d-9f11-eab14fc171f5
+level: informational
+logsource:
+  category: ps_module
+  product: windows
+references:
+- https://github.com/OTRF/detection-hackathon-apt29/issues/8
+- https://github.com/OTRF/ThreatHunter-Playbook/blob/2d4257f630f4c9770f78d0c1df059f891ffc3fec/docs/evals/apt29/detections/4.A.3_09F29912-8E93-461E-9E89-3F06F6763383.md
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1140
+title: PowerShell Decompress Commands

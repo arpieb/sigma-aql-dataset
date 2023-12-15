@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=5136 AND (Username='msDS-KeyCredentialLink' OR "Account Name"='msDS-KeyCredentialLink' OR "Distinguished Name"='msDS-KeyCredentialLink')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%$env:cor_enable_profiling%' OR LOWER(Message) LIKE '%$env:cor_profiler%' OR LOWER(Message) LIKE '%$env:cor_profiler_path%'

@@ -1,0 +1,1 @@
+SELECT *, Filename FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%c:\windows\system32\spool\drivers\x64\3\old\1\123%'

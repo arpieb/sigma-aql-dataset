@@ -1,0 +1,63 @@
+author: frack113
+date: '2022-04-09'
+description: 'Detects file access requests to browser credential stores by uncommon
+  processes.
+
+  Could indicate potential attempt of credential stealing.
+
+  Requires heavy baselining before usage
+
+  '
+detection:
+  condition: 1 of selection_* and not 1 of filter_main_* and not 1 of filter_optional_*
+  filter_main_generic:
+    Image|startswith:
+    - C:\Program Files\
+    - C:\Program Files (x86)\
+    - C:\WINDOWS\system32\
+    - C:\WINDOWS\SysWOW64\
+  filter_main_system:
+    Image: System
+    ParentImage: Idle
+  filter_optional_defender:
+    Image|endswith:
+    - \MpCopyAccelerator.exe
+    - \MsMpEng.exe
+    Image|startswith: C:\ProgramData\Microsoft\Windows Defender\
+  filter_optional_msiexec:
+    ParentImage: C:\Windows\System32\msiexec.exe
+  filter_optional_thor:
+    Image|endswith:
+    - \thor64.exe
+    - \thor.exe
+  selection_chromium:
+    FileName|contains:
+    - \Appdata\Local\Chrome\User Data\Default\Login Data
+    - \AppData\Local\Google\Chrome\User Data\Default\Network\Cookies
+    - \AppData\Local\Google\Chrome\User Data\Local State
+  selection_firefox:
+    FileName|endswith:
+    - \cookies.sqlite
+    - release\key3.db
+    - release\key4.db
+    - release\logins.json
+  selection_ie:
+    FileName|endswith: \Appdata\Local\Microsoft\Windows\WebCache\WebCacheV01.dat
+falsepositives:
+- Antivirus, Anti-Spyware, Anti-Malware Software
+- Backup software
+- Legitimate software installed on partitions other than "C:\"
+- Searching software such as "everything.exe"
+id: 91cb43db-302a-47e3-b3c8-7ede481e27bf
+level: low
+logsource:
+  category: file_access
+  product: windows
+references:
+- https://www.zscaler.com/blogs/security-research/ffdroider-stealer-targeting-social-media-platform-users
+- https://github.com/lclevy/firepwd
+status: experimental
+tags:
+- attack.t1003
+- attack.credential_access
+title: Access To Browser Credential Files By Uncommon Application

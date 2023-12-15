@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\sqldumper.exe' OR LOWER("Process Name") LIKE '%\sqldumper.exe') AND (LOWER(Command) LIKE '%0x0110%' OR LOWER(Command) LIKE '%0x01100:40%')

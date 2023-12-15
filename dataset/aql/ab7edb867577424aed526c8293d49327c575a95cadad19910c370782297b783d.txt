@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%invoke-smbautobrute%' OR LOWER(Message) LIKE '%invoke-gpolinks%' OR LOWER(Message) LIKE '%invoke-potato%'

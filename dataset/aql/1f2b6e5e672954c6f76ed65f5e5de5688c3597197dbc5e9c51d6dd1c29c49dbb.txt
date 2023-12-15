@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\rundll32.exe' OR LOWER("Process Name") LIKE '%\rundll32.exe' OR Filename='RUNDLL32.EXE') AND Command MATCHES '[Rr][Uu][Nn][Dd][Ll][Ll]32(\.[Ee][Xx][Ee])? \S+?\w:\S+?:'

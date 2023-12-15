@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%localgroup %' AND LOWER(Command) LIKE '% /add%' OR LOWER(Command) LIKE '%add-localgroupmember %' AND LOWER(Command) LIKE '% -group %') AND (LOWER(Command) LIKE '% administrators %' OR LOWER(Command) LIKE '% administrateur%')

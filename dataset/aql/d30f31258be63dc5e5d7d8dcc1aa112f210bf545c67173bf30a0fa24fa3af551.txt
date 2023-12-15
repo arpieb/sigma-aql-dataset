@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% tunnel %' AND LOWER(Command) LIKE '% run %' AND (LOWER(Command) LIKE '% --config %' OR LOWER(Command) LIKE '% --credentials-contents %' OR LOWER(Command) LIKE '% --credentials-file %' OR LOWER(Command) LIKE '% --token %')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%hklm\system\currentcontrolset\control\lsa%' AND LOWER(Command) LIKE '%scecli\0%' AND LOWER(Command) LIKE '%reg add%'

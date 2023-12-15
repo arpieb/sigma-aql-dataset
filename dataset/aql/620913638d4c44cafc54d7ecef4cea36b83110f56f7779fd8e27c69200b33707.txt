@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\createdump.exe' OR LOWER("Process Name") LIKE '%\createdump.exe' OR Filename='FX_VER_INTERNALNAME_STR') AND (LOWER(Command) LIKE '% -u %' OR LOWER(Command) LIKE '% --full %' OR LOWER(Command) LIKE '% -f %' OR LOWER(Command) LIKE '% --name %' OR LOWER(Command) LIKE '%.dmp %')

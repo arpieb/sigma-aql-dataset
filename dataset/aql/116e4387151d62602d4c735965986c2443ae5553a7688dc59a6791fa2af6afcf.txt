@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER("Process Path") LIKE '%/kill' OR LOWER("Process Path") LIKE '%/pkill' OR LOWER("Process Path") LIKE '%/killall' OR LOWER("Process Name") LIKE '%/kill' OR LOWER("Process Name") LIKE '%/pkill' OR LOWER("Process Name") LIKE '%/killall'

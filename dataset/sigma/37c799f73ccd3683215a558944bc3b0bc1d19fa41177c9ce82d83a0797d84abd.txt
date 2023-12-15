@@ -1,0 +1,37 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-09-07'
+description: Detects the use of SysmonEnte, a tool to attack the integrity of Sysmon
+detection:
+  condition: ( selection_sysmon and not 1 of filter_main_* ) or selection_calltrace
+  filter_main_generic:
+    SourceImage|contains:
+    - :\Program Files (x86)\
+    - :\Program Files\
+    - :\Windows\System32\
+    - :\Windows\SysWOW64\
+  filter_main_msdefender:
+    SourceImage|contains: :\ProgramData\Microsoft\Windows Defender\Platform\
+    SourceImage|endswith: \MsMpEng.exe
+  selection_calltrace:
+    CallTrace: Ente
+  selection_sysmon:
+    GrantedAccess: '0x1400'
+    TargetImage|contains:
+    - :\Windows\Sysmon.exe
+    - :\Windows\Sysmon64.exe
+falsepositives:
+- Unknown
+id: d29ada0f-af45-4f27-8f32-f7b77c3dbc4e
+level: high
+logsource:
+  category: process_access
+  product: windows
+references:
+- https://codewhitesec.blogspot.com/2022/09/attacks-on-sysmon-revisited-sysmonente.html
+- https://github.com/codewhitesec/SysmonEnte/
+- https://github.com/codewhitesec/SysmonEnte/blob/main/screens/1.png
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1562.002
+title: HackTool - SysmonEnte Execution

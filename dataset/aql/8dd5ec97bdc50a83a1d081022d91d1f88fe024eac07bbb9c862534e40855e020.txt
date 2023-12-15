@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\svchost.exe' OR LOWER("Process Name") LIKE '%\svchost.exe') AND (LOWER(Command) LIKE '% -k msupdate' OR LOWER(Command) LIKE '% -k msupdate2' OR LOWER(Command) LIKE '% -k alg')

@@ -1,0 +1,35 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-09'
+description: Detects the execution node.exe which is shipped with multiple software
+  such as VMware, Adobe...etc. In order to execute arbitrary code. For example to
+  establish reverse shell as seen in Log4j attacks...etc
+detection:
+  action_reverse_shell:
+    CommandLine|contains|all:
+    - .exec(
+    - net.socket
+    - .connect
+    - child_process
+  condition: selection and 1 of action_*
+  selection:
+    CommandLine|contains:
+    - ' -e '
+    - ' --eval '
+    Image|endswith: \node.exe
+falsepositives:
+- Unlikely
+id: 6640f31c-01ad-49b5-beb5-83498a5cd8bd
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- http://blog.talosintelligence.com/2022/09/lazarus-three-rats.html
+- https://www.sprocketsecurity.com/resources/crossing-the-log4j-horizon-a-vulnerability-with-no-return
+- https://www.rapid7.com/blog/post/2022/01/18/active-exploitation-of-vmware-horizon-servers/
+- https://nodejs.org/api/cli.html
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1127
+title: Potential Arbitrary Code Execution Via Node.EXE

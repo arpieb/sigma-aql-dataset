@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%svchost.exe' AND (LOWER("Process Path") LIKE '%\svchost.exe' OR LOWER("Process Name") LIKE '%\svchost.exe') AND NOT((LOWER("Parent Process Path") LIKE '%\rpcnet.exe' OR LOWER("Parent Process Path") LIKE '%\rpcnetp.exe' OR Command IS NULL))

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/chmod' OR LOWER("Process Name") LIKE '%/chmod') AND (LOWER(Command) LIKE '%/tmp/%' OR LOWER(Command) LIKE '%/.library/%' OR LOWER(Command) LIKE '%/etc/%' OR LOWER(Command) LIKE '%/opt/%')

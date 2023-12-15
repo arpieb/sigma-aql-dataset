@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%:\users\%' AND LOWER(Filename) LIKE '%\appdata\%' AND (LOWER(Filename) LIKE '%\roaming\%' OR LOWER(Filename) LIKE '%\local\%') AND LOWER(Filename) LIKE '%microsift%' OR LOWER(Filename) LIKE '%\appdata\local\microsoftwindowsoutlookdataplus.txt'

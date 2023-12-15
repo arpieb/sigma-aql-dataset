@@ -1,0 +1,30 @@
+author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
+date: '2023-09-18'
+description: 'Detects uncommon child processes of the Add-In deployment cache updating
+  utility (AddInutil.exe) which could be a sign of potential abuse of the binary to
+  proxy execution via a custom Addins.Store payload.
+
+  '
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_werfault:
+    Image|endswith:
+    - :\Windows\System32\conhost.exe
+    - :\Windows\System32\werfault.exe
+    - :\Windows\SysWOW64\werfault.exe
+  selection:
+    ParentImage|endswith: \addinutil.exe
+falsepositives:
+- Unknown
+id: b5746143-59d6-4603-8d06-acbd60e166ee
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.blue-prints.blog/content/blog/posts/lolbin/addinutil-lolbas.html
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1218
+title: Uncommon Child Process Of AddinUtil.EXE

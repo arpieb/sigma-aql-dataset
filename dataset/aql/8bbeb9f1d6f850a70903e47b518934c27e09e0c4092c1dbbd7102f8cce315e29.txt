@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\lodctr.exe' OR LOWER("Process Name") LIKE '%\lodctr.exe') AND Filename='LODCTR.EXE' AND (LOWER(Command) LIKE '% /r%' OR LOWER(Command) LIKE '% -r%')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%/generic:microsoft_windows_shell_zipfolder:filename=%' AND LOWER(Command) LIKE '%.zip%' AND LOWER(Command) LIKE '%/pass:%' AND LOWER(Command) LIKE '%/user:%' OR LOWER(Command) LIKE '%/delete%' AND LOWER(Command) LIKE '%microsoft_windows_shell_zipfolder:filename=%' AND LOWER(Command) LIKE '%.zip%'

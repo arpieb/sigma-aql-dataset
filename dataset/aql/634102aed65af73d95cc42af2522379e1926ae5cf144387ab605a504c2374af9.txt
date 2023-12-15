@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%windowsaudiodevice-powershell-cmdlet%' OR LOWER(Command) LIKE '%toggle-audiodevice%' OR LOWER(Command) LIKE '%get-audiodevice %' OR LOWER(Command) LIKE '%set-audiodevice %' OR LOWER(Command) LIKE '%write-audiodevice %'

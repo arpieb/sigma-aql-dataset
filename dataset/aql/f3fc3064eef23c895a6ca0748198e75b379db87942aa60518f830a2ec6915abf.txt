@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\pypykatz.exe' OR LOWER("Process Path") LIKE '%\python.exe' OR LOWER("Process Name") LIKE '%\pypykatz.exe' OR LOWER("Process Name") LIKE '%\python.exe') AND LOWER(Command) LIKE '%live%' AND LOWER(Command) LIKE '%registry%'

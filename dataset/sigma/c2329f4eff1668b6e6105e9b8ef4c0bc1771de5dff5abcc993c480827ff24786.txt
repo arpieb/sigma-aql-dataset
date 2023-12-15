@@ -1,0 +1,24 @@
+author: Roberto Rodriguez @Cyb3rWard0g, Open Threat Research (OTR), wagga
+date: '2020-10-12'
+description: Detects potential DLL hijack of "iertutil.dll" found in the DCOM InternetExplorer.Application
+  Class over the network
+detection:
+  condition: selection
+  selection:
+    Image: System
+    TargetFilename|endswith: \Internet Explorer\iertutil.dll
+falsepositives:
+- Unknown
+id: 2f7979ae-f82b-45af-ac1d-2b10e93b0baa
+level: critical
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://threathunterplaybook.com/hunts/windows/201009-RemoteDCOMIErtUtilDLLHijack/notebook.html
+status: test
+tags:
+- attack.lateral_movement
+- attack.t1021.002
+- attack.t1021.003
+title: Potential DCOM InternetExplorer.Application DLL Hijack

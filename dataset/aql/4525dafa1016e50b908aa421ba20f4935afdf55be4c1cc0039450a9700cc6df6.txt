@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%offline_winpwn%' OR LOWER(Message) LIKE '%winpwn %' OR LOWER(Message) LIKE '%winpwn.exe%' OR LOWER(Message) LIKE '%winpwn.ps1%'

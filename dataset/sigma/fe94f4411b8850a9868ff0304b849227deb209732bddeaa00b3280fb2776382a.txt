@@ -1,0 +1,22 @@
+author: Florian Roth (Nextron Systems), Brian Ingram (update)
+date: '2022-07-08'
+description: Detects User Agent strings that end with an equal sign, which can be
+  a sign of base64 encoding.
+detection:
+  condition: selection
+  selection:
+    c-useragent|endswith: '='
+falsepositives:
+- Unknown
+id: 894a8613-cf12-48b3-8e57-9085f54aa0c3
+level: medium
+logsource:
+  category: proxy
+references:
+- https://blogs.jpcert.or.jp/en/2022/07/yamabot.html
+- https://deviceatlas.com/blog/list-of-user-agent-strings#desktop
+status: experimental
+tags:
+- attack.command_and_control
+- attack.t1071.001
+title: Potential Base64 Encoded User-Agent

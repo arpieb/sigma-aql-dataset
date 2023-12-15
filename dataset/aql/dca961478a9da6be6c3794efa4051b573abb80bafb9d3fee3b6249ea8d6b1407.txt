@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%com.bea.console.handles.jndibindinghandle%' OR LOWER(URL) LIKE '%ldap://%' OR LOWER(URL) LIKE '%adminserver%')

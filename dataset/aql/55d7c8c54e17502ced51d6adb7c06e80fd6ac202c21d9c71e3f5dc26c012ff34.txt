@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\explorer.exe' OR LOWER("Process Name") LIKE '%\explorer.exe') AND LOWER(Command) LIKE '%/nouaccheck%' AND NOT(("Parent Command"='C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule' OR "Parent Process Path"='C:\Windows\System32\svchost.exe'))

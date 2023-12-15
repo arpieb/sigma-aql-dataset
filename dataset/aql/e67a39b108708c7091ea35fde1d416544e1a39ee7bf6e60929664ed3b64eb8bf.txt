@@ -1,0 +1,1 @@
+SELECT *, Filename FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%umworkerprocess.exe' OR LOWER("Process Name") LIKE '%umworkerprocess.exe') AND NOT((LOWER(Filename) LIKE '%cachecleanup.bin' OR LOWER(Filename) LIKE '%.txt' OR LOWER(Filename) LIKE '%.log' OR LOWER(Filename) LIKE '%.cfg' OR LOWER(Filename) LIKE '%cleanup.bin'))

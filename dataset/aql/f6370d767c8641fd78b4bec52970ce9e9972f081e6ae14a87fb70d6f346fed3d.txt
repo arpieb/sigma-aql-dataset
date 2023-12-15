@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='C:\Program Files\Internet Explorer\IEInstal.exe' OR "Process Name"='C:\Program Files\Internet Explorer\IEInstal.exe') AND LOWER(Filename) LIKE 'c:\users\%' AND LOWER(Filename) LIKE '%\appdata\local\temp\%' AND LOWER(Filename) LIKE '%consent.exe'

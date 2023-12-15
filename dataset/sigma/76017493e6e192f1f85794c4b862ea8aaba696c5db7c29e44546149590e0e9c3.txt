@@ -1,0 +1,35 @@
+author: Michael Haag
+date: '2019-01-16'
+description: Detects script file execution (.js, .jse, .vba, .vbe, .vbs, .wsf) by
+  Wscript/Cscript
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - .js
+    - .jse
+    - .vba
+    - .vbe
+    - .vbs
+    - .wsf
+  selection_img:
+    Image|endswith:
+    - \wscript.exe
+    - \cscript.exe
+    OriginalFileName:
+    - wscript.exe
+    - cscript.exe
+falsepositives:
+- Some additional tuning is required. It is recommended to add the user profile path
+  in CommandLine if it is getting too noisy.
+id: 1e33157c-53b1-41ad-bbcc-780b80b58288
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+status: test
+tags:
+- attack.execution
+- attack.t1059.005
+- attack.t1059.007
+title: WSF/JSE/JS/VBA/VBE File Execution Via Cscript/Wscript

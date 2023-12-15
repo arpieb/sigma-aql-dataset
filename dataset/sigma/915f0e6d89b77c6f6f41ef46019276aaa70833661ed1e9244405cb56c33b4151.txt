@@ -1,0 +1,34 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-01'
+description: Detects suspicious usage of the ShellExec_RunDLL function to launch other
+  commands as seen in the the raspberry-robin attack
+detection:
+  condition: all of selection_*
+  selection_openasrundll:
+    CommandLine|contains: ShellExec_RunDLL
+  selection_suspcli:
+    CommandLine|contains:
+    - regsvr32
+    - msiexec
+    - \Users\Public\
+    - odbcconf
+    - \Desktop\
+    - \Temp\
+    - Invoke-
+    - iex
+    - comspec
+falsepositives:
+- Unknown
+id: d87bd452-6da1-456e-8155-7dc988157b7d
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://redcanary.com/blog/raspberry-robin/
+- https://www.microsoft.com/en-us/security/blog/2022/10/27/raspberry-robin-worm-part-of-larger-ecosystem-facilitating-pre-ransomware-activity/
+- https://github.com/SigmaHQ/sigma/issues/1009
+status: test
+tags:
+- attack.defense_evasion
+title: Suspicious Usage Of ShellExec_RunDLL

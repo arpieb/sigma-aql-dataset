@@ -1,0 +1,30 @@
+author: Nasreddine Bencherchali (Nextron Systems),  Azure-Sentinel (idea)
+date: '2022-09-09'
+description: Detects email exfiltration via powershell cmdlets
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - Add-PSSnapin
+    - Get-Recipient
+    - -ExpandProperty
+    - EmailAddresses
+    - SmtpAddress
+    - -hidetableheaders
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+falsepositives:
+- Unknown
+id: 312d0384-401c-4b8b-abdf-685ffba9a332
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.microsoft.com/security/blog/2022/09/07/profiling-dev-0270-phosphorus-ransomware-operations/
+- https://github.com/Azure/Azure-Sentinel/blob/7e6aa438e254d468feec061618a7877aa528ee9f/Hunting%20Queries/Microsoft%20365%20Defender/Ransomware/DEV-0270/Email%20data%20exfiltration%20via%20PowerShell.yaml
+status: test
+tags:
+- attack.exfiltration
+title: Email Exifiltration Via Powershell

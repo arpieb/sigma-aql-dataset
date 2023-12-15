@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/chattr' OR LOWER("Process Name") LIKE '%/chattr') AND LOWER(Command) LIKE '% -i %'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\ntdsutil.exe' OR LOWER("Process Name") LIKE '%\ntdsutil.exe' OR Filename='ntdsutil.exe') AND (LOWER(Command) LIKE '%snapshot%' AND LOWER(Command) LIKE '%mount %' OR LOWER(Command) LIKE '%ac%' AND LOWER(Command) LIKE '% i%' AND LOWER(Command) LIKE '% ntds%')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msdt.exe' OR LOWER("Process Name") LIKE '%\msdt.exe') AND (LOWER(Filename) LIKE '%\desktop\%' OR LOWER(Filename) LIKE '%\start menu\programs\startup\%' OR LOWER(Filename) LIKE '%c:\perflogs\%' OR LOWER(Filename) LIKE '%c:\programdata\%' OR LOWER(Filename) LIKE '%c:\users\public\%')

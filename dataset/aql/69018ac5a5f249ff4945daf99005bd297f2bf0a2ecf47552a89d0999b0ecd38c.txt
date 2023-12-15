@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER(Command) LIKE 'sh -c %' OR LOWER(Command) LIKE 'bash -c %') AND (LOWER(Command) LIKE '%| bash %' OR LOWER(Command) LIKE '%| sh %' OR LOWER(Command) LIKE '%|bash %' OR LOWER(Command) LIKE '%|sh %' OR LOWER(Command) LIKE '%| bash' OR LOWER(Command) LIKE '%| sh' OR LOWER(Command) LIKE '%|bash' OR LOWER(Command) LIKE '% |sh')

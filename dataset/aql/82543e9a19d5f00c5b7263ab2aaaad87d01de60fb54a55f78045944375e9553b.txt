@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%taskkill%' AND LOWER(Command) LIKE '% /f %' AND LOWER(Command) LIKE '% /im %' AND LOWER(Command) LIKE '%ccsvchst.exe%'

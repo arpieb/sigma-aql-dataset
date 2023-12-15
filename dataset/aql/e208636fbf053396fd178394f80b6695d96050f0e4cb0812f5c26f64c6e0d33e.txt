@@ -1,0 +1,1 @@
+SELECT *, URL, "User Agent", Method FROM events WHERE LOWER("User Agent") LIKE 'microsoft-webdav-miniredir/%' AND Method='GET'

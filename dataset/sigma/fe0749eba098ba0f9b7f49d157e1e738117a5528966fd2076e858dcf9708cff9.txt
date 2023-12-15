@@ -1,0 +1,50 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-07-12'
+description: Detects inline Windows shell commands redirecting output via the ">"
+  symbol to a suspicious location
+detection:
+  condition: selection_img and 1 of selection_cli_*
+  selection_cli_1:
+    CommandLine|contains:
+    - '> \Users\Public\'
+    - '> %APPDATA%\'
+    - '> %TEMP%\'
+    - '> %TMP%\'
+    - '> %USERPROFILE%\'
+    - '> C:\Temp\'
+    - '> C:\Users\Public\'
+    - '> C:\Windows\Temp\'
+    - '>\Users\Public\'
+    - '>%APPDATA%\'
+    - '>%TEMP%\'
+    - '>%TMP%\'
+    - '>%USERPROFILE%\'
+    - '>C:\Temp\'
+    - '>C:\Users\Public\'
+    - '>C:\Windows\Temp\'
+  selection_cli_2:
+    CommandLine|contains:
+    - ' >'
+    - '">'
+    - '''>'
+    CommandLine|contains|all:
+    - C:\Users\
+    - \AppData\Local\
+  selection_img:
+    Image|endswith: \cmd.exe
+    OriginalFileName: Cmd.Exe
+falsepositives:
+- Legitimate admin or third party scripts used for diagnostic collection might generate
+  some false positives
+id: 8e0bb260-d4b2-4fff-bb8d-3f82118e6892
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://thedfirreport.com/2022/07/11/select-xmrig-from-sqlserver/
+status: experimental
+tags:
+- attack.execution
+- attack.t1218
+title: Suspicious CMD Shell Output Redirect

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/checkupdate.php%' AND (LOWER(URL) LIKE '%lng=%' OR LOWER(URL) LIKE '%ver=%' OR LOWER(URL) LIKE '%beta=%' OR LOWER(URL) LIKE '%type=%' OR LOWER(URL) LIKE '%rmode=%' OR LOWER(URL) LIKE '%product=%')

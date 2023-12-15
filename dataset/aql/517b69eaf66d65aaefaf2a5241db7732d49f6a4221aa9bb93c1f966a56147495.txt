@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%[ref].assembly.gettype%' OR LOWER(Message) LIKE '%setvalue($null,$true)%' OR LOWER(Message) LIKE '%nonpublic,static%'

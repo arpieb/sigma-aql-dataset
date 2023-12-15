@@ -1,0 +1,39 @@
+author: Max Altgelt (Nextron Systems)
+date: '2022-04-06'
+description: This rule detects execution of PowerShell scripts located in the "C:\Users\Public"
+  folder
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - -f C:\Users\Public
+    - -f "C:\Users\Public
+    - -f %Public%
+    - -fi C:\Users\Public
+    - -fi "C:\Users\Public
+    - -fi %Public%
+    - -fil C:\Users\Public
+    - -fil "C:\Users\Public
+    - -fil %Public%
+    - -file C:\Users\Public
+    - -file "C:\Users\Public
+    - -file %Public%
+    Image|endswith:
+    - \powershell.exe
+    - \pwsh.exe
+falsepositives:
+- Unlikely
+fields:
+- CommandLine
+id: fb9d3ff7-7348-46ab-af8c-b55f5fbf39b4
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.mandiant.com/resources/evolution-of-fin7
+status: test
+tags:
+- attack.execution
+- attack.t1059.001
+title: Execution of Powershell Script in Public Folder

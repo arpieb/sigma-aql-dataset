@@ -1,0 +1,44 @@
+author: Tuan Le (NCSGroup), Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-09'
+description: Detects linux package removal using builtin tools such as "yum", "apt",
+  "apt-get" or "dpkg".
+detection:
+  condition: 1 of selection_*
+  selection_apt:
+    CommandLine|contains:
+    - remove
+    - purge
+    Image|endswith:
+    - /apt
+    - /apt-get
+  selection_dpkg:
+    CommandLine|contains:
+    - '--remove '
+    - ' -r '
+    Image|endswith: /dpkg
+  selection_rpm:
+    CommandLine|contains: ' -e '
+    Image|endswith: /rpm
+  selection_yum:
+    CommandLine|contains:
+    - erase
+    - remove
+    Image|endswith: /yum
+falsepositives:
+- Administrator or administrator scripts might delete packages for several reasons
+  (debugging, troubleshooting).
+id: 95d61234-7f56-465c-6f2d-b562c6fedbc4
+level: low
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://sysdig.com/blog/mitre-defense-evasion-falco
+- https://www.tutorialspoint.com/how-to-install-a-software-on-linux-using-yum-command
+- https://linuxhint.com/uninstall_yum_package/
+- https://linuxhint.com/uninstall-debian-packages/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070
+title: Linux Package Uninstall

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER(Filename) LIKE '%/etc/profile.d/%' AND (LOWER(Filename) LIKE '%.csh' OR LOWER(Filename) LIKE '%.sh')

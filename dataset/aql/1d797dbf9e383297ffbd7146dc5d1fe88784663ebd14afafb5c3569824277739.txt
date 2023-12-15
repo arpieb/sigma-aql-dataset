@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Source Process Path") LIKE '%\werfault.exe' AND LOWER("Target Process Path") LIKE '%\lsass.exe' AND "Granted Access"='0x1FFFFF'

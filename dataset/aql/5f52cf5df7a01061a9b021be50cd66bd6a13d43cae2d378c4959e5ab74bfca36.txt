@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%powershell.exe mshta.exe http%' AND LOWER(Command) LIKE '%.hta%' OR LOWER(Command) LIKE '%reg query "hkey_current_user\software\microsoft\terminal server client\default"%' OR LOWER(Command) LIKE '%cmd.exe /c taskkill /im cmd.exe%' OR LOWER(Command) LIKE '%(new-object system.net.webclient).uploadfile(''http%'

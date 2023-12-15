@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\vmwaretoolboxcmd.exe' OR LOWER("Process Name") LIKE '%\vmwaretoolboxcmd.exe' OR Filename='toolbox-cmd.exe') AND LOWER(Command) LIKE '% script %' AND LOWER(Command) LIKE '% set %'

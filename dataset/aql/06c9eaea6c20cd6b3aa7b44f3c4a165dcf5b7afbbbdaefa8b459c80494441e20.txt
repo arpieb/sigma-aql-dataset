@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\updata.exe' AND LOWER(Command) LIKE '%config%' AND LOWER(Command) LIKE '%msdtc%' AND LOWER(Command) LIKE '%start%' AND LOWER(Command) LIKE '%auto%'

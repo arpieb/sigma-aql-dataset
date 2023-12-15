@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cmdl32.exe' OR LOWER("Process Name") LIKE '%\cmdl32.exe' OR Filename='CMDL32.EXE') AND LOWER(Command) LIKE '%/vpn %' AND LOWER(Command) LIKE '%/lan %'

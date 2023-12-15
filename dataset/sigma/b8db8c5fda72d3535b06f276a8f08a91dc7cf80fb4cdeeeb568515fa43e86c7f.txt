@@ -1,0 +1,28 @@
+author: X__Junior (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-15'
+description: Detects "GoogleUpdate.exe" spawning a new instance of itself in an uncommon
+  location as seen used by the Goofy Guineapig backdoor
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_legit_paths:
+    Image|contains: \AppData\Local\Google\Update\
+    Image|startswith:
+    - C:\Program Files\Google\
+    - C:\Program Files (x86)\Google\
+  selection:
+    Image|endswith: \GoogleUpdate.exe
+    ParentImage|endswith: \GoogleUpdate.exe
+falsepositives:
+- Unknown
+id: bdbab15a-3826-48fa-a1b7-723cd8f32fcc
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/goofy-guineapig/NCSC-MAR-Goofy-Guineapig.pdf
+status: experimental
+tags:
+- attack.defense_evasion
+- detection.emerging_threats
+title: Potential Goofy Guineapig GoolgeUpdate Process Anomaly

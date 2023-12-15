@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%configsecuritypolicy.exe%' OR LOWER("Process Path") LIKE '%\configsecuritypolicy.exe' OR LOWER("Process Name") LIKE '%\configsecuritypolicy.exe' OR Filename='ConfigSecurityPolicy.exe') AND (LOWER(Command) LIKE '%https://%' OR LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%ftp://%')

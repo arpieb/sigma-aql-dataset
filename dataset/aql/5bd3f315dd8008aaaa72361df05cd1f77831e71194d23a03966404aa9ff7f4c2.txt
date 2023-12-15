@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%diantz.exe%' AND LOWER(Command) LIKE '%.cab%' AND Command MATCHES ':[^\\]'

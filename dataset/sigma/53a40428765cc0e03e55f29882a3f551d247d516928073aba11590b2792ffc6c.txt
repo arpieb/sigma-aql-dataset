@@ -1,0 +1,204 @@
+author: Sorina Ionescu, X__Junior (Nextron Systems)
+date: '2022-08-17'
+description: Detects an executable, which is not an internet browser, making DNS request
+  to legit popular websites, which were seen to be used as dead drop resolvers in
+  previous attacks.
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_avant:
+    Image|endswith: \avant.exe
+    Image|startswith:
+    - C:\Program Files (x86)\Avant Browser\
+    - C:\Program Files\Avant Browser\
+  filter_main_brave:
+    Image|endswith: \brave.exe
+    Image|startswith: C:\Program Files\BraveSoftware\
+  filter_main_chrome:
+    Image:
+    - C:\Program Files\Google\Chrome\Application\chrome.exe
+    - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+  filter_main_chrome_appdata:
+    Image|endswith: \AppData\Local\Google\Chrome\Application\chrome.exe
+    Image|startswith: C:\Users\
+  filter_main_defender:
+    Image|endswith:
+    - \MsMpEng.exe
+    - \MsSense.exe
+  filter_main_discord:
+    DestinationHostname|endswith:
+    - discord.com
+    - cdn.discordapp.com
+    Image|contains: \AppData\Local\Discord\
+    Image|endswith: \Discord.exe
+  filter_main_dropbox:
+    DestinationHostname|endswith: dropbox.com
+    Image|endswith: \Dropbox.exe
+    Image|startswith:
+    - C:\Program Files (x86)\Dropbox\Client\
+    - C:\Program Files\Dropbox\Client\
+  filter_main_edge_1:
+    Image:
+    - C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+    - C:\Program Files\Microsoft\Edge\Application\msedge.exe
+    Image|endswith: \WindowsApps\MicrosoftEdge.exe
+    Image|startswith: C:\Program Files (x86)\Microsoft\EdgeWebView\Application\
+  filter_main_edge_2:
+    Image|endswith:
+    - \msedge.exe
+    - \msedgewebview2.exe
+    Image|startswith:
+    - C:\Program Files (x86)\Microsoft\EdgeCore\
+    - C:\Program Files\Microsoft\EdgeCore\
+  filter_main_falkon:
+    Image|endswith: \falkon.exe
+    Image|startswith:
+    - C:\Program Files\Falkon\
+    - C:\Program Files (x86)\Falkon\
+  filter_main_firefox:
+    Image:
+    - C:\Program Files\Mozilla Firefox\firefox.exe
+    - C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+  filter_main_firefox_appdata:
+    Image|endswith: \AppData\Local\Mozilla Firefox\firefox.exe
+    Image|startswith: C:\Users\
+  filter_main_flock:
+    Image|contains: \AppData\Local\Flock\
+    Image|endswith: \Flock.exe
+  filter_main_googledrive:
+    DestinationHostname|endswith: drive.google.com
+    Image|endswith: GoogleDriveFS.exe
+    Image|startswith:
+    - C:\Program Files\Google\Drive File Stream\
+    - C:\Program Files (x86)\Google\Drive File Stream\
+  filter_main_ie:
+    Image:
+    - C:\Program Files (x86)\Internet Explorer\iexplore.exe
+    - C:\Program Files\Internet Explorer\iexplore.exe
+  filter_main_maxthon:
+    Image|contains: \AppData\Local\Maxthon\
+    Image|endswith: \maxthon.exe
+  filter_main_mega:
+    DestinationHostname|endswith: mega.nz
+    Image|contains: \AppData\Local\MEGAsync\
+    Image|endswith: MEGAsync.exe
+  filter_main_midori:
+    Image|contains: \AppData\Local\Programs\midori-ng\
+    Image|endswith: \Midori Next Generation.exe
+  filter_main_onedrive:
+    DestinationHostname|endswith: onedrive.com
+    Image|contains: \AppData\Local\Microsoft\OneDrive\
+    Image|endswith: \OneDrive.exe
+  filter_main_opera:
+    Image|contains: \AppData\Local\Programs\Opera\
+    Image|endswith: \opera.exe
+  filter_main_phoebe:
+    Image|contains: \AppData\Local\Phoebe\
+    Image|endswith: \Phoebe.exe
+  filter_main_prtg:
+    Image|endswith:
+    - C:\Program Files (x86)\PRTG Network Monitor\PRTG Probe.exe
+    - C:\Program Files\PRTG Network Monitor\PRTG Probe.exe
+  filter_main_qtweb:
+    Image|endswith: \QtWeb.exe
+    Image|startswith:
+    - C:\Program Files (x86)\QtWeb\
+    - C:\Program Files\QtWeb\
+  filter_main_safari:
+    Image|endswith: \safari.exe
+  filter_main_seamonkey:
+    Image|endswith: \seamonkey.exe
+    Image|startswith:
+    - C:\Program Files\SeaMonkey\
+    - C:\Program Files (x86)\SeaMonkey\
+  filter_main_slimbrowser:
+    Image|endswith: \slimbrowser.exe
+    Image|startswith:
+    - C:\Program Files\SlimBrowser\
+    - C:\Program Files (x86)\SlimBrowser\
+  filter_main_telegram:
+    DestinationHostname|endswith: .t.me
+    Image|contains: \AppData\Roaming\Telegram Desktop\
+    Image|endswith: \Telegram.exe
+  filter_main_tor:
+    Image|contains: \Tor Browser\
+  filter_main_vivaldi:
+    Image|contains: \AppData\Local\Vivaldi\
+    Image|endswith: \vivaldi.exe
+  filter_main_whale:
+    Image|endswith: \whale.exe
+    Image|startswith:
+    - C:\Program Files\Naver\Naver Whale\
+    - C:\Program Files (x86)\Naver\Naver Whale\
+  filter_main_whaterfox:
+    Image|endswith: \Waterfox.exe
+    Image|startswith:
+    - C:\Program Files\Waterfox\
+    - C:\Program Files (x86)\Waterfox\
+  filter_main_whatsapp:
+    Image|endswith: WhatsApp.exe
+    Image|startswith:
+    - C:\Program Files (x86)\WindowsApps\
+    - C:\Program Files\WindowsApps\
+  selection:
+    DestinationHostname|endswith:
+    - .t.me
+    - 4shared.com
+    - anonfiles.com
+    - cdn.discordapp.com
+    - cloudflare.com
+    - ddns.net
+    - discord.com
+    - docs.google.com
+    - drive.google.com
+    - dropbox.com
+    - dropmefiles.com
+    - facebook.com
+    - feeds.rapidfeeds.com
+    - fotolog.com
+    - ghostbin.co/
+    - githubusercontent.com
+    - gofile.io
+    - hastebin.com
+    - imgur.com
+    - livejournal.com
+    - mediafire.com
+    - mega.nz
+    - onedrive.com
+    - paste.ee
+    - pastebin.com
+    - pastebin.pl
+    - pastetext.net
+    - privatlab.com
+    - privatlab.net
+    - reddit.com
+    - send.exploit.in
+    - sendspace.com
+    - steamcommunity.com
+    - storage.googleapis.com
+    - technet.microsoft.com
+    - temp.sh
+    - transfer.sh
+    - twitter.com
+    - ufile.io
+    - vimeo.com
+    - wetransfer.com
+    - youtube.com
+    Initiated: 'true'
+falsepositives:
+- One might need to exclude other internet browsers found in it's network or other
+  applications like ones mentioned above from Microsoft Defender.
+id: 297ae038-edc2-4b2e-bb3e-7c5fc94dd5c7
+level: high
+logsource:
+  category: network_connection
+  product: windows
+references:
+- https://content.fireeye.com/apt-41/rpt-apt41
+- https://securelist.com/the-tetrade-brazilian-banking-malware/97779/
+- https://blog.bushidotoken.net/2021/04/dead-drop-resolvers-espionage-inspired.html
+status: test
+tags:
+- attack.command_and_control
+- attack.t1102
+- attack.t1102.001
+title: Potential Dead Drop Resolvers

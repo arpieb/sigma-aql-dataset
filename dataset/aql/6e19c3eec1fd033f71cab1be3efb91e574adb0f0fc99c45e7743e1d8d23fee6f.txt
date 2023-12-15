@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND LOWER("Process Path") LIKE '%/shutdown' OR LOWER("Process Path") LIKE '%/reboot' OR LOWER("Process Path") LIKE '%/halt' OR LOWER("Process Name") LIKE '%/shutdown' OR LOWER("Process Name") LIKE '%/reboot' OR LOWER("Process Name") LIKE '%/halt'

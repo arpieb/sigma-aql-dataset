@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\deviceenroller.exe' OR LOWER("Process Name") LIKE '%\deviceenroller.exe' OR Filename='deviceenroller.exe') AND LOWER(Command) LIKE '%/phonedeeplink%'

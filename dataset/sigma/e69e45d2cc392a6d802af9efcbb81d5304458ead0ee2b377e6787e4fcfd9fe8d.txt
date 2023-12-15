@@ -1,0 +1,28 @@
+author: Florian Roth (Nextron Systems), @41thexplorer
+date: '2018-11-20'
+description: Detects indicators of APT 29 (Cozy Bear) phishing-campaign as reported
+  by mandiant
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: -noni -ep bypass $
+    CommandLine|contains|all:
+    - cyzfc.dat,
+    - PointFunctionCall
+falsepositives:
+- Unlikely
+id: 7453575c-a747-40b9-839b-125a0aae324b
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/DrunkBinary/status/1063075530180886529
+- https://www.microsoft.com/security/blog/2018/12/03/analysis-of-cyberattack-on-u-s-think-tanks-non-profits-public-sector-by-unidentified-attackers/
+- https://www.mandiant.com/resources/blog/not-so-cozy-an-uncomfortable-examination-of-a-suspected-apt29-phishing-campaign
+status: stable
+tags:
+- attack.execution
+- attack.t1218.011
+- detection.emerging_threats
+title: APT29 2018 Phishing Campaign CommandLine Indicators

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4663 AND (LOWER("Object Name") LIKE '%\microsoft\teams\cookies%' OR LOWER("Object Name") LIKE '%\microsoft\teams\local storage\leveldb%') AND NOT(LOWER("Process Name") LIKE '%\microsoft\teams\current\teams.exe%')

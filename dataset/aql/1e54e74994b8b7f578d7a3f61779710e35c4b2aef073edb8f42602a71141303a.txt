@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Target Process Path") LIKE '%\lsass.exe' AND LOWER("Source Process Path") LIKE '%:\windows\system32\wsmprovhost.exe' AND NOT("Granted Access"='0x80000000')

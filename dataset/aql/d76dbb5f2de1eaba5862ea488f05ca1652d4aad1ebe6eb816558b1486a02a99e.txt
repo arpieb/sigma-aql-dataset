@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\fsutil.exe' OR LOWER("Process Name") LIKE '%\fsutil.exe' OR Filename='fsutil.exe') AND LOWER(Command) LIKE '%behavior %' AND LOWER(Command) LIKE '%set %' AND LOWER(Command) LIKE '%symlinkevaluation%'

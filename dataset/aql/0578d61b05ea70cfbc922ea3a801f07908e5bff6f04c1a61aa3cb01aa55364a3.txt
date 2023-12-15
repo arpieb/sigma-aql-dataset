@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%start-process%' OR LOWER(Message) LIKE '%-passthru %' OR LOWER(Message) LIKE '%-filepath %'

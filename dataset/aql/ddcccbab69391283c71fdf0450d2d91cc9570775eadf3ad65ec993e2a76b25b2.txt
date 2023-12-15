@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dtrace.exe' OR LOWER("Process Name") LIKE '%\dtrace.exe') AND LOWER(Command) LIKE '%lkd(0)%' OR LOWER(Command) LIKE '%syscall:::return%' AND LOWER(Command) LIKE '%lkd(%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-adprincipalgroupmembership%' OR LOWER(Message) LIKE '%get-aduser%' OR LOWER(Message) LIKE '%-f %' OR LOWER(Message) LIKE '%-pr %' OR LOWER(Message) LIKE '%doesnotrequirepreauth%'

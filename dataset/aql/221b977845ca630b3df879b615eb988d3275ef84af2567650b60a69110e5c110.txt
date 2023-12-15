@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/esxcli' OR LOWER("Process Name") LIKE '%/esxcli') AND LOWER(Command) LIKE '%system%' AND (LOWER(Command) LIKE '% get%' OR LOWER(Command) LIKE '% list%')

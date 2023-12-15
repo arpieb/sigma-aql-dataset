@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems), Maxime Thiebaut
+date: '2021-08-23'
+description: Detects a explorer.exe sub process of the RazerInstaller software which
+  can be invoked from the installer to select a different installation folder but
+  can also be exploited to escalate privileges to LOCAL SYSTEM
+detection:
+  condition: selection and not filter
+  filter:
+    Image|startswith: C:\Windows\Installer\Razer\Installer\
+  selection:
+    IntegrityLevel: System
+    ParentImage|endswith: \RazerInstaller.exe
+falsepositives:
+- User selecting a different installation folder (check for other sub processes of
+  this explorer.exe process)
+id: a4eaf250-7dc1-4842-862a-5e71cd59a167
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/j0nh4t/status/1429049506021138437
+- https://streamable.com/q2dsji
+status: test
+tags:
+- attack.privilege_escalation
+- attack.t1553
+- detection.emerging_threats
+title: Suspicious RazerInstaller Explorer Subprocess

@@ -1,0 +1,35 @@
+author: Thomas Patzke
+date: '2019-12-19'
+description: Detects Ursnif C2 traffic.
+detection:
+  b64encoding:
+    c-uri|contains:
+    - _2f
+    - _2b
+  condition: b64encoding and urlpatterns
+  urlpatterns:
+    c-uri|contains|all:
+    - .avi
+    - /images/
+falsepositives:
+- Unknown
+fields:
+- c-ip
+- c-uri
+- sc-bytes
+- c-ua
+id: 932ac737-33ca-4afd-9869-0d48b391fcc9
+level: critical
+logsource:
+  category: proxy
+references:
+- https://www.fortinet.com/blog/threat-research/ursnif-variant-spreading-word-document.html
+status: stable
+tags:
+- attack.initial_access
+- attack.t1566.001
+- attack.execution
+- attack.t1204.002
+- attack.command_and_control
+- attack.t1071.001
+title: Ursnif Malware C2 URL Pattern

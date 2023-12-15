@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%get-wmiobject%' OR LOWER(Message) LIKE '%gwmi%') AND NOT((LOWER("File Path") LIKE '%\cl_utility.ps1' AND (LOWER(Message) LIKE '%function get-freespace%' OR LOWER(Message) LIKE '%select % from win32_logicaldisk where mediatype=12%')))

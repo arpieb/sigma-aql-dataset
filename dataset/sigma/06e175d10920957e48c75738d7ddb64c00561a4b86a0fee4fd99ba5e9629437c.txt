@@ -1,0 +1,22 @@
+author: Markus Neis
+date: '2018-07-24'
+description: Detects default lsass dump filename from SafetyKatz
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: \Temp\debug.bin
+falsepositives:
+- Rare legitimate files with similar filename structure
+id: e074832a-eada-4fd7-94a1-10642b130e16
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://github.com/GhostPack/SafetyKatz
+- https://github.com/GhostPack/SafetyKatz/blob/715b311f76eb3a4c8d00a1bd29c6cd1899e450b7/SafetyKatz/Program.cs#L63
+status: test
+tags:
+- attack.credential_access
+- attack.t1003.001
+title: SafetyKatz Default Dump Filename

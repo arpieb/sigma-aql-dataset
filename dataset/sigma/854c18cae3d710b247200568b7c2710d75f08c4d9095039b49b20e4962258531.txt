@@ -1,0 +1,25 @@
+author: Christian Burkard (Nextron Systems)
+date: '2021-08-09'
+description: Detects the process injection of a LittleCorporal generated Maldoc.
+detection:
+  condition: selection
+  selection:
+    CallTrace|contains|all:
+    - :\Windows\Microsoft.NET\Framework64\v2.
+    - UNKNOWN
+    SourceImage|endswith: \winword.exe
+falsepositives:
+- Unknown
+id: 7bdde3bf-2a42-4c39-aa31-a92b3e17afac
+level: high
+logsource:
+  category: process_access
+  product: windows
+references:
+- https://github.com/connormcgarr/LittleCorporal
+status: test
+tags:
+- attack.execution
+- attack.t1204.002
+- attack.t1055.003
+title: HackTool - LittleCorporal Generated Maldoc Injection

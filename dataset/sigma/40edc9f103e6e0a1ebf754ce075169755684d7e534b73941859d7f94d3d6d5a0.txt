@@ -1,0 +1,22 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-06-09'
+description: Detects child processes of the "Trace log generation tool for Media Foundation
+  Tools" (Mftrace.exe) which can abused to execute arbitrary binaries.
+detection:
+  condition: selection
+  selection:
+    ParentImage|endswith: \mftrace.exe
+falsepositives:
+- Legitimate use for tracing purposes
+id: 3d48c9d3-1aa6-418d-98d3-8fd3c01a564e
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/OtherMSBinaries/Mftrace/
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1127
+title: Potential Mftrace.EXE Abuse

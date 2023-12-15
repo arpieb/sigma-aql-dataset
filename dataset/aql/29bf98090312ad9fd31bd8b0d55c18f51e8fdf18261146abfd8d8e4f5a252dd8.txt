@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%get-adcomputer %' OR LOWER(Message) LIKE '% -filter *%') AND (LOWER(Message) LIKE '% | select %' OR LOWER(Message) LIKE '%out-file%' OR LOWER(Message) LIKE '%set-content%' OR LOWER(Message) LIKE '%add-content%')

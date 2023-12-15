@@ -1,0 +1,42 @@
+author: Sohan G (D4rkCiph3r)
+date: '2023-01-31'
+description: Detects suspicious child processes spawning from microsoft office suite
+  applications such as word or excel. This could indicates malicious macro execution
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - /bash
+    - /curl
+    - /dash
+    - /fish
+    - /osacompile
+    - /osascript
+    - /sh
+    - /zsh
+    - /python
+    - /python3
+    - /wget
+    ParentImage|contains:
+    - Microsoft Word
+    - Microsoft Excel
+    - Microsoft PowerPoint
+    - Microsoft OneNote
+falsepositives:
+- Unknown
+id: 69483748-1525-4a6c-95ca-90dc8d431b68
+level: high
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://redcanary.com/blog/applescript/
+- https://objective-see.org/blog/blog_0x4B.html
+status: test
+tags:
+- attack.execution
+- attack.persistence
+- attack.t1059.002
+- attack.t1137.002
+- attack.t1204.002
+title: Suspicious Microsoft Office Child Process - MacOS

@@ -1,0 +1,25 @@
+author: Bhabesh Raj
+date: '2021-05-06'
+description: Detects the creation of a file named "MoriyaStreamWatchmen.sys" in a
+  specific location. This filename was reported to be related to the Moriya rootkit
+  as described in the securelist's Operation TunnelSnake report.
+detection:
+  condition: selection
+  selection:
+    TargetFilename: C:\Windows\System32\drivers\MoriyaStreamWatchmen.sys
+falsepositives:
+- Unknown
+id: a1507d71-0b60-44f6-b17c-bf53220fdd88
+level: critical
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://securelist.com/operation-tunnelsnake-and-moriya-rootkit/101831
+status: test
+tags:
+- attack.persistence
+- attack.privilege_escalation
+- attack.t1543.003
+- detection.emerging_threats
+title: Moriya Rootkit File Created

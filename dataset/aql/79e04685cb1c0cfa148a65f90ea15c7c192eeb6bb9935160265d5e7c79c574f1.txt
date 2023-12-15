@@ -1,0 +1,1 @@
+SELECT *, Command FROM events WHERE devicetype=12 AND (LOWER(Command) LIKE '%echo %' OR LOWER(Command) LIKE '%copy %' OR LOWER(Command) LIKE '%type %' OR LOWER(Command) LIKE '%file createnew%') AND (LOWER(Command) LIKE '% c:\windows\system32\tasks\%' OR LOWER(Command) LIKE '% c:\windows\syswow64\tasks\%')

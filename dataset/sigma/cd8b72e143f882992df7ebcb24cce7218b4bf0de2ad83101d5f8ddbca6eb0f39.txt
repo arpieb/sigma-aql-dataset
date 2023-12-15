@@ -1,0 +1,28 @@
+author: Florian Roth (Nextron Systems), Tim Shelton, Nasreddine Bencherchali (Nextron
+  Systems)
+date: '2019-10-02'
+description: Detects potential BlueMushroom DLL loading activity via regsvr32 from
+  AppData Local
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - regsvr32
+    - \AppData\Local\
+    - .dll
+    - ',DllEntry'
+falsepositives:
+- Unknown
+id: bd70d3f8-e60e-4d25-89f0-0b5a9cff20e0
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://pbs.twimg.com/media/EF3yLGoWkAEGeLa?format=jpg
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218.010
+- detection.emerging_threats
+title: Potential APT-C-12 BlueMushroom DLL Load Activity Via Regsvr32

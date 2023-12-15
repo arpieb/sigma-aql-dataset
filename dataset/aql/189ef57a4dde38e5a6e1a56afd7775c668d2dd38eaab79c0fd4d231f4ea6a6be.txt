@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Event ID"=4656 AND LOWER("Process Name") LIKE '%\lsass.exe' AND "Access Mask"='0x705' AND "Object Type"='SAM_DOMAIN'

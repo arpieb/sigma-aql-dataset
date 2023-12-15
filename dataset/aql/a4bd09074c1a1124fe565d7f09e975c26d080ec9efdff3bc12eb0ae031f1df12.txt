@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-childitem%' OR LOWER(Message) LIKE '% -recurse %' OR LOWER(Message) LIKE '% -path %' OR LOWER(Message) LIKE '% -filter bookmarks%' OR LOWER(Message) LIKE '% -erroraction silentlycontinue%' OR LOWER(Message) LIKE '% -force%'

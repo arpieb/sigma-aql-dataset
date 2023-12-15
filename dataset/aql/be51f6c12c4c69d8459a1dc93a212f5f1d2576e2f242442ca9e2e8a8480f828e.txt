@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% -hp%' AND (LOWER(Command) LIKE '% -m%' OR LOWER(Command) LIKE '% a %')

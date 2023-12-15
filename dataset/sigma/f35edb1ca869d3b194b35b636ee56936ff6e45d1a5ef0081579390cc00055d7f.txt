@@ -1,0 +1,39 @@
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: '2019-10-30'
+description: Detects potential Dtrack RAT activity via specific process patterns
+detection:
+  condition: 1 of selection_*
+  selection_ipconfig:
+    CommandLine|contains|all:
+    - ipconfig /all
+    - \temp\res.ip
+  selection_netsh:
+    CommandLine|contains|all:
+    - interface ip show config
+    - \temp\netsh.res
+  selection_ping:
+    CommandLine|contains|all:
+    - 'ping -n '
+    - ' echo EEEE > '
+falsepositives:
+- Unlikely
+fields:
+- CommandLine
+- ParentCommandLine
+id: f1531fa4-5b84-4342-8f68-9cf3fdbd83d4
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://securelist.com/my-name-is-dtrack/93338/
+- https://securelist.com/andariel-deploys-dtrack-and-maui-ransomware/107063/
+- https://www.cyberbit.com/endpoint-security/dtrack-apt-malware-found-in-nuclear-power-plant/
+- https://app.any.run/tasks/4bc9860d-ab51-4077-9e09-59ad346b92fd/
+- https://app.any.run/tasks/ce4deab5-3263-494f-93e3-afb2b9d79f14/
+status: stable
+tags:
+- attack.impact
+- attack.t1490
+- detection.emerging_threats
+title: Potential Dtrack RAT Activity

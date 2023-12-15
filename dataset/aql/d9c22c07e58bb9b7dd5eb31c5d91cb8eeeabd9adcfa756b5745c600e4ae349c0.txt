@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%invoke-wmimethod win32_process -name create -argumentlist%' AND LOWER(Command) LIKE '%rundll32 c:\windows%' OR LOWER(Command) LIKE '%wmic /node:%' AND LOWER(Command) LIKE '%process call create "rundll32 c:\windows%'

@@ -1,0 +1,1 @@
+SELECT *, URL, "User Agent" FROM events WHERE LOWER(URL) LIKE '%/list/suc_name=%'

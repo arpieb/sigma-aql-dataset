@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\wbadmin.exe' OR LOWER("Process Name") LIKE '%\wbadmin.exe' OR Filename='WBADMIN.EXE') AND LOWER(Command) LIKE '%delete %' AND LOWER(Command) LIKE '%systemstatebackup %' AND LOWER(Command) LIKE '%-keepversions:0%'

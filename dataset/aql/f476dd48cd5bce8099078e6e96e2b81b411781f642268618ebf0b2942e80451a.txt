@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%whoami%' AND (LOWER(Command) LIKE '%./client/common/%' OR LOWER(Command) LIKE '%.\client\common\%' OR LOWER(Command) LIKE '%c:\windows\temp\serv-u.bat%')

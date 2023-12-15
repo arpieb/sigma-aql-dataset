@@ -1,0 +1,30 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-05-27'
+description: Detects suspicious start of rundll32.exe without any parameters as found
+  in CobaltStrike beacon activity
+detection:
+  condition: selection and not filter
+  filter:
+    ParentImage|contains:
+    - \AppData\Local\
+    - \Microsoft\Edge\
+  selection:
+    CommandLine|endswith:
+    - \rundll32.exe
+    - \rundll32.exe"
+    - \rundll32
+falsepositives:
+- Possible but rare
+id: 1775e15e-b61b-4d14-a1a3-80981298085a
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.cobaltstrike.com/help-opsec
+- https://twitter.com/ber_m1ng/status/1397948048135778309
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1202
+title: Rundll32 Execution Without CommandLine Parameters

@@ -1,0 +1,29 @@
+author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community, Nasreddine
+  Bencherchali (Nextron Systems)
+date: '2023-02-15'
+description: Detects the execution of the certutil with the "exportPFX" flag which
+  allows the utility to export certificates.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - '-exportPFX '
+    - '/exportPFX '
+  selection_img:
+    Image|endswith: \certutil.exe
+    OriginalFileName: CertUtil.exe
+falsepositives:
+- There legitimate reasons to export certificates. Investigate the activity to determine
+  if it's benign
+id: 3ffd6f51-e6c1-47b7-94b4-c1e61d4117c5
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.splunk.com/en_us/blog/security/a-golden-saml-journey-solarwinds-continued.html
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1027
+title: Certificate Exported Via Certutil.EXE

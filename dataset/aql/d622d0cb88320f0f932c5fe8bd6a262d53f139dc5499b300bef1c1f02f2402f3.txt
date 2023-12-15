@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype IN(11, 12) AND "Event ID"=129 AND (LOWER("File Path") LIKE '%\calc.exe' OR LOWER("File Path") LIKE '%\cscript.exe' OR LOWER("File Path") LIKE '%\mshta.exe' OR LOWER("File Path") LIKE '%\mspaint.exe' OR LOWER("File Path") LIKE '%\notepad.exe' OR LOWER("File Path") LIKE '%\regsvr32.exe' OR LOWER("File Path") LIKE '%\wscript.exe')

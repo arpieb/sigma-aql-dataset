@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\gpresult.exe' OR LOWER("Process Name") LIKE '%\gpresult.exe') AND (LOWER(Command) LIKE '%/z%' OR LOWER(Command) LIKE '%/v%')

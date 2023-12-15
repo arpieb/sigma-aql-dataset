@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Integrity Level" IN('High', 'System')) AND LOWER("Parent Process Path") LIKE '%\appdata\local\temp\system32\winsat.exe' AND LOWER("Parent Command") LIKE '%c:\windows \system32\winsat.exe%'

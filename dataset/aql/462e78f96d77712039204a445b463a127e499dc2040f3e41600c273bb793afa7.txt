@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND URL MATCHES '.*\.(zip|asp|htm|url|xml|chm|mht|vbs|search-ms)\?d=[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.*'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\sharpldapmonitor.exe' OR LOWER("Process Name") LIKE '%\sharpldapmonitor.exe' OR Filename='SharpLDAPmonitor.exe' OR LOWER(Command) LIKE '%/user:%' AND LOWER(Command) LIKE '%/pass:%' AND LOWER(Command) LIKE '%/dcip:%'

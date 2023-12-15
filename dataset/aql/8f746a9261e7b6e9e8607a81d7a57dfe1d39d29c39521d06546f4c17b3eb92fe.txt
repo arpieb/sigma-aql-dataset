@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\vmwarexferlogs.exe' OR LOWER("Process Name") LIKE '%\vmwarexferlogs.exe') AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\glib-2.0.dll' AND NOT(LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\program files\vmware\%')

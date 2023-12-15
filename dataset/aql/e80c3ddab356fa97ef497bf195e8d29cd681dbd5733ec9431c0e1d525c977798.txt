@@ -1,0 +1,1 @@
+SELECT *, "Event ID", "SAM Account Name", "Target Username" FROM events WHERE devicetype=12 AND "Event ID"=4720 AND LOWER("SAM Account Name") LIKE '%$%' OR "Event ID"=4781 AND LOWER("Target Username") LIKE '%$%'

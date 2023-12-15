@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% /injectrunning %' AND NOT("Parent Process Path"='C:\Windows\System32\AppVClient.exe')

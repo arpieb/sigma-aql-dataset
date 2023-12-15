@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/rapi/filedownload_filter=path:%2f%' OR LOWER(URL) LIKE '%/pcidss/report%' OR LOWER(URL) LIKE '%type=all_signatures%' OR LOWER(URL) LIKE '%sig_name=_default_signature_%'

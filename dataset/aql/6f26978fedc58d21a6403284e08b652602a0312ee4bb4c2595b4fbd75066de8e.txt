@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(CONCAT('file directory', '/', filename)) LIKE '%\ttdrecord.dll' OR LOWER(CONCAT('file directory', '/', filename)) LIKE '%\ttdwriter.dll' OR LOWER(CONCAT('file directory', '/', filename)) LIKE '%\ttdloader.dll'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\scriptrunner.exe' OR LOWER("Process Name") LIKE '%\scriptrunner.exe' OR Filename='ScriptRunner.exe') AND LOWER(Command) LIKE '% -appvscript %'

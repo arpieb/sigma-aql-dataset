@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\acccheckconsole.exe' OR LOWER("Process Name") LIKE '%\acccheckconsole.exe' OR Filename='AccCheckConsole.exe') AND LOWER(Command) LIKE '% -window %' AND LOWER(Command) LIKE '%.dll%'

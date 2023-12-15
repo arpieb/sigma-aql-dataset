@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\dllhost.exe' AND LOWER("Parent Command") LIKE '% /processid:{12c21ea7-2eb8-4b55-9249-ac243da8c666}%' AND ("Integrity Level" IN('High', 'System'))

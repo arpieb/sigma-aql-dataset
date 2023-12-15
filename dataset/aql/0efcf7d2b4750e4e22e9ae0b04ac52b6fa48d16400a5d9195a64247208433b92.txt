@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Parent Process Path"='C:\WINDOWS\System32\svchost.exe' AND LOWER("Parent Command") LIKE '%-k netsvcs%' AND LOWER("Parent Command") LIKE '%-s schedule%' AND (LOWER(Command) LIKE '% -windowstyle hidden' OR LOWER(Command) LIKE '% -w hidden' OR LOWER(Command) LIKE '% -ep bypass' OR LOWER(Command) LIKE '% -noni')

@@ -1,0 +1,38 @@
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: '2021-07-27'
+description: Detects potential process patterns related to Cobalt Strike beacon activity
+detection:
+  condition: 1 of selection_*
+  selection_conhost_1:
+    CommandLine|endswith: conhost.exe 0xffffffff -ForceV1
+    ParentCommandLine|contains|all:
+    - cmd.exe /C echo
+    - ' > \\.\pipe'
+  selection_conhost_2:
+    CommandLine|endswith: conhost.exe 0xffffffff -ForceV1
+    ParentCommandLine|endswith: /C whoami
+  selection_generic_1:
+    CommandLine|endswith: cmd.exe /C whoami
+    ParentImage|startswith: C:\Temp\
+  selection_generic_2:
+    CommandLine|contains|all:
+    - cmd.exe /c echo
+    - '> \\.\pipe'
+    ParentImage|endswith:
+    - \runonce.exe
+    - \dllhost.exe
+falsepositives:
+- Unknown
+id: f35c5d71-b489-4e22-a115-f003df287317
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://hausec.com/2021/07/26/cobalt-strike-and-tradecraft/
+- https://thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/
+status: experimental
+tags:
+- attack.execution
+- attack.t1059
+title: Potential CobaltStrike Process Patterns

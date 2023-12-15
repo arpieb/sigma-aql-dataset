@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%system.management.automation.amsiutils%' OR LOWER(Command) LIKE '%amsiinitfailed%' OR LOWER(Command) LIKE '%[ref].assembly.gettype%' AND LOWER(Command) LIKE '%setvalue($null,$true)%' AND LOWER(Command) LIKE '%nonpublic,static%'

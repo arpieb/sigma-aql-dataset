@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Pipe Name") LIKE '%\imposecost%' OR LOWER("Pipe Name") LIKE '%\imposingcost%'

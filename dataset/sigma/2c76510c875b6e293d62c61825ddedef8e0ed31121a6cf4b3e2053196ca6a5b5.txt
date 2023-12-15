@@ -1,0 +1,46 @@
+author: Bhabesh Raj, X__Junior (Nextron Systems)
+date: '2021-07-30'
+description: Detects the expansion or decompression of cabinet files from potentially
+  suspicious or uncommon locations, e.g. seen in Iranian MeteorExpress related attacks
+detection:
+  condition: selection_cmd and 1 of selection_folders_* and not 1 of filter_optional_*
+  filter_optional_dell:
+    CommandLine|contains: C:\ProgramData\Dell\UpdateService\Temp\
+    ParentImage: C:\Program Files (x86)\Dell\UpdateService\ServiceShell.exe
+  selection_cmd:
+    CommandLine|contains:
+    - '/F:'
+    - '-F:'
+    Image|endswith: \expand.exe
+  selection_folders_1:
+    CommandLine|contains:
+    - :\Perflogs\
+    - :\Users\Public\
+    - \Temporary Internet
+    - :\ProgramData
+    - \AppData\Local\Temp
+    - \AppData\Roaming\Temp
+    - :\Windows\Temp
+  selection_folders_2:
+    CommandLine|contains|all:
+    - :\Users\
+    - \Favorites\
+    - :\Users\
+    - \Favourites\
+    - :\Users\
+    - \Contacts\
+falsepositives:
+- System administrator Usage
+id: 9f107a84-532c-41af-b005-8d12a607639f
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://labs.sentinelone.com/meteorexpress-mysterious-wiper-paralyzes-iranian-trains-with-epic-troll
+- https://blog.malwarebytes.com/threat-intelligence/2021/08/new-variant-of-konni-malware-used-in-campaign-targetting-russia/
+status: test
+tags:
+- attack.execution
+- attack.t1218
+title: Potentially Suspicious Cabinet File Expansion

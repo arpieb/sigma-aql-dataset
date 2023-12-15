@@ -1,0 +1,41 @@
+author: FPT.EagleEye Team, wagga
+date: '2020-12-11'
+description: Detects suspicious child processes of the SQLServer process. This could
+  indicate potential RCE or SQL Injection.
+detection:
+  condition: selection and not 1 of filter_optional_*
+  filter_optional_datev:
+    CommandLine|startswith: '"C:\Windows\system32\cmd.exe" '
+    Image: C:\Windows\System32\cmd.exe
+    ParentImage|endswith: DATEV_DBENGINE\MSSQL\Binn\sqlservr.exe
+    ParentImage|startswith: C:\Program Files\Microsoft SQL Server\
+  selection:
+    Image|endswith:
+    - \bash.exe
+    - \bitsadmin.exe
+    - \cmd.exe
+    - \netstat.exe
+    - \nltest.exe
+    - \ping.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \regsvr32.exe
+    - \rundll32.exe
+    - \sh.exe
+    - \systeminfo.exe
+    - \tasklist.exe
+    - \wsl.exe
+    ParentImage|endswith: \sqlservr.exe
+id: 869b9ca7-9ea2-4a5a-8325-e80e62f75445
+level: high
+logsource:
+  category: process_creation
+  product: windows
+status: experimental
+tags:
+- attack.t1505.003
+- attack.t1190
+- attack.initial_access
+- attack.persistence
+- attack.privilege_escalation
+title: Suspicious Child Process Of SQL Server

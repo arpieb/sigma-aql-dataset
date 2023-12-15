@@ -1,0 +1,24 @@
+author: X__Junior (Nextron Systems)
+date: '2023-06-30'
+description: Detects execution of "curl.exe" with the "--insecure" flag.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: --insecure
+    CommandLine|re: \s-k\s
+  selection_img:
+    Image|endswith: \curl.exe
+    OriginalFileName: curl.exe
+falsepositives:
+- Access to badly maintained internal or development systems
+id: cb9cc1d1-e84e-4bdc-b7ad-c31b1b7908ec
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://curl.se/docs/manpage.html
+status: experimental
+tags:
+- attack.execution
+title: Insecure Transfer Via Curl.EXE

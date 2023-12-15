@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Name") LIKE '%\system\currentcontrolset\control\lsaextensionconfig\lsasrv\extensions%' OR LOWER("Target Process Name") LIKE '%\system\currentcontrolset\control\lsaextensionconfig\lsasrv\extensions%' OR LOWER("Object Name") LIKE '%\system\currentcontrolset\control\lsaextensionconfig\lsasrv\extensions%'

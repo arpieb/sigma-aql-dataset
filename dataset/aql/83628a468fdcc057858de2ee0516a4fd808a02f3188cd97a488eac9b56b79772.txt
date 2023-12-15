@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\reg.exe' OR LOWER("Process Name") LIKE '%\reg.exe') AND LOWER(Command) LIKE '%software\microsoft\cryptography%' AND LOWER(Command) LIKE '%/v %' AND LOWER(Command) LIKE '%machineguid%'

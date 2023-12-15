@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\htran.exe' OR LOWER("Process Path") LIKE '%\lcx.exe' OR LOWER("Process Name") LIKE '%\htran.exe' OR LOWER("Process Name") LIKE '%\lcx.exe' OR LOWER(Command) LIKE '%.exe -tran %' OR LOWER(Command) LIKE '%.exe -slave %'

@@ -1,0 +1,35 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-04-25'
+description: Detects exploitation indicators related to PaperCut MF/NG Exploitation
+detection:
+  condition: 1 of selection_*
+  selection_1:
+    CommandLine|contains|all:
+    - ' /c '
+    - powershell
+    - -nop -w hidden
+    - Invoke-WebRequest
+    - setup.msi
+    - -OutFile
+  selection_2:
+    CommandLine|contains|all:
+    - 'msiexec '
+    - '/i '
+    - 'setup.msi '
+    - '/qn '
+    - IntegratorLogin=fimaribahundq
+falsepositives:
+- Unlikely
+id: de1bd0b6-6d59-417c-86d9-a44114aede3b
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.huntress.com/blog/critical-vulnerabilities-in-papercut-print-management-software
+- https://www.papercut.com/kb/Main/PO-1216-and-PO-1219
+status: test
+tags:
+- attack.execution
+- detection.emerging_threats
+title: PaperCut MF/NG Exploitation Related Indicators

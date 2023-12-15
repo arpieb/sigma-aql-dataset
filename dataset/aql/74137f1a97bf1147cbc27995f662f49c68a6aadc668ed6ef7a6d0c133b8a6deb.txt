@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\temporary internet files\content.outlook\%' OR LOWER("Process Name") LIKE '%\temporary internet files\content.outlook\%'

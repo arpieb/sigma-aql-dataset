@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-adcomputer %' AND (LOWER(Message) LIKE '%-filter %' OR LOWER(Message) LIKE '%-ldapfilter %' OR LOWER(Message) LIKE '%-properties %')

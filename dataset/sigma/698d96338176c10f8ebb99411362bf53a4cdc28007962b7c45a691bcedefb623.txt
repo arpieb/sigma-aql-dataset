@@ -1,0 +1,77 @@
+author: Florian Roth (Nextron Systems), Arnim Rupp
+date: '2018-09-09'
+description: Detects an Antivirus alert in a highly relevant file path or with a relevant
+  file name
+detection:
+  condition: 1 of selection_*
+  selection_ext:
+    Filename|endswith:
+    - .asax
+    - .ashx
+    - .asmx
+    - .asp
+    - .aspx
+    - .bat
+    - .cfm
+    - .cgi
+    - .chm
+    - .cmd
+    - .dat
+    - .ear
+    - .gif
+    - .hta
+    - .jpeg
+    - .jpg
+    - .jsp
+    - .jspx
+    - .lnk
+    - .php
+    - .pl
+    - .png
+    - .ps1
+    - .psm1
+    - .py
+    - .pyc
+    - .rb
+    - .scf
+    - .sct
+    - .sh
+    - .svg
+    - .txt
+    - .vbe
+    - .vbs
+    - .war
+    - .wsf
+    - .wsh
+    - .xml
+  selection_path:
+    Filename|contains:
+    - :\Windows\
+    - :\Temp\
+    - :\PerfLogs\
+    - :\Users\Public\
+    - :\Users\Default\
+    - \Client\
+    - \tsclient\
+    - \inetpub\
+    - /www/
+    - apache
+    - tomcat
+    - nginx
+    - weblogic
+falsepositives:
+- Unlikely
+fields:
+- Signature
+- User
+id: c9a88268-0047-4824-ba6e-4d81ce0b907c
+level: high
+logsource:
+  category: antivirus
+references:
+- https://www.nextron-systems.com/?s=antivirus
+status: test
+tags:
+- attack.resource_development
+- attack.t1588
+title: Antivirus Relevant File Paths Alerts

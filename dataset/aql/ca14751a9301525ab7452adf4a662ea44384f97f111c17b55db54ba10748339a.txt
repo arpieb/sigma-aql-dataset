@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msdt.exe' OR LOWER("Process Name") LIKE '%\msdt.exe') AND LOWER(Command) LIKE '%\windows\diagnostics\index\pcwdiagnostic.xml%' AND (LOWER(Command) LIKE '% -af %' OR LOWER(Command) LIKE '% /af %') AND NOT(LOWER("Parent Process Path") LIKE '%\pcwrun.exe')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/manager/files_path=etc/lists/../../../../..%'

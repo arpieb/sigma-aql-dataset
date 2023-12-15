@@ -1,0 +1,31 @@
+author: frack113
+date: '2022-09-16'
+description: Detect adversaries enumerate sensitive files
+detection:
+  condition: all of selection_*
+  selection_action:
+    ScriptBlockText|contains:
+    - ls
+    - get-childitem
+    - gci
+  selection_file:
+    ScriptBlockText|contains:
+    - .pass
+    - .kdbx
+    - .kdb
+  selection_recurse:
+    ScriptBlockText|contains: -recurse
+falsepositives:
+- Unknown
+id: 7d416556-6502-45b2-9bad-9d2f05f38997
+level: medium
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://twitter.com/malmoeb/status/1570814999370801158
+status: test
+tags:
+- attack.discovery
+- attack.t1083
+title: Powershell Sensitive File Discovery

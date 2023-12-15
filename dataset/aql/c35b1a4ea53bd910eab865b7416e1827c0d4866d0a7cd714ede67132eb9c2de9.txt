@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\gpscript.exe' OR LOWER("Process Name") LIKE '%\gpscript.exe' OR Filename='GPSCRIPT.EXE') AND (LOWER(Command) LIKE '% /logon%' OR LOWER(Command) LIKE '% /startup%') AND NOT("Parent Command"='C:\windows\system32\svchost.exe -k netsvcs -p -s gpsvc')

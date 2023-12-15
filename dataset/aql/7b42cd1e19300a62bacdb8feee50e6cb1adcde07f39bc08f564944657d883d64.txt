@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER("User Agent") LIKE 'q2hyb21l%' OR LOWER("User Agent") LIKE 'qxbwbgvxzwjlax%' OR LOWER("User Agent") LIKE 'rgfsdmlr%' OR LOWER("User Agent") LIKE 'tw96awxsy%'

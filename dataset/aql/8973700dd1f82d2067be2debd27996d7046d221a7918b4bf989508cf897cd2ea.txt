@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND ("Process Path" IN('/bin/dd', '/usr/bin/dd') OR "Process Name" IN('/bin/dd', '/usr/bin/dd')) AND LOWER(Command) LIKE '%of=%' AND (LOWER(Command) LIKE '%if=/dev/zero%' OR LOWER(Command) LIKE '%if=/dev/null%')

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%/logon:none%' OR LOWER(Command) LIKE '%/system:none%' OR LOWER(Command) LIKE '%/sam:none%' OR LOWER(Command) LIKE '%/privilege:none%' OR LOWER(Command) LIKE '%/object:none%' OR LOWER(Command) LIKE '%/process:none%' OR LOWER(Command) LIKE '%/policy:none%'

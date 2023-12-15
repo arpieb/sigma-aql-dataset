@@ -1,0 +1,28 @@
+author: '@d4ns4n_, Nasreddine Bencherchali (Nextron Systems)'
+date: '2023-04-24'
+description: Detects executing python with keywords related to network activity that
+  could indicate a potential reverse shell
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains|all:
+    - ' -c '
+    - import
+    - pty
+    - spawn(
+    - .connect
+    Image|contains: python
+falsepositives:
+- Unknown
+id: 32e62bc7-3de0-4bb1-90af-532978fe42c0
+level: high
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+- https://www.revshells.com/
+status: experimental
+tags:
+- attack.execution
+title: Potential Python Reverse Shell

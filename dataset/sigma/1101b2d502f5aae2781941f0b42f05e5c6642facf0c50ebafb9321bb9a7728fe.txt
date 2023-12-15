@@ -1,0 +1,31 @@
+author: Nasreddine Bencherchali (Nextron Systems), Cedric Maurugeon
+date: '2023-09-04'
+description: Detects execution of the "esxcli" command with the "storage" flag in
+  order to retrieve information about the storage status and other related information.
+  Seen used by malware such as DarkSide and LockBit.
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - ' get'
+    - ' list'
+  selection_img:
+    CommandLine|contains: storage
+    Image|endswith: /esxcli
+falsepositives:
+- Legitimate administration activities
+id: f41dada5-3f56-4232-8503-3fb7f9cf2d60
+level: medium
+logsource:
+  category: process_creation
+  product: linux
+references:
+- https://www.trendmicro.com/en_us/research/21/e/darkside-linux-vms-targeted.html
+- https://www.trendmicro.com/en_us/research/22/a/analysis-and-Impact-of-lockbit-ransomwares-first-linux-and-vmware-esxi-variant.html
+- https://developer.vmware.com/docs/11743/esxi-7-0-esxcli-command-reference/namespace/esxcli_storage.html
+status: experimental
+tags:
+- attack.discovery
+- attack.t1033
+- attack.t1007
+title: ESXi Storage Information Discovery Via ESXCLI

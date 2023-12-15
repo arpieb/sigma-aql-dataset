@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%[credentials]%' OR LOWER(Message) LIKE '%[veeam.backup.common.protectedstorage]::getlocalstring%' OR LOWER(Message) LIKE '%invoke-sqlcmd%' OR LOWER(Message) LIKE '%veeam backup and replication%'

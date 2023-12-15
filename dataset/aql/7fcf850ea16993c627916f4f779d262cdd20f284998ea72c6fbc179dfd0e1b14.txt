@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%disable-localuser%' OR LOWER(Message) LIKE '%enable-localuser%' OR LOWER(Message) LIKE '%get-localuser%' OR LOWER(Message) LIKE '%set-localuser%' OR LOWER(Message) LIKE '%new-localuser%' OR LOWER(Message) LIKE '%rename-localuser%' OR LOWER(Message) LIKE '%remove-localuser%'

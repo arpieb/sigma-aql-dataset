@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND LOWER(Filename) LIKE '%/etc/emond.d/rules/%' AND LOWER(Filename) LIKE '%.plist' OR LOWER(Filename) LIKE '%/private/var/db/emondclients/%'

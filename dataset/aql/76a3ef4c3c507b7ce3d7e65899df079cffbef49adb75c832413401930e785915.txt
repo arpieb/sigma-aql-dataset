@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%updata.exe' OR LOWER("Process Name") LIKE '%updata.exe') AND Filename='C:\Windows\oci.dll'

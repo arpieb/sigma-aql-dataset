@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%x509enrollment.cbinaryconverter%' OR LOWER(Command) LIKE '%884e2002-217d-11da-b2a4-000e7bbb2b09%'

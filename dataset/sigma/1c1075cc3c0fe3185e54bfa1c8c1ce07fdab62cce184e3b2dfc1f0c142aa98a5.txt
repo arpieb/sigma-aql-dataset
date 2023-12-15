@@ -1,0 +1,39 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-11-22'
+description: Detects potential exploitation attempts of CVE-2021-41379 (InstallerFileTakeOver),
+  a local privilege escalation (LPE) vulnerability where the attacker spawns a "cmd.exe"
+  process as a child of Microsoft Edge elevation service "elevation_service" with
+  "LOCAL_SYSTEM" rights
+detection:
+  condition: all of selection_*
+  selection_img:
+    Image|endswith:
+    - \cmd.exe
+    - \powershell.exe
+    - \pwsh.exe
+    OriginalFileName:
+    - Cmd.Exe
+    - PowerShell.EXE
+    - pwsh.dll
+  selection_parent:
+    IntegrityLevel: System
+    ParentImage|endswith: \elevation_service.exe
+falsepositives:
+- Unknown
+id: af8bbce4-f751-46b4-8d91-82a33a736f61
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://web.archive.org/web/20220421061949/https://github.com/klinix5/InstallerFileTakeOver
+- https://www.bleepingcomputer.com/news/microsoft/new-windows-zero-day-with-public-exploit-lets-you-become-an-admin/
+- https://www.zerodayinitiative.com/advisories/ZDI-21-1308/
+- https://www.logpoint.com/en/blog/detecting-privilege-escalation-zero-day-cve-2021-41379/
+status: test
+tags:
+- attack.privilege_escalation
+- attack.t1068
+- cve.2021.41379
+- detection.emerging_threats
+title: Potential CVE-2021-41379 Exploitation Attempt

@@ -1,0 +1,61 @@
+author: Florian Roth (Nextron Systems), Tom U. @c_APT_ure (collection), oscd.community,
+  Jonhnathan Ribeiro
+date: '2019-01-16'
+description: Detects WannaCry ransomware activity
+detection:
+  condition: 1 of selection*
+  selection1:
+    Image|contains: WanaDecryptor
+    Image|endswith:
+    - \tasksche.exe
+    - \mssecsvc.exe
+    - \taskdl.exe
+    - \taskhsvc.exe
+    - \taskse.exe
+    - \111.exe
+    - \lhdfrgui.exe
+    - \linuxnew.exe
+    - \wannacry.exe
+  selection2:
+    CommandLine|contains: '@Please_Read_Me@.txt'
+    CommandLine|contains|all:
+    - icacls
+    - /grant
+    - Everyone:F
+    - /T
+    - /C
+    - /Q
+    - bcdedit
+    - /set
+    - '{default}'
+    - recoveryenabled
+    - 'no'
+    - wbadmin
+    - delete
+    - catalog
+    - -quiet
+falsepositives:
+- Unknown
+fields:
+- CommandLine
+- ParentCommandLine
+id: 41d40bff-377a-43e2-8e1b-2e543069e079
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.hybrid-analysis.com/sample/ed01ebfbc9eb5bbea545af4d01bf5f1071661840480439c6e5babe8e080e41aa?environmentId=100
+status: test
+tags:
+- attack.lateral_movement
+- attack.t1210
+- attack.discovery
+- attack.t1083
+- attack.defense_evasion
+- attack.t1222.001
+- attack.impact
+- attack.t1486
+- attack.t1490
+- detection.emerging_threats
+title: WannaCry Ransomware Activity

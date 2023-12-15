@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\format.com' OR LOWER("Process Name") LIKE '%\format.com') AND LOWER(Command) LIKE '%/fs:%' AND NOT((LOWER(Command) LIKE '%/fs:fat%' OR LOWER(Command) LIKE '%/fs:exfat%' OR LOWER(Command) LIKE '%/fs:ntfs%' OR LOWER(Command) LIKE '%/fs:udf%' OR LOWER(Command) LIKE '%/fs:refs%'))

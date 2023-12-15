@@ -1,0 +1,34 @@
+author: Florian Roth (Nextron Systems)
+date: '2021-01-21'
+description: Detects commands that indicate a Raccine removal from an end system.
+  Raccine is a free ransomware protection tool.
+detection:
+  condition: 1 of selection*
+  selection1:
+    CommandLine|contains|all:
+    - 'taskkill '
+    - RaccineSettings.exe
+  selection2:
+    CommandLine|contains|all:
+    - reg.exe
+    - delete
+    - Raccine Tray
+  selection3:
+    CommandLine|contains|all:
+    - schtasks
+    - /DELETE
+    - Raccine Rules Updater
+falsepositives:
+- Legitimate deinstallation by administrative staff
+id: a31eeaed-3fd5-478e-a8ba-e62c6b3f9ecc
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/Neo23x0/Raccine
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1562.001
+title: Raccine Uninstall

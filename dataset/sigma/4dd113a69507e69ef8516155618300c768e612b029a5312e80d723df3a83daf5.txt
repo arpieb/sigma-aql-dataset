@@ -1,0 +1,34 @@
+author: Florian Roth (Nextron Systems), @neonprimetime
+date: '2021-09-08'
+description: Detects potential exploitation of CVE-2021-40444 via suspicious process
+  patterns seen in in-the-wild exploitations
+detection:
+  condition: selection and not filter
+  filter:
+    CommandLine|endswith:
+    - \control.exe input.dll
+    - \control.exe" input.dll
+  selection:
+    Image|endswith: \control.exe
+    ParentImage|endswith:
+    - \winword.exe
+    - \powerpnt.exe
+    - \excel.exe
+falsepositives:
+- Unknown
+id: 894397c6-da03-425c-a589-3d09e7d1f750
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-40444
+- https://twitter.com/neonprimetime/status/1435584010202255375
+- https://www.joesandbox.com/analysis/476188/1/iochtml
+status: test
+tags:
+- attack.execution
+- attack.t1059
+- cve.2021.40444
+- detection.emerging_threats
+title: Potential CVE-2021-40444 Exploitation Attempt

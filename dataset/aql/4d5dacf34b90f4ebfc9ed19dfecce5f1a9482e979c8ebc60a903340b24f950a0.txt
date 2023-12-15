@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND "Integrity Level"='High' AND LOWER(Command) LIKE '%conhost.exe%' AND LOWER(Command) LIKE '%0xffffffff%' AND LOWER(Command) LIKE '%-forcev1%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='System' OR "Process Name"='System') AND LOWER(Filename) LIKE '%\wbem\wbemcomn.dll'

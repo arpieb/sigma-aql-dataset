@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%new-object%' OR LOWER(Message) LIKE '%-comobject%' OR LOWER(Message) LIKE '%msxml2.%' OR LOWER(Message) LIKE '%xmlhttp%'

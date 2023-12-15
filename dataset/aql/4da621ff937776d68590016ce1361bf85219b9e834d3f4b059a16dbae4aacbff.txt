@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%-recurse%' OR LOWER(Message) LIKE '%|%' OR LOWER(Message) LIKE '%compress-archive%'

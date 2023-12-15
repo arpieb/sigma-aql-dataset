@@ -1,0 +1,23 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-09-18'
+description: Detects a remote DLL load event via "rundll32.exe".
+detection:
+  condition: selection
+  selection:
+    ImageLoaded|startswith: \\
+    Image|endswith: \rundll32.exe
+falsepositives:
+- Unknown
+id: f40017b3-cb2e-4335-ab5d-3babf679c1de
+level: medium
+logsource:
+  category: image_load
+  product: windows
+references:
+- https://github.com/gabe-k/themebleed
+- Internal Research
+status: experimental
+tags:
+- attack.execution
+- attack.t1204.002
+title: Remote DLL Load Via Rundll32.EXE

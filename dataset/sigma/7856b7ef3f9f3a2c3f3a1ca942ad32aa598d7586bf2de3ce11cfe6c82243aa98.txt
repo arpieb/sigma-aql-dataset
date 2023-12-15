@@ -1,0 +1,21 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-10-26'
+description: Detects PAExec default named pipe
+detection:
+  condition: selection
+  selection:
+    PipeName|startswith: \PAExec
+falsepositives:
+- Unknown
+id: f6451de4-df0a-41fa-8d72-b39f54a08db5
+level: medium
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- https://github.com/microsoft/Microsoft-365-Defender-Hunting-Queries/blob/efa17a600b43c897b4b7463cc8541daa1987eeb4/Command%20and%20Control/C2-NamedPipe.md
+status: test
+tags:
+- attack.execution
+- attack.t1569.002
+title: PAExec Default Named Pipe

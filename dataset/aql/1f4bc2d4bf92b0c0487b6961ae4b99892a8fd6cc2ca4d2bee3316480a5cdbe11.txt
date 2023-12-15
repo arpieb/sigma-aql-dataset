@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-inbox.ps1%' OR LOWER(Message) LIKE '%microsoft.office.interop.outlook%' OR LOWER(Message) LIKE '%microsoft.office.interop.outlook.oldefaultfolders%' OR LOWER(Message) LIKE '%-comobject outlook.application%'

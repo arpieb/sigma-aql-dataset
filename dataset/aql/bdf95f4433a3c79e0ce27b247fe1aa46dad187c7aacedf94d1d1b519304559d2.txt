@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\mpcmdrun.exe' OR LOWER("Process Name") LIKE '%\mpcmdrun.exe' OR Filename='MpCmdRun.exe') AND LOWER(Command) LIKE '% -removedefinitions%' AND LOWER(Command) LIKE '% -all%'

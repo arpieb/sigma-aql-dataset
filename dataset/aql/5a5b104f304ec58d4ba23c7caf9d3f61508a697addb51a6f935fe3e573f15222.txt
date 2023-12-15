@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\odbcconf.exe' OR LOWER("Process Name") LIKE '%\odbcconf.exe' OR Filename='odbcconf.exe') AND LOWER(Command) LIKE '%installdriver %' AND LOWER(Command) LIKE '%.dll%'

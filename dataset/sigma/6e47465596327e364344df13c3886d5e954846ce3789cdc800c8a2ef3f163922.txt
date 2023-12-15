@@ -1,0 +1,24 @@
+author: X__Junior (Nextron Systems)
+date: '2023-04-30'
+description: Detects the creation of a file in a specific location and with a specific
+  name related to COLDSTEEL RAT
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: \AppData\Roaming\newdev.dll
+    TargetFilename|startswith: C:\Users\
+falsepositives:
+- Unknown
+id: 1fea93a2-1524-4a3c-9828-3aa0c2414e27
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/cold-steel/NCSC-MAR-Cold-Steel.pdf
+status: experimental
+tags:
+- attack.persistence
+- attack.defense_evasion
+- detection.emerging_threats
+title: Potential COLDSTEEL Persistence Service DLL Creation

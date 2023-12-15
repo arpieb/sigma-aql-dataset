@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%new-object%' OR LOWER(Message) LIKE '%system.xml.xmldocument%' OR LOWER(Message) LIKE '%.load%') AND (LOWER(Message) LIKE '%iex %' OR LOWER(Message) LIKE '%invoke-expression %' OR LOWER(Message) LIKE '%invoke-command %' OR LOWER(Message) LIKE '%icm -%')

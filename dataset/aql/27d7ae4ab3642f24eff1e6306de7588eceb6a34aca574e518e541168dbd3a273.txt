@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '% -t msi-install %' AND LOWER(Command) LIKE '% -i http%'

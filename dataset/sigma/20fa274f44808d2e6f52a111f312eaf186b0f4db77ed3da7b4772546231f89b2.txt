@@ -1,0 +1,31 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-01'
+description: Detect the use of "sc.exe" to change the startup type of a service to
+  "disabled" or "demand"
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - disabled
+    - demand
+    CommandLine|contains|all:
+    - ' config '
+    - start
+  selection_img:
+    Image|endswith: \sc.exe
+    OriginalFileName: sc.exe
+falsepositives:
+- False positives may occur with troubleshooting scripts
+id: 85c312b7-f44d-4a51-a024-d671c40b49fc
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.virustotal.com/gui/file/38283b775552da8981452941ea74191aa0d203edd3f61fb2dee7b0aea3514955
+status: experimental
+tags:
+- attack.execution
+- attack.defense_evasion
+- attack.t1562.001
+title: Service StartupType Change Via Sc.EXE

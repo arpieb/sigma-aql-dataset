@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%crontab' OR LOWER("Process Name") LIKE '%crontab') AND LOWER(Command) LIKE '%/tmp/%'

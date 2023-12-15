@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%regsvr32%' AND LOWER(Command) LIKE '%\appdata\local\%' AND LOWER(Command) LIKE '%.dll%' AND LOWER(Command) LIKE '%,dllentry%'

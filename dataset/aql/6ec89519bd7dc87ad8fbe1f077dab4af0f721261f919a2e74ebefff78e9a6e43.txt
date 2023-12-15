@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Message MATCHES '.*(Get-Item|gci|Get-ChildItem).{1,64}-Path.{1,64}\\(currentcontrolset\\services|CurrentVersion\\Policies\\Explorer\\Run|CurrentVersion\\Run|CurrentVersion\\ShellServiceObjectDelayLoad|CurrentVersion\\Windows\winlogon)\\.*'

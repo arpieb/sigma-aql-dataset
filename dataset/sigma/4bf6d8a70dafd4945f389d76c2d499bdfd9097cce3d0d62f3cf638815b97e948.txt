@@ -1,0 +1,23 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-04-06'
+description: Detects password change for the logged-on user's via "ksetup.exe"
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: ' /ChangePassword '
+  selection_img:
+    Image|endswith: \ksetup.exe
+    OriginalFileName: ksetup.exe
+falsepositives:
+- Unknown
+id: c9783e20-4793-4164-ba96-d9ee483992c4
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://learn.microsoft.com/en-gb/windows-server/administration/windows-commands/ksetup
+status: experimental
+tags:
+- attack.execution
+title: Logged-On User Password Change Via Ksetup.EXE

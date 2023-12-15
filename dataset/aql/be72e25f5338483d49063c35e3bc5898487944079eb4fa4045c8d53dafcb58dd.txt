@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%tracert -h 10 yahoo.com%' OR LOWER(Command) LIKE '%.wsqmcons))|iex;%' OR LOWER(Command) LIKE '%fr`omba`se6`4str`ing%' OR LOWER(Command) LIKE '%net use https://docs.live.net%' AND LOWER(Command) LIKE '%@aol.co.uk%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%export-pfxcertificate%' OR LOWER(Message) LIKE '%export-certificate%') AND NOT(LOWER(Message) LIKE '%cmdletstoexport = @(%')

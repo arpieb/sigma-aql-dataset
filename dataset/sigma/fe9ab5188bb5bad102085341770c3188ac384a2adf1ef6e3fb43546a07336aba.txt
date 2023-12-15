@@ -1,0 +1,23 @@
+author: Jonathan Cheong, oscd.community
+date: '2020-10-15'
+description: Detects Obfuscated use of stdin to execute PowerShell
+detection:
+  condition: selection_4103
+  selection_4103:
+    Payload|re: .*cmd.{0,5}(?:/c|/r).+powershell.+(?:\$\{?input\}?|noexit).+"
+falsepositives:
+- Unknown
+id: 9ac8b09b-45de-4a07-9da1-0de8c09304a3
+level: high
+logsource:
+  category: ps_module
+  product: windows
+references:
+- https://github.com/SigmaHQ/sigma/issues/1009
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1027
+- attack.execution
+- attack.t1059.001
+title: Invoke-Obfuscation STDIN+ Launcher - PowerShell Module

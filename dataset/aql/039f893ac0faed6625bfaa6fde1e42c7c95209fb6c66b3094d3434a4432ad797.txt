@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%/forms/dologin%' OR LOWER(URL) LIKE '%login_username%' OR LOWER(URL) LIKE '%password%') AND (LOWER(URL) LIKE '%$(%' OR URL LIKE '%%24%28%')

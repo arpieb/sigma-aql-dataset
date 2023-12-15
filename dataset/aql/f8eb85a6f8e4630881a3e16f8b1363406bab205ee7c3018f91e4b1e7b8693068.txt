@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\outlook.exe' OR LOWER("Process Name") LIKE '%\outlook.exe') AND LOWER(Filename) LIKE '%\microsoft\outlook\vbaproject.otm'

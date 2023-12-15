@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\systemsettingsadminflows.exe' OR LOWER("Process Name") LIKE '%\systemsettingsadminflows.exe' OR Filename='SystemSettingsAdminFlows.EXE') AND LOWER(Command) LIKE '%turnondeveloperfeatures%' AND (LOWER(Command) LIKE '%developerunlock%' OR LOWER(Command) LIKE '%enablesideloading%')

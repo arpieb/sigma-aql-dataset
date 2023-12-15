@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename='vmnat.exe' AND NOT((LOWER("Process Path") LIKE '%vmnat.exe' OR LOWER("Process Name") LIKE '%vmnat.exe'))

@@ -1,0 +1,37 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-09-01'
+description: Detects potential suspicious execution of a GUID like folder name located
+  in a suspicious location such as %TEMP% as seen being used in IcedID attacks
+detection:
+  condition: all of selection_* and not 1 of filter*
+  filter:
+    Image|contains|all:
+    - \{
+    - '}\'
+  filter_driver_inst:
+    Image: C:\Windows\System32\drvinst.exe
+  filter_null:
+    Image: null
+  selection_folder:
+    CommandLine|contains:
+    - \AppData\Roaming\
+    - \AppData\Local\Temp\
+  selection_guid:
+    CommandLine|contains|all:
+    - \{
+    - '}\'
+falsepositives:
+- Installers are sometimes known for creating temporary folders with GUID like names.
+  Add appropriate filters accordingly
+id: 90b63c33-2b97-4631-a011-ceb0f47b77c3
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://twitter.com/Kostastsale/status/1565257924204986369
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1027
+title: Suspicious Execution From GUID Like Folder Names

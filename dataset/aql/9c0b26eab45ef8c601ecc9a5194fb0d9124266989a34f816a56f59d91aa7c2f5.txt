@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND (LOWER("Process Path") LIKE '%/service' OR LOWER("Process Path") LIKE '%/systemctl' OR LOWER("Process Path") LIKE '%/chkconfig' OR LOWER("Process Name") LIKE '%/service' OR LOWER("Process Name") LIKE '%/systemctl' OR LOWER("Process Name") LIKE '%/chkconfig') AND (LOWER(Command) LIKE '%stop%' OR LOWER(Command) LIKE '%disable%')

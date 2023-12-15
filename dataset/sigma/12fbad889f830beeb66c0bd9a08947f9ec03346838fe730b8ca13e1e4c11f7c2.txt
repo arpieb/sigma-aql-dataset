@@ -1,0 +1,47 @@
+author: Florian Roth (Nextron Systems), Vasiliy Burov, Nasreddine Bencherchali (Nextron
+  Systems)
+date: '2019-12-16'
+description: Detects Ryuk ransomware activity
+detection:
+  condition: 1 of selection_*
+  selection_del:
+    CommandLine|contains|all:
+    - del /s /f /q c:\
+    - '*.bac'
+    - '*.bak'
+    - '*.bkf'
+  selection_net:
+    CommandLine|contains:
+    - samss
+    - audioendpointbuilder
+    - unistoresvc_
+    - AcrSch2Svc
+    CommandLine|contains|all:
+    - ' stop '
+    - ' /y'
+    Image|endswith:
+    - \net.exe
+    - \net1.exe
+  selection_reg:
+    CommandLine|contains|all:
+    - Microsoft\Windows\CurrentVersion\Run
+    - C:\users\Public\
+falsepositives:
+- Unlikely
+fields:
+- CommandLine
+- ParentCommandLine
+id: c37510b8-2107-4b78-aa32-72f251e7a844
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://app.any.run/tasks/d860402c-3ff4-4c1f-b367-0237da714ed1/
+- https://research.checkpoint.com/ryuk-ransomware-targeted-campaign-break/
+status: stable
+tags:
+- attack.persistence
+- attack.t1547.001
+- detection.emerging_threats
+title: Potential Ryuk Ransomware Activity

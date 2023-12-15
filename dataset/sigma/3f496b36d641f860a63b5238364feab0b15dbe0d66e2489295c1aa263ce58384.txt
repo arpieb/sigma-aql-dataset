@@ -1,0 +1,26 @@
+author: frack113
+date: '2021-11-24'
+description: Detects execution of "aspnet_compiler.exe" which can be abused to compile
+  and execute C# code.
+detection:
+  condition: selection
+  selection:
+    Image|contains:
+    - C:\Windows\Microsoft.NET\Framework\
+    - C:\Windows\Microsoft.NET\Framework64\
+    Image|endswith: \aspnet_compiler.exe
+falsepositives:
+- Unknown
+id: a01b8329-5953-4f73-ae2d-aa01e1f35f00
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Aspnet_Compiler/
+- https://ijustwannared.team/2020/08/01/the-curious-case-of-aspnet_compiler-exe/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1127
+title: AspNetCompiler Execution

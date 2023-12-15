@@ -1,0 +1,25 @@
+author: Janantha Marasinghe
+date: '2022-10-18'
+description: Detects the use of rclone, a command-line program to manage files on
+  cloud storage, via its default user-agent string
+detection:
+  condition: selection
+  selection:
+    c-useragent|startswith: rclone/v
+falsepositives:
+- Valid requests with this exact user agent to that is used by legitimate scripts
+  or sysadmin operations
+fields:
+- c-ip
+id: 2c03648b-e081-41a5-b9fb-7d854a915091
+level: medium
+logsource:
+  category: proxy
+references:
+- https://rclone.org/
+- https://www.kroll.com/en/insights/publications/cyber/new-m365-business-email-compromise-attacks-with-rclone
+status: test
+tags:
+- attack.exfiltration
+- attack.t1567.002
+title: Rclone Activity via Proxy

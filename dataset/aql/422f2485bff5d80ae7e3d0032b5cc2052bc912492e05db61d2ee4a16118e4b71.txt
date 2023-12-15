@@ -1,0 +1,1 @@
+SELECT *, "Process Path", "Process Name", Command, Username, CONCAT('MD5=', 'MD5 Hash ', 'SHA1=', 'SHA1 Hash ', 'SHA256=', 'SHA256 Hash ', 'IMPHASH=', 'IMP HASH'), "Parent Command" FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cmd.exe' OR LOWER("Process Name") LIKE '%\cmd.exe' OR Filename='Cmd.Exe') AND LOWER(Command) LIKE '%assoc%'

@@ -1,0 +1,22 @@
+author: Florian Roth (Nextron Systems)
+date: '2020-05-26'
+description: Detects Turla ComRAT patterns
+detection:
+  condition: selection
+  selection:
+    c-uri|contains: /index/index.php?h=
+falsepositives:
+- Unknown
+id: 7857f021-007f-4928-8b2c-7aedbe64bb82
+level: high
+logsource:
+  category: proxy
+references:
+- https://www.welivesecurity.com/wp-content/uploads/2020/05/ESET_Turla_ComRAT.pdf
+status: test
+tags:
+- attack.defense_evasion
+- attack.command_and_control
+- attack.t1071.001
+- attack.g0010
+title: Turla ComRAT

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE 'c:\windows\%' OR LOWER("Process Name") LIKE 'c:\windows\%') AND (LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\users\public\%' OR LOWER(CONCAT('file directory', '/', filename)) LIKE 'c:\perflogs\%')

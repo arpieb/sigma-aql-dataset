@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='POST' AND (LOWER(URL) LIKE '%/oa_html/bneviewerxmlservice_bne:uueupload=true%' OR LOWER(URL) LIKE '%/oa_html/bneuploaderservice_bne:uueupload=true%' OR LOWER(URL) LIKE '%/oa_html/bnedownloadservice_bne:uueupload=true%' OR LOWER(URL) LIKE '%/oa_html/bneofflinelovservice_bne:uueupload=true%')

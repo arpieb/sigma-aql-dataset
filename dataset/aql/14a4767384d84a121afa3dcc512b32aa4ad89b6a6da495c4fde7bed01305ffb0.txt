@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Target Process Path") LIKE '%\lsass.exe' AND "Granted Access"='0x1440' AND LOWER("Call Trace") LIKE 'c:\windows\system32\ntdll.dll+%' AND LOWER("Call Trace") LIKE '%|unknown(%' AND LOWER("Call Trace") LIKE '%)'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND (LOWER(URL) LIKE '%/ecp/%' OR LOWER(URL) LIKE '%/owa/%') AND LOWER(URL) LIKE '%__viewstate=%'

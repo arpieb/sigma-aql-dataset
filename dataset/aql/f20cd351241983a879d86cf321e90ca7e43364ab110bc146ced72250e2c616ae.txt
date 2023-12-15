@@ -1,0 +1,1 @@
+SELECT *, Username, "Process Path", "Process Name" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%shutdown /r /f /t 00%' OR LOWER(Command) LIKE '%net stop superbackupman%'

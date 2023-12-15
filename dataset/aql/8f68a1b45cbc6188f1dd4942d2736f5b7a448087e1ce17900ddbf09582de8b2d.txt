@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\forfiles.exe' OR LOWER("Process Name") LIKE '%\forfiles.exe' OR Filename='forfiles.exe') AND (LOWER(Command) LIKE '% /p %' OR LOWER(Command) LIKE '% -p %') AND (LOWER(Command) LIKE '% /m %' OR LOWER(Command) LIKE '% -m %') AND (LOWER(Command) LIKE '% /c %' OR LOWER(Command) LIKE '% -c %')

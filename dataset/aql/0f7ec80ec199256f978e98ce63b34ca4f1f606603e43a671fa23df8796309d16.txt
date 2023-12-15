@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Initiated='true' AND LOWER("Destination Hostname") LIKE '%.tunnels.api.visualstudio.com'

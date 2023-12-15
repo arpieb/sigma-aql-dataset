@@ -1,0 +1,29 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-06-20'
+description: Detects usage of wmic to start or stop a service
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains:
+    - stopservice
+    - startservice
+    CommandLine|contains|all:
+    - ' service '
+    - ' call '
+  selection_img:
+    Image|endswith: \WMIC.exe
+    OriginalFileName: wmic.exe
+falsepositives:
+- Unknown
+id: 0b7163dc-7eee-4960-af17-c0cd517f92da
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_windows.html
+status: experimental
+tags:
+- attack.execution
+- attack.t1047
+title: Service Started/Stopped Via Wmic.EXE

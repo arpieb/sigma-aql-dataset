@@ -1,0 +1,31 @@
+author: Olaf Hartong
+date: '2019-05-22'
+description: Detects potential exploitation of the BearLPE exploit using Task Scheduler
+  ".job" import arbitrary DACL write\par
+detection:
+  condition: all of selection*
+  selection_cli:
+    CommandLine|contains|all:
+    - /change
+    - /TN
+    - /RU
+    - /RP
+  selection_img:
+    Image|endswith: \schtasks.exe
+    OriginalFileName: schtasks.exe
+falsepositives:
+- Unknown
+id: 931b6802-d6a6-4267-9ffa-526f57f22aaf
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://github.com/djhohnstein/polarbearrepo/blob/f26d3e008093cc5c835e92a7165170baf6713d43/bearlpe/polarbear/polarbear/exploit.cpp
+status: test
+tags:
+- attack.privilege_escalation
+- attack.t1053.005
+- car.2013-08-001
+- detection.emerging_threats
+title: Potential BearLPE Exploitation

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\certmgr.exe' OR LOWER("Process Name") LIKE '%\certmgr.exe' OR Filename='CERTMGT.EXE') AND LOWER(Command) LIKE '%/add%' AND LOWER(Command) LIKE '%root%'

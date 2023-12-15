@@ -1,0 +1,22 @@
+author: "Ensar \u015Eamil, @sblmsrsn, OSCD Community"
+date: '2020-10-05'
+description: Detects SyncAppvPublishingServer process execution which usually utilized
+  by adversaries to bypass PowerShell execution restrictions.
+detection:
+  condition: selection
+  selection:
+    ScriptBlockText|contains: SyncAppvPublishingServer.exe
+falsepositives:
+- App-V clients
+id: dddfebae-c46f-439c-af7a-fdb6bde90218
+level: medium
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/Binaries/Syncappvpublishingserver/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218
+title: SyncAppvPublishingServer Execution to Bypass Powershell Restriction

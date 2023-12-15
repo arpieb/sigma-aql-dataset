@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%[system.net.httpwebrequest]%' OR LOWER(Message) LIKE '%system.net.sockets.tcplistener%' OR LOWER(Message) LIKE '%accepttcpclient%'

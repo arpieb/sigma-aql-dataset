@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\mstsc.exe' OR LOWER("Process Name") LIKE '%\mstsc.exe') AND LOWER(Filename) LIKE '%\microsoft\windows\start menu\programs\startup\%'

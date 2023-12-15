@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=11 AND LOWER(Command) LIKE '%chown root%' AND (LOWER(Command) LIKE '% chmod u+s%' OR LOWER(Command) LIKE '% chmod g+s%')

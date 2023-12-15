@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%=[char][byte](''0x''+%' OR LOWER(Command) LIKE '% -work worker0 -path %' OR LOWER("Parent Command") LIKE '%dllhost.exe /processid:{3e5fc7f9-9a51-4367-9063-a120244fbec7}%' AND (LOWER("Process Path") LIKE '%\appdata\local\temp\%' OR LOWER("Process Name") LIKE '%\appdata\local\temp\%')

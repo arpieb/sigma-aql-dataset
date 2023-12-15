@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%.creationtime =%' OR LOWER(Message) LIKE '%.lastwritetime =%' OR LOWER(Message) LIKE '%.lastaccesstime =%' OR LOWER(Message) LIKE '%[io.file]::setcreationtime%' OR LOWER(Message) LIKE '%[io.file]::setlastaccesstime%' OR LOWER(Message) LIKE '%[io.file]::setlastwritetime%'

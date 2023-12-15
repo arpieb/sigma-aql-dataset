@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\gthread-3.6.dll' OR LOWER(Filename) LIKE '%\sigcmm-2.4.dll' OR LOWER(Filename) LIKE '%\windows\temp\tmp.bat'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=102 AND LOWER(Command) LIKE '%.bash_history%' OR LOWER(Command) LIKE '%.zsh_history%' OR LOWER(Command) LIKE '%.zhistory%' OR LOWER(Command) LIKE '%.history%' OR LOWER(Command) LIKE '%.sh_history%' OR LOWER(Command) LIKE '%fish_history%'

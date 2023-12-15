@@ -1,0 +1,1 @@
+SELECT *, "Process Path", "Process Name" FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\appdata\local\temp\%' AND LOWER(Filename) LIKE '%.zip\%' AND LOWER(Filename) LIKE '%.iso' OR LOWER(Filename) LIKE '%\appdata\local\microsoft\windows\inetcache\content.outlook\%' AND LOWER(Filename) LIKE '%.iso'

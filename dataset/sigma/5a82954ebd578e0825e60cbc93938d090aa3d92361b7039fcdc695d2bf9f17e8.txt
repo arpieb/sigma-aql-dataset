@@ -1,0 +1,22 @@
+author: Trent Liffick (@tliffick)
+date: '2020-05-14'
+description: Attempts to detect system changes made by Blue Mockingbird
+detection:
+  condition: selection
+  selection:
+    TargetObject|endswith: \CurrentControlSet\Services\wercplsupport\Parameters\ServiceDll
+falsepositives:
+- Unknown
+id: 92b0b372-a939-44ed-a11b-5136cf680e27
+level: high
+logsource:
+  category: registry_set
+  product: windows
+references:
+- https://redcanary.com/blog/blue-mockingbird-cryptominer/
+status: experimental
+tags:
+- attack.execution
+- attack.t1112
+- attack.t1047
+title: Blue Mockingbird - Registry

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Filename) LIKE '%.aaa' OR LOWER(Filename) LIKE '%.zzz') AND NOT(LOWER(Filename) LIKE '%\wireshark\radius\dictionary.alcatel-lucent.aaa')

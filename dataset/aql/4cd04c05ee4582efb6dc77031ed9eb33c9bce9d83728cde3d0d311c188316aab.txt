@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-itemproperty%' OR LOWER(Message) LIKE '%registry::%' OR LOWER(Message) LIKE '%hkey_current_user\control panel\desktop\%' OR LOWER(Message) LIKE '%wallpaper%' OR LOWER(Message) LIKE '%systemparametersinfo(20,0,%,3)%'

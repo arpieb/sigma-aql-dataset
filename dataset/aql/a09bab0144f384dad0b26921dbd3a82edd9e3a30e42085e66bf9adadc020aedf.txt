@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%remove-item%' OR LOWER(Message) LIKE '%-path %') AND NOT((LOWER(Message) LIKE '%hkcu:*%' OR LOWER(Message) LIKE '%hklm:\%'))

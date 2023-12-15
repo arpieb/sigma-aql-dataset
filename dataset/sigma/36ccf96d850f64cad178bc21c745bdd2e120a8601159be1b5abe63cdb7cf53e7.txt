@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-14'
+description: Detects malicious indicators seen used by the Goofy Guineapig malware
+detection:
+  condition: selection
+  selection:
+    TargetFilename:
+    - C:\ProgramData\GoogleUpdate\config.dat
+    - C:\ProgramData\GoogleUpdate\GoogleUpdate.exe
+    - C:\ProgramData\GoogleUpdate\GoogleUpdate\tmp.bat
+    - C:\ProgramData\GoogleUpdate\goopdate.dll
+falsepositives:
+- Unlikely
+id: f0bafe60-1240-4798-9e60-4364b97e6bad
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/goofy-guineapig/NCSC-MAR-Goofy-Guineapig.pdf
+status: experimental
+tags:
+- attack.execution
+- attack.defense_evasion
+- detection.emerging_threats
+title: Goofy Guineapig Backdoor IOC

@@ -1,0 +1,38 @@
+author: Michael Haag, FPT.EagleEye
+date: '2017-03-09'
+description: Detects usage of bitsadmin downloading a file
+detection:
+  condition: selection_img and (selection_cmd or all of selection_cli_*)
+  selection_cli_1:
+    CommandLine|contains:
+    - ' /create '
+    - ' /addfile '
+  selection_cli_2:
+    CommandLine|contains: http
+  selection_cmd:
+    CommandLine|contains: ' /transfer '
+  selection_img:
+    Image|endswith: \bitsadmin.exe
+    OriginalFileName: bitsadmin.exe
+falsepositives:
+- Some legitimate apps use this, but limited.
+fields:
+- CommandLine
+- ParentCommandLine
+id: d059842b-6b9d-4ed1-b5c3-5b89143c6ede
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://blog.netspi.com/15-ways-to-download-a-file/#bitsadmin
+- https://isc.sans.edu/diary/22264
+- https://lolbas-project.github.io/lolbas/Binaries/Bitsadmin/
+status: test
+tags:
+- attack.defense_evasion
+- attack.persistence
+- attack.t1197
+- attack.s0190
+- attack.t1036.003
+title: File Download Via Bitsadmin

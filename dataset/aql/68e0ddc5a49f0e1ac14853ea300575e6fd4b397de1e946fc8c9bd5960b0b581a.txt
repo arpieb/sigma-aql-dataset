@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\gfxdownloadwrapper.exe' OR LOWER("Process Name") LIKE '%\gfxdownloadwrapper.exe') AND (LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%https://%') AND NOT(LOWER(Command) LIKE '%https://gameplayapi.intel.com/%')

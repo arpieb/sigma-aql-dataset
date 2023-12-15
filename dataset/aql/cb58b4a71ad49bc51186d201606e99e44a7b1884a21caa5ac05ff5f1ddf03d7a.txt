@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Filename) LIKE '%\appdata\roaming\anydesk\user.conf%' OR LOWER(Filename) LIKE '%\appdata\roaming\anydesk\system.conf%') AND LOWER(Filename) LIKE '%.temp'

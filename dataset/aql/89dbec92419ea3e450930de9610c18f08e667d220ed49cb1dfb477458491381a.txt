@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%move-item%' OR LOWER(Message) LIKE '%cert:\localmachine\root%' OR LOWER(Message) LIKE '%import-certificate%' OR LOWER(Message) LIKE '%cert:\localmachine\root%'

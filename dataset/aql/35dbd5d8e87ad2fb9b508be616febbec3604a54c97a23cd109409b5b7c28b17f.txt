@@ -1,0 +1,1 @@
+SELECT *, Username, Command, "Parent Command" FROM events WHERE devicetype=12 AND Filename='sdelete.exe' AND NOT((LOWER(Command) LIKE '% -h%' OR LOWER(Command) LIKE '% -c%' OR LOWER(Command) LIKE '% -z%' OR LOWER(Command) LIKE '% /?%'))

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/ecp/default.aspx%' OR LOWER(URL) LIKE '%__viewstategenerator=%' OR LOWER(URL) LIKE '%__viewstate=%'

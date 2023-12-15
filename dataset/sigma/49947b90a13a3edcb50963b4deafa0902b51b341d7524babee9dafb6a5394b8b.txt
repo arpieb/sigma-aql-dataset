@@ -1,0 +1,24 @@
+author: Thomas Patzke
+date: '2017-06-12'
+description: Detects PsExec service default pipe creation
+detection:
+  condition: selection
+  selection:
+    PipeName: \PSEXESVC
+falsepositives:
+- Unknown
+id: f3f3a972-f982-40ad-b63c-bca6afdfad7c
+level: low
+logsource:
+  category: pipe_created
+  product: windows
+references:
+- https://www.jpcert.or.jp/english/pub/sr/ir_research.html
+- https://jpcertcc.github.io/ToolAnalysisResultSheet
+status: test
+tags:
+- attack.execution
+- attack.t1569.002
+- attack.s0029
+- detection.threat_hunting
+title: PsExec Default Named Pipe

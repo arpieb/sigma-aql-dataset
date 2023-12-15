@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\screenconnect.windowsclient.exe' OR LOWER("Process Name") LIKE '%\screenconnect.windowsclient.exe') AND LOWER(Filename) LIKE '%\documents\connectwisecontrol\temp\%'

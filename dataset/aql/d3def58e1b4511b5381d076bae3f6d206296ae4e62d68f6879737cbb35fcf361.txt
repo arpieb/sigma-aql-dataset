@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Integrity Level" IN('High', 'System')) AND ("Process Path"='C:\Windows\System32\ComputerDefaults.exe' OR "Process Name"='C:\Windows\System32\ComputerDefaults.exe') AND NOT((LOWER("Parent Process Path") LIKE '%:\windows\system32%' OR LOWER("Parent Process Path") LIKE '%:\program files%'))

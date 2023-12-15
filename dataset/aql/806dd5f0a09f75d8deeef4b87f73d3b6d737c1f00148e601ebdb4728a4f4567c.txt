@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\find.exe' OR LOWER("Process Path") LIKE '%\findstr.exe' OR LOWER("Process Name") LIKE '%\find.exe' OR LOWER("Process Name") LIKE '%\findstr.exe' OR Filename IN('FIND.EXE', 'FINDSTR.EXE')) AND LOWER(Command) LIKE '%cpassword%' AND LOWER(Command) LIKE '%\sysvol\%' AND LOWER(Command) LIKE '%.xml%'

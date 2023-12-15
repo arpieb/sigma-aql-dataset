@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename MATCHES '\\Windows\\__1\d{9}\.\d{1,7}$' OR Filename MATCHES 'C:\\__1\d{9}\.\d{1,7}$' OR Filename MATCHES 'D:\\__1\d{9}\.\d{1,7}$'

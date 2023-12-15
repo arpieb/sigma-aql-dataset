@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%\teamviewer\remoteprinting\tvprint.db' OR LOWER(Filename) LIKE '%\teamviewer\tvnetwork.log' OR LOWER(Filename) LIKE '%\teamviewer%' AND LOWER(Filename) LIKE '%_logfile.log%'

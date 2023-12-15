@@ -1,0 +1,30 @@
+author: Sohan G (D4rkCiph3r)
+date: '2023-02-18'
+description: Detects potential persistence activity using LaunchAgents or LaunchDaemons
+  via the PlistBuddy utility
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - LaunchAgents
+    - LaunchDaemons
+    CommandLine|contains|all:
+    - RunAtLoad
+    - 'true'
+    Image|endswith: /PlistBuddy
+falsepositives:
+- Unknown
+id: 65d506d3-fcfe-4071-b4b2-bcefe721bbbb
+level: high
+logsource:
+  category: process_creation
+  product: macos
+references:
+- https://redcanary.com/blog/clipping-silver-sparrows-wings/
+- https://www.manpagez.com/man/8/PlistBuddy/
+status: experimental
+tags:
+- attack.persistence
+- attack.t1543.001
+- attack.t1543.004
+title: Potential Persistence Via PlistBuddy

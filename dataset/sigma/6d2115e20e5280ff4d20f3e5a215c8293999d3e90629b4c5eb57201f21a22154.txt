@@ -1,0 +1,27 @@
+author: Jakob Weinzettl, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-05'
+description: Detects the stopping of a Windows service
+detection:
+  condition: all of selection_*
+  selection_cli:
+    CommandLine|contains: ' stop '
+  selection_img:
+    Image|endswith:
+    - \net.exe
+    - \net1.exe
+    OriginalFileName:
+    - net.exe
+    - net1.exe
+falsepositives:
+- There are many legitimate reasons to stop a service. This rule isn't looking for
+  any suspicious behaviour in particular. Filter legitimate activity accordingly
+id: 88872991-7445-4a22-90b2-a3adadb0e827
+level: low
+logsource:
+  category: process_creation
+  product: windows
+status: experimental
+tags:
+- attack.impact
+- attack.t1489
+title: Stop Windows Service Via Net.EXE

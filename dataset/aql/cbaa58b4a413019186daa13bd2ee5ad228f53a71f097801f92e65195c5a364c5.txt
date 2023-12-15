@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\vsiisexelauncher.exe' OR LOWER("Process Name") LIKE '%\vsiisexelauncher.exe' OR Filename='VSIISExeLauncher.exe') AND (LOWER(Command) LIKE '% -p %' OR LOWER(Command) LIKE '% -a %')

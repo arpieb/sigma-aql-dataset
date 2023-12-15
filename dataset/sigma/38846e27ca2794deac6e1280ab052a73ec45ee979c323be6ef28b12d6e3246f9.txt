@@ -1,0 +1,33 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-03-14'
+description: Detects the execution of Sysinternals ADExplorer with the "-snapshot"
+  flag in order to save a local copy of the active directory database to a suspicious
+  directory.
+detection:
+  condition: all of selection_*
+  selection_flag:
+    CommandLine|contains: snapshot
+  selection_img:
+    Image|endswith: \ADExplorer.exe
+    OriginalFileName: AdExp
+  selection_paths:
+    CommandLine|contains:
+    - \Downloads\
+    - \Users\Public\
+    - \AppData\
+    - \Windows\Temp\
+falsepositives:
+- Unknown
+id: ef61af62-bc74-4f58-b49b-626448227652
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://www.documentcloud.org/documents/5743766-Global-Threat-Report-2019.html
+status: experimental
+tags:
+- attack.credential_access
+- attack.t1552.001
+- attack.t1003.003
+title: Suspicious Active Directory Database Snapshot Via ADExplorer

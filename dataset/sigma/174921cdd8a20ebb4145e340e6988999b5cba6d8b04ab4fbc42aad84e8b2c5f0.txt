@@ -1,0 +1,24 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-08-24'
+description: Detects the creation or modification of a vscode related powershell profile
+  which could indicate suspicious activity as the profile can be used as a mean of
+  persistence
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: \Microsoft.VSCode_profile.ps1
+falsepositives:
+- Legitimate use of the profile by developers or administrators
+id: 3a9fa2ec-30bc-4ebd-b49e-7c9cff225502
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.2
+status: test
+tags:
+- attack.persistence
+- attack.privilege_escalation
+- attack.t1546.013
+title: VsCode Powershell Profile Modification

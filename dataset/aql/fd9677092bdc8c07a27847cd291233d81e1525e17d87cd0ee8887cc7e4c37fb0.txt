@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msedge_proxy.exe' OR LOWER("Process Name") LIKE '%\msedge_proxy.exe' OR Filename='msedge_proxy.exe') AND (LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%https://%')

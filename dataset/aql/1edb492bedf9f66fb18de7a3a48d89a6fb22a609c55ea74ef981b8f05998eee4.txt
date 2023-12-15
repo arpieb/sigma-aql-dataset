@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%invoke-troubleshootingpack%' OR LOWER(Message) LIKE '%c:\windows\diagnostics\system\pcw%' OR LOWER(Message) LIKE '%-answerfile%' OR LOWER(Message) LIKE '%-unattended%'

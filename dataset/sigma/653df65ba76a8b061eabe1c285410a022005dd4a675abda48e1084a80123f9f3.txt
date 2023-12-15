@@ -1,0 +1,30 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-15'
+description: Detects the creation of ".xml" and ".txt" files in folders of the "\AppData\Roaming\Microsoft"
+  directory by uncommon processes. This behavior was seen common across different
+  Devil Bait samples and stages as described by the NCSC
+detection:
+  condition: selection
+  selection:
+    Image|endswith:
+    - \schtasks.exe
+    - \wscript.exe
+    - \mshta.exe
+    TargetFilename|contains: \AppData\Roaming\Microsoft\
+    TargetFilename|endswith:
+    - .txt
+    - .xml
+falsepositives:
+- Unlikely
+id: 93d5f1b4-36df-45ed-8680-f66f242b8415
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.ncsc.gov.uk/static-assets/documents/malware-analysis-reports/devil-bait/NCSC-MAR-Devil-Bait.pdf
+status: experimental
+tags:
+- attack.defense_evasion
+- detection.emerging_threats
+title: Potential Devil Bait Related Indicator

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\aspnet_regiis.exe' OR LOWER("Process Name") LIKE '%\aspnet_regiis.exe' OR Filename='aspnet_regiis.exe') AND LOWER(Command) LIKE '%connectionstrings%' AND LOWER(Command) LIKE '% -pdf%'

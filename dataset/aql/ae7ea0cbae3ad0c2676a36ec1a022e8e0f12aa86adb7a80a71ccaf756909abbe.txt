@@ -1,0 +1,1 @@
+SELECT *, "Event ID", "SAM Account Name", "Target Username" FROM events WHERE devicetype=12 AND LOWER("SAM Account Name") LIKE 'samtheadmin-%' AND LOWER("SAM Account Name") LIKE '%$' OR LOWER("Target Username") LIKE 'samtheadmin-%' AND LOWER("Target Username") LIKE '%$'

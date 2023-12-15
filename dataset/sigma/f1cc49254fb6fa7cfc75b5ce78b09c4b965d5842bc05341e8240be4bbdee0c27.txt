@@ -1,0 +1,43 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-03-11'
+description: Detects creation of a file named "ntds.dit" (Active Directory Database)
+  by an uncommon parent process or directory
+detection:
+  condition: selection_file and 1 of selection_process_*
+  selection_file:
+    TargetFilename|endswith: \ntds.dit
+  selection_process_parent:
+    ParentImage|endswith:
+    - \cscript.exe
+    - \httpd.exe
+    - \nginx.exe
+    - \php-cgi.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \w3wp.exe
+    - \wscript.exe
+  selection_process_parent_path:
+    ParentImage|contains:
+    - \apache
+    - \tomcat
+    - \AppData\
+    - \Temp\
+    - \Public\
+    - \PerfLogs\
+falsepositives:
+- Unknown
+id: 4e7050dd-e548-483f-b7d6-527ab4fa784d
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.ired.team/offensive-security/credential-access-and-credential-dumping/ntds.dit-enumeration
+- https://www.n00py.io/2022/03/manipulating-user-passwords-without-mimikatz/
+- https://pentestlab.blog/tag/ntds-dit/
+- https://github.com/samratashok/nishang/blob/414ee1104526d7057f9adaeee196d91ae447283e/Gather/Copy-VSS.ps1
+status: test
+tags:
+- attack.credential_access
+- attack.t1003.003
+title: NTDS.DIT Creation By Uncommon Parent Process

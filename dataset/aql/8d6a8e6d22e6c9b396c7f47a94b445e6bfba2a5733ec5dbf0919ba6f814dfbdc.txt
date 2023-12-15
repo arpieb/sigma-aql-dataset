@@ -1,0 +1,1 @@
+SELECT *, Command FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\register-cimprovider.exe' OR LOWER("Process Name") LIKE '%\register-cimprovider.exe') AND LOWER(Command) LIKE '%-path%' AND LOWER(Command) LIKE '%dll%'

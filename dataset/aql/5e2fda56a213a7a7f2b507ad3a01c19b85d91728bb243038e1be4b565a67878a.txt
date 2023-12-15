@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='\AgentExecutor.exe' OR "Process Name"='\AgentExecutor.exe' OR Filename='AgentExecutor.exe') AND (LOWER(Command) LIKE '% -powershell%' OR LOWER(Command) LIKE '% -remediationscript%')

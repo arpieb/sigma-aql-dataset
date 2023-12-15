@@ -1,0 +1,25 @@
+author: Sittikorn S
+date: '2021-09-24'
+description: Detects exploitation attempts using file upload vulnerability CVE-2021-22005
+  in the VMWare vCenter Server.
+detection:
+  condition: selection
+  selection:
+    cs-method: POST
+    cs-uri-query|contains: /analytics/telemetry/ph/api/hyper/send?
+falsepositives:
+- Vulnerability Scanning
+id: b014ea07-8ea0-4859-b517-50a4e5b7ecec
+level: high
+logsource:
+  category: webserver
+references:
+- https://kb.vmware.com/s/article/85717
+- https://www.tenable.com/blog/cve-2021-22005-critical-file-upload-vulnerability-in-vmware-vcenter-server
+status: test
+tags:
+- attack.initial_access
+- attack.t1190
+- cve.2021.22005
+- detection.emerging_threats
+title: VMware vCenter Server File Upload CVE-2021-22005

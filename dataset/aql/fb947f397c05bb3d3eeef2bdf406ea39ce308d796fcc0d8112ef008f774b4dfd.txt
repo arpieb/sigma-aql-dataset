@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\printbrm.exe' OR LOWER("Process Name") LIKE '%\printbrm.exe') AND LOWER(Command) LIKE '% -f%' AND LOWER(Command) LIKE '%.zip%'

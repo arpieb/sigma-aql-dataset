@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\dnscmd.exe' OR LOWER("Process Name") LIKE '%\dnscmd.exe') AND (LOWER(Command) LIKE '%/enumrecords%' OR LOWER(Command) LIKE '%/enumzones%' OR LOWER(Command) LIKE '%/zoneprint%' OR LOWER(Command) LIKE '%/info%')

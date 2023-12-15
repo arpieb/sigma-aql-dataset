@@ -1,0 +1,41 @@
+author: Kyaw Min Thein, Furkan Caliskan (@caliskanfurkan_)
+date: '2020-06-22'
+description: Detects the malicious use of a control panel item
+detection:
+  condition: all of selection_reg_* or (selection_cpl and not 1 of filter_cpl_*)
+  filter_cpl_igfx:
+    CommandLine|contains|all:
+    - 'regsvr32 '
+    - ' /s '
+    - igfxCPL.cpl
+  filter_cpl_sys:
+    CommandLine|contains:
+    - \System32\
+    - '%System%'
+    - '|C:\Windows\system32|'
+  selection_cpl:
+    CommandLine|endswith: .cpl
+  selection_reg_cli:
+    CommandLine|contains|all:
+    - add
+    - CurrentVersion\Control Panel\CPLs
+  selection_reg_img:
+    Image|endswith: \reg.exe
+    OriginalFileName: reg.exe
+falsepositives:
+- Unknown
+id: 0ba863e6-def5-4e50-9cea-4dd8c7dc46a4
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://ired.team/offensive-security/code-execution/code-execution-through-control-panel-add-ins
+status: test
+tags:
+- attack.execution
+- attack.defense_evasion
+- attack.t1218.002
+- attack.persistence
+- attack.t1546
+title: Control Panel Items

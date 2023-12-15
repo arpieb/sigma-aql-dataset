@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Name") LIKE '%\software\microsoft\windows\currentversion\run\ntkd%' OR LOWER("Target Process Name") LIKE '%\software\microsoft\windows\currentversion\run\ntkd%' OR LOWER("Object Name") LIKE '%\software\microsoft\windows\currentversion\run\ntkd%'

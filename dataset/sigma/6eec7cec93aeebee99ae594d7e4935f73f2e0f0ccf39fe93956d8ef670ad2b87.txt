@@ -1,0 +1,23 @@
+author: frack113
+date: '2022-03-17'
+description: Detetcts PowerShell activity in which Get-Addefaultdomainpasswordpolicy
+  is used to get the default password policy for an Active Directory domain.
+detection:
+  condition: selection
+  selection:
+    ScriptBlockText|contains: Get-AdDefaultDomainPasswordPolicy
+falsepositives:
+- Legitimate PowerShell scripts
+id: bbb9495b-58fc-4016-b9df-9a3a1b67ca82
+level: low
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1201/T1201.md#atomic-test-9---enumerate-active-directory-password-policy-with-get-addefaultdomainpasswordpolicy
+- https://docs.microsoft.com/en-us/powershell/module/activedirectory/get-addefaultdomainpasswordpolicy
+status: test
+tags:
+- attack.discovery
+- attack.t1201
+title: Password Policy Discovery With Get-AdDefaultDomainPasswordPolicy

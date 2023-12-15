@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-06-09'
+description: The "VSIISExeLauncher.exe" binary part of the Visual Studio/VS Code can
+  be used to execute arbitrary binaries
+detection:
+  condition: all of selection*
+  selection_cli:
+    CommandLine|contains:
+    - ' -p '
+    - ' -a '
+  selection_img:
+    Image|endswith: \VSIISExeLauncher.exe
+    OriginalFileName: VSIISExeLauncher.exe
+falsepositives:
+- Unknown
+id: 18749301-f1c5-4efc-a4c3-276ff1f5b6f8
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://lolbas-project.github.io/lolbas/OtherMSBinaries/VSIISExeLauncher/
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1127
+title: Use of VSIISExeLauncher.exe

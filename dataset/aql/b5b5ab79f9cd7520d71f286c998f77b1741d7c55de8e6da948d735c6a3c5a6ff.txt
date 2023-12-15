@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE Method='GET' AND LOWER(URL) LIKE '%/mshtml_c7/%'

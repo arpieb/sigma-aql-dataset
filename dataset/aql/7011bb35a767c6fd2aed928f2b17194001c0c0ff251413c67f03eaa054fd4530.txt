@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype IN(443, 397) AND LOWER(UTF8(payload)) LIKE '%new-compliancesearchaction%' AND LOWER(UTF8(payload)) LIKE '%export%' AND LOWER(UTF8(payload)) LIKE '%pst%'

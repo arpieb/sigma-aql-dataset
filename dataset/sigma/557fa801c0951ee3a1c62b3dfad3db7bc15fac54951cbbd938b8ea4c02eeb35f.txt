@@ -1,0 +1,27 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-06-01'
+description: Detects loading of "Amsi.dll" by a living of the land process. This could
+  be an indication of a "PowerShell without PowerShell" attack
+detection:
+  condition: selection
+  selection:
+    ImageLoaded|endswith: \amsi.dll
+    Image|endswith:
+    - \ExtExport.exe
+    - \odbcconf.exe
+    - \regsvr32.exe
+    - \rundll32.exe
+falsepositives:
+- Unknown
+id: 6ec86d9e-912e-4726-91a2-209359b999b9
+level: medium
+logsource:
+  category: image_load
+  product: windows
+references:
+- Internal Research
+- https://www.paloaltonetworks.com/blog/security-operations/stopping-powershell-without-powershell/
+status: experimental
+tags:
+- attack.defense_evasion
+title: Amsi.DLL Loaded Via LOLBIN Process

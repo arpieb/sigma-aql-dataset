@@ -1,0 +1,25 @@
+author: Florian Roth (Nextron Systems), David ANDRE
+date: '2021-11-08'
+description: Detects the creation of files created by mimikatz such as ".kirbi", "mimilsa.log",
+  etc.
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith:
+    - .kirbi
+    - mimilsa.log
+falsepositives:
+- Unlikely
+id: 9e099d99-44c2-42b6-a6d8-54c3545cab29
+level: critical
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://cobalt.io/blog/kerberoast-attack-techniques
+- https://pentestlab.blog/2019/10/21/persistence-security-support-provider/
+status: test
+tags:
+- attack.credential_access
+- attack.t1558
+title: Mimikatz Kirbi File Creation

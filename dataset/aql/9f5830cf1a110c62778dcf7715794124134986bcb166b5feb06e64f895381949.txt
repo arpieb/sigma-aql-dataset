@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%taskkill %' AND LOWER(Command) LIKE '%raccinesettings.exe%' OR LOWER(Command) LIKE '%reg.exe%' AND LOWER(Command) LIKE '%delete%' AND LOWER(Command) LIKE '%raccine tray%' OR LOWER(Command) LIKE '%schtasks%' AND LOWER(Command) LIKE '%/delete%' AND LOWER(Command) LIKE '%raccine rules updater%'

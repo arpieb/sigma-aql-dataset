@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Filename) LIKE '%:\users\%' AND LOWER(Filename) LIKE '%\.config\rclone\%'

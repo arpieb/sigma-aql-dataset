@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE LOWER(URL) LIKE '%/console/images/%252e%252e%252fconsole.portal%' OR LOWER(URL) LIKE '%/console/css/%2e%'

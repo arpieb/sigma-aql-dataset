@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\powershell.exe' OR LOWER("Process Path") LIKE '%\pwsh.exe' OR LOWER("Process Name") LIKE '%\powershell.exe' OR LOWER("Process Name") LIKE '%\pwsh.exe') AND LOWER(Filename) LIKE '%\start menu\programs\startup\%' AND LOWER(Filename) LIKE '%.lnk'

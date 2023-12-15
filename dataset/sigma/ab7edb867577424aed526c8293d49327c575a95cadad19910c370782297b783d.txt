@@ -1,0 +1,24 @@
+author: Max Altgelt (Nextron Systems), Tobias Michalski (Nextron Systems)
+date: '2021-08-09'
+description: Detects Commandlet names from ShellIntel exploitation scripts.
+detection:
+  condition: selection
+  selection:
+    ScriptBlockText|contains:
+    - Invoke-SMBAutoBrute
+    - Invoke-GPOLinks
+    - Invoke-Potato
+falsepositives:
+- Unknown
+id: 402e1e1d-ad59-47b6-bf80-1ee44985b3a7
+level: high
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/Shellntel/scripts/
+status: test
+tags:
+- attack.execution
+- attack.t1059.001
+title: Malicious ShellIntel PowerShell Commandlets

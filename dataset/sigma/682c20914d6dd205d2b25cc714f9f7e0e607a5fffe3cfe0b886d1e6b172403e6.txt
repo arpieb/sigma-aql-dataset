@@ -1,0 +1,35 @@
+author: Florian Roth (Nextron Systems)
+date: '2022-02-25'
+description: Detects command line patterns used by BlackByte ransomware in different
+  operations
+detection:
+  condition: 1 of selection_*
+  selection_1:
+    CommandLine|contains: ' -single '
+    Image|startswith: C:\Users\Public\
+  selection_2:
+    CommandLine|contains:
+    - del C:\Windows\System32\Taskmgr.exe
+    - ;Set-Service -StartupType Disabled $
+    - powershell -command "$x =[System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String(
+    - ' do start wordpad.exe /p '
+falsepositives:
+- Unknown
+id: 999e8307-a775-4d5f-addc-4855632335be
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://redcanary.com/blog/blackbyte-ransomware/
+status: test
+tags:
+- detection.emerging_threats
+- attack.execution
+- attack.defense_evasion
+- attack.impact
+- attack.t1485
+- attack.t1498
+- attack.t1059.001
+- attack.t1140
+title: Potential BlackByte Ransomware Activity

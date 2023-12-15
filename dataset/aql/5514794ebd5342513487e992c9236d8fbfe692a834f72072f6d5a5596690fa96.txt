@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%c:\users\%' AND LOWER("Parent Process Path") LIKE '%\appdata\local\temp\%' AND LOWER("Parent Process Path") LIKE '%\dismhost.exe%' AND ("Integrity Level" IN('High', 'System'))

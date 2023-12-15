@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%get-aduser%' OR LOWER(Message) LIKE '%-filter%' OR LOWER(Message) LIKE '%useraccountcontrol%' OR LOWER(Message) LIKE '%-band%' OR Message LIKE '%4194304%'

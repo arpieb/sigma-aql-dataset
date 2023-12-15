@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%recyclers.bin\%' OR LOWER("Process Path") LIKE '%recycler.bin\%' OR LOWER("Process Path") LIKE '%recycle.bin\%' OR LOWER("Process Name") LIKE '%recyclers.bin\%' OR LOWER("Process Name") LIKE '%recycler.bin\%' OR LOWER("Process Name") LIKE '%recycle.bin\%'

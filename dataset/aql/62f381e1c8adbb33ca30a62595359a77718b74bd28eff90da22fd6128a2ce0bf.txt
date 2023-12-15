@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Message) LIKE '%set-acl %' OR LOWER(Message) LIKE '%-aclobject %' OR LOWER(Message) LIKE '%-path %'

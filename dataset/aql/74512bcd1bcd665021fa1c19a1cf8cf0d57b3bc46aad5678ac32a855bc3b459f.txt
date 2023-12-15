@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\presentationhost.exe' OR LOWER("Process Name") LIKE '%\presentationhost.exe' OR Filename='PresentationHost.exe') AND (LOWER(Command) LIKE '%http://%' OR LOWER(Command) LIKE '%https://%' OR LOWER(Command) LIKE '%ftp://%')

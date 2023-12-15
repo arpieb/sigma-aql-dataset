@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\msdtc.exe' OR LOWER("Process Name") LIKE '%\msdtc.exe') AND CONCAT('file directory', '/', filename)='C:\Windows\oci.dll'

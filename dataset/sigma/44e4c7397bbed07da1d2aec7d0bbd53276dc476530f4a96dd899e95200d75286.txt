@@ -1,0 +1,89 @@
+author: juju4, Jonhnathan Ribeiro, oscd.community, Nasreddine Bencherchali (Nextron
+  Systems)
+date: '2019-01-16'
+description: Detects suspicious execution of rundll32, with specific calls to some
+  DLLs with known LOLBIN functionalities
+detection:
+  condition: selection and not 1 of filter_main_*
+  filter_main_parent_cpl:
+    CommandLine|contains|all:
+    - Shell32.dll
+    - Control_RunDLL
+    - .cpl
+    ParentCommandLine|contains: .cpl
+    ParentImage: C:\Windows\System32\control.exe
+  filter_main_screensaver:
+    CommandLine|contains: shell32.dll,Control_RunDLL desk.cpl,screensaver,@screensaver
+  filter_main_startmenu:
+    CommandLine|endswith: .cpl",
+    CommandLine|startswith: '"C:\Windows\system32\rundll32.exe" Shell32.dll,Control_RunDLL
+      "C:\Windows\System32\'
+    ParentImage: C:\Windows\System32\control.exe
+  selection:
+    CommandLine|contains|all:
+    - 'javascript:'
+    - .RegisterXLL
+    - url.dll
+    - OpenURL
+    - url.dll
+    - OpenURLA
+    - url.dll
+    - FileProtocolHandler
+    - zipfldr.dll
+    - RouteTheCall
+    - shell32.dll
+    - Control_RunDLL
+    - shell32.dll
+    - ShellExec_RunDLL
+    - mshtml.dll
+    - PrintHTML
+    - advpack.dll
+    - LaunchINFSection
+    - advpack.dll
+    - RegisterOCX
+    - ieadvpack.dll
+    - LaunchINFSection
+    - ieadvpack.dll
+    - RegisterOCX
+    - ieframe.dll
+    - OpenURL
+    - shdocvw.dll
+    - OpenURL
+    - syssetup.dll
+    - SetupInfObjectInstallAction
+    - setupapi.dll
+    - InstallHinfSection
+    - pcwutl.dll
+    - LaunchApplication
+    - dfshim.dll
+    - ShOpenVerbApplication
+    - dfshim.dll
+    - ShOpenVerbShortcut
+    - scrobj.dll
+    - GenerateTypeLib
+    - http
+    - shimgvw.dll
+    - ImageView_Fullscreen
+    - http
+    - comsvcs.dll
+    - MiniDump
+falsepositives:
+- False positives depend on scripts and administrative tools used in the monitored
+  environment
+id: e593cf51-88db-4ee1-b920-37e89012a3c9
+level: medium
+logsource:
+  category: process_creation
+  product: windows
+references:
+- http://www.hexacorn.com/blog/2017/05/01/running-programs-via-proxy-jumping-on-a-edr-bypass-trampoline/
+- https://twitter.com/Hexacorn/status/885258886428725250
+- https://gist.github.com/ryhanson/227229866af52e2d963cf941af135a52
+- https://twitter.com/nas_bench/status/1433344116071583746
+- https://twitter.com/eral4m/status/1479106975967240209
+- https://twitter.com/eral4m/status/1479080793003671557
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1218.011
+title: Potentially Suspicious Rundll32 Activity

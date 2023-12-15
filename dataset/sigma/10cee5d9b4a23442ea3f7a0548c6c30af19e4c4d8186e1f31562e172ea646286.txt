@@ -1,0 +1,24 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-05-12'
+description: Detects Microsoft Excel loading an Add-In (.xll) file
+detection:
+  condition: selection
+  selection:
+    ImageLoaded|endswith: .xll
+    Image|endswith: \excel.exe
+falsepositives:
+- The rules is only looking for ".xll" loads. So some false positives are expected
+  with legitimate and allowed XLLs
+id: c5f4b5cb-4c25-4249-ba91-aa03626e3185
+level: low
+logsource:
+  category: image_load
+  product: windows
+references:
+- https://www.mandiant.com/resources/blog/lnk-between-browsers
+status: experimental
+tags:
+- attack.execution
+- attack.t1204.002
+- detection.threat_hunting
+title: Microsoft Excel Add-In Loaded

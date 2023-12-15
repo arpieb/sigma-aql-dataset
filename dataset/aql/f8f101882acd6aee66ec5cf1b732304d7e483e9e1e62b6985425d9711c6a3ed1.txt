@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%copy procdump%' OR LOWER(Command) LIKE '%move procdump%' OR LOWER(Command) LIKE '%copy %' AND LOWER(Command) LIKE '%.dmp %' AND (LOWER(Command) LIKE '%2.dmp%' OR LOWER(Command) LIKE '%lsass%' OR LOWER(Command) LIKE '%out.dmp%') OR LOWER(Command) LIKE '%copy lsass.exe_%' OR LOWER(Command) LIKE '%move lsass.exe_%'

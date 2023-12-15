@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Target Process Path") LIKE '%\verclsid.exe' AND "Granted Access"='0x1FFFFF' AND (LOWER("Call Trace") LIKE '%|unknown(%' AND LOWER("Call Trace") LIKE '%vbe7.dll%' OR LOWER("Source Process Path") LIKE '%\microsoft office\%' AND LOWER("Call Trace") LIKE '%|unknown%')

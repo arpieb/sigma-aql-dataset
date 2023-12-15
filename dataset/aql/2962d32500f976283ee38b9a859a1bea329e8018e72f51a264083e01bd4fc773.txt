@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Target Process Path") LIKE '%\svchost.exe' AND "Granted Access"='0x143a' AND NOT((LOWER("Source Process Path") LIKE '%\services.exe' OR LOWER("Source Process Path") LIKE '%\msiexec.exe'))

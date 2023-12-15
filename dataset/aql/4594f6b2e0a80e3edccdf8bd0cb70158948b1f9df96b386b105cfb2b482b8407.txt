@@ -1,0 +1,1 @@
+SELECT *, Username, Command FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\bcdedit.exe' OR LOWER("Process Name") LIKE '%\bcdedit.exe' OR Filename='bcdedit.exe') AND LOWER(Command) LIKE '%set%' AND (LOWER(Command) LIKE '%bootstatuspolicy%' AND LOWER(Command) LIKE '%ignoreallfailures%' OR LOWER(Command) LIKE '%recoveryenabled%' AND LOWER(Command) LIKE '%no%')

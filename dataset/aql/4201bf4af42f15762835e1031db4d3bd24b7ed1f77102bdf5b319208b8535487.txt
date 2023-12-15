@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\adexplorer.exe' OR LOWER("Process Name") LIKE '%\adexplorer.exe' OR Filename='AdExp') AND LOWER(Command) LIKE '%snapshot%'

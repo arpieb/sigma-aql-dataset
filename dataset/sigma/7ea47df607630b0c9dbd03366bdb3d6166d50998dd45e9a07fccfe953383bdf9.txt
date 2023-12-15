@@ -1,0 +1,30 @@
+author: Teymur Kheirkhabarov
+date: '2019-10-26'
+description: Detect modification of services configuration (ImagePath, FailureCommand
+  and ServiceDLL) in registry by processes with Medium integrity level
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - \ImagePath
+    - \FailureCommand
+    - \ServiceDll
+    CommandLine|contains|all:
+    - ControlSet
+    - services
+    IntegrityLevel: Medium
+falsepositives:
+- Unknown
+id: 0f9c21f1-6a73-4b0e-9809-cb562cb8d981
+level: high
+logsource:
+  category: process_creation
+  product: windows
+references:
+- https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment
+- https://pentestlab.blog/2017/03/31/insecure-registry-permissions/
+status: test
+tags:
+- attack.privilege_escalation
+- attack.t1574.011
+title: Potential Privilege Escalation via Service Permissions Weakness

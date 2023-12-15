@@ -1,0 +1,36 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2022-12-27'
+description: Detects potential exploitation attempts that target the Cacti Command
+  Injection CVE-2022-46169
+detection:
+  condition: selection
+  selection:
+    cs-method: GET
+    cs-uri-query|contains:
+    - '| base64 -d | /bin/bash`'
+    - '%7C%20base64%20-d%20%7C%20%2Fbin%2Fbash%60'
+    - '`whoami'
+    - powershell
+    - cmd
+    - wget
+    cs-uri-query|contains|all:
+    - /remote_agent.php
+    - action=polldata
+    - poller_id=
+falsepositives:
+- Web vulnerability scanners
+id: 738cb115-881f-4df3-82cc-56ab02fc5192
+level: high
+logsource:
+  category: webserver
+references:
+- https://github.com/0xf4n9x/CVE-2022-46169
+- https://github.com/Cacti/cacti/security/advisories/GHSA-6p93-p743-35gf
+- https://github.com/rapid7/metasploit-framework/pull/17407
+status: test
+tags:
+- attack.initial_access
+- attack.t1190
+- cve.2022.46169
+- detection.emerging_threats
+title: Potential CVE-2022-46169 Exploitation Attempt

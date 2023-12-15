@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE 'net use \\%domaincontroller%\c$ "p@ssw0rd" %' OR LOWER(Command) LIKE 'dir c:\%.doc% /s' OR LOWER(Command) LIKE 'dir %temp%\%.exe'

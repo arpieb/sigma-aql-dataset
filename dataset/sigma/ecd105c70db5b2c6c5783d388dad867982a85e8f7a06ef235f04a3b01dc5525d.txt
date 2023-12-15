@@ -1,0 +1,25 @@
+author: frack113
+date: '2023-07-08'
+description: Detects PowerShell scripts that try to access the default Windows MailApp
+  MailBox. This indicates manipulation of or access to the stored emails of a user.
+  E.g. this could be used by an attacker to exfiltrate or delete the content of the
+  emails.
+detection:
+  condition: selection
+  selection:
+    ScriptBlockText|contains: \Comms\Unistore\data
+falsepositives:
+- Unknown
+id: 4e485d01-e18a-43f6-a46b-ef20496fa9d3
+level: medium
+logsource:
+  category: ps_script
+  product: windows
+references:
+- https://github.com/redcanaryco/atomic-red-team/blob/02cb591f75064ffe1e0df9ac3ed5972a2e491c97/atomics/T1070.008/T1070.008.md
+status: experimental
+tags:
+- attack.defense_evasion
+- attack.t1070.008
+- detection.threat_hunting
+title: Windows Mail App Mailbox Access Via PowerShell Script

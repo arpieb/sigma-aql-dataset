@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Target Process Path") LIKE '%\lsass.exe' AND LOWER("Source Process Path") LIKE '%\svchost.exe' AND "Granted Access"='0x14c0' AND LOWER("Call Trace") LIKE '%seclogon.dll%'

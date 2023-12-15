@@ -1,0 +1,1 @@
+SELECT *, Command FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\eqnedt32.exe'

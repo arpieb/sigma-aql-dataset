@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE (LOWER(Message) LIKE '%add user%' OR LOWER(Message) LIKE '%add member to role%') AND Status='Success'

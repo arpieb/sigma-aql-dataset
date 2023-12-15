@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\desktopimgdownldr.exe' OR LOWER("Process Name") LIKE '%\desktopimgdownldr.exe') AND LOWER("Parent Process Path") LIKE '%\desktopimgdownldr.exe' AND LOWER(Command) LIKE '%/lockscreenurl:http%'

@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%add-printerport -name%' AND (LOWER(Command) LIKE '%.exe%' OR LOWER(Command) LIKE '%.dll%' OR LOWER(Command) LIKE '%.bat%') OR LOWER(Command) LIKE '%generic / text only%'

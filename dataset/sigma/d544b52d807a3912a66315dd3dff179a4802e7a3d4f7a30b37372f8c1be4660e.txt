@@ -1,0 +1,26 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-10-25'
+description: 'Detects the creation of a file with the name "code_tunnel.json" which
+  indicate execution and usage of VsCode tunneling utility. Attackers can abuse this
+  functionality to establish a C2 channel
+
+  '
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith: \code_tunnel.json
+falsepositives:
+- Legitimate usage of VsCode tunneling functionality will also trigger this
+id: 9661ec9d-4439-4a7a-abed-d9be4ca43b6d
+level: medium
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://ipfyx.fr/post/visual-studio-code-tunnel/
+- https://badoption.eu/blog/2023/01/31/code_c2.html
+status: experimental
+tags:
+- attack.command_and_control
+- detection.threat_hunting
+title: VsCode Code Tunnel Execution File Indicator

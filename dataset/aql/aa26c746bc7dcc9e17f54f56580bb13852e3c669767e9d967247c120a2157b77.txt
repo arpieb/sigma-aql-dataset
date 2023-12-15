@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%--remote-debugging-%' AND LOWER(Command) LIKE '%--user-data-dir%' AND LOWER(Command) LIKE '%--headless%'

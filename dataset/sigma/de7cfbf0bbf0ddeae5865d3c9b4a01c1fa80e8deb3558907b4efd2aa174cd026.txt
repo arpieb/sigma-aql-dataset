@@ -1,0 +1,31 @@
+author: Daniel Bohannon (@Mandiant/@FireEye), oscd.community
+date: '2019-11-08'
+description: Detects all variations of obfuscated powershell IEX invocation code generated
+  by Invoke-Obfuscation framework from the code block linked in the references
+detection:
+  condition: all of selection_*
+  selection_eid:
+    EventID: 4697
+  selection_servicefilename:
+    ServiceFileName|re: \String\]\s*\$VerbosePreference
+    ServiceFileName|re|all:
+    - \$PSHome\[\s*\d{1,3}\s*\]\s*\+\s*\$PSHome\[
+    - \$ShellId\[\s*\d{1,3}\s*\]\s*\+\s*\$ShellId\[
+    - \$env:Public\[\s*\d{1,3}\s*\]\s*\+\s*\$env:Public\[
+    - \$env:ComSpec\[(\s*\d{1,3}\s*,){2}
+    - \*mdr*\W\s*\)\.Name
+    - \$VerbosePreference\.ToString\(
+falsepositives:
+- Unknown
+id: fd0f5778-d3cb-4c9a-9695-66759d04702a
+level: high
+logsource:
+  product: windows
+  service: security
+references:
+- https://github.com/danielbohannon/Invoke-Obfuscation/blob/f20e7f843edd0a3a7716736e9eddfa423395dd26/Out-ObfuscatedStringCommand.ps1#L873-L888
+status: test
+tags:
+- attack.defense_evasion
+- attack.t1027
+title: Invoke-Obfuscation Obfuscated IEX Invocation - Security

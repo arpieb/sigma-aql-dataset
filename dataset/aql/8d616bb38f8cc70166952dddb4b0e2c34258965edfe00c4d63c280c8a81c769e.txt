@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\cmd.exe' OR LOWER("Process Name") LIKE '%\cmd.exe' OR Filename='Cmd.Exe') AND (LOWER(Command) LIKE '% -n %' OR LOWER(Command) LIKE '% /n %') AND LOWER(Command) LIKE '%ping%' AND LOWER(Command) LIKE '%copy %' AND LOWER(Command) LIKE '% /y %'

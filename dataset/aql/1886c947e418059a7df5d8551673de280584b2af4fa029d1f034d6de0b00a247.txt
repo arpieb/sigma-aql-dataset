@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER(Message) LIKE '%invoke-webrequest%' OR LOWER(Message) LIKE '%iwr %') AND (LOWER(Message) LIKE '%-method put%' OR LOWER(Message) LIKE '%-method post%')

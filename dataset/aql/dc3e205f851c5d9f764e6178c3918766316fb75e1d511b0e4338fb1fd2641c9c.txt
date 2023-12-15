@@ -1,0 +1,1 @@
+SELECT *, Command, "Parent Command" FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%activescripteventconsumer%' AND LOWER(Command) LIKE '% create %'

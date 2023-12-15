@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\curl.exe' OR LOWER("Process Name") LIKE '%\curl.exe' OR Filename='curl.exe') AND LOWER(Command) LIKE '%file:///%'

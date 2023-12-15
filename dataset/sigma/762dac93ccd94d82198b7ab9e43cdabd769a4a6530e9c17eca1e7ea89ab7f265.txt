@@ -1,0 +1,28 @@
+author: Nasreddine Bencherchali (Nextron Systems)
+date: '2023-10-24'
+description: Detects file creation activity that is related to Diamond Sleet APT activity
+detection:
+  condition: selection
+  selection:
+    TargetFilename|endswith:
+    - :\ProgramData\4800-84DC-063A6A41C5C
+    - :\ProgramData\clip.exe
+    - :\ProgramData\DSROLE.dll
+    - :\ProgramData\Forest64.exe
+    - :\ProgramData\readme.md
+    - :\ProgramData\Version.dll
+    - :\ProgramData\wsmprovhost.exe
+falsepositives:
+- Unlikely
+id: e1212b32-55ff-4dfb-a595-62b572248056
+level: high
+logsource:
+  category: file_event
+  product: windows
+references:
+- https://www.microsoft.com/en-us/security/blog/2023/10/18/multiple-north-korean-threat-actors-exploiting-the-teamcity-cve-2023-42793-vulnerability/
+status: experimental
+tags:
+- attack.execution
+- detection.emerging_threats
+title: Diamond Sleet APT File Creation Indicators

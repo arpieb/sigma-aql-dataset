@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Parent Process Path") LIKE '%\consent.exe' AND (LOWER("Process Path") LIKE '%\iexplore.exe' OR LOWER("Process Name") LIKE '%\iexplore.exe') AND LOWER(Command) LIKE '% http%' AND ("Integrity Level"='System' OR LOWER(Username) LIKE '%authori%' OR LOWER(Username) LIKE '%autori%')

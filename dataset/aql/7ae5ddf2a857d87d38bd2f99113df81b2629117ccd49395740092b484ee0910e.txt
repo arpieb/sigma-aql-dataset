@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND Filename='BrowserCore.exe' AND NOT((LOWER("Process Path") LIKE '%\browsercore.exe' OR LOWER("Process Name") LIKE '%\browsercore.exe'))

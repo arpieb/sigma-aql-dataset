@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Process Path") LIKE '%\powertool.exe' OR LOWER("Process Path") LIKE '%\powertool64.exe' OR LOWER("Process Name") LIKE '%\powertool.exe' OR LOWER("Process Name") LIKE '%\powertool64.exe' OR Filename='PowerTool.exe'

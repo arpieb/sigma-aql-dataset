@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER(Command) LIKE '%\appdata\roaming\oracle%' AND LOWER(Command) LIKE '%\java%' AND LOWER(Command) LIKE '%.exe %' OR LOWER(Command) LIKE '%cscript.exe%' AND LOWER(Command) LIKE '%retrive%' AND LOWER(Command) LIKE '%.vbs %'

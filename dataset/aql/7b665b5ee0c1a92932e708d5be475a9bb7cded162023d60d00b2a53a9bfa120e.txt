@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND LOWER("Start Address") LIKE '%0b80' OR LOWER("Start Address") LIKE '%0c7c' OR LOWER("Start Address") LIKE '%0c88'

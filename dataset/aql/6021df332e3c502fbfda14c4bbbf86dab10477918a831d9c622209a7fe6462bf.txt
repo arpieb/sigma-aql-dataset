@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND ("Process Path"='C:\WINDOWS\system32\WerFault.exe' OR "Process Name"='C:\WINDOWS\system32\WerFault.exe') AND (LOWER(Filename) LIKE '%\lsass%' OR LOWER(Filename) LIKE '%lsass.exe%')

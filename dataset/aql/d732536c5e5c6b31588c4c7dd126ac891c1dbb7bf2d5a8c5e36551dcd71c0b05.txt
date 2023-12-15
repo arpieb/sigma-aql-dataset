@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\replace.exe' OR LOWER("Process Name") LIKE '%\replace.exe') AND (LOWER(Command) LIKE '%/a%' OR LOWER(Command) LIKE '%-a%')

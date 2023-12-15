@@ -1,0 +1,27 @@
+author: frack113
+date: '2021-11-24'
+description: 'Detects DNS queries made by "AppInstaller.EXE". The AppInstaller is
+  the default handler for the "ms-appinstaller" URI. It attempts to load/install a
+  package from the referenced URL
+
+  '
+detection:
+  condition: selection
+  selection:
+    Image|endswith: \AppInstaller.exe
+    Image|startswith: C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_
+falsepositives:
+- Unknown
+id: 7cff77e1-9663-46a3-8260-17f2e1aa9d0a
+level: medium
+logsource:
+  category: dns_query
+  product: windows
+references:
+- https://twitter.com/notwhickey/status/1333900137232523264
+- https://lolbas-project.github.io/lolbas/Binaries/AppInstaller/
+status: test
+tags:
+- attack.command_and_control
+- attack.t1105
+title: AppX Package Installation Attempts Via AppInstaller.EXE

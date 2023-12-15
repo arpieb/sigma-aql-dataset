@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (LOWER("Process Path") LIKE '%\wuauclt.exe' OR LOWER("Process Name") LIKE '%\wuauclt.exe' OR Filename='Wuauclt.exe') AND (LOWER(Command) LIKE '%wuauclt' OR LOWER(Command) LIKE '%wuauclt.exe')

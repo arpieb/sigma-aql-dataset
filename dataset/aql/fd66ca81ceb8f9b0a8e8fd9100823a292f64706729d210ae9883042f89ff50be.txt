@@ -1,0 +1,1 @@
+SELECT * FROM events WHERE devicetype=12 AND (Filename='RUNDLL32.EXE' OR LOWER("Process Path") LIKE '%\rundll32.exe' OR LOWER("Process Name") LIKE '%\rundll32.exe') AND LOWER(Command) LIKE '%nsis_uns%' AND LOWER(Command) LIKE '%printuientry%'
